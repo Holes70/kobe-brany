@@ -4,24 +4,26 @@
   $navbar_list = $db->select('dia_navbar');
   array_pop($navbar_list);
 
-  $navbar = [];
-  foreach ($navbar_list as $item) {
-    foreach ($item as $key => $val) {
-      if ($key == 'id_parent' && $item['id_parent'] != NULL) {
-        $navbar[$item['id_parent']]['main'] = $item;
-       // array_push($navbar[$item['id_parent']], $item);
-        $item_id = $item['id'];
-        $navbar[$item['id_parent']]['childrens'][$item['id']] = [];
-        foreach ($item as $c_key => $c_val) {
-          if ($c_key == 'id' && $item_id == $c_val) {
-            $navbar[$item['id_parent']]['childrens'][$item_id] = $item;
-          }
+  foreach ($navbar_list as $flatItem) {
+    if ($flatItem['id_parent'] == 0) {
+      $children = [];
+      foreach ($navbar_list as $flatItemSub) {
+        if ($flatItemSub['id_parent'] == $flatItem['id']) {
+          $children[] = [
+            "name" => $flatItemSub['name'],
+            "link" => $flatItemSub['link'],
+          ];
         }
       }
+
+      $menuItems[] = [
+        "name" => $flatItem['name'],
+        "link" => $flatItem['link'],
+        "childrens" => $children,
+      ];
     }
   }
-print_r($navbar);
-  
+
 ?>
 
 <header>
@@ -29,29 +31,45 @@ print_r($navbar);
     <a class="navbar-brand" href="#">Sequel-D</a>    
     <div class="collapse navbar-collapse bg-primary">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="index.php?page=home">⌂ Domov</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Učebné texty
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#"></a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-        <!--<li class="nav-item">
-          <a class="nav-link" href="index.php?page=vue_table">Vue_table</a>
-        </li>
-        <li class="nav-item"> 
-          <a class="nav-link" href="index.php?page=vue_form">Vue_form</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="index.php?page=vue_params">Vue_params</a>
-        </li>-->
+        <?php
+          $html = "";
+          foreach ($menuItems as $item) {
+            if (count($item['childrens']) > 0) {
+              $html .= "
+                <li class='nav-item dropdown'>
+                <a 
+                  class='nav-link 
+                  dropdown-toggle' 
+                  href='index.php?page={$item['link']}' 
+                  id='navbarDropdown' 
+                  role='button' 
+                  data-toggle='dropdown' 
+                  aria-haspopup='true' 
+                  aria-expanded='false'
+                >{$item['name']}</a>
+                <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
+              ";
+              foreach ($item['childrens'] as $children) {
+                $html .= "
+                  <a 
+                    class='dropdown-item' 
+                    href='index.php?page={$children['link']}'>
+                    {$children['name']}
+                  </a>
+                ";
+              }
+              $html .= "</div></li>";
+            } else {
+              $html .="
+                <li class='nav-item'>
+                  <a class='nav-link' href='index.php?page={$item['link']}'>{$item['name']}</a>
+                </li>
+              ";
+            }
+          }
+
+          echo $html;
+        ?>
       </ul>
     </div>
     <form class="form-inline my-2 my-lg-0">

@@ -11,7 +11,7 @@
 
     }
 
-    public function select($table = "", $conditions = array(), $items = array()) {
+    public function select($table = "", $conditions = array(), $items = array(), $showTableName = NULL) {
       $select_fix = ""; $select = ""; $build = ""; $data = array();
       extract($conditions);
 
@@ -50,6 +50,8 @@
           }
         if ($json) {
           return json_encode($data);
+        } else if($showTableName == FALSE) {
+          return $data;
         } else {
           $data['table_name'] = $table;
           return $data;

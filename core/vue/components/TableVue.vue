@@ -1,6 +1,6 @@
 <template>
   <div>
-    <table class="table table-hover" :class="[css]" :style="[style]">
+    <table class="table table-hover mt-5 mb-5" :class="[css]" :style="[style]">
       <thead>
         <tr>
           <th v-for='(item, index) in data[0]' :key="index">
@@ -23,16 +23,24 @@
       </tbody>
     </table>
     <div v-show="showEdit" :id="table_name_id" class="modal" style="display:block">
-      <div class="modal-content">
-        <div class="modal-body">
-          <div class="form-group" v-for='(item, index) in dataEdit' :key="index">
-            <input v-if="index != 'id'" type="text" class="form-control" v-model='dataEdit[index]' required>
-            <input v-else type="text" class="form-control" :value="item" disabled>
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Table: <b>{{ table_name }}</b></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button @click.prevent="editFormSave()" type="submit" class="btn btn-success">Uložiť</button>
-          <button class="btn btn-danger" @click="showEdit = false">Zavrieť</button>
+          <div class="modal-body">
+            <div class="form-group" v-for='(item, index) in dataEdit' :key="index">
+              <input v-if="index != 'id'" type="text" class="form-control" v-model='dataEdit[index]' required>
+              <input v-else type="text" class="form-control" :value="item" disabled>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button @click.prevent="editFormSave()" type="submit" class="btn btn-success">Uložiť</button>
+            <button class="btn btn-danger" @click="showEdit = false">Zavrieť</button>
+          </div>
         </div>
       </div>
     </div>
@@ -97,8 +105,8 @@
           text: "Naozaj chcete vymazať tento záznam?",
           type: "warning",
           showCancelButton: true,
-          cancelButtonClass: "button",
-          confirmButtonClass: "red lighten-1",
+          cancelButtonClass: "btn btn-secondary",
+          confirmButtonClass: "btn btn-danger",
           confirmButtonText: "Áno",
           cancelButtonText: "Nie",
           closeOnConfirm: false,

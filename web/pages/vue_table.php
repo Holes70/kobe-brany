@@ -12,10 +12,10 @@
     ->formInputs(['id', 'first_name'])
   ;
   */
-  $table_products = new Table\Component("products");
+  $table_products = new TableVue\Component("products");
   $table_products->columns(['id' => 'ID', 'name' => 'Meno', 'price|$' => 'Cena'])->buttons(['edit', 'delete']);
 
-  $table_users = new Table\Component("users");
+  $table_users = new TableVue\Component("users");
   $table_users
     ->columns(['id' => 'ID', 'first_name' => 'Meno', 'email' => 'Email'])
     ->columnStyle(['id' => 'color:red;font-size:33px'])
@@ -26,7 +26,7 @@
 
   $alert = new Alert\Component("Totto je test alert");
 
-  $table_products = new Table\Component("products");
+  $table_products = new TableVue\Component("products");
   $table_products->columns(['id' => 'ID', 'name' => 'Meno', 'price|$' => 'Cena'])->buttons(['edit']);
 
 
