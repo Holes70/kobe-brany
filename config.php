@@ -18,6 +18,7 @@
   $config['web']['bootstrap']   = TRUE;
   $config['web']['vue']         = TRUE;
   $config['web']['vue_components'] = "components";
+  $config['web']['elasticsearch'] = TRUE;
 
   // NASTAVENA HLAVICKY
   $config['head']['lang']       = "sk";

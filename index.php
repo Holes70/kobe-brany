@@ -2,6 +2,16 @@
   session_start();
   ob_start();
   require_once('core/boot.php');
+
+  // Elasticsearch
+  if ($dia->config['web']['elasticsearch']) {
+    require 'vendor/autoload.php';
+
+    $client = Elasticsearch\ClientBuilder::create()
+      ->setHosts(['localhost:9200'])
+      ->build()
+    ;
+  }
   
   $dia->autoload();
 
