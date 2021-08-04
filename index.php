@@ -74,6 +74,7 @@
         'dia-table': Vue.defineAsyncComponent( () => loadModule('./core/vue/components/Table.vue', options)),
         'dia-table-vue': Vue.defineAsyncComponent( () => loadModule('./core/vue/components/TableVue.vue', options)),
         'dia-jumbotron': Vue.defineAsyncComponent( () => loadModule('./core/vue/components/Jumbotron.vue', options)),
+        'dia-elasticsearch': Vue.defineAsyncComponent( () => loadModule('./core/vue/components/Elasticsearch.vue', options)),
         <?php
           if (isset($GLOBALS['vue_components'])) {
             foreach ($GLOBALS['vue_components'] as $com) {
