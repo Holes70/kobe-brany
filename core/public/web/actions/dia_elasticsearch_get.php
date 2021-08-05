@@ -14,9 +14,7 @@
           'query' => [
             "query_string" => [
               "query" => "*". $data->search . "*",
-              "fields" => [
-                "title", "content"
-              ]
+              "fields" => json_decode($data->searchFields)
             ]
           ]
       ]

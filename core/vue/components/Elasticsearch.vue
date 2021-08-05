@@ -26,12 +26,13 @@ export default {
       hits: []
     }
   },
-  props: ['index'],
+  props: ['index', 'searchFields'],
   watch: {
     search(val) {
       axios.post('index.php?json_action=dia_elasticsearch_get', {
         search: val,
-        index: this.index
+        index: this.index,
+        searchFields: this.searchFields
       }).then((res) => {
         this.count = res.data['count'];
         this.hits = res.data['hits']
