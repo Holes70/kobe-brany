@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="index != 'offline'">
     <div class="form-inline">
       <input 
         class="form-control col-lg-12 mt-5" 
@@ -16,6 +16,27 @@
       </li>
     </ul>
   </div>
+  <div v-else>
+    <p class='border border-danger text-center mt-5'>
+      <span class='text-danger'>
+        Elasticsearch not running
+        <button
+          @click="showConnectionInfo = !showConnectionInfo" 
+          class="btn btn-warning"
+        >ⓘ</button>
+      </span>
+    </p>
+    <div v-if="showConnectionInfo">
+      <div class="card">
+        <div class="card-body">
+          <p>localhost:9200 not running</p>
+          <p>Start your Elasticsearch server</p>
+          <p>Linux: cd /elastic_folder/</p>
+          <p>./bin/elasticsearch</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
 export default {
@@ -23,7 +44,8 @@ export default {
     return {
       search: "",
       count: 0,
-      hits: []
+      hits: [],
+      showConnectionInfo: false
     }
   },
   props: ['index', 'searchFields'],
