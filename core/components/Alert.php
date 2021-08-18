@@ -8,7 +8,8 @@ namespace Alert {
     public $text;
     public $footerText;
     public $title;
-    public $type;
+    public $type = 1;
+    public $alerType = "alert-success";
     public $alertId;
 
     public function __construct($text) {
@@ -34,6 +35,24 @@ namespace Alert {
       return $this;
     }
 
+    public function type($type) {
+      switch ($type) {
+        case 1:
+          $this->alerType = "alert-success";
+        break;
+        case 2:
+          $this->alerType = "alert-warning";
+        break;
+        case 3:
+          $this->alerType = "alert-danger";
+        break;
+      }
+      
+      $this->type = $type;
+
+      return $this;
+    }
+
     public function show() {
       return "
         <dia-alert 
@@ -41,6 +60,8 @@ namespace Alert {
           title=\"{$this->title}\"
           footerText=\"{$this->footerText}\"
           text=\"{$this->text}\"
+          type={$this->type}
+          alertType=\"{$this->alerType}\"
         ></dia-alert>
       ";
     }
@@ -54,11 +75,6 @@ namespace Alert {
   class Creater extends \DB {
     public $con;
 
-    public $text;
-    public $footerText;
-    public $title;
-    public $type;
-
     public function __construct() {
       global $con;
 
@@ -66,16 +82,26 @@ namespace Alert {
     }
 
     public function insert($params = []) {
-      $this->title = $params['title'];
-      $this->footerText = $params['footerText'];
-      $this->text = $params['text'];
-      $this->type = $params['type'];
+      $this->insert_array([
+        'table' => 'dia_alerts',
+        'table_data' => [
+          "title" => $params['title'],
+          "footer_text" => $params['footer_text'],
+          "type" => $params['type'],
+          "expiration" => $params['expiration']
+        ]
+      ]);
 
       return $this;
     }
 
     public function getAlerts() {
-      return $this->select("dia_alerts", NULL, NULL, FALSE);
+      return $this->select(
+        "dia_alerts", 
+        NULL, 
+        NULL, 
+        FALSE
+      );
     }
 
   }

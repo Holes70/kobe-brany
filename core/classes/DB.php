@@ -169,6 +169,8 @@
       } else if(!empty($redirect)) {
         header("Location: index.php?page=$redirect&success=1");
       }
+
+      return TRUE;
     }
 
     public function update($table = '', $data = array()) {
@@ -192,7 +194,7 @@
 
       if (!$this->con->query($query)) { 
         echo $this->con->error;
-        $this->error_function($error);
+        $this->error_function($this->con->errorr);
       } else {
         //$this->redirect('home');
       }
