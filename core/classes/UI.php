@@ -1,6 +1,7 @@
 <?php
 
-  class UI extends Dia{
+namespace Core\Classes {
+  class UI extends \Core\Dia{
 
     public $con;
 
@@ -252,5 +253,7 @@
       }
     }
   }
+
+}
 
 ?>

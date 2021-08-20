@@ -17,6 +17,6 @@
   // PRILEPENIE DIE
   require_once('core/Dia.php');
 
-  $dia = new Dia();
+  $dia = new Core\Dia();
 
 ?>

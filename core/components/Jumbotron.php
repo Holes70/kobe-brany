@@ -1,8 +1,8 @@
 <?php
 
-namespace Jumbotron {
+namespace Components {
 
-  class Component extends \DB {
+  class Jumbotron extends \Core\Component {
     public $con;
 
     public $title;

@@ -1,6 +1,7 @@
 <?php
 
-  class Vue extends Dia{
+namespace Core\Classes {
+  class Vue extends \Core\Dia{
 
     public function __construct() {
 
@@ -109,3 +110,5 @@
       return $html;
     }
   }
+
+}

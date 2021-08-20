@@ -1,8 +1,8 @@
 <?php
 
-namespace TableVue {
+namespace Table {
 
-  class Component extends \DB{
+  class Component extends \Core\Classes\DB{
     public $con;
 
     public $json;
@@ -111,25 +111,26 @@ namespace TableVue {
         $i++;
       }
 
-      $columnsJSON = json_encode($this->columns);
-      $buttonsJSON = json_encode($this->buttons);
+      $this->json = $tr_values;
+      $json_e = json_encode($tr_values);
+      $json_formatter = json_encode($formatter_keys);
       $formInputs = json_encode($this->formInputs);
       $columnStyle = json_encode($this->columnStyle);
       $rowStyle = json_encode($this->rowStyle);
 
       return "
-        <dia-table-vue
+        <dia-table
           :table_params='{
-            columns: $columnsJSON,
-            buttons: $buttonsJSON,
+            table_data: $json_e,
             table_name: \"{$this->table_name}\",
+            formatter: $json_formatter,
             style: \"{$this->style}\",
             class: \"{$this->class}\",
             formInputs: $formInputs,
             columnStyle: $columnStyle,
             rowStyle: $rowStyle
           }'
-        ></dia-table-vue>
+        ></dia-table>
       ";
     }
 

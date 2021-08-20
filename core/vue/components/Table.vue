@@ -1,6 +1,6 @@
 <template>
   <div>
-    <table class="table table-hover" :class="[css]" :style="[style]">
+    <table class="table table-hover mt-5 mb-5" :class="[css]" :style="[style]">
       <thead>
         <tr>
           <th v-for='(item, index) in data[0]' :key="index">
@@ -23,16 +23,24 @@
       </tbody>
     </table>
     <div v-show="showEdit" :id="table_name_id" class="modal" style="display:block">
-      <div class="modal-content">
-        <div class="modal-body">
-          <div class="form-group" v-for='(item, index) in dataEdit' :key="index">
-            <input v-if="index != 'id'" type="text" class="form-control" v-model='dataEdit[index]' required>
-            <input v-else type="text" class="form-control" :value="item" disabled>
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Table: <b>{{ table_name }}</b></h5>
+            <button @click="showEdit=false" type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button @click.prevent="editFormSave()" type="submit" class="btn btn-success">Uložiť</button>
-          <button class="btn btn-danger" @click="showEdit = false">Zavrieť</button>
+          <div class="modal-body">
+            <div class="form-group" v-for='(item, index) in dataEdit' :key="index">
+              <input v-if="index != 'id'" type="text" class="form-control" v-model='dataEdit[index]' required>
+              <input v-else type="text" class="form-control" :value="item" disabled>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button @click.prevent="editFormSave()" type="submit" class="btn btn-success">Uložiť</button>
+            <button class="btn btn-danger" @click="showEdit = false">Zavrieť</button>
+          </div>
         </div>
       </div>
     </div>
@@ -44,6 +52,8 @@
     data() {
       return {
         data: [],
+        columns: [],
+        buttons: [],
         table_name: '',
         href_table_name: '',
         showEdit: false,
@@ -61,13 +71,12 @@
     methods: {
       // NACITANIE DAT ZO ZADANEJ TABULKY
       loadData() {
-        axios.post('index.php?page=admin=dia_vue_select', {
-          params: {
-            table_name: this.table_params['table_name'],
-            action: 'getJSON'
-          }
-        }).then((res) => {
-          this.data = res.data[0];
+        axios.post(
+          'index.php?json_action=dia_vue_table', 
+          { params: this.table_params}
+        ).then((res) => {
+          this.data = res.data.table_data;
+          this.formatter = res.data.formatter;
         })
       },
       showEditFormFunc(params) {
@@ -96,8 +105,8 @@
           text: "Naozaj chcete vymazať tento záznam?",
           type: "warning",
           showCancelButton: true,
-          cancelButtonClass: "button",
-          confirmButtonClass: "red lighten-1",
+          cancelButtonClass: "btn btn-secondary",
+          confirmButtonClass: "btn btn-danger",
           confirmButtonText: "Áno",
           cancelButtonText: "Nie",
           closeOnConfirm: false,
@@ -116,10 +125,8 @@
               text: "Záznam bol vymazaný!",
               type: "success"
             },
-            function () {
-              table.loadData();
-              console.log(table.data);
-            })
+            table.loadData()
+            )
           } else {
             swal("Zrušené", "Záznam nebol vymazaný!", "warning") 
           }
@@ -134,16 +141,16 @@
             table_name: this.table_name,
             data: this.dataEdit
           }
-        }).then(function() {
-          location.reload();
-        })
+        });
+        //this.showEdit = false;
+        this.loadData();
       }
     },
     mounted() {
       // AK SU PRAZDNE DATA ODKAZUJE NA ACTION
       if (this.table_params['table_data'] == undefined) {
-        console.log('xxxx');
         this.loadData();
+        this.table_name = this.table_params['table_name'];
       } else {
         var random = Math.floor(Math.random() * 11);
         // NACITAJU SA DATA KTORE BOLI DOSADENE CEZ VUE.PHP

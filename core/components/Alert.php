@@ -1,8 +1,8 @@
 <?php
 
-namespace Alert {
+namespace Components {
 
-  class Component extends \DB {
+  class Alert extends \Core\Component {
     public $con;
 
     public $text;
@@ -72,7 +72,7 @@ namespace Alert {
 
   }
 
-  class Creater extends \DB {
+  class Creater extends \Core\Classes\DB {
     public $con;
 
     public function __construct() {

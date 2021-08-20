@@ -6,6 +6,8 @@
   $config['db']['user']         = "root";
   $config['db']['password']     = "";
 
+  $config['dia_tables']         = "dia_tables";
+
   // SUBOROVE NASTAVENIA
   $config['dir']['root']        = dirname(__FILE__);
 

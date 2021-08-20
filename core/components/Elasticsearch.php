@@ -1,8 +1,8 @@
 <?php
 
-namespace Elasticsearch {
+namespace Components {
 
-  class Component extends \DB {
+  class Elasticsearch extends \Core\Component {
     public $con;
 
     private $index;

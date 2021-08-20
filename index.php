@@ -15,9 +15,9 @@
   
   $dia->autoload();
 
-  $db = new DB();
-  $ui = new UI();
-  $vue = new Vue();
+  $db = new \Core\Classes\DB();
+  $ui = new \Core\Classes\UI();
+  $vue = new \Core\Classes\Vue();
 
   if (!isset($_GET['json_action'])) {
 
@@ -72,7 +72,6 @@
         'dia-alert': Vue.defineAsyncComponent( () => loadModule('./core/vue/components/Alert.vue', options)),
         'dia-form': Vue.defineAsyncComponent( () => loadModule('./core/vue/components/Form.vue', options)),
         'dia-table': Vue.defineAsyncComponent( () => loadModule('./core/vue/components/Table.vue', options)),
-        'dia-table-vue': Vue.defineAsyncComponent( () => loadModule('./core/vue/components/TableVue.vue', options)),
         'dia-jumbotron': Vue.defineAsyncComponent( () => loadModule('./core/vue/components/Jumbotron.vue', options)),
         'dia-elasticsearch': Vue.defineAsyncComponent( () => loadModule('./core/vue/components/Elasticsearch.vue', options)),
         <?php

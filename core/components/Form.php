@@ -1,8 +1,8 @@
 <?php
 
-namespace Form {
+namespace Components {
 
-  class Component extends \DB {
+  class Form extends \Core\Component {
     public $con;
 
     private $table_name;
@@ -14,7 +14,7 @@ namespace Form {
       $this->con = $con;
 
       $this->vue_component_loader($this);
-
+$this->getTableStructure(); exit();
       $this->table_name = $table_name;
       $this->requiredInputs = json_encode(
         ['name', 'price']

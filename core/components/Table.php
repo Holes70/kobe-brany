@@ -1,8 +1,8 @@
 <?php
 
-namespace Table {
+namespace Components {
 
-  class Component extends \DB{
+  class Table extends \Core\Component {
     public $con;
 
     public $json;
@@ -111,9 +111,8 @@ namespace Table {
         $i++;
       }
 
-      $this->json = $tr_values;
-      $json_e = json_encode($tr_values);
-      $json_formatter = json_encode($formatter_keys);
+      $columnsJSON = json_encode($this->columns);
+      $buttonsJSON = json_encode($this->buttons);
       $formInputs = json_encode($this->formInputs);
       $columnStyle = json_encode($this->columnStyle);
       $rowStyle = json_encode($this->rowStyle);
@@ -121,9 +120,9 @@ namespace Table {
       return "
         <dia-table
           :table_params='{
-            table_data: $json_e,
+            columns: $columnsJSON,
+            buttons: $buttonsJSON,
             table_name: \"{$this->table_name}\",
-            formatter: $json_formatter,
             style: \"{$this->style}\",
             class: \"{$this->class}\",
             formInputs: $formInputs,
