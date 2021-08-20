@@ -9,12 +9,9 @@ namespace Components {
     private $columns;
 
     public function __construct($index) {
-      global $con;
-      $this->con = $con;
+      parent::__construct($this);
 
       $this->index = $index;
-
-      $this->vue_component_loader($this);
     }
 
     private function checkElasticConnection() {

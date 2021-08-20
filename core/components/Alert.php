@@ -13,11 +13,9 @@ namespace Components {
     public $alertId;
 
     public function __construct($text) {
-      global $con;
-      $this->con = $con;
-      $this->text = $text;
+      parent::__construct($this);
 
-      $this->vue_component_loader($this);
+      $this->text = $text;
     }
 
     public function title($title) {

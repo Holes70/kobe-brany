@@ -10,11 +10,8 @@ namespace Components {
     private $requiredInputs = [];
 
     public function __construct($table_name) {
-      global $con;
-      $this->con = $con;
+      parent::__construct($this);
 
-      $this->vue_component_loader($this);
-$this->getTableStructure(); exit();
       $this->table_name = $table_name;
       $this->requiredInputs = json_encode(
         ['name', 'price']

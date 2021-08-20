@@ -11,10 +11,7 @@ namespace Components {
     public $link;
 
     public function __construct() {
-      global $con;
-
-      $this->con = $con;
-      $this->vue_component_loader($this);
+      parent::__construct($this);
     }
 
     public function title($param) {

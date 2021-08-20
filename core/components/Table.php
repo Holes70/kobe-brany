@@ -17,12 +17,9 @@ namespace Components {
     private $formInputs;
 
     public function __construct($table_name) {
-      global $con;
-      $this->con = $con;
+      parent::__construct($this);
 
       $this->table_name = $table_name;
-
-      $this->vue_component_loader($this);
     }
 
     public function sql() {
