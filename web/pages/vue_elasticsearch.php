@@ -1,6 +1,6 @@
 <?php
 
-  $elasticSearch = new Elasticsearch\Component("logstash_test");
+  $elasticSearch = new Components\Elasticsearch("logstash_test");
 
   // SET field which will use for search
   $elasticSearch->searchFields(['title', 'content']);

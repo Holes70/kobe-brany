@@ -1,6 +1,6 @@
 <?php
 
-  $alert = new Alert\Component("Totto je test alert");
+  $alert = new Components\Alert("Totto je test alert");
   $alert
     ->title("Test title")
     ->footer("Footer text")
@@ -8,10 +8,10 @@
     ->type(2)
   ;
 
-  $creater = new Alert\Creater();
+  $creater = new Components\Creater();
 
   foreach ($creater->getAlerts() as $item) {
-    $alert = new Alert\Component($item['text']);
+    $alert = new Components\Alert($item['text']);
   
     $alert
       ->title($item['title'])

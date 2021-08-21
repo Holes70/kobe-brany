@@ -198,18 +198,6 @@ namespace Core {
       }
     }
 
-    public function vue_component_loader($_this) {
-      // TOTO HODIT DO DIE!
-      if (isset($GLOBALS['dia_vue_components'])) {
-        array_push($GLOBALS['dia_vue_components'], $_this);
-        //array_push($this->showedComponents, $_this);
-      } else {
-        $GLOBALS['dia_vue_components'] = array();
-        array_push($GLOBALS['dia_vue_components'], $_this);
-        //array_push($this->showedComponents, $_this); 
-      }
-    }
-
     // CONFIG FUNKCIE
     public function web_home() {
       return $this->config['web']['home'];
