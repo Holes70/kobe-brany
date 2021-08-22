@@ -205,22 +205,6 @@ namespace Core\Classes {
     public function request_data() {
       return json_decode(file_get_contents("php://input"));
     }
-
-    public function getTableStructure() {
-      global $config;
-
-      $diaTables = 
-        $this->select(
-          $config['dia_tables'],
-          [],
-          [],
-          FALSE
-        )
-      ;
-
-      $xx = json_decode($diaTables[0]['data']);
-      print_r(json_decode($diaTables[0]['data']));
-    }
   }
 
 }

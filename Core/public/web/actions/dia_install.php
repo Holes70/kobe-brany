@@ -9,6 +9,16 @@
     password varchar(55) NOT NULL
   )";
 
+  if (!$con->query($query)) echo "Chyba";
+
+  $query = "CREATE TABLE dia_tables(
+    id int AUTO_INCREMENT PRIMARY KEY,
+    table_name VARCHAR(55) NOT NULL,
+    structure VARCHAR(255) NOT NULL
+  )";
+
+  if (!$con->query($query)) echo "Chyba";
+
 // TO DO
 /*
   // Vytvara tabulku alerts
@@ -24,9 +34,7 @@
     name varchar(55) NOT NULL,
     password varchar(55) NOT NULL
   )";
-*/
-
-  if (!$con->query($query)) echo "Chyba"; 
+*/ 
 
   $db->insert([
     'table' => 'admin',

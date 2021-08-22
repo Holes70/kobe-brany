@@ -14,7 +14,7 @@ namespace Components {
 
       $this->table_name = $table_name;
       $this->requiredInputs = json_encode(
-        ['name', 'price']
+        $this->getTableRequiredFields()
       );
     }
 
