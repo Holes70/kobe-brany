@@ -1,7 +1,7 @@
 <?php
   session_start();
   ob_start();
-  require_once('core/boot.php');
+  require_once('Core/boot.php');
 
   // Elasticsearch
   if ($dia->config['web']['elasticsearch']) {
@@ -39,7 +39,7 @@
       }
     
     } else {
-      include "core/public/web/pages/install.php";
+      include "Core/public/web/pages/install.php";
     }
 
     // VUE LOADER START
@@ -69,11 +69,11 @@
 
     const app_loader = Vue.createApp({
       components: {
-        'dia-alert': Vue.defineAsyncComponent( () => loadModule('./core/vue/components/Alert.vue', options)),
-        'dia-form': Vue.defineAsyncComponent( () => loadModule('./core/vue/components/Form.vue', options)),
-        'dia-table': Vue.defineAsyncComponent( () => loadModule('./core/vue/components/Table.vue', options)),
-        'dia-jumbotron': Vue.defineAsyncComponent( () => loadModule('./core/vue/components/Jumbotron.vue', options)),
-        'dia-elasticsearch': Vue.defineAsyncComponent( () => loadModule('./core/vue/components/Elasticsearch.vue', options)),
+        'dia-alert': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Alert.vue', options)),
+        'dia-form': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Form.vue', options)),
+        'dia-table': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Table.vue', options)),
+        'dia-jumbotron': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Jumbotron.vue', options)),
+        'dia-elasticsearch': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Elasticsearch.vue', options)),
         <?php
           if (isset($GLOBALS['vue_components'])) {
             foreach ($GLOBALS['vue_components'] as $com) {
