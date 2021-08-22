@@ -160,7 +160,7 @@ namespace Core {
 
       // AK SA NACHDADZA SLOVO DIA SMERUJE TO NA CORE AKCIU
       if ((strstr($action_name[1], '_', true)) == "dia") {
-        return include ("core/public/web/actions/" . $action_name[1] . ".php");
+        return include ("Core/public/web/actions/" . $action_name[1] . ".php");
       } else {
         return include ("web/{$this->config['web']['actions']}/" . $action_name[1] . ".php");
       }
@@ -173,7 +173,7 @@ namespace Core {
       $json_action = isset($_GET['json_action']) ? $_GET['json_action'] : '';
 
       if ((strstr($json_action, '_', true)) == "dia") {
-        return include ("core/public/web/actions/" . $json_action . ".php");
+        return include ("Core/public/web/actions/" . $json_action . ".php");
       } else {
         return include ("web/{$this->config['web']['actions']}/" . $json_action . ".php");
       }
