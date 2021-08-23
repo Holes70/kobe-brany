@@ -1,0 +1,22 @@
+{
+  "name": "j",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bombarder70/dia.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bombarder70/dia/issues"
+  },
+  "homepage": "https://github.com/Bombarder70/dia#readme",
+  "dependencies": {
+    "vuelidate": "^0.7.6"
+  }
+}

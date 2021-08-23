@@ -32,6 +32,7 @@
 </template>
 
 <script>
+
   module.exports = {
     props: ['form_params'],
     data() {
