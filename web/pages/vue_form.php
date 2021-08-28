@@ -9,7 +9,8 @@
   $form_users2 = new Components\Form("users");
   $form_users2->inputs([
     'first_name' => 'Krstne meno', 
-    'last_name' => 'Priezvisko'
+    'last_name' => 'Priezvisko',
+    'id_address' => 'Adresa'
   ]);
 
   $form_products = new Components\Form("products");
