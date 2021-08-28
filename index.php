@@ -73,9 +73,10 @@
         'dia-table': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Table.vue', options)),
         'dia-jumbotron': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Jumbotron.vue', options)),
         'dia-elasticsearch': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Elasticsearch.vue', options)),
+        'dia-custom': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Custom.vue', options)),
         <?php
-          if (isset($GLOBALS['vue_components'])) {
-            foreach ($GLOBALS['vue_components'] as $com) {
+          if (isset($GLOBALS['web_vue_components'])) {
+            foreach ($GLOBALS['web_vue_components'] as $com) {
               echo "'$com': Vue.defineAsyncComponent( () => loadModule('./web/components/$com.vue', options)),";
             }
           }
@@ -87,7 +88,7 @@
             $com->render();
           }
         }
-        if (isset($GLOBALS['vue_components'])) {
+        /*if (isset($GLOBALS['vue_components'])) {
           foreach ($GLOBALS['vue_components'] as $com) {
             if (isset($$com['params'])) {
               $html_params = "";
@@ -109,7 +110,7 @@
               echo $com;
             }
           }
-        }
+        }*/
      ?>`
     });
 

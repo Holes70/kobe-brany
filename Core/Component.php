@@ -5,13 +5,14 @@ namespace Core {
   class Component extends \Core\Classes\DB {
 
     public $tableStructure = NULL;
+    public $customComponentName = NULL;
 
     /**
      * Specific component[e.g.: Alert] 
      * object push into Component constructor
      * @return 
      */
-    public function __construct(object $_this) {
+    public function __construct($_this) {
       parent::__construct();
 
       $this->VueComponentLoader($_this);
@@ -24,12 +25,27 @@ namespace Core {
      * @return 
      */
     public function VueComponentLoader($_this) {
-      if (isset($GLOBALS['dia_vue_components'])) {
-        array_push($GLOBALS['dia_vue_components'], $_this);
+
+      if (is_object($_this)) {
+        if (isset($GLOBALS['dia_vue_components'])) {
+          array_push($GLOBALS['dia_vue_components'], $_this);
+        } else {
+          $GLOBALS['dia_vue_components'] = array();
+          array_push($GLOBALS['dia_vue_components'], $_this);
+        }
       } else {
-        $GLOBALS['dia_vue_components'] = array();
-        array_push($GLOBALS['dia_vue_components'], $_this);
+        $this->customComponentName = $_this;
+        $this->VueComponentLoader($this);
       }
+    }
+
+    // overwrite in compoennt
+    public function show() {
+      return "<{$this->customComponentName}/>";
+    }
+
+    public function render() {
+      echo $this->show();
     }
 
     /**

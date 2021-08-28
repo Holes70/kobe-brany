@@ -39,12 +39,18 @@ namespace Core {
     }
 
     public function vue($name) {
-      if (isset($GLOBALS['vue_components'])) {
-        array_push($GLOBALS['vue_components'], $name);
+      new \Core\Component($name);
+
+      if (isset($GLOBALS['web_vue_components'])) {
+        array_push($GLOBALS['web_vue_components'], $name);
       } else {
-        $GLOBALS['vue_components']  = array();
-        array_push($GLOBALS['vue_components'], $name);
+        $GLOBALS['web_vue_components']  = array();
+        array_push($GLOBALS['web_vue_components'], $name);
       }
+    }
+
+    public function html(string $html) {
+      new \Components\Custom($html);
     }
 
     public function daj_zahlavie() {
