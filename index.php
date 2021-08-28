@@ -45,8 +45,6 @@
     // VUE LOADER START
   ?>
     <script>
-    import Vuelidate from 'vuelidate'
-
     const options = {
       moduleCache: {
         vue: Vue

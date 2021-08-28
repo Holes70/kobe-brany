@@ -9,8 +9,11 @@
       <div v-for="(input, index) in inputs" :key="index" class='form-group row'>
         <template v-if="showInputs.length != 0">
           <template v-if="showInputs[index]">
-            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">{{ showInputs[index] }}</label>
-            <span v-if="requiredInputs.includes(index)">*</span>
+            <label for="colFormLabelSm" class="col-form-label col-form-label-sm">{{ showInputs[index] }}</label>
+            <span 
+              v-if="requiredInputs.includes(index)"
+              style="color:red"
+            >*</span>
             <div class="col-sm-10">
               <input v-model='inputs[index]' :id='index' type='text' class='form-control'>
             </div>
@@ -18,7 +21,7 @@
         </template>
         <template v-else>
           <template v-if="index != 'id'">
-            <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">{{ index }}</label>
+            <label for="colFormLabelSm" class="col-form-label col-form-label-sm">{{ index }}</label>
             <span v-if="requiredInputs.includes(index)">*</span>
             <div class="col-sm-10">
               <input v-model='inputs[index]' :id='index' type='text' class='form-control'>
@@ -69,7 +72,6 @@
       this.showInputs = this.form_params['showInputs'];
       this.table_name = this.form_params['table_name'];
       this.requiredInputs = this.form_params['requiredInputs'];
-      console.log(this.form_params['requiredInputs']);
     },
   };
 </script>

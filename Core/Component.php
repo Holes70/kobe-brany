@@ -52,18 +52,30 @@ namespace Core {
           $diaTables[0]['structure']
         )
       ;
+
+      $this->tableName = $diaTables[0]['table_name'];
     }
 
-    public function getTableRequiredFields() {
+    public function getTableRequiredFields(string $tableName) {
       $requiredFields = [];
 
-      foreach ($this->tableStructure as $column => $val) {
-        if ($val->required == "true") {
-          array_push($requiredFields, $column);
+      foreach ($this->tableStructure as $tableColumn => $val) {
+        if ($this->tableName == $tableName) {
+          if ($val->required === TRUE) {
+            array_push($requiredFields, $tableColumn);
+          }
         }
       }
 
       return $requiredFields;
+    }
+
+    public function getTableLookupFields(string $tableName) {
+      foreach ($this->tableStructure as $column => $val) {
+        if ($val->lookup) {
+          var_dump($val->lookup->table);
+        }
+      }
     }
 
   }
