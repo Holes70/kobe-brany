@@ -9,7 +9,7 @@ $table_products->columns([
   'id' => 'ID', 
   'name' => 'Meno', 
   'price|$' => 'Cena'
-  ])->buttons(['edit', 'delete']
+  ])->buttons(['edit']
 );
 
 /**
@@ -54,7 +54,6 @@ $template = $dia->template("
 $template->render();
 
 $user_table = new Components\Table("users");
-$user_table->buttons(['edit', 'delete']);
 $user_table->columns(['id' => 'id', 'first_name' => 'first_name']);
 
 $template2 = $dia->template("
