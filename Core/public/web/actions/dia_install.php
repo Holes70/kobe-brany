@@ -34,6 +34,14 @@
     name varchar(55) NOT NULL,
     password varchar(55) NOT NULL
   )";
+
+  CREATE TABLE dia_alerts_users(
+    id int AUTO_INCREMENT PRIMARY KEY,
+    id_user int,
+    id_alert int,
+    INDEX `id_user` (`id_user`),
+    INDEX `id_alert` (`id_alert`)
+)
 */ 
 
   $db->insert([

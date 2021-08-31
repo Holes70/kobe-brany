@@ -36,9 +36,10 @@ namespace Components {
     public function show() {
 
       $inputs = $this->select($this->table_name);
-      array_pop($inputs);
-      $inputs_keys = array_keys($inputs[0]);
 
+      //array_pop($inputs);
+      $inputs_keys = array_keys($inputs[0]);
+  
       foreach ($inputs_keys as $key => $val) {
         $inputs_fix[$val] = '';
       }

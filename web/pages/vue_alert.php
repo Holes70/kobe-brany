@@ -6,19 +6,25 @@
     ->footer("Footer text")
     ->id(1777)
     ->type(2)
+    ->render()
   ;
 
-  $creater = new Components\Creater();
+  $loader = new Components\AlertLoader();
 
-  foreach ($creater->getAlerts() as $item) {
-    $alert = new Components\Alert($item['text']);
-  
+  foreach ($loader->getAlerts() as $item) {
+    $alert = new Components\Alert($item['body']);
+
     $alert
       ->title($item['title'])
-      ->footer($item['footer_text'])
+      ->footer($item['footer'])
       ->id($item['id'])
       ->type(3)
+      ->render()
     ;
   }
+
+ 
+  $form_products = new Components\Form("dia_alerts");
+  $form_products->render();
 
 ?>

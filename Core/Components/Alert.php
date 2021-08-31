@@ -66,7 +66,7 @@ namespace Components {
 
   }
 
-  class Creater extends \Core\Classes\DB {
+  class AlertLoader extends \Core\Classes\DB {
     public $con;
 
     public function __construct() {
@@ -80,9 +80,10 @@ namespace Components {
         'table' => 'dia_alerts',
         'table_data' => [
           "title" => $params['title'],
-          "footer_text" => $params['footer_text'],
+          "body" => $params['body'],
+          "footer" => $params['footer'],
           "type" => $params['type'],
-          "expiration" => $params['expiration']
+          //"expiration" => $params['expiration']
         ]
       ]);
 
@@ -92,7 +93,7 @@ namespace Components {
     public function getAlerts() {
       return $this->select(
         "dia_alerts", 
-        NULL, 
+        [], 
         NULL, 
         FALSE
       );
