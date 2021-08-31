@@ -33,7 +33,7 @@ namespace Core {
      */
     public function VueComponentLoader($_this) {
       if (is_object($_this)) {
-        if (!\Core\Dia::$loadedComponents[$this->UID]) {
+        if (!isset(\Core\Dia::$loadedComponents[$this->UID])) {
           \Core\Dia::$loadedComponents[$this->UID] = $_this;
         } else {
           \Core\Dia::$loadedComponents[\Core\Bice::getUID()] = $_this;

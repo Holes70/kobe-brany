@@ -4,3 +4,5 @@
 
   // SET field which will use for search
   $elasticSearch->searchFields(['title', 'content']);
+
+  $elasticSearch->render();
