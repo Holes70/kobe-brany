@@ -75,42 +75,15 @@
         'dia-elasticsearch': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Elasticsearch.vue', options)),
         'dia-custom': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Custom.vue', options)),
         <?php
-          if (isset($GLOBALS['web_vue_components'])) {
-            foreach ($GLOBALS['web_vue_components'] as $com) {
-              echo "'$com': Vue.defineAsyncComponent( () => loadModule('./web/components/$com.vue', options)),";
-            }
+          foreach (\Core\Dia::$loadedWebComponents as $com) {
+            echo "'$com': Vue.defineAsyncComponent( () => loadModule('./web/components/$com.vue', options)),";
           }
         ?>
       },
       template: `<?php 
-        if (isset($GLOBALS['dia_vue_components'])) {
-          foreach ($GLOBALS['dia_vue_components'] as $com) {
-            $com->render();
-          }
+        foreach (\Core\Dia::$loadedComponents as $com) {
+          $com->render();
         }
-        /*if (isset($GLOBALS['vue_components'])) {
-          foreach ($GLOBALS['vue_components'] as $com) {
-            if (isset($$com['params'])) {
-              $html_params = "";
-              $arrays = "";
-              foreach ($$com['params'] as $key => $val) {
-                if (is_array($val)) {
-                  $arrays .= "$key: " . json_encode($$com['params'][$key]) . ", ";
-                } else {
-                  $html_params .= "$key: \"{$$com['params'][$key]}\", ";
-                }
-              }
-              echo "<$com :params='{
-                $html_params
-                $arrays
-              }'/>";
-            } else if(in_array($com, $dia->components)){
-              echo "<$com/>";
-            } else {
-              echo $com;
-            }
-          }
-        }*/
      ?>`
     });
 

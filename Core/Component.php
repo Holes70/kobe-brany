@@ -30,15 +30,8 @@ namespace Core {
      * @return void
      */
     public function VueComponentLoader($_this) {
-      \Core\Dia::$loadedComponents[$this->UID] = $_this;
-
       if (is_object($_this)) {
-        if (isset($GLOBALS['dia_vue_components'])) {
-          array_push($GLOBALS['dia_vue_components'], $_this);
-        } else {
-          $GLOBALS['dia_vue_components'] = array();
-          array_push($GLOBALS['dia_vue_components'], $_this);
-        }
+        \Core\Dia::$loadedComponents[$this->UID] = $_this;
       } else {
         $this->customComponentName = $_this;
         $this->VueComponentLoader($this);

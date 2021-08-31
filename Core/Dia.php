@@ -4,6 +4,7 @@ namespace Core {
   class Dia {
 
     public static $loadedComponents = [];
+    public static $loadedWebComponents = [];
 
     public $config, $con, $installed;
     public $pages = array();
@@ -40,22 +41,32 @@ namespace Core {
 
     }
 
+    /**
+     * Call custom Component from
+     * web/components directory
+     * @return void
+     */
     public function vue($name) {
       new \Core\Component($name);
 
-      if (isset($GLOBALS['web_vue_components'])) {
-        array_push($GLOBALS['web_vue_components'], $name);
-      } else {
-        $GLOBALS['web_vue_components']  = array();
-        array_push($GLOBALS['web_vue_components'], $name);
-      }
+      array_push(self::$loadedWebComponents, $name);
     }
 
+    /**
+     * Create custom Vue Component
+     * from HTML in .php file
+     */
     public function html(string $html) {
       $htmlComponent = new \Components\Custom("html");
       $htmlComponent->setHtml($html);
     }
 
+    /**
+     * TEMPLATE METHOD
+     * Create template with will 
+     * render Vue components
+     * @return void
+     */
     public function template(string $html) {
       $this->html($html);
     }
