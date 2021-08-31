@@ -10,10 +10,12 @@ namespace Core {
     public $customComponentName = NULL;
     public $htmlComponent = NULL;
 
+    public $render = FALSE;
+
     /**
      * Specific component[e.g.: Alert] 
      * object push into Component constructor
-     * @return 
+     * @return void
      */
     public function __construct($_this) {
       parent::__construct();
@@ -31,7 +33,11 @@ namespace Core {
      */
     public function VueComponentLoader($_this) {
       if (is_object($_this)) {
-        \Core\Dia::$loadedComponents[$this->UID] = $_this;
+        if (!\Core\Dia::$loadedComponents[$this->UID]) {
+          \Core\Dia::$loadedComponents[$this->UID] = $_this;
+        } else {
+          \Core\Dia::$loadedComponents[\Core\Bice::getUID()] = $_this;
+        }
       } else {
         $this->customComponentName = $_this;
         $this->VueComponentLoader($this);
@@ -71,11 +77,26 @@ namespace Core {
      * If Component is NOT Vue Component
      * but just HTML elements section
      */
-    public function render() {
+    public function preRender() {
       if ($this->htmlComponent) {
         echo $this->htmlComponent;
       } else {
         echo $this->show();
+      }
+    }
+
+    /**
+     * If Component call render
+     * $this->render set to TRUE
+     * if $this->render is already set
+     * it will call view method
+     * @return void
+     */
+    public function render() {
+      if ($this->render === TRUE) {
+        $this->view();
+      } else {
+        $this->render = TRUE;
       }
     }
 

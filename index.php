@@ -82,7 +82,9 @@
       },
       template: `<?php 
         foreach (\Core\Dia::$loadedComponents as $com) {
-          $com->render();
+          if ($com->render === TRUE) {
+            $com->preRender();
+          }
         }
      ?>`
     });

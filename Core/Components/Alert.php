@@ -64,10 +64,6 @@ namespace Components {
       ";
     }
 
-    public function render() {
-      echo $this->show();
-    }
-
   }
 
   class Creater extends \Core\Classes\DB {

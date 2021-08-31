@@ -130,10 +130,6 @@ namespace Components {
       ";
     }
 
-    public function render() {
-      echo $this->show();
-    }
-
   }
 
 }

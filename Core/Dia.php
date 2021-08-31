@@ -59,6 +59,8 @@ namespace Core {
     public function html(string $html) {
       $htmlComponent = new \Components\Custom("html");
       $htmlComponent->setHtml($html);
+
+      return $htmlComponent;
     }
 
     /**
@@ -68,7 +70,7 @@ namespace Core {
      * @return void
      */
     public function template(string $html) {
-      $this->html($html);
+      return $this->html($html);
     }
 
     public function daj_zahlavie() {

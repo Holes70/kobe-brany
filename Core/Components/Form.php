@@ -63,10 +63,6 @@ namespace Components {
         }'></dia-form>";
     }
 
-    public function render() {
-      echo $this->show();
-    }
-
   }
 
 }

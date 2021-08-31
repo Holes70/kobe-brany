@@ -13,16 +13,11 @@ $table_products->columns([
 );
 
 /**
- * Create products form
- */
-$form_products = new Components\Form("products");
-
-/**
  * Call $dia->template()
  * In template can user fold his 
  * components, HTML or custom JS
  */
-$dia->template("
+$template = $dia->template("
   <div class='row'>
     <div class='col-8'>
       {$table_products->show()}
@@ -55,3 +50,22 @@ $dia->template("
     </div>
   </div>
 ");
+
+$template->render();
+
+$user_table = new Components\Table("users");
+$user_table->buttons(['edit', 'delete']);
+$user_table->columns(['id' => 'id', 'first_name' => 'first_name']);
+
+$template2 = $dia->template("
+  <div class='row'>
+    <div class='col-6'>
+      {$table_products->show()}
+    </div>
+    <div class='col-6'>
+      {$user_table->show()}
+    </div>
+  </div>
+");
+
+$template2->render();
