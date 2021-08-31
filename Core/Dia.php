@@ -3,6 +3,8 @@
 namespace Core {
   class Dia {
 
+    public static $loadedComponents = [];
+
     public $config, $con, $installed;
     public $pages = array();
     public $components = array();
@@ -50,7 +52,12 @@ namespace Core {
     }
 
     public function html(string $html) {
-      new \Components\Custom($html);
+      $htmlComponent = new \Components\Custom("html");
+      $htmlComponent->setHtml($html);
+    }
+
+    public function template(string $html) {
+      $this->html($html);
     }
 
     public function daj_zahlavie() {

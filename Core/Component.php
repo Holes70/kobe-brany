@@ -4,8 +4,11 @@ namespace Core {
 
   class Component extends \Core\Classes\DB {
 
+    private $UID = NULL;
+
     public $tableStructure = NULL;
     public $customComponentName = NULL;
+    public $htmlComponent = NULL;
 
     /**
      * Specific component[e.g.: Alert] 
@@ -15,6 +18,8 @@ namespace Core {
     public function __construct($_this) {
       parent::__construct();
 
+      $this->UID = \Core\Bice::getUID();
+
       $this->VueComponentLoader($_this);
       $this->getTableStructure();
     }
@@ -22,9 +27,10 @@ namespace Core {
     /**
      * Write created Component into GLOBALS
      * Use for Vue render()
-     * @return 
+     * @return void
      */
     public function VueComponentLoader($_this) {
+      \Core\Dia::$loadedComponents[$this->UID] = $_this;
 
       if (is_object($_this)) {
         if (isset($GLOBALS['dia_vue_components'])) {
@@ -39,13 +45,53 @@ namespace Core {
       }
     }
 
-    // overwrite in compoennt
+    /**
+     * OVERWRITE METHOD in Component
+     * IF Component DONT have SHOW METHOD
+     * THEN will call this one as Custom
+     * Component
+     * @return string (Vue component)
+     */
     public function show() {
       return "<{$this->customComponentName}/>";
     }
 
+    /**
+     * Show again same Component
+     * without create new object
+     * @return void
+     */
+    public function view() {
+      $this->VueComponentLoader($this);
+    }
+
+    /**
+     * Set HTML for Component
+     * @return void
+     */
+    public function setHtml($setHtml) {
+      $this->htmlComponent = $setHtml;
+    }
+
+    /**
+     * Render Vue Component
+     * If Component is NOT Vue Component
+     * but just HTML elements section
+     */
     public function render() {
-      echo $this->show();
+      if ($this->htmlComponent) {
+        echo $this->htmlComponent;
+      } else {
+        echo $this->show();
+      }
+    }
+
+    /**
+     * GET Component UID
+     * @return string
+     */
+    public function getUID() {
+      return $this->UID;
     }
 
     /**
