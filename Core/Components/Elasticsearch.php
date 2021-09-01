@@ -15,10 +15,10 @@ namespace Components {
     }
 
     private function checkElasticConnection() {
-      $socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-      $connection =  @socket_connect($socket, 'localhost', 9200);
-      
-      if (!$connection) {
+      try {
+        $socket = @socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+        $connection =  @socket_connect($socket, 'localhost', 9200);
+      } catch(\Exception $e) {
         $this->index = "offline";
       }
     }
