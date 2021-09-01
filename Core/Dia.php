@@ -91,6 +91,10 @@ namespace Core {
         $script_files .= "<script src='Core/public/js/bootstrap.js'></script>";
       }
 
+      if ($this->config['web']['vega']) {
+        $vega = "<link rel='stylesheet' href='Core/public/css/vega.css'>";
+      }
+
       if ($this->config['web']['vue']) {
         $vue = "
           <script src='Core/public/js/vue.js'></script>
@@ -105,6 +109,7 @@ namespace Core {
         <meta charset='{$this->config['head']['charset']}'>
         <head>
           {$bootstrap}
+          {$vega}
           {$css_files}
           {$script_files}
           {$vue}

@@ -1,6 +1,9 @@
 <?php
   global $db, $dia;
 
+  $timer = new \Components\Timer();
+  //$timer->render();
+
   //$elasticSearch = new Components\Elasticsearch("logstash_test");
 
   // SET field which will use for search
@@ -75,7 +78,7 @@
   $html .= "
         </ul>
       </div>
-      
+      {$timer->show()}
     </nav>
     <div class='second_nav'>
       <div class='row'>

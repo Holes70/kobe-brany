@@ -14,6 +14,7 @@
   */
   $table_products = new Components\Table("products");
   $table_products->columns(['id' => 'ID', 'name' => 'Meno', 'price|$' => 'Cena'])->buttons(['edit', 'delete']);
+  $table_products->render();
 
   $table_users = new Components\Table("users");
   $table_users
@@ -23,10 +24,11 @@
     ->buttons(['edit', 'delete'])
     ->formInputs(['id', 'first_name'])
   ;
+  $table_users->render();
 
-  $alert = new \Components\Alert("Totto je test alert");
+  $alert = (new \Components\Alert("Totto je test alert"))->render();
 
   $table_products = new Components\Table("products");
-  $table_products->columns(['id' => 'ID', 'name' => 'Meno', 'price|$' => 'Cena'])->buttons(['edit']);
+  $table_products->columns(['id' => 'ID', 'name' => 'Meno', 'price|$' => 'Cena'])->buttons(['edit'])->render();
 
 

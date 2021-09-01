@@ -74,6 +74,7 @@
         'dia-jumbotron': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Jumbotron.vue', options)),
         'dia-elasticsearch': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Elasticsearch.vue', options)),
         'dia-custom': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Custom.vue', options)),
+        'dia-timer': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Timer.vue', options)),
         <?php
           foreach (\Core\Dia::$loadedWebComponents as $com) {
             echo "'$com': Vue.defineAsyncComponent( () => loadModule('./web/components/$com.vue', options)),";

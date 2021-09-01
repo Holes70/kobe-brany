@@ -1,0 +1,17 @@
+.vega-clock {
+  font-size: 24px;
+  background-color: #f8f9fa;
+  width: 200px;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #5e97ff;
+  border-radius: 5px;
+  color: #5e97ff;
+}
+
+.vega-clock span {
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+}
