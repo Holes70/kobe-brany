@@ -230,6 +230,47 @@ namespace Core\Classes {
         return $e;
       }
     }
+
+    /**
+     * SELECT from DB
+     * $tableName
+     * $conditions(where, order, group, joins)
+     * @return array
+     */
+    public function dbSelect(string $tableName, array $conditions) {
+      $query = "SELECT * FROM {$tableName}";
+
+      // IF exist where clause
+      if (array_key_exists("where", $conditions)) {
+        $i = 0;
+        foreach ($conditions['where'] as $column => $value) {
+          if ($i == 0) {
+            $query = $query . " WHERE {$column} = '{$value}'";
+            $i++;
+          } else {
+            $query = $query . " AND {$column} = '{$value}'";
+          }
+        }
+      }
+
+      try {
+        $res = $this->con->query($query);
+
+        if (!$res) {
+          throw new \Exception("Query error");
+        } else {
+
+          while ($row = $res->fetch_assoc()) {
+            $data[] = $row;
+          }
+
+          return $data;
+        }
+      } catch(\Exception $e) {
+        return $e;
+      }
+      
+    }
   }
 
 }
