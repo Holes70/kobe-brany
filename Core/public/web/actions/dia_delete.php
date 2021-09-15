@@ -11,8 +11,8 @@
    * @return TRUE
   */
   $db->delete(
-    $data->params->table_name, 
-    ['id' => $data->params->id]
+    $data->table_name, 
+    ['id' => $data->id]
   );
 
 ?>

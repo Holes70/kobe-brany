@@ -91,6 +91,14 @@ namespace Core {
         $script_files .= "<script src='Core/public/js/bootstrap.js'></script>";
       }
 
+      if ($this->config['web']['dropzone']) {
+        $dropzone = "
+          <link rel='stylesheet' type='text/css' href='Core/public/css/basic.css'>
+          <link rel='stylesheet' type='text/css' href='Core/public/css/dropzone.min.css'>
+          <script src='Core/public/js/dropzone.js'></script>
+        ";
+      }
+
       if ($this->config['web']['vega']) {
         $vega = "<link rel='stylesheet' href='Core/public/css/vega.css'>";
       }
@@ -109,6 +117,7 @@ namespace Core {
         <meta charset='{$this->config['head']['charset']}'>
         <head>
           {$bootstrap}
+          {$dropzone}
           {$vega}
           {$css_files}
           {$script_files}

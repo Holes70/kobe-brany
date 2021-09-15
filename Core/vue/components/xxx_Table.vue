@@ -106,10 +106,8 @@
         function(isConfirm) {
           if (isConfirm) {
             axios.post('index.php?json_action=dia_delete', {
-              params: {
-                table_name: table.table_name,
-                id: table_id
-              }
+              table_name: table.table_name,
+              id: table_id
             })
             swal({
               title: "Vymazané",

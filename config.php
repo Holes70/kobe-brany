@@ -20,6 +20,7 @@
   $config['web']['bootstrap']   = TRUE;
   $config['web']['vue']         = TRUE;
   $config['web']['vega']        = TRUE;
+  $config['web']['dropzone']    = TRUE;
   $config['web']['vue_components'] = "components";
   $config['web']['elasticsearch'] = TRUE;
 

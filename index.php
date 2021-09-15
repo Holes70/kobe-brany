@@ -75,6 +75,7 @@
         'dia-elasticsearch': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Elasticsearch.vue', options)),
         'dia-custom': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Custom.vue', options)),
         'dia-timer': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Timer.vue', options)),
+        'dia-dropzone': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Dropzone.vue', options)),
         <?php
           foreach (\Core\Dia::$loadedWebComponents as $com) {
             echo "'$com': Vue.defineAsyncComponent( () => loadModule('./web/components/$com.vue', options)),";

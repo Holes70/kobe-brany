@@ -153,17 +153,21 @@ namespace Core\Classes {
       if (!$this->con->query($query)) { 
         echo $this->con->error;
         $this->error_function($error);
-      } else {
-        echo 'success';
       }
     }
 
     public function delete($table = "", $params = array()) {
       extract($params);
 
-      if (isset($_GET['id'])) $id = $_GET['id'];
+      // IF $id is array [5,7,4]
+      // them implode to string 
+      if (!is_array($id)) {
+        if (isset($_GET['id'])) $id = $_GET['id'];
+      } else {
+        $id = implode(", ", $id);
+      }
 
-      $query = "DELETE from {$table} WHERE id = $id";
+      $query = "DELETE from {$table} WHERE id IN($id)";
 
       if (!$this->con->query($query)) {
         echo $this->con->error;
@@ -204,6 +208,27 @@ namespace Core\Classes {
 
     public function request_data() {
       return json_decode(file_get_contents("php://input"));
+    }
+
+    /**
+     * GET table last item id
+     * tableName
+     * @return int
+     */
+    public function getLastItemId($tableName) {
+      $query = "SELECT id FROM {$tableName} ORDER BY id desc LIMIT 1";
+
+      try {
+        $res = $this->con->query($query);
+
+        if (!$res) {
+          throw new \Exception("Query error");
+        } else {
+          return $res->fetch_assoc();
+        }
+      } catch(\Exception $e) {
+        return $e;
+      }
     }
   }
 
