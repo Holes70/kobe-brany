@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Hostiteľ: 127.0.0.1
--- Čas generovania: Út 31.Aug 2021, 21:32
--- Verzia serveru: 10.4.18-MariaDB
--- Verzia PHP: 7.3.28
+-- Čas generovania: Po 20.Sep 2021, 20:21
+-- Verzia serveru: 10.4.20-MariaDB
+-- Verzia PHP: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -62,7 +62,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `name`, `password`) VALUES
-(1, 'ADMIN', 'admin');
+(1, 'xxx', 'xxx');
 
 -- --------------------------------------------------------
 
@@ -96,16 +96,6 @@ CREATE TABLE `dia_alerts` (
   `body` varchar(255) DEFAULT NULL,
   `footer` varchar(55) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Sťahujem dáta pre tabuľku `dia_alerts`
---
-
-INSERT INTO `dia_alerts` (`id`, `type`, `title`, `body`, `footer`) VALUES
-(5, 4, 'da', 'da', 'da'),
-(6, 5, 'da', 'da', 'da'),
-(7, 6, 'da', 'dad', 'ad'),
-(8, 0, '', '', '');
 
 -- --------------------------------------------------------
 
@@ -263,6 +253,80 @@ INSERT INTO `stock` (`id`, `id_product`, `count`, `available`, `sale`, `sale_pri
 -- --------------------------------------------------------
 
 --
+-- Štruktúra tabuľky pre tabuľku `tests`
+--
+
+CREATE TABLE `tests` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Sťahujem dáta pre tabuľku `tests`
+--
+
+INSERT INTO `tests` (`id`, `name`) VALUES
+(1, 'TEST PRVY');
+
+-- --------------------------------------------------------
+
+--
+-- Štruktúra tabuľky pre tabuľku `test_dropzone`
+--
+
+CREATE TABLE `test_dropzone` (
+  `id` int(11) NOT NULL,
+  `filename` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Sťahujem dáta pre tabuľku `test_dropzone`
+--
+
+INSERT INTO `test_dropzone` (`id`, `filename`) VALUES
+(1, 'ups.png'),
+(2, 'slovenskaposta.png'),
+(3, 'dpd.png'),
+(4, 'dpd.png'),
+(5, 'dpd.png'),
+(6, 'dpd.png'),
+(7, 'packeta.jpg'),
+(8, 'dpd.png'),
+(9, 'tatrabanka.jpg'),
+(10, 'slovenskaposta.png'),
+(11, 'slovenskaposta.png'),
+(12, 'tatrabanka.jpg'),
+(13, 'ups.png'),
+(14, 'slovenskaposta.png'),
+(15, 'tatrabanka.jpg'),
+(16, 'dpd.png'),
+(17, 'ups.png'),
+(18, 'tatrabanka.jpg'),
+(19, 'ups.png'),
+(20, 'ups.png'),
+(21, 'ups.png'),
+(22, 'dpd.png'),
+(23, 'slovenskaposta.png'),
+(24, 'slovenskaposta.png'),
+(25, 'dpd.png'),
+(26, 'slovenskaposta.png'),
+(27, 'tatrabanka.jpg'),
+(28, 'ups.png'),
+(29, 'slovenskaposta.png'),
+(30, 'tatrabanka.jpg'),
+(31, 'ups.png'),
+(32, 'tatrabanka.jpg'),
+(33, 'slovenskaposta.png'),
+(34, 'slovenskaposta.png'),
+(35, 'tatrabanka.jpg'),
+(36, 'ups.png'),
+(37, 'dpd.png'),
+(38, 'slovenskaposta.png'),
+(39, 'tatrabanka.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Štruktúra tabuľky pre tabuľku `users`
 --
 
@@ -290,6 +354,31 @@ INSERT INTO `users` (`id`, `id_address`, `first_name`, `last_name`, `email`, `ph
 (7, 1, 'Patrik', 'Holes', '', '', ''),
 (8, 1, 'Patrik', 'Holes', '', '', ''),
 (9, 1, 'dasdasdas', 'dasdsa', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Štruktúra tabuľky pre tabuľku `user_tests`
+--
+
+CREATE TABLE `user_tests` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `test_id` int(11) DEFAULT NULL,
+  `filename` varchar(255) DEFAULT NULL,
+  `size` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Sťahujem dáta pre tabuľku `user_tests`
+--
+
+INSERT INTO `user_tests` (`id`, `user_id`, `test_id`, `filename`, `size`) VALUES
+(72, 1, 1, '241904789_594821854879214_4852358777093468944_n.gif', NULL),
+(73, 1, 1, 'tatrabanka.jpg', NULL),
+(74, 1, 1, 'dpd.png', NULL),
+(75, 1, 1, 'ups.png', 67725),
+(76, 1, 1, 'packeta.jpg', 8424);
 
 --
 -- Kľúče pre exportované tabuľky
@@ -369,11 +458,29 @@ ALTER TABLE `stock`
   ADD KEY `id_product` (`id_product`);
 
 --
+-- Indexy pre tabuľku `tests`
+--
+ALTER TABLE `tests`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexy pre tabuľku `test_dropzone`
+--
+ALTER TABLE `test_dropzone`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexy pre tabuľku `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_address` (`id_address`);
+
+--
+-- Indexy pre tabuľku `user_tests`
+--
+ALTER TABLE `user_tests`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT pre exportované tabuľky
@@ -434,44 +541,22 @@ ALTER TABLE `orders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT pre tabuľku `products`
+-- AUTO_INCREMENT pre tabuľku `tests`
 --
-ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+ALTER TABLE `tests`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT pre tabuľku `stock`
+-- AUTO_INCREMENT pre tabuľku `test_dropzone`
 --
-ALTER TABLE `stock`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+ALTER TABLE `test_dropzone`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
--- AUTO_INCREMENT pre tabuľku `users`
+-- AUTO_INCREMENT pre tabuľku `user_tests`
 --
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- Obmedzenie pre exportované tabuľky
---
-
---
--- Obmedzenie pre tabuľku `admins`
---
-ALTER TABLE `admins`
-  ADD CONSTRAINT `admins_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
-
---
--- Obmedzenie pre tabuľku `orders`
---
-ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`);
-
---
--- Obmedzenie pre tabuľku `users`
---
-ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`id_address`) REFERENCES `addresses` (`id`);
+ALTER TABLE `user_tests`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
