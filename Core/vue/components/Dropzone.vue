@@ -3,7 +3,7 @@
     {{ table_name }}
     <form 
       id='dia-dropzone' 
-      action="index" 
+      action="index.php?json_action=dia_upload" 
       class="dropzone">
     </form>
 
@@ -81,7 +81,8 @@
             'data': {
               'user_id': 1,
               'test_id': 1,
-              'filename': file.name
+              'filename': file.name,
+              'size': file.size
             }
           }).then((res) => {
             // Res return item ID and then push into array
