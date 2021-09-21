@@ -129,7 +129,7 @@ namespace Core {
         )
       ;
 
-      $this->tableName = $diaTables[0]['table_name'];
+      //$this->tableName = $diaTables[0]['table_name'];
     }
 
     public function getTableRequiredFields(string $tableName) {
@@ -152,6 +152,10 @@ namespace Core {
           var_dump($val->lookup->table);
         }
       }
+    }
+
+    public function vueJson($data) {
+      return str_replace("\"", "\'", json_encode($data));
     }
 
   }

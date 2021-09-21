@@ -237,7 +237,12 @@ namespace Core\Classes {
      * $conditions(where, order, group, joins)
      * @return array
      */
-    public function dbSelect(string $tableName, array $conditions) {
+    public function dbSelect(
+      string $tableName, 
+      array $conditions = [], 
+      bool $vueJson = false,
+      array $mergeWith
+    ) {
       $query = "SELECT * FROM {$tableName}";
 
       // IF exist where clause
@@ -253,21 +258,24 @@ namespace Core\Classes {
         }
       }
 
-      try {
-        $res = $this->con->query($query);
-
-        if (!$res) {
-          throw new \Exception("Query error");
-        } else {
-
-          while ($row = $res->fetch_assoc()) {
-            $data[] = $row;
+      if (!$res = $this->con->query($query)) {
+        echo "Error";
+      } else {
+        while ($row = $res->fetch_assoc()) {
+          
+          if (!empty($mergeWith)) {
+            $row = array_merge($row, $mergeWith);
           }
 
+          $data[] = $row;
+        }
+
+        // JSON to vue component prop
+        if ($vueJson === TRUE) {
+          return str_replace("\"", "\'", json_encode($data));
+        } else {
           return $data;
         }
-      } catch(\Exception $e) {
-        return $e;
       }
       
     }
