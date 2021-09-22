@@ -94,6 +94,10 @@
 
     app_loader.mount('#app');
 
+    <?php
+      $dia->getScript();
+    ?>
+
     </script>
 
   <?php

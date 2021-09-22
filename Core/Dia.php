@@ -11,6 +11,8 @@ namespace Core {
     public $components = array();
     //public $showedComponents = array();
 
+    public $script = "";
+
     public function __construct() {
       global $config, $con;
 
@@ -75,17 +77,12 @@ namespace Core {
       return $this->html($html);
     }
 
-    public function mergeArrays(array $array1, array $array2) {
-      $mergeArray = [];
-      $i = 0;
+    public function setScript(string $script) {
+      $this->script .= $script;
+    }
 
-      print_r($array1);
-      print_r($array2);
-      /*foreach ($array1 as $key => $val) {
-        var_dump($key);
-        /*$i++;
-        $mergeArray[$i][$key] = $val;
-      }*/
+    public function getScript() {
+      echo $this->script;
     }
 
     public function daj_zahlavie() {

@@ -264,7 +264,7 @@ namespace Core\Classes {
         while ($row = $res->fetch_assoc()) {
           
           if (!empty($mergeWith)) {
-            $this->mergeArrays($row, $mergeWith);
+            $row = array_merge($row, $mergeWith);
           }
 
           $data[] = $row;

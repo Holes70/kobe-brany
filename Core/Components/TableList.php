@@ -18,16 +18,22 @@ namespace Components {
     }
 
     public function addColumn(array $column) {
-      array_push($this->addedColumns, $column);
+
+      if (empty($this->addedColumns)) {
+        $this->addedColumns = $column;
+      } else {
+        array_push($this->addedColumns, $column);
+      }
       return $this;
+
     }
 
     public function show() {
-      print_r($this->list = $this->dbSelect(
+      $this->list = $this->dbSelect(
         tableName: $this->tableName, 
         vueJson: TRUE,
-        mergeWith: $this->columns
-      )); exit();
+        mergeWith: $this->addedColumns
+      );
 
       return "
         <dia-table-list
