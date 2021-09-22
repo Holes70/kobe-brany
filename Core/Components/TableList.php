@@ -5,7 +5,8 @@ namespace Components {
   class TableList extends \Core\Component {
 
     private $list = NULL;
-    private $columns = NULL;
+    private $columns = [];
+    private $addedColumns = [];
 
     public function __construct(private string $tableName) {
       parent::__construct($this);
@@ -16,12 +17,17 @@ namespace Components {
       return $this;
     }
 
+    public function addColumn(array $column) {
+      array_push($this->addedColumns, $column);
+      return $this;
+    }
+
     public function show() {
-      $this->list = $this->dbSelect(
+      print_r($this->list = $this->dbSelect(
         tableName: $this->tableName, 
         vueJson: TRUE,
         mergeWith: $this->columns
-      );
+      )); exit();
 
       return "
         <dia-table-list

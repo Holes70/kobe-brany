@@ -241,7 +241,7 @@ namespace Core\Classes {
       string $tableName, 
       array $conditions = [], 
       bool $vueJson = false,
-      array $mergeWith
+      array $mergeWith = []
     ) {
       $query = "SELECT * FROM {$tableName}";
 
@@ -264,7 +264,7 @@ namespace Core\Classes {
         while ($row = $res->fetch_assoc()) {
           
           if (!empty($mergeWith)) {
-            $row = array_merge($row, $mergeWith);
+            $this->mergeArrays($row, $mergeWith);
           }
 
           $data[] = $row;

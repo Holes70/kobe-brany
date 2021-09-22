@@ -75,6 +75,19 @@ namespace Core {
       return $this->html($html);
     }
 
+    public function mergeArrays(array $array1, array $array2) {
+      $mergeArray = [];
+      $i = 0;
+
+      print_r($array1);
+      print_r($array2);
+      /*foreach ($array1 as $key => $val) {
+        var_dump($key);
+        /*$i++;
+        $mergeArray[$i][$key] = $val;
+      }*/
+    }
+
     public function daj_zahlavie() {
       $css_files = ""; $script_files = "";  $bootstrap = ""; $vue = "";
 

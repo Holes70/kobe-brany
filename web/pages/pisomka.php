@@ -7,14 +7,18 @@
   ");
 
   $list = new Components\TableList("tests");
-  $list->columns([
-    'id',
-    'name',
-    [
-      'testColumn' => [
-        'onclick' => 'alert()',
-        'value' => 'XXX'
-      ] 
+  /*$list->columns([
+    'id' => 'id',
+    'name' => 'name',
+    'testColumn' => [
+      'onclick' => 'alert()',
+      'value' => 'XXX'
+    ]
+  ]);*/
+  $list->addColumn([
+    'tableColumn' => [
+      'onclick' => 'alert()',
+      'value' => 'XXX'
     ]
   ]);
 
