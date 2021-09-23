@@ -20,26 +20,57 @@
     "open" => "<button onclick=\"lol()\" class=\"btn btn-primary\">Otvor test</button>",
   ]);
 
-  $dropzone = new Components\Dropzone("user_tests");
+  $table = new Components\Table("user_tests");
 
   $dia->template("
     {$nadpis->render()}
+    <h1>XXX - {{ id }}</h1>
     <div class='row'>
-      <div class='col-6'>
-        <div id='test' style='padding-left:100px;padding-right:100px'>
+      <div class='col-6' style='padding-left:100px;padding-right:100px'>
+        <div id='test'>
           {$list->show()}
+        </div>
+        <div id='dropzone' style='display:none'>
+          <div>
+            <button onclick='backToTable()' class='btn btn-primary'>Back to table</button>
+          </div>
+          {$table->show()}
         </div>
       </div>
       <div class='col-6'>
         <div style='padding-left:100px;padding-right:100px'>
-          <p style='color:gray;font-size:40px'>Otvorte nejaky test</p>
+          <button @click='haha()' style='color:gray;font-size:40px'>Otvorte nejaky test</button>
         </div>
       </div>
     </div>
   ")->render();
 
-  $dia->setScript("
+  /*$dia->setScript("
     function lol() {
       $('#test').hide();
+      $('#dropzone').fadeIn();
+    }
+
+    function backToTable() {
+      $('#test').fadeIn();
+      $('#dropzone').hide();
+    }
+  ");*/
+
+ /* $dia->vueData("
+    test: ''
+  ");*/
+
+  $dia->vueMethods("
+    haha() {
+      alert();
     }
   ");
+
+  $dia->setVueData([
+    'id' => 2,
+    'xx' => 'Jozef',
+    'items' => [
+      'x' => 1
+    ]
+  ]);

@@ -45,59 +45,75 @@
     // VUE LOADER START
   ?>
     <script>
-    const options = {
-      moduleCache: {
-        vue: Vue
-      },
-      async getFile(url) {
+      // GET vue data z aktualnej stranky
+      // ak je prazdne tak do var object kvoli chybe
+      var diaData = JSON.parse('<?php \Core\Dia::getVueData() ?>');
+      if (diaData == false) {
+        diaData = {}; 
+      }
 
-        const res = await fetch(url);
-        if ( !res.ok )
-          throw Object.assign(new Error(res.statusText + ' ' + url), { res });
-        return await res.text();
-      },
-      addStyle(textContent) {
+      const options = {
+        moduleCache: {
+          vue: Vue
+        },
+        async getFile(url) {
 
-        const style = Object.assign(document.createElement('style'), { textContent });
-        const ref = document.head.getElementsByTagName('style')[0] || null;
-        document.head.insertBefore(style, ref);
-      },
-    }
+          const res = await fetch(url);
+          if ( !res.ok )
+            throw Object.assign(new Error(res.statusText + ' ' + url), { res });
+          return await res.text();
+        },
+        addStyle(textContent) {
 
-    const { loadModule } = window['vue3-sfc-loader'];
+          const style = Object.assign(document.createElement('style'), { textContent });
+          const ref = document.head.getElementsByTagName('style')[0] || null;
+          document.head.insertBefore(style, ref);
+        },
+      }
 
-    const app_loader = Vue.createApp({
-      components: {
-        'dia-alert': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Alert.vue', options)),
-        'dia-form': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Form.vue', options)),
-        'dia-table': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Table.vue', options)),
-        'dia-jumbotron': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Jumbotron.vue', options)),
-        'dia-elasticsearch': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Elasticsearch.vue', options)),
-        'dia-custom': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Custom.vue', options)),
-        'dia-timer': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Timer.vue', options)),
-        'dia-dropzone': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Dropzone.vue', options)),
-        'dia-table-list': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/TableList.vue', options)),
+      const { loadModule } = window['vue3-sfc-loader'];
+
+      const app_loader = Vue.createApp({
+        components: {
+          'dia-alert': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Alert.vue', options)),
+          'dia-form': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Form.vue', options)),
+          'dia-table': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Table.vue', options)),
+          'dia-jumbotron': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Jumbotron.vue', options)),
+          'dia-elasticsearch': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Elasticsearch.vue', options)),
+          'dia-custom': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Custom.vue', options)),
+          'dia-timer': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Timer.vue', options)),
+          'dia-dropzone': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/Dropzone.vue', options)),
+          'dia-table-list': Vue.defineAsyncComponent( () => loadModule('./Core/vue/components/TableList.vue', options)),
+          <?php
+            foreach (\Core\Dia::$loadedWebComponents as $com) {
+              echo "'$com': Vue.defineAsyncComponent( () => loadModule('./web/components/$com.vue', options)),";
+            }
+          ?>
+        },
+        template: `<?php 
+          foreach (\Core\Dia::$loadedComponents as $com) {
+            if ($com->render === TRUE) {
+              $com->preRender();
+            }
+          }
+        ?>`,
+        data() {
+          return diaData
+        },
+        methods: {
         <?php
-          foreach (\Core\Dia::$loadedWebComponents as $com) {
-            echo "'$com': Vue.defineAsyncComponent( () => loadModule('./web/components/$com.vue', options)),";
-          }
-        ?>
-      },
-      template: `<?php 
-        foreach (\Core\Dia::$loadedComponents as $com) {
-          if ($com->render === TRUE) {
-            $com->preRender();
-          }
-        }
-     ?>`
-    });
+            foreach (\Core\Dia::$vueMethods as $method) {
+              echo $method . ', ';
+            }
+          ?>
+      }
+      });
 
-    app_loader.mount('#app');
+      app_loader.mount('#app');
 
-    <?php
-      $dia->getScript();
-    ?>
-
+      <?php
+        $dia->getScript();
+      ?>
     </script>
 
   <?php
