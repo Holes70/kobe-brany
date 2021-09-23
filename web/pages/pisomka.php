@@ -6,7 +6,7 @@
     </div>
   ");
 
-  $list = new Components\TableList("tests");
+  $list = new Components\TableList("users");
   /*$list->columns([
     'id' => 'id',
     'name' => 'name',
@@ -20,7 +20,12 @@
     "open" => "<button onclick=\"lol()\" class=\"btn btn-primary\">Otvor test</button>",
   ]);
 
-  $table = new Components\Table("user_tests");
+  $list_user_test = new Components\TableList("user_tests");
+  $list_user_test->conditions([
+    'where' => [
+      'user_id' => 1
+    ]
+  ]);
 
   $dia->template("
     {$nadpis->render()}
@@ -30,17 +35,9 @@
         <div id='test'>
           {$list->show()}
         </div>
-        <div id='dropzone' style='display:none'>
-          <div>
-            <button onclick='backToTable()' class='btn btn-primary'>Back to table</button>
-          </div>
-          {$table->show()}
-        </div>
       </div>
       <div class='col-6'>
-        <div style='padding-left:100px;padding-right:100px'>
-          <button @click='haha()' style='color:gray;font-size:40px'>Otvorte nejaky test</button>
-        </div>
+        {$list_user_test->show()}
       </div>
     </div>
   ")->render();

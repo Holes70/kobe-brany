@@ -90,8 +90,8 @@
             foreach (\Core\Dia::$loadedWebComponents as $com) {
               echo "'$com': Vue.defineAsyncComponent( () => loadModule('./web/components/$com.vue', options)),";
             }
-          ?>
-        },
+          ?> }
+        ,
         template: `<?php 
           foreach (\Core\Dia::$loadedComponents as $com) {
             if ($com->render === TRUE) {

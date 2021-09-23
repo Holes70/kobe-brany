@@ -5,8 +5,9 @@ namespace Components {
   class TableList extends \Core\Component {
 
     private $list = NULL;
-    private $columns = [];
-    private $addedColumns = [];
+    private array $columns = [];
+    private array $addedColumns = [];
+    private array $conditions = [];
 
     public function __construct(private string $tableName) {
       parent::__construct($this);
@@ -28,9 +29,15 @@ namespace Components {
 
     }
 
+    public function conditions(array $conditions) {
+      $this->conditions = $conditions;
+      return $this;
+    }
+
     public function show() {
       $this->list = $this->dbSelect(
         tableName: $this->tableName, 
+        conditions: $this->conditions,
         vueJson: TRUE,
         mergeWith: $this->addedColumns
       );
