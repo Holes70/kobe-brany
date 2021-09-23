@@ -16,8 +16,10 @@
   $dia->autoload();
 
   $db = new \Core\Classes\DB();
-  $ui = new \Core\Classes\UI();
-  $vue = new \Core\Classes\Vue();
+  //$ui = new \Core\Classes\UI();
+  //$vue = new \Core\Classes\Vue();
+
+  $vue = new \Core\Vue();
 
   if (!isset($_GET['json_action'])) {
 
@@ -47,7 +49,7 @@
     <script>
       // GET vue data z aktualnej stranky
       // ak je prazdne tak do var object kvoli chybe
-      var diaData = JSON.parse('<?php \Core\Dia::getVueData() ?>');
+      var diaData = JSON.parse('<?php $vue->getData() ?>');
       if (diaData == false) {
         diaData = {}; 
       }
@@ -100,13 +102,7 @@
         data() {
           return diaData
         },
-        methods: {
-        <?php
-            foreach (\Core\Dia::$vueMethods as $method) {
-              echo $method . ', ';
-            }
-          ?>
-      }
+        methods: { <?php $vue->getMethods(); ?> }
       });
 
       app_loader.mount('#app');

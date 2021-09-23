@@ -61,13 +61,13 @@
     test: ''
   ");*/
 
-  $dia->vueMethods("
+  $vue->setMethods("
     haha() {
-      alert();
+      alert(2);
     }
   ");
 
-  $dia->setVueData([
+  $vue->setData([
     'id' => 2,
     'xx' => 'Jozef',
     'items' => [

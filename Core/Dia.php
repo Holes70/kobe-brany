@@ -13,10 +13,6 @@ namespace Core {
 
     public $script = "";
 
-    //VUE
-    public static $vueMethods = [];
-    public static $vueData = [];
-
     public function __construct() {
       global $config, $con;
 
@@ -87,18 +83,6 @@ namespace Core {
 
     public function getScript() {
       echo $this->script;
-    }
-
-    public function vueMethods(string $method) {
-      array_push(self::$vueMethods, $method);
-    }
-
-    public function setVueData(array $data = []) : void {
-      array_push(self::$vueData, $data);
-    }
-
-    public static function getVueData() {
-      echo json_encode(reset(self::$vueData));
     }
 
     public function daj_zahlavie() {
