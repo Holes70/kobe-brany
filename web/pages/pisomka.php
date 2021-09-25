@@ -18,6 +18,7 @@
   $xx = "<div style=\"background:red\">XXX</div>";
   $list->addColumn([
     "open" => "<button onclick=\"lol()\" class=\"btn btn-primary\">Otvor test</button>",
+    "close" => "<button onclick=\"alert()\" class=\"btn btn-warning\">EDIT</button>"
   ]);
 
   $list_user_test = new Components\TableList("user_tests");
@@ -27,6 +28,7 @@
     ]
   ]);
 
+  $dropzone = new Components\Dropzone("users");
   $dia->template("
     {$nadpis->render()}
     <h1>XXX - {{ id }}</h1>
@@ -35,6 +37,9 @@
         <div id='test'>
           {$list->show()}
         </div>
+        <div id='dropzone' style='display:none'>
+          {$dropzone->show()}
+        </div>
       </div>
       <div class='col-6'>
         {$list_user_test->show()}
@@ -42,7 +47,7 @@
     </div>
   ")->render();
 
-  /*$dia->setScript("
+  $dia->setScript("
     function lol() {
       $('#test').hide();
       $('#dropzone').fadeIn();
@@ -52,7 +57,7 @@
       $('#test').fadeIn();
       $('#dropzone').hide();
     }
-  ");*/
+  ");
 
  /* $dia->vueData("
     test: ''
