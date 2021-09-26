@@ -23,6 +23,9 @@
       columns: {
         type: Array
       }
+    },
+    created() {
+      alert();
     }
   }
 </script>

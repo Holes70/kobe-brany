@@ -8,6 +8,7 @@ namespace Components {
     private array $columns = [];
     private array $addedColumns = [];
     private array $conditions = [];
+    private string $keyName;
 
     public function __construct(private string $tableName) {
       parent::__construct($this);
@@ -34,7 +35,13 @@ namespace Components {
       return $this;
     }
 
+    public function keyName(string $keyName) {
+      $this->keyName = $keyName;
+      return $this;
+    }
+
     public function show() {
+
       $this->list = $this->dbSelect(
         tableName: $this->tableName, 
         conditions: $this->conditions,
@@ -47,6 +54,7 @@ namespace Components {
           tableName={$this->tableName}
           :list=\"{$this->list}\"
           :columns=\"".$this->vueJson($this->columns)."\"
+          :key=\"{$this->keyName}\"
         ></dia-table-list>
       ";
     }

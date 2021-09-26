@@ -6,6 +6,8 @@
     </div>
   ");
 
+  $renderId = 3;
+
   $list = new Components\TableList("users");
   /*$list->columns([
     'id' => 'id',
@@ -15,6 +17,9 @@
       'value' => 'XXX'
     ]
   ]);*/
+
+  $list->keyName("list");
+
   $xx = "<div style=\"background:red\">XXX</div>";
   $list->addColumn([
     "open" => "<button onclick=\"lol()\" class=\"btn btn-primary\">Otvor test</button>",
@@ -27,11 +32,13 @@
       'user_id' => 1
     ]
   ]);
+  $list_user_test->keyName("list_user_test");
 
   $dropzone = new Components\Dropzone("users");
   $dia->template("
     {$nadpis->render()}
-    <h1>XXX - {{ id }}</h1>
+    <h1>XXX - {{ render }}</h1>
+    <button @click='forcex()'>JJJ</button>
     <div class='row'>
       <div class='col-6' style='padding-left:100px;padding-right:100px'>
         <div id='test'>
@@ -59,13 +66,9 @@
     }
   ");
 
- /* $dia->vueData("
-    test: ''
-  ");*/
-
   $vue->setMethods("
-    haha() {
-      alert(2);
+    forcex() {
+      this.componentKey += 1; 
     }
   ");
 
@@ -74,5 +77,6 @@
     'xx' => 'Jozef',
     'items' => [
       'x' => 1
-    ]
+    ],
+    'componentKey' => $renderId
   ]);
