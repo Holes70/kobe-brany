@@ -48,6 +48,8 @@
   ?>
     <script>
       const emitter = mitt();
+      const dia = new Dia();
+
       //console.log(emitter);
       // GET vue data z aktualnej stranky
       // ak je prazdne tak do var object kvoli chybe

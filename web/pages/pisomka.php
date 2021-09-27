@@ -70,9 +70,6 @@
   $vue->setMethods("
     forcex() {
       this.componentKey += 1; 
-    },
-    emitComponent() {
-      emitter.emit('foo', 'funkcia');
     }
   ");
 
