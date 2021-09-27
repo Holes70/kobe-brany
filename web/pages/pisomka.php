@@ -22,7 +22,7 @@
 
   $xx = "<div style=\"background:red\">XXX</div>";
   $list->addColumn([
-    "open" => "<button onclick=\"lol()\" class=\"btn btn-primary\">Otvor test</button>",
+    "open" => "<button @click=\"emitComponent\" class=\"btn btn-secondary\">Emituj</button>",
     "close" => "<button onclick=\"alert()\" class=\"btn btn-warning\">EDIT</button>"
   ]);
 
@@ -70,6 +70,9 @@
   $vue->setMethods("
     forcex() {
       this.componentKey += 1; 
+    },
+    emitComponent() {
+      emitter.emit('foo', 'funkcia');
     }
   ");
 

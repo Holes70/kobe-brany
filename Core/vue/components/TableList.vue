@@ -1,7 +1,7 @@
 <template>
   <div>
     {{ getTableName }}
-    <button @click='emitComponent' class='btn btn-secondary'>Emituj</button>
+    <button @click='emitComponent' class='btn btn-primary'>Emituj</button>
     <div v-for='item in getList' :key='item.id' class="card mb-2">
       <div class="card-body">
         <ul class="list-inline">
@@ -29,20 +29,17 @@
     data() {
       return {
         tableNameVar: '',
-        listVar: []
+        listVar: [],
+        userFuncs: {}
       }
     },
     computed: {
-      ahandleFunctionCall(functionName, event) {
-        this[functionName](event)
-      },
-      getTableNme() {
+      getTableName() {
         if (this.tableNameVar == '') {
           return this.tableName;
         } else {
           return this.tableNameVar;
         }
-
       },
       getList() {
         if (this.listVar.length > 0) {
@@ -58,8 +55,12 @@
     mounted() {
       emitter.on("foo", param => {
         this.tableNameVar = param;
-        this.listVar = [1,2,3];
+        if (this.tableName == 'user_tests') {
+          this.listVar = [1,2,3];
+        }
       });
+    },
+    created () {
     }
   }
 </script>
