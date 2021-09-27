@@ -118,6 +118,7 @@ namespace Core {
           <script src='Core/public/js/vue.js'></script>
           <script src='Core/public/js/axios.js'></script>
           <script src='Core/public/js/sfc-loader.js'></script>
+          <script src='https://unpkg.com/mitt/dist/mitt.umd.js'></script>
         ";
       }
 

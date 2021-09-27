@@ -14,12 +14,12 @@ namespace Components {
       parent::__construct($this);
     }
 
-    public function columns(array $columns) {
+    public function columns(array $columns) : object {
       $this->columns = $columns;
       return $this;
     }
 
-    public function addColumn(array $column) {
+    public function addColumn(array $column) : object {
 
       if (empty($this->addedColumns)) {
         $this->addedColumns = $column;
@@ -30,17 +30,17 @@ namespace Components {
 
     }
 
-    public function conditions(array $conditions) {
+    public function conditions(array $conditions) : object {
       $this->conditions = $conditions;
       return $this;
     }
 
-    public function keyName(string $keyName) {
+    public function keyName(string $keyName) : object {
       $this->keyName = $keyName;
       return $this;
     }
 
-    public function show() {
+    public function show() : string {
 
       $this->list = $this->dbSelect(
         tableName: $this->tableName, 

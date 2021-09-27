@@ -38,7 +38,8 @@
   $dia->template("
     {$nadpis->render()}
     <h1>XXX - {{ render }}</h1>
-    <button @click='forcex()'>JJJ</button>
+    <button @click='forcex()'>Re-rendruj komponentu</button>
+    <button @click='emitComponent' class='btn btn-secondary'>Emituj</button>
     <div class='row'>
       <div class='col-6' style='padding-left:100px;padding-right:100px'>
         <div id='test'>
@@ -69,6 +70,9 @@
   $vue->setMethods("
     forcex() {
       this.componentKey += 1; 
+    },
+    emitComponent() {
+      emitter.emit('foo', 'funkcia');
     }
   ");
 

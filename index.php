@@ -47,6 +47,8 @@
     // VUE LOADER START
   ?>
     <script>
+      const emitter = mitt();
+      //console.log(emitter);
       // GET vue data z aktualnej stranky
       // ak je prazdne tak do var object kvoli chybe
       var diaData = JSON.parse('<?php $vue->getData() ?>');
