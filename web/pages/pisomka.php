@@ -34,6 +34,11 @@
   ]);*/
 
   $list_user_test = new Components\TableList("user_tests");
+  $list_user_test->hide("
+    <div style=\"text-align:center;margin-top:25px\">
+      <h1 style=\"color:grey\">Vyberte uzivatela</h1>
+    </div>
+  ");
   $list_user_test->keyName("list_user_test");
 
   $dropzone = new Components\Dropzone("users");

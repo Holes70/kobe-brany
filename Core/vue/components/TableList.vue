@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="showList">
     {{ getTableName }}
     <div v-for='item in getList' :key='item.id' class="card mb-2">
       <div class="card-body">
@@ -17,6 +17,7 @@
       </div>
     </div>
   </div>
+  <div v-else v-html='hideValue'></div>
 </template>
 
 <script>
@@ -33,12 +34,16 @@
       },
       actionButton: {
         type: Object
+      },
+      hideValue: {
+        type: String
       }
     },
     data() {
       return {
         tableNameVar: '',
-        listVar: []
+        listVar: [],
+        showList: true
       }
     },
     computed: {
@@ -79,7 +84,15 @@
             }
           }).then((res) => {
             this.listVar = res.data;
+            this.showList = true;
           })
+        }
+      },
+      getHideValue() {
+        if (this.hideValue) {
+          this.showList = false;
+        } else {
+          this.showList = true;
         }
       }
     },
@@ -87,6 +100,8 @@
       emitter.on("emitAction", params => {
         this.action(params);
       });
+
+      this.getHideValue();
     }
   }
 </script>
