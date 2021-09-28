@@ -9,6 +9,7 @@ namespace Components {
     private array $addedColumns = [];
     private array $conditions = [];
     private string $keyName;
+    private string $actionButton = "";
 
     public function __construct(private string $tableName) {
       parent::__construct($this);
@@ -40,7 +41,20 @@ namespace Components {
       return $this;
     }
 
+    public function actionButton(array $params) : object {
+      $this->actionButton = json_encode($params);
+      return $this;
+    }
+
+    public function checkActionButton() {
+      if ($this->actionButton == "") {
+        $this->actionButton = '{}';
+      }
+    }
+
     public function show() : string {
+
+      $this->checkActionButton();
 
       $this->list = $this->dbSelect(
         tableName: $this->tableName, 
@@ -54,6 +68,7 @@ namespace Components {
           tableName={$this->tableName}
           :list=\"{$this->list}\"
           :columns=\"".$this->vueJson($this->columns)."\"
+          :actionButton='{$this->actionButton}'
           :key=\"{$this->keyName}\"
         ></dia-table-list>
       ";

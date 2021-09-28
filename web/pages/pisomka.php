@@ -2,7 +2,7 @@
 
   $nadpis = $dia->html("
     <div style='text-align:center'>
-      <h1 style='color:grey'>Písomka</h1>
+      <h1 style='color:grey'>Test</h1>
     </div>
   ");
 
@@ -19,27 +19,27 @@
   ]);*/
 
   $list->keyName("list");
-
-  $xx = "<div style=\"background:red\">XXX</div>";
-  $list->addColumn([
-    "open" => "<button onclick=\"lol()\" class=\"btn btn-primary\">Otvor test</button>",
-    "close" => "<button onclick=\"alert()\" class=\"btn btn-warning\">EDIT</button>"
-  ]);
-
-  $list_user_test = new Components\TableList("user_tests");
-  $list_user_test->conditions([
-    'where' => [
-      'user_id' => 1
+  $list->actionButton([
+    "name" => "ActionButton",
+    "class" => "btn btn-danger",
+    "params" => [
+      "tableName" => "user_tests"
     ]
   ]);
+
+  $xx = "<div style=\"background:red\">XXX</div>";
+  /*$list->addColumn([
+    "open" => "<button @click.native=\"emitComponent()\" class=\"btn btn-primary\">Otvor test</button>",
+    "close" => "<button onclick=\"alert()\" class=\"btn btn-warning\">EDIT</button>"
+  ]);*/
+
+  $list_user_test = new Components\TableList("user_tests");
   $list_user_test->keyName("list_user_test");
 
   $dropzone = new Components\Dropzone("users");
   $dia->template("
     {$nadpis->render()}
-    <h1>XXX - {{ render }}</h1>
-    <button @click='forcex()'>Re-rendruj komponentu</button>
-    <button @click='emitComponent' class='btn btn-secondary'>Emituj</button>
+    <!--<button @click='forcex()'>Re-rendruj komponentu</button>-->
     <div class='row'>
       <div class='col-6' style='padding-left:100px;padding-right:100px'>
         <div id='test'>
