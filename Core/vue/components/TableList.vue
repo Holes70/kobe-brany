@@ -6,7 +6,7 @@
         <ul class="list-inline">
           <li v-for='element in item' :key='element' v-html='element' class="list-inline-item">
           </li>
-          <li if="actionButton">
+          <li v-if="actionButton" class="list-inline-item">
             <button
               @click="emitComponent(item.id, actionButton.params)"
               :class='actionButton.class'
@@ -69,6 +69,10 @@
     methods: {
       emitComponent(id, params) {
         Object.assign(params, { id: id });
+        
+        // Zmen $id na id z listu
+        params['conditions']['where'][Object.keys(params['conditions']['where'])] = id;
+
         emitter.emit('emitAction', params);
       },
       action(params) {
@@ -76,11 +80,7 @@
           axios.post('index.php?json_action=dia_select', {
             params: {
               table_name: params.tableName,
-              conditions: {
-                'where': {
-                  'user_id': params.id
-                }
-              }
+              conditions: params.conditions
             }
           }).then((res) => {
             this.listVar = res.data;

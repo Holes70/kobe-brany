@@ -8,7 +8,6 @@ namespace Components {
     private array $columns = [];
     private array $addedColumns = [];
     private array $conditions = [];
-    private string $keyName;
     private string $actionButton = "";
     private string $hideValue = "";
 
@@ -37,11 +36,6 @@ namespace Components {
       return $this;
     }
 
-    public function keyName(string $keyName) : object {
-      $this->keyName = $keyName;
-      return $this;
-    }
-
     public function actionButton(array $params) : object {
       $this->actionButton = json_encode($params);
       return $this;
@@ -56,12 +50,6 @@ namespace Components {
     public function hide(string $string) : object {
       $this->hideValue = $string;
       return $this;
-    }
-
-    public function checkHide() {
-      if ($this->hideValue == "") {
-
-      }
     }
 
     public function show() : string {
@@ -81,7 +69,6 @@ namespace Components {
           :list=\"{$this->list}\"
           :columns=\"".$this->vueJson($this->columns)."\"
           :actionButton='{$this->actionButton}'
-          :key=\"{$this->keyName}\"
           hideValue='{$this->hideValue}'
         ></dia-table-list>
       ";

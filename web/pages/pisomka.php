@@ -6,24 +6,35 @@
     </div>
   ");
 
+  $tests = new Components\TableList("tests");
+  $tests->actionButton([
+    "name" => "Otvor",
+    "class" => "btn btn-success",
+    "params" => [
+      "tableName" => "user_tests",
+      "conditions" => [
+        "where" => [
+          "test_id" => '$id'
+        ],
+        "join" => [
+          "user_tests.user_id",
+          "users.id"
+        ],
+        "group_by" => "user_id",
+      ]
+    ]
+  ]);
+
   $renderId = 3;
 
   $list = new Components\TableList("users");
-  /*$list->columns([
-    'id' => 'id',
-    'name' => 'name',
-    'testColumn' => [
-      'onclick' => 'alert()',
-      'value' => 'XXX'
-    ]
-  ]);*/
 
-  $list->keyName("list");
   $list->actionButton([
     "name" => "ActionButton",
     "class" => "btn btn-danger",
     "params" => [
-      "tableName" => "user_tests"
+      "tableName" => "user_tests",
+      "column" => "user_id"
     ]
   ]);
 
@@ -39,19 +50,18 @@
       <h1 style=\"color:grey\">Vyberte uzivatela</h1>
     </div>
   ");
-  $list_user_test->keyName("list_user_test");
 
-  $dropzone = new Components\Dropzone("users");
+  //$dropzone = new Components\Dropzone("users");
   $dia->template("
     {$nadpis->render()}
     <!--<button @click='forcex()'>Re-rendruj komponentu</button>-->
     <div class='row'>
       <div class='col-6' style='padding-left:100px;padding-right:100px'>
         <div id='test'>
-          {$list->show()}
+          {$tests->show()}
         </div>
         <div id='dropzone' style='display:none'>
-          {$dropzone->show()}
+          
         </div>
       </div>
       <div class='col-6'>
