@@ -17,7 +17,7 @@
       </div>
     </div>
   </div>
-  <div v-else v-html='hideValue'></div>
+  <div v-else v-html='getHideValueVar'></div>
 </template>
 
 <script>
@@ -43,6 +43,7 @@
       return {
         tableNameVar: '',
         listVar: [],
+        hideValueVar: '',
         showList: true
       }
     },
@@ -64,6 +65,13 @@
         } else {
           return this.list;
         }
+      },
+      getHideValueVar() {
+        if (this.hideValueVar != '') {
+          return this.hideValueVar;
+        } else {
+          return this.hideValue;
+        }
       }
     },
     methods: {
@@ -83,8 +91,13 @@
               conditions: params.conditions
             }
           }).then((res) => {
-            this.listVar = res.data;
-            this.showList = true;
+            if (res.data.status != 'fail') {
+              this.listVar = res.data;
+              this.showList = true;
+            } else {
+              this.showList = false;
+              this.hideValueVar = res.data.message;
+            }
           })
         }
       },

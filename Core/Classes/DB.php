@@ -250,7 +250,7 @@ namespace Core\Classes {
         $i = 0;
         foreach ($conditions['where'] as $column => $value) {
           if ($i == 0) {
-            $query = $query . " WHERE {$column} = '{$value}'";
+            $query = $query . " WHERE {$column} = {$value}";
             $i++;
           } else {
             $query = $query . " AND {$column} = '{$value}'";
@@ -258,9 +258,9 @@ namespace Core\Classes {
         }
       }
 
-      if (!$res = $this->con->query($query)) {
-        echo "Error";
-      } else {
+      $res = $this->con->query($query);
+
+      if ($res->num_rows > 0) {
         while ($row = $res->fetch_assoc()) {
           
           if (!empty($mergeWith)) {
@@ -276,6 +276,8 @@ namespace Core\Classes {
         } else {
           return $data;
         }
+      } else {
+        throw new \Exception("No records");
       }
       
     }
