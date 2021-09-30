@@ -17,7 +17,7 @@
       </div>
     </div>
   </div>
-  <div v-else v-html='getHideValueVar'></div>
+  <div v-else v-html='getHideValue'></div>
 </template>
 
 <script>
@@ -66,7 +66,7 @@
           return this.list;
         }
       },
-      getHideValueVar() {
+      getHideValue() {
         if (this.hideValueVar != '') {
           return this.hideValueVar;
         } else {
