@@ -101,7 +101,7 @@
           })
         }
       },
-      getHideValue() {
+      setShowList() {
         if (this.hideValue) {
           this.showList = false;
         } else {
@@ -114,7 +114,7 @@
         this.action(params);
       });
 
-      this.getHideValue();
+      this.setShowList();
     }
   }
 </script>
