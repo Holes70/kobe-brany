@@ -13,12 +13,15 @@
     "params" => [
       "tableName" => "user_tests",
       "conditions" => [
+        "select" => "first_name, last_name",
+        "join" => [
+          "users" => [
+            "user_id",
+            "id"
+          ]
+        ],
         "where" => [
           "test_id" => '$id'
-        ],
-        "join" => [
-          "user_tests.user_id",
-          "users.id"
         ],
         "group_by" => "user_id",
       ]
@@ -51,7 +54,23 @@
     </div>
   ");
 
-  //$dropzone = new Components\Dropzone("users");
+  $list_user_test->actionButton([
+    "name" => "Zobraz",
+    "class" => "btn btn-danger",
+    "params" => [
+      "tableName" => "user_tests",
+      "column" => "user_id"
+    ]
+  ]);
+
+  $dropzone = new Components\Dropzone("user_tests");
+  $dropzone->conditions([
+    "where" => [
+      'user_id' => 1,
+      'test_id' => 1
+    ]
+  ]);
+
   $dia->template("
     {$nadpis->render()}
     <!--<button @click='forcex()'>Re-rendruj komponentu</button>-->
@@ -60,8 +79,8 @@
         <div id='test'>
           {$tests->show()}
         </div>
-        <div id='dropzone' style='display:none'>
-          
+        <div id='dropzone'>
+          {$dropzone->show()}
         </div>
       </div>
       <div class='col-6'>

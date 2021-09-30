@@ -18,7 +18,14 @@
   Dropzone.autoDiscover = false;
 
   export default {
-    props: ['table_name'],
+    props: {
+      tableName: {
+        type: String,
+      },
+      conditions: {
+        type: Object
+      }
+    },
     data() {
       return {
         uploadedFiles: []
@@ -32,13 +39,8 @@
           var thisDropzone = this;
           axios.post('index.php?json_action=dia_select', {
             params: {
-              table_name: _this.table_name,
-              conditions: {
-                'where': {
-                  'user_id': 1,
-                  'test_id': 1
-                }
-              }
+              table_name: _this.tableName,
+              conditions: _this.conditions
             }
           }).then((res) => {
             $.each(res.data, function(key, value){
@@ -77,7 +79,7 @@
 
         if (uploadFile == true) {
           axios.post('index.php?json_action=dia_insert', {
-            'table_name': this.table_name,
+            'table_name': this.tableName,
             'data': {
               'user_id': 1,
               'test_id': 1,
@@ -96,7 +98,7 @@
         axios.post(
           'index.php?json_action=dia_delete',
           {
-            table_name: this.table_name,
+            table_name: this.tableName,
             id: this.uploadedFiles
           }
         ).then(() => {

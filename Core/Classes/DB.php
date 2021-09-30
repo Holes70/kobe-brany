@@ -243,9 +243,29 @@ namespace Core\Classes {
       bool $vueJson = false,
       array $mergeWith = []
     ) {
-      $query = "SELECT * FROM {$tableName}";
+      $select = "*";
 
-      // IF exist where clause
+      /**
+       * SELECT
+       */
+      if (array_key_exists("select", $conditions)) {
+        $select = $conditions["select"];
+      }
+
+      $query = "SELECT {$select} FROM {$tableName}";
+
+      /**
+       * JOIN
+       */
+      if (array_key_exists("join", $conditions)) {
+        foreach ($conditions['join'] as $joinTableName => $columns) {
+          $query = $query . " LEFT JOIN {$joinTableName} ON {$tableName}.{$columns[0]} = {$joinTableName}.{$columns[1]}";
+        }
+      }
+
+      /**
+       * WHERE
+       */
       if (array_key_exists("where", $conditions)) {
         $i = 0;
         foreach ($conditions['where'] as $column => $value) {
@@ -253,33 +273,50 @@ namespace Core\Classes {
             $query = $query . " WHERE {$column} = {$value}";
             $i++;
           } else {
-            $query = $query . " AND {$column} = '{$value}'";
+            $query = $query . " AND {$column} = {$value}";
           }
         }
+      }
+
+      /**
+       * GROUP BY
+       */
+      if (array_key_exists("group_by", $conditions)) {
+        $query .= " GROUP BY {$conditions['group_by']}";
+      }
+
+       /**
+       * ORDER BY
+       */
+      if (array_key_exists("order_by", $conditions)) {
+        $query .= " ORDER BY {$conditions['order_by']}";
       }
 
       $res = $this->con->query($query);
 
-      if ($res->num_rows > 0) {
-        while ($row = $res->fetch_assoc()) {
-          
-          if (!empty($mergeWith)) {
-            $row = array_merge($row, $mergeWith);
+      if ($res) {
+        if ($res->num_rows > 0) {
+          while ($row = $res->fetch_assoc()) {
+            
+            if (!empty($mergeWith)) {
+              $row = array_merge($row, $mergeWith);
+            }
+
+            $data[] = $row;
           }
 
-          $data[] = $row;
-        }
-
-        // JSON to vue component prop
-        if ($vueJson === TRUE) {
-          return str_replace("\"", "\'", json_encode($data));
+          // JSON to vue component prop
+          if ($vueJson === TRUE) {
+            return str_replace("\"", "\'", json_encode($data));
+          } else {
+            return $data;
+          }
         } else {
-          return $data;
+          throw new \Exception("No records");
         }
       } else {
-        throw new \Exception("No records");
+        throw new \Exception($this->con->error);
       }
-      
     }
   }
 

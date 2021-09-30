@@ -76,8 +76,6 @@
     },
     methods: {
       emitComponent(id, params) {
-        Object.assign(params, { id: id });
-        
         // Zmen $id na id z listu
         params['conditions']['where'][Object.keys(params['conditions']['where'])] = id;
 
