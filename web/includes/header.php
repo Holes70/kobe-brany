@@ -34,8 +34,8 @@
 
   $html = "
     <header>
-      <nav class='navbar navbar-expand-lg navbar-light bg-light bg-primary'>
-        <a class='navbar-brand' href='#'>Sequel-D</a>    
+      <nav class='navbar navbar-expand-lg'>
+        <a class='navbar-brand' href='#'>DIA</a>    
           <div class='collapse navbar-collapse bg-primary'>
             <ul class='navbar-nav mr-auto'>
   ";
@@ -82,11 +82,10 @@
     </nav>
     <div class='second_nav'>
       <div class='row'>
-        <div class='col-9'>dsadas</div>
-        <div class='col-3'>LOGIN</div>
       </div>
     </div>
     </header>
+    <div class='body'>
   ";
 
   $dia->html($html)->render();

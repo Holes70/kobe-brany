@@ -21,3 +21,11 @@
   width: 100%;
   margin-top: -12px;
 }
+
+.navbar {
+  background-color: #1e292e !important;
+}
+.body {
+  min-height: 1000px;
+  background-color: #1e292e !important;
+}
