@@ -32,6 +32,10 @@
       }
     },
     mounted() {
+      emitter.on("emitActionDropzone", params => {
+        this.action(params);
+      });
+
       var _this = this;
 
       this.dropzone = new Dropzone("#dia-dropzone", {
@@ -94,6 +98,24 @@
       });
     },
     methods: {
+      action(params) {
+        if (this.tableName == params.tableName) {
+          axios.post('index.php?json_action=dia_select', {
+            params: {
+              table_name: params.tableName,
+              conditions: params.conditions
+            }
+          }).then((res) => {
+            if (res.data.status != 'fail') {
+              this.listVar = res.data;
+              this.showList = true;
+            } else {
+              this.showList = false;
+              this.hideValueVar = res.data.message;
+            }
+          })
+        }
+      },
       removeAllFiles: function() {
         axios.post(
           'index.php?json_action=dia_delete',

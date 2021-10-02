@@ -79,7 +79,7 @@
         // Zmen $id na id z listu
         params['conditions']['where'][Object.keys(params['conditions']['where'])] = id;
 
-        emitter.emit('emitAction', params);
+        emitter.emit('emitAction' + params.action, params);
       },
       action(params) {
         if (this.tableName == params.tableName) {
@@ -108,7 +108,7 @@
       }
     },
     mounted() {
-      emitter.on("emitAction", params => {
+      emitter.on("emitActionTableList", params => {
         this.action(params);
       });
 

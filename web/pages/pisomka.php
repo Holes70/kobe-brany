@@ -12,6 +12,7 @@
     "class" => "btn btn-success",
     "params" => [
       "tableName" => "user_tests",
+      "action" => "TableList",
       "conditions" => [
         "select" => "first_name, last_name",
         "join" => [
