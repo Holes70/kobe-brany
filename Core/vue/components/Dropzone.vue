@@ -31,6 +31,64 @@
         uploadedFiles: []
       }
     },
+    methods: {
+      action(params) {
+        if (this.tableName == params.tableName) {
+          axios.post('index.php?json_action=dia_select', {
+            params: {
+              table_name: params.tableName,
+              conditions: params.conditions
+            }
+          }).then((res) => {
+            if (res.data.status != 'fail') {
+              this.hideAllFiles();
+              
+              var _this = this;
+              // LOAD DATA TO DROPZONE
+              var thisDropzone = this.dropzone;
+
+              setTimeout(() => {
+                $.each(res.data, function(key, value){
+                  _this.uploadedFiles.push(value.id);
+
+                  var file = { name: value.filename, size: value.size };
+                  var name = value.filename;
+
+                  thisDropzone.options.addedfile.call(thisDropzone, file);
+                  if (name.includes('.jpg') || name.includes('.png') || name.includes('.jpeg') || name.includes('.gif')) {
+                    thisDropzone.options.thumbnail.call(thisDropzone, file, 'Files/dropzone/' + value.filename);
+                  }
+                  thisDropzone.options.complete.call(thisDropzone, file);
+                  thisDropzone.options.processing.call(thisDropzone, file);
+                });
+              }, 300);
+              
+             
+            } else {
+
+            }
+          })
+        }
+      },
+      hideAllFiles() {
+        this.dropzone.removeAllFiles();
+
+        // Delete loaded files html
+        $('#dia-dropzone .dz-preview').remove();
+        $('.dropzone').removeClass('dz-started');
+      },
+      removeAllFiles() {
+        axios.post(
+          'index.php?json_action=dia_delete',
+          {
+            table_name: this.tableName,
+            id: this.uploadedFiles
+          }
+        ).then(() => {
+          this.hideAllFiles();
+        })
+      },
+    },
     mounted() {
       emitter.on("emitActionDropzone", params => {
         this.action(params);
@@ -96,41 +154,6 @@
           })
         }
       });
-    },
-    methods: {
-      action(params) {
-        if (this.tableName == params.tableName) {
-          axios.post('index.php?json_action=dia_select', {
-            params: {
-              table_name: params.tableName,
-              conditions: params.conditions
-            }
-          }).then((res) => {
-            if (res.data.status != 'fail') {
-              this.listVar = res.data;
-              this.showList = true;
-            } else {
-              this.showList = false;
-              this.hideValueVar = res.data.message;
-            }
-          })
-        }
-      },
-      removeAllFiles: function() {
-        axios.post(
-          'index.php?json_action=dia_delete',
-          {
-            table_name: this.tableName,
-            id: this.uploadedFiles
-          }
-        ).then(() => {
-          this.dropzone.removeAllFiles();
-
-          // Delete loaded files html
-          $('#dia-dropzone .dz-preview').remove();
-          $('.dropzone').removeClass('dz-started');
-        })
-      },
     }
   }
 </script>

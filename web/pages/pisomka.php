@@ -60,7 +60,12 @@
     "class" => "btn btn-danger",
     "params" => [
       "tableName" => "user_tests",
-      "column" => "user_id"
+      "action" => "Dropzone",
+      "conditions" => [
+        "where" => [
+          "user_id" => '$id',
+        ]
+      ]
     ]
   ]);
 
