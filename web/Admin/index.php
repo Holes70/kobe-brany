@@ -1,11 +1,16 @@
 <?php
+
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
   session_start();
   ob_start();
-  require_once(__DIR__ . '\..\..\Core\boot.php');
+  require_once(__DIR__ . '/../../Core/boot.php');
 
   // Elasticsearch
   if ($dia->config['web']['elasticsearch']) {
-    require "{$dia->config['dir']['root']}\\vendor\autoload.php";
+    require "{$dia->config['dir']['root']}/vendor/autoload.php";
 
     $client = Elasticsearch\ClientBuilder::create()
       ->setHosts(['localhost:9200'])
@@ -35,7 +40,7 @@
 
       foreach ($dia->pages as $podstranka) {
         if ($podstranka != '' && $podstranka == $page) {
-          include "{$dia->config['dir']['root']}\web\Admin\\{$dia->config['web']['pages']}\\{$page}.php";
+          include "{$dia->config['dir']['root']}/web/Admin/{$dia->config['web']['pages']}/{$page}.php";
         }
       }
     

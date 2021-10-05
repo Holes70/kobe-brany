@@ -30,7 +30,7 @@ namespace Core {
 
     // ZAKLADNE FUNKCIE
     private function najdi_podstranky() {
-      $pages = scandir(__DIR__ . "\..\web\Website\\" . $this->config['web']['pages']);
+      $pages = scandir(__DIR__ . "/../web/Admin/" . $this->config['web']['pages']);
 
       foreach ($pages as $page) {
       $this->pages[] = substr($page, 0, -4);
@@ -39,7 +39,7 @@ namespace Core {
     }
 
     private function najdi_vue_componenty() {
-      $pages = scandir(__DIR__ . "\..\web\\" . $this->config['web']['vue_components']);
+      $pages = scandir(__DIR__ . "/../web/" . $this->config['web']['vue_components']);
 
       foreach ($pages as $page) {
       $this->components[] = substr($page, 0, -4);
@@ -195,9 +195,9 @@ namespace Core {
         $className = str_replace("\\", "/", $className);
 
         if (file_exists($this->config['dir']['root'] . '/' . $className . '.php')) {
-          require_once $this->config['dir']['root'] . '\\' . $className . '.php';
+          require_once $this->config['dir']['root'] . '/' . $className . '.php';
         } else if (file_exists($this->config['dir']['root']. '/Core//' . $className . '.php')) {
-          require_once $this->config['dir']['root'] . '\Core\\' . $className . '.php';
+          require_once $this->config['dir']['root'] . '/Core/' . $className . '.php';
         }
 
       });
