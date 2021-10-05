@@ -2,7 +2,6 @@
   global $db, $dia;
 
   $timer = new \Components\Timer();
-  $timer->render();
   //$timer->render();
 
   //$elasticSearch = new Components\Elasticsearch("logstash_test");

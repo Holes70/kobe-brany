@@ -93,11 +93,11 @@ namespace Core {
       $css_files = ""; $script_files = "";  $bootstrap = ""; $vue = "";
 
       foreach ($this->config['head']['css'] as $value) {
-        $css_files .= "<link rel='stylesheet' href='css/$value'>"; 
+        $css_files .= "<link rel='stylesheet' href='Assets/css/$value'>"; 
       }
 
       foreach ($this->config['head']['script'] as $value) {
-        $script_files .= "<script src='js/$value'></script>"; 
+        $script_files .= "<script src='Assets/js/$value'></script>"; 
       }
 
       if ($this->config['web']['bootstrap']) {
