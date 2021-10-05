@@ -12,7 +12,7 @@
   $config['dir']['root']        = dirname(__FILE__);
 
   // NASTAVENIA DIE
-  $config['web']['includes']    = "includes";
+  $config['web']['includes']    = "Includes";
   $config['web']['pages']       = "Pages";
   $config['web']['actions']     = "actions";
   $config['web']['home']        = "home";
@@ -31,6 +31,6 @@
   $config['head']['css']        = ['sweetalert.css', /*'materialize.css'*/ 'prosql.css', 'style4.css'];
   $config['head']['script']     = ['sweetalert.js', 'jquery.js', /*'materialize.js'*/];
 
-  $config['dir']['admin'] = "{$config['dir']['root']}\web\\{$config['web']['admin']}"
+  $config['dir']['admin'] = "{$config['dir']['root']}/web/{$config['web']['admin']}"
 
 ?>

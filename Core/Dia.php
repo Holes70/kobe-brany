@@ -144,11 +144,11 @@ namespace Core {
     }
 
     public function daj_hlavicku() {
-      @include "{$this->config['dir']['admin']}\\{$this->config['web']['includes']}\\header.php";
+      @include "{$this->config['dir']['admin']}/{$this->config['web']['includes']}/header.php";
     }
 
     public function daj_paticku() {
-      include "{$this->config['dir']['admin']}\\{$this->config['web']['includes']}\\footer.php";
+      include "{$this->config['dir']['admin']}/{$this->config['web']['includes']}/footer.php";
     }
 
     public function daj_zapaticku() {
