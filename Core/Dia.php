@@ -11,6 +11,8 @@ namespace Core {
     public $components = array();
     //public $showedComponents = array();
 
+    private string $rootDir;
+
     public $script = "";
 
     public function __construct() {
@@ -19,6 +21,8 @@ namespace Core {
       $this->config = $config;
       $this->con = $con;
 
+      $this->rootDir = $config['dir']['root'];
+
       $this->najdi_podstranky();
       $this->check_install();
       $this->najdi_vue_componenty();
@@ -26,7 +30,7 @@ namespace Core {
 
     // ZAKLADNE FUNKCIE
     private function najdi_podstranky() {
-      $pages = scandir("web/" . $this->config['web']['pages']);
+      $pages = scandir(__DIR__ . "\..\web\Website\\" . $this->config['web']['pages']);
 
       foreach ($pages as $page) {
       $this->pages[] = substr($page, 0, -4);
@@ -35,7 +39,7 @@ namespace Core {
     }
 
     private function najdi_vue_componenty() {
-      $pages = scandir("web/" . $this->config['web']['vue_components']);
+      $pages = scandir(__DIR__ . "\..\web\\" . $this->config['web']['vue_components']);
 
       foreach ($pages as $page) {
       $this->components[] = substr($page, 0, -4);
@@ -89,37 +93,37 @@ namespace Core {
       $css_files = ""; $script_files = "";  $bootstrap = ""; $vue = "";
 
       foreach ($this->config['head']['css'] as $value) {
-        $css_files .= "<link rel='stylesheet' href='web/public/css/$value'>"; 
+        $css_files .= "<link rel='stylesheet' href='css/$value'>"; 
       }
 
       foreach ($this->config['head']['script'] as $value) {
-        $script_files .= "<script src='web/public/js/$value'></script>"; 
+        $script_files .= "<script src='js/$value'></script>"; 
       }
 
       if ($this->config['web']['bootstrap']) {
-        $bootstrap = "<link rel='stylesheet' href='Core/public/css/bootstrap.min.css'>";
-        $script_files .= "<script src='Core/public/js/bootstrap.js'></script>";
+        $bootstrap = "<link rel='stylesheet' href='../../Core/public/css/bootstrap.min.css'>";
+        $script_files .= "<script src='../../Core/public/js/bootstrap.js'></script>";
       }
 
       if ($this->config['web']['dropzone']) {
         $dropzone = "
-          <link rel='stylesheet' type='text/css' href='Core/public/css/basic.css'>
-          <link rel='stylesheet' type='text/css' href='Core/public/css/dropzone.min.css'>
-          <script src='Core/public/js/dropzone.js'></script>
+          <link rel='stylesheet' type='text/css' href='../../Core/public/css/basic.min.css'>
+          <link rel='stylesheet' type='text/css' href='../../Core/public/css/dropzone.min.css'>
+          <script src='../../Core/public/js/dropzone.js'></script>
         ";
       }
 
       if ($this->config['web']['vega']) {
-        $vega = "<link rel='stylesheet' href='Core/public/css/vega.css'>";
+        $vega = "<link rel='stylesheet' href='../../Core/public/css/vega.css'>";
       }
 
       if ($this->config['web']['vue']) {
         $vue = "
-          <script src='Core/public/js/vue.js'></script>
-          <script src='Core/public/js/axios.js'></script>
-          <script src='Core/public/js/sfc-loader.js'></script>
+          <script src='../../Core/public/js/vue.js'></script>
+          <script src='../../Core/public/js/axios.js'></script>
+          <script src='../../Core/public/js/sfc-loader.js'></script>
           <script src='https://unpkg.com/mitt/dist/mitt.umd.js'></script>
-          <script src='Core/public/js/dia.js'></script>
+          <script src='../../Core/public/js/dia.js'></script>
         ";
       }
 
@@ -140,11 +144,11 @@ namespace Core {
     }
 
     public function daj_hlavicku() {
-      @include "web/{$this->config['web']['includes']}/header.php";
+      @include "{$this->config['dir']['admin']}\\{$this->config['web']['includes']}\\header.php";
     }
 
     public function daj_paticku() {
-      @include "web/{$this->config['web']['includes']}/footer.php";
+      include "{$this->config['dir']['admin']}\\{$this->config['web']['includes']}\\footer.php";
     }
 
     public function daj_zapaticku() {
@@ -191,9 +195,9 @@ namespace Core {
         $className = str_replace("\\", "/", $className);
 
         if (file_exists($this->config['dir']['root'] . '/' . $className . '.php')) {
-          require_once $className . '.php';
+          require_once $this->config['dir']['root'] . '\\' . $className . '.php';
         } else if (file_exists($this->config['dir']['root']. '/Core//' . $className . '.php')) {
-          require_once 'Core/' . $className . '.php';
+          require_once $this->config['dir']['root'] . '\Core\\' . $className . '.php';
         }
 
       });
@@ -214,7 +218,7 @@ namespace Core {
 
       // AK SA NACHDADZA SLOVO DIA SMERUJE TO NA CORE AKCIU
       if ((strstr($action_name[1], '_', true)) == "dia") {
-        return include ("Core/public/web/actions/" . $action_name[1] . ".php");
+        return include ("{$this->rootDir}\\Core\\public\\web\\actions\\" . $action_name[1] . ".php");
       } else {
         return include ("web/{$this->config['web']['actions']}/" . $action_name[1] . ".php");
       }
@@ -227,7 +231,7 @@ namespace Core {
       $json_action = isset($_GET['json_action']) ? $_GET['json_action'] : '';
 
       if ((strstr($json_action, '_', true)) == "dia") {
-        return include ("Core/public/web/actions/" . $json_action . ".php");
+        return include ("{$this->rootDir}\\Core\\public\\web\\actions\\" . $json_action . ".php");
       } else {
         return include ("web/{$this->config['web']['actions']}/" . $json_action . ".php");
       }

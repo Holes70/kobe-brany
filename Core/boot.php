@@ -1,6 +1,6 @@
 <?php
 
-  require_once('config.php');
+  require_once(__DIR__ . '\..\config.php');
 
   // NASTAVENIA DATABAZY
   $con = new Mysqli(
@@ -15,7 +15,7 @@
   }
 
   // PRILEPENIE DIE
-  require_once('Core/Dia.php');
+  require_once(__DIR__ . '\Dia.php');
 
   $dia = new Core\Dia();
 
