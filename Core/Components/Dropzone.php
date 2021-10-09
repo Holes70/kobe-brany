@@ -5,7 +5,7 @@ namespace Components {
   class Dropzone extends \Core\Component {
 
     public string $tableName;
-    private string $conditions;
+    private string $conditions = '{}';
     
     public function __construct($tableName) {
       parent::__construct($this);

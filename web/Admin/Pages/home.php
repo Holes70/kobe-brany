@@ -1,9 +1,12 @@
 <?php
 
+use Core\Classes\Component;
+
 $timer = new Components\Timer();
 $table = new Components\Table("users");
 $table->buttons(['edit', 'delete']);
 $list = new Components\TableList("users");
+$dropzone = new Components\Dropzone("users");
 
 $dia->setScript("
   $(document).ready(function () {
@@ -16,7 +19,7 @@ $dia->setScript("
 $dia->template("
   <body>
     <div class='wrapper'>
-      <nav id='sidebar'>
+      <nav id='sidebar' class='bg-white'>
         <div class='sidebar-header'>
           <h3>Bootstrap Sidebar</h3>
           <strong>BS</strong>
@@ -90,7 +93,7 @@ $dia->template("
       </nav>
 
       <div id='content'>
-        <nav class='navbar navbar-expand-lg navbar-light bg-light'>
+        <nav class='navbar navbar-expand-lg navbar-light bg-primary'>
           <div class='container-fluid'>
             <button type='button' id='sidebarCollapse' class='btn btn-info'>
               <i class='fas fa-align-left'></i>
@@ -125,7 +128,7 @@ $dia->template("
         <div class='line'></div>
 
         <h2>Lorem Ipsum Dolor</h2>
-        <p>{$table->show()}</p>
+        <p>{$dropzone->show()}</p>
 
         <div class='line'></div>
 
