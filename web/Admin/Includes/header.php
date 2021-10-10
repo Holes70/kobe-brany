@@ -1,70 +1,78 @@
 <?php
   global $db, $dia;
 
+  // Nacitaj Navbar
+  $navbarList = $db->select('dia_navbar');
+
+  // Vytvorim si logiku v usporiadani navbaru
+  // Vytvorim si viacrozmerne pole
+  foreach ($navbarList as $flatItem) {
+    if ($flatItem['id_parent'] == 0) {
+      $children = [];
+      foreach ($navbarList as $flatItemSub) {
+        if ($flatItemSub['id_parent'] == $flatItem['id']) {
+          $children[] = [
+            "name" => $flatItemSub['name'],
+            "link" => $flatItemSub['link'],
+          ];
+        }
+      }
+
+      $menuItems[] = [
+        "name" => $flatItem['name'],
+        "link" => $flatItem['link'],
+        "childrens" => $children,
+      ];
+    }
+  }
+
+  // Pouzijem foreach na vyskladanie HTML pre navigaciu
+  $navigationHTML = "";
+
+  foreach ($menuItems as $menuItem) {
+    if (count($menuItem['childrens']) > 0) {
+      $childrensHTML = "";
+      foreach ($menuItem['childrens'] as $childrenItem) {
+        $childrensHTML .= " 
+          <li>
+            <a href='{$childrenItem['link']}'>{$childrenItem['name']}</a>
+          </li>
+        ";
+      } 
+      $navigationHTML .= "
+        <li class='active'>
+          <a href='#menu_{$menuItem['link']}' data-toggle='collapse' aria-expanded='false' class='dropdown-toggle'>
+            <i class='fas fa-home'></i>
+            {$menuItem['name']}
+          </a>
+          <ul class='collapse list-unstyled' id='menu_{$menuItem['link']}'>
+            {$childrensHTML}
+          </ul>
+        </li>
+      ";
+    } else {
+      $navigationHTML .= "
+        <li>
+          <a href='{$menuItem['link']}'>
+            <i class='fas fa-image'></i>
+            {$menuItem['name']}
+          </a>
+        </li>
+      ";
+    }
+  }
+
+  //print_r($menuItems); exit();
   $dia->template("
     <body>
       <div class='wrapper'>
         <nav id='sidebar' class='bg-white'>
           <div class='sidebar-header'>
-            <h3>Bootstrap Sidebar</h3>
+            <h3 class='color-secondary'>Dia administration</h3>
             <strong>BS</strong>
           </div>
           <ul class='list-unstyled components'>
-            <li class='active'>
-              <a href='#homeSubmenu' data-toggle='collapse' aria-expanded='false' class='dropdown-toggle'>
-                <i class='fas fa-home'></i>
-                Home
-              </a>
-              <ul class='collapse list-unstyled' id='homeSubmenu'>
-                <li>
-                  <a href='#'>Home 1</a>
-                </li>
-                <li>
-                  <a href='#'>Home 2</a>
-                </li>
-                <li>
-                  <a href='#'>Home 3</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href='#'>
-                <i class='fas fa-briefcase'></i>
-                About
-              </a>
-              <a href='#pageSubmenu' data-toggle='collapse' aria-expanded='false' class='dropdown-toggle'>
-                <i class='fas fa-copy'></i>
-                Pages
-              </a>
-              <ul class='collapse list-unstyled' id='pageSubmenu'>
-                <li>
-                  <a href='#'>Page 1</a>
-                </li>
-                <li>
-                  <a href='#'>Page 2</a>
-                </li>
-                <li>
-                  <a href='#'>Page 3</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a href='#'>
-                <i class='fas fa-image'></i>
-                Portfolio
-              </a>
-            </li>
-            <li>
-              <a href='#'>
-                <i class='fas fa-question'></i>
-                FAQ
-              </a>
-            </li>
-            <li>
-              <a href='#'>
-                <i class='fas fa-paper-plane'></i>
-              </a>
-            </li>
+            {$navigationHTML}
           </ul>
           <ul class='list-unstyled CTAs'>
             <li>
@@ -72,6 +80,9 @@
             </li>
             <li>
               <a href='https://bootstrapious.com/p/bootstrap-sidebar' class='article'>Back to article</a>
+            </li>
+            <li>
+              <a href='https://bootstrapious.com/p/bootstrap-sidebar' class='system-settings'>Systémové nastavenia</a>
             </li>
           </ul>
         </nav>
@@ -105,92 +116,10 @@
             </div>
           </nav>
   ")->render();
-  //$timer->render();
 
   //$elasticSearch = new Components\Elasticsearch("logstash_test");
 
   // SET field which will use for search
   //$elasticSearch->searchFields(['title', 'content']);
-
-  /*$navbar_list = $db->select('dia_navbar');
-  array_pop($navbar_list);
-
-  foreach ($navbar_list as $flatItem) {
-    if ($flatItem['id_parent'] == 0) {
-      $children = [];
-      foreach ($navbar_list as $flatItemSub) {
-        if ($flatItemSub['id_parent'] == $flatItem['id']) {
-          $children[] = [
-            "name" => $flatItemSub['name'],
-            "link" => $flatItemSub['link'],
-          ];
-        }
-      }
-
-      $menuItems[] = [
-        "name" => $flatItem['name'],
-        "link" => $flatItem['link'],
-        "childrens" => $children,
-      ];
-    }
-  }
-
-  $html = "
-    <header>
-      <nav class='navbar navbar-expand-lg'>
-        <a class='navbar-brand' href='#'>DIA</a>    
-          <div class='collapse navbar-collapse bg-primary'>
-            <ul class='navbar-nav mr-auto'>
-  ";
-
-  foreach ($menuItems as $item) {
-    if (count($item['childrens']) > 0) {
-      $html .= "
-        <li class='nav-item dropdown'>
-        <a 
-          class='nav-link 
-          dropdown-toggle' 
-          href='index.php?page={$item['link']}' 
-          id='navbarDropdown' 
-          role='button' 
-          data-toggle='dropdown' 
-          aria-haspopup='true' 
-          aria-expanded='false'
-        >{$item['name']}</a>
-        <div class='dropdown-menu' aria-labelledby='navbarDropdown'>
-      ";
-      foreach ($item['childrens'] as $children) {
-        $html .= "
-          <a 
-            class='dropdown-item' 
-            href='index.php?page={$children['link']}'>
-            {$children['name']}
-          </a>
-        ";
-      }
-      $html .= "</div></li>";
-    } else {
-      $html .="
-        <li class='nav-item'>
-          <a class='nav-link' href='index.php?page={$item['link']}'>{$item['name']}</a>
-        </li>
-      ";
-    }
-  }
-
-  $html .= "
-        </ul>
-      </div>
-      {$timer->show()}
-    </nav>
-    <div class='second_nav'>
-      <div class='row'>
-      </div>
-    </div>
-    </header>
-    <div class='body'>
-  ";
-
-  $dia->html($html)->render();*/
 
 ?>

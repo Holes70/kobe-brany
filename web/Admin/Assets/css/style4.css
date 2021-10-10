@@ -18,13 +18,13 @@
 }
 
 .color-primary {
-  background-color: #d7f7f3!important;
+  color: #d7f7f3!important;
 }
 .color-secondary {
-  background-color: #07ada2 !important;
+  color: #07ada2 !important;
 }
 .color-green {
-  background-color: #17a2b8 !important;
+  color: #17a2b8 !important;
 }
 
 .color-white {
@@ -213,6 +213,11 @@ a.download {
 a.article,
 a.article:hover {
     background: #17a2b8 !important;
+    color: #fff !important;
+}
+a.system-settings,
+a.system-settings:hover {
+    background: #adadad !important;
     color: #fff !important;
 }
 
