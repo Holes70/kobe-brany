@@ -188,13 +188,12 @@ a[data-toggle="collapse"] {
 }
 
 ul ul a {
-    font-size: 0.9em !important;
-    padding-left: 30px !important;
-    background: #d7f7f3;
+  font-size: 0.9em !important;
+  padding-left: 30px !important;
 }
 
 ul.CTAs {
-    padding: 20px;
+  padding: 20px;
 }
 
 ul.CTAs a {
