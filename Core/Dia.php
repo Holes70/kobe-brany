@@ -75,7 +75,7 @@ namespace Core {
      * TEMPLATE METHOD
      * Create template with will 
      * render Vue components
-     * @return void
+     * @return object
      */
     public function template(string $html) {
       return $this->html($html);
@@ -143,12 +143,16 @@ namespace Core {
       ";
     }
 
-    public function daj_hlavicku() {
+    public function getPageHeader() : void {
       @include "{$this->config['dir']['admin']}/{$this->config['web']['includes']}/header.php";
     }
 
-    public function daj_paticku() {
-      include "{$this->config['dir']['admin']}/{$this->config['web']['includes']}/footer.php";
+    public function getPageNavigation() : void {
+      @include "{$this->config['dir']['admin']}/{$this->config['web']['includes']}/navigation.php";
+    }
+
+    public function getPageFooter() : void {
+      @include "{$this->config['dir']['admin']}/{$this->config['web']['includes']}/footer.php";
     }
 
     public function daj_zapaticku() {

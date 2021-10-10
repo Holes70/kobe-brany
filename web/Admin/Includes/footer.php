@@ -1,5 +1,8 @@
 <?php
   global $dia;
-  $dia->html("
-   LOL
-  ");
+
+  $dia->template("
+      </div>
+    </div>
+  </body>
+  ")->render();

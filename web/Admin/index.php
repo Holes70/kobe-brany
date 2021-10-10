@@ -1,9 +1,9 @@
 <?php
 
+  ini_set('display_errors', 1);
+  ini_set('display_startup_errors', 1);
+  error_reporting(E_ALL);
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
   session_start();
   ob_start();
   require_once(__DIR__ . '/../../Core/boot.php');
@@ -21,9 +21,6 @@ error_reporting(E_ALL);
   $dia->autoload();
 
   $db = new \Core\Classes\DB();
-  //$ui = new \Core\Classes\UI();
-  //$vue = new \Core\Classes\Vue();
-
   $vue = new \Core\Vue();
 
   if (!isset($_GET['json_action'])) {
@@ -34,7 +31,7 @@ error_reporting(E_ALL);
     if ($dia->installed) {
       echo "<div id='app'>";
       // HLAVICKA 
-      if ($dia->installed) $dia->daj_hlavicku();
+      if ($dia->installed) $dia->getPageHeader();
       // OBSAH
       $page = (isset($_GET['page']) && $_GET['page'] != '') ? $_GET['page'] : $dia->web_home();
 
@@ -43,7 +40,6 @@ error_reporting(E_ALL);
           include "{$dia->config['dir']['root']}/web/Admin/{$dia->config['web']['pages']}/{$page}.php";
         }
       }
-    
     } else {
       include "Core/public/web/pages/install.php";
     }
@@ -125,10 +121,10 @@ error_reporting(E_ALL);
     // ZAPATICKA
     $dia->daj_zapaticku();
 
-    echo "</div>";
+    echo "</div></template></div>";
     
     // PATICKA
-    $dia->daj_paticku();
+    $dia->getPageFooter();
 
     // HLADA AKCIE
     $dia->action_find();
