@@ -1,13 +1,12 @@
-import { app } from '../index.js'
-
-app.component('test', {
+export default {
   data() {
     return {
       count: 0
     }
   },
   template: `
-    <button @click="count++">
+    <button v-on:click="count++">
       You clicked me {{ count }} times.
-    </button>`
-})
+    </button>
+  `
+}

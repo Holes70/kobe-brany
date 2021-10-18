@@ -8,7 +8,9 @@
   <script type="module" src='index.js'></script>
   <title>Document</title>
     <div id='app'>
-  <test/>
+  <test></test>
+  <test></test>
+  <test2></test2>
   </div>
 </head>
 <body>

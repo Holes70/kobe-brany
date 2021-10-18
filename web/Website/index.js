@@ -1,22 +1,12 @@
-//import test from './vue/test.js'
+import test from './vue/test.js'
+import test2 from './vue/test2.js'
 
 // Create a Vue application
 const app = Vue.createApp({
-  mounted() {
-    alert();
+  components: {
+    'test': test,
+    'test2': test2
   }
-})
-
-app.component('test', {
-  data() {
-    return {
-      count: 0
-    }
-  },
-  template: `
-    <button v-on:click="count++">
-      You clicked me {{ count }} times.
-    </button>`
 })
 
 app.mount('#app')
