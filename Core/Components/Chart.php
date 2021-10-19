@@ -6,6 +6,7 @@ namespace Components {
 
     private string $type = "";
     private string $label = "";
+    private string $borderWidth = "1";
     private array $labels = [];
     private array $data = [];
 
@@ -30,6 +31,11 @@ namespace Components {
       return $this;
     }
 
+    public function borderWidth(string $label): object {
+      $this->label = $label;
+      return $this;
+    }
+
     public function show() {
       return "
         <chart :params='{
@@ -37,7 +43,8 @@ namespace Components {
           labels: ".json_encode($this->labels).",
           data: ".json_encode($this->data).",
           label: \"{$this->label}\",
-          uid: \"{$this->uid}\"
+          uid: \"{$this->uid}\",
+          borderWidth: \"{$this->borderWidth}\"
         }'></chart>
       ";
     }

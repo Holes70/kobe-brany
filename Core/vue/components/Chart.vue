@@ -11,12 +11,13 @@ export default {
   props: ['params'],
   data() {
     return {
-      id: 'cart',
+      id: 'chart',
       //params
       type: '',
       label: '',
       labels: [],
-      data: []
+      data: [],
+      borderWidth: 1
     }
   },
   methods: {
@@ -26,7 +27,7 @@ export default {
       this.data = this.params['data'];
       this.label = this.params['label'];
       //this.id = this.params['uid'];
-      //this.borderWidth = this.params['borderWidth'];
+      this.borderWidth = this.params['borderWidth'];
     }
   },
   mounted() {
@@ -56,7 +57,7 @@ export default {
             'rgba(153, 102, 255, 1)',
             'rgba(255, 159, 64, 1)'
           ],
-          borderWidth: 1
+          borderWidth: this.borderWidth
         }]
       },
       options: {
