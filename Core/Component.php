@@ -4,7 +4,7 @@ namespace Core {
 
   class Component extends \Core\Classes\DB {
 
-    private $UID = NULL;
+    public $uid = NULL;
 
     public $tableStructure = NULL;
     public $customComponentName = NULL;
@@ -20,7 +20,7 @@ namespace Core {
     public function __construct($_this) {
       parent::__construct();
 
-      $this->UID = \Core\Bice::getUID();
+      $this->uid = \Core\Bice::getuid();
 
       $this->VueComponentLoader($_this);
       $this->getTableStructure();
@@ -33,8 +33,8 @@ namespace Core {
      */
     public function VueComponentLoader($_this) {
       if (is_object($_this)) {
-        if (!isset(\Core\Dia::$loadedComponents[$this->UID])) {
-          \Core\Dia::$loadedComponents[$this->UID] = $_this;
+        if (!isset(\Core\Dia::$loadedComponents[$this->uid])) {
+          \Core\Dia::$loadedComponents[$this->uid] = $_this;
         } else {
           \Core\Dia::$loadedComponents[\Core\Bice::getUID()] = $_this;
         }
