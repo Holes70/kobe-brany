@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Bombarder70/dia#readme",
   "dependencies": {
     "chart.js": "^3.5.1",
+    "vue": "^3.2.20",
     "vue-chartjs": "^3.5.1",
     "vuelidate": "^0.7.6"
   }

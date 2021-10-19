@@ -5,7 +5,7 @@ import test2 from './vue/test2.js'
 const app = Vue.createApp({
   components: {
     'test': test,
-    'test2': test2
+    'test2': test2,
   }
 })
 

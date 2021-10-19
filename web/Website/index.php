@@ -7,12 +7,14 @@
   <script src='../../Core/public/js/vue.js'></script>
   <script src='vue/chartx.js'></script>
   <script type="module" src='index.js'></script>
+  <script type="module" src='./esm/index.js'></script>
   <title>Document</title>
     <div id='app'>
       <test></test>
       <test></test>
-      <test2 juj="x"></test2>
+      <test2></test2>
     </div>
+    <div id='app2'></div>
 </head>
 <body>
   
