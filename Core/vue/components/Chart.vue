@@ -1,6 +1,6 @@
 <template>
   <canvas 
-    id="cart" 
+    :id="id" 
     width="400" 
     height="400">
   </canvas>
@@ -8,15 +8,20 @@
 
 <script>
 export default {
+  props: {
+    type: {
+      type: String
+    }
+  },
   data() {
     return {
-      count: ''
+      id: 'cart'
     }
   },
  mounted() {
-  var ctx = document.getElementById("cart").getContext('2d');
+  var ctx = document.getElementById(this.id).getContext('2d');
   new Chart(ctx, {
-      type: 'bar',
+      type: this.type,
       data: {
           labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
           datasets: [{

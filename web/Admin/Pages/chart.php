@@ -1,3 +1,7 @@
 <?php
 
-  $dia->template("<chart></chart>")->render();
+  $chart = new Components\Chart("pie");
+
+  $dia->template("
+    {$chart->show()}
+  ")->render();
