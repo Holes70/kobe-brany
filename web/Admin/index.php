@@ -47,7 +47,7 @@
     // VUE LOADER START
   ?>
     <script>
-      const emitter = mitt();
+      //const emitter = mitt();
      // const dia = new Dia();
 
       //console.log(emitter);

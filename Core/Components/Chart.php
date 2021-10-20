@@ -9,6 +9,7 @@ namespace Components {
     private string $borderWidth = "1";
     private array $labels = [];
     private array $data = [];
+    private array $backgroundColor = [];
 
     public function __construct(string $type) {
       parent::__construct($this);
@@ -36,6 +37,16 @@ namespace Components {
       return $this;
     }
 
+    public function backgroundColor(array $backgroundColor): object {
+      $this->backgroundColor = $backgroundColor;
+      return $this;
+    }
+
+    public function borderColor(array $borderColor): object {
+      $this->borderColor = $borderColor;
+      return $this;
+    }
+
     public function show() {
       return "
         <chart :params='{
@@ -44,7 +55,9 @@ namespace Components {
           data: ".json_encode($this->data).",
           label: \"{$this->label}\",
           uid: \"{$this->uid}\",
-          borderWidth: \"{$this->borderWidth}\"
+          borderWidth: \"{$this->borderWidth}\",
+          backgroundColor: ".json_encode($this->backgroundColor).",
+          borderColor: ".json_encode($this->borderColor)."
         }'></chart>
       ";
     }
