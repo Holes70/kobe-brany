@@ -47,7 +47,7 @@
     // VUE LOADER START
   ?>
     <script>
-      //const emitter = mitt();
+      const emitter = mitt();
      // const dia = new Dia();
 
       //console.log(emitter);
@@ -97,13 +97,20 @@
             }
           ?> }
         ,
-        template: `<?php 
-          foreach (\Core\Dia::$loadedComponents as $com) {
-            if ($com->render === TRUE) {
-              $com->preRender();
-            }
-          }
-        ?>`,
+        template: `
+          <body>
+            <div class='wrapper'>
+              <?php 
+                foreach (\Core\Dia::$loadedComponents as $com) {
+                  if ($com->render === TRUE) {
+                    $com->preRender();
+                  }
+                }
+              ?>
+              </div><!-- end id content in header -->
+            </div>
+          </body>
+        `,
         data() {
           return diaData
         },

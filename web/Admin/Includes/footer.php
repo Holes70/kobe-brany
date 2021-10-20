@@ -1,8 +1,4 @@
 <?php
   global $dia;
 
-  $dia->template("
-      </div>
-    </div>
-  </body>
-  ")->render();
+  $dia->template("")->render();

@@ -64,29 +64,27 @@
 
   //print_r($menuItems); exit();
   $dia->template("
-    <body>
-      <div class='wrapper'>
-        <nav id='sidebar' class='bg-white'>
-          <div class='sidebar-header'>
-            <h3 class='color-secondary'>Dia administration</h3>
-            <strong>BS</strong>
-          </div>
-          <ul class='list-unstyled components'>
-            {$navigationHTML}
-          </ul>
-          <ul class='list-unstyled CTAs'>
-            <li>
-              <a href='https://bootstrapious.com/tutorial/files/sidebar.zip' class='download'>Download source</a>
-            </li>
-            <li>
-              <a href='https://bootstrapious.com/p/bootstrap-sidebar' class='article'>Back to article</a>
-            </li>
-            <li>
-              <a href='https://bootstrapious.com/p/bootstrap-sidebar' class='system-settings'>Systémové nastavenia</a>
-            </li>
-          </ul>
-        </nav>
-        <div id='content'>
+    <nav id='sidebar' class='bg-white'>
+      <div class='sidebar-header'>
+        <h3 class='color-secondary'>Dia administration</h3>
+        <strong>BS</strong>
+      </div>
+      <ul class='list-unstyled components'>
+        {$navigationHTML}
+      </ul>
+      <ul class='list-unstyled CTAs'>
+        <li>
+          <a href='https://bootstrapious.com/tutorial/files/sidebar.zip' class='download'>Download source</a>
+        </li>
+        <li>
+          <a href='https://bootstrapious.com/p/bootstrap-sidebar' class='article'>Back to article</a>
+        </li>
+        <li>
+          <a href='https://bootstrapious.com/p/bootstrap-sidebar' class='system-settings'>Systémové nastavenia</a>
+        </li>
+      </ul>
+    </nav>
+    <div id='content'>
           <nav class='navbar navbar-expand-lg navbar-light bg-primary'>
             <div class='container-fluid'>
               <button type='button' id='sidebarCollapse' class='btn btn-info'>
