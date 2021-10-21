@@ -1,6 +1,6 @@
 <template>
   <div>
-    <table class="table table-hover mt-5 mb-5" :class="[css]" :style="[style]">
+    <table class="table table-hover" :class="[css]" :style="[style]">
       <thead>
         <tr>
           <th v-for='(item, index) in data[0]' :key="index">
@@ -75,6 +75,7 @@
           'index.php?json_action=dia_vue_table', 
           { params: this.table_params}
         ).then((res) => {
+          console.log(res);
           this.data = res.data.table_data;
           this.formatter = res.data.formatter;
         })

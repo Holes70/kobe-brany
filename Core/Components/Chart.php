@@ -25,6 +25,7 @@ namespace Components {
       'rgba(153, 102, 255, 1)',
       'rgba(255, 159, 64, 1)'
     ];
+    private $list = NULL;
 
     public function __construct(string $type) {
       parent::__construct($this);
@@ -59,6 +60,14 @@ namespace Components {
 
     public function borderColor(array $borderColor): object {
       $this->borderColor = $borderColor;
+      return $this;
+    }
+
+    public function table(string $table): object {
+      $this->list = $this->dbSelect(
+        tableName: $table
+      );
+
       return $this;
     }
 

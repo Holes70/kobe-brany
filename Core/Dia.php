@@ -236,7 +236,7 @@ namespace Core {
       $json_action = isset($_GET['json_action']) ? $_GET['json_action'] : '';
 
       if ((strstr($json_action, '_', true)) == "dia") {
-        return include ("{$this->rootDir}\\Core\\public\\web\\actions\\" . $json_action . ".php");
+        return include ("{$this->rootDir}/Core/public/web/actions/" . $json_action . ".php");
       } else {
         return include ("web/{$this->config['web']['actions']}/" . $json_action . ".php");
       }
