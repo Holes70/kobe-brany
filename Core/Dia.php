@@ -119,6 +119,7 @@ namespace Core {
 
       if ($this->config['web']['vue']) {
         $vue = "
+          <script src='../../Core/public/js/popper.js'></script>
           <script src='../../Core/public/js/vue.js'></script>
           <script src='../../Core/public/js/axios.js'></script>
           <script src='../../Core/public/js/chart.js'></script>

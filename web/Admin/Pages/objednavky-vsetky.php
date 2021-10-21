@@ -1,12 +1,7 @@
 <?php
 
 $dia->setScript("
-$(function () {
-  $('[data-toggle=\"popover\"]').popover()
-})
-$('.popover-dismiss').popover({
-  trigger: 'focus'
-})
+
 ");
 
 $chart = new Components\Chart("bar");
