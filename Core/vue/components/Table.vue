@@ -11,7 +11,7 @@
       <tbody>
         <tr v-for='(items, indexs) in data' :key="indexs">
           <td v-for="(item, index) in items" :style="[columnStyle[index] ? columnStyle[index] : '']" :key="index"> 
-            <template v-if="typeof item != 'object'">
+            <template v-if="checkType(item)">
               {{ item }}
             </template>
             <template v-else v-for="(button) in items[index]" :key="button">
@@ -48,7 +48,7 @@
 </template>
 
 <script>
-  module.exports = {
+  export default {
     data() {
       return {
         data: [],
@@ -143,6 +143,9 @@
         });
         //this.showEdit = false;
         this.loadData();
+      },
+      checkType(item) {
+        return typeof item != 'object';
       }
     },
     mounted() {
