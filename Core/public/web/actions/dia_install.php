@@ -44,6 +44,18 @@
 )
 */ 
 
+/*
+CREATE TABLE orders (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    serial_number INT(8) NULL,
+    type INT(1) NULL,
+    count INT(1) NOT NULL,
+    id_customer_uid INT NOT NULL,
+    id_product INT NOT NULL,
+    id_invoice INT NULL
+);
+*/
+
   $db->insert([
     'table' => 'admin',
   ]);

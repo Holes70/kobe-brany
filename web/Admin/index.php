@@ -93,7 +93,7 @@
           'chart': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/Chart.vue', options)),
           <?php
             foreach (\Core\Dia::$loadedWebComponents as $com) {
-              echo "'$com': Vue.defineAsyncComponent( () => loadModule('./web/components/$com.vue', options)),";
+              echo "'$com': Vue.defineAsyncComponent( () => loadModule('./../Components/Admin/$com.vue', options)),";
             }
           ?> }
         ,
