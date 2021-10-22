@@ -54,6 +54,16 @@ CREATE TABLE orders (
     id_product INT NOT NULL,
     id_invoice INT NULL
 );
+
+CREATE TABLE products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    description TEXT NULL,
+    price DOUBLE(14,2) NULL,
+    id_product_info INT NULL,
+    id_product_accessories INT NULL
+);
+
 */
 
   $db->insert([

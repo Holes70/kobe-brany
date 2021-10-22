@@ -1,6 +1,5 @@
 <?php
 
-/*
 $db->insert_array([
   'table' => 'orders',
   'table_data' => [
@@ -12,7 +11,7 @@ $db->insert_array([
     'id_product' =>  1, 
     'id_invoice' => null
   ]
-]);*/
+]);
 
 $db->insert_array([
   'table' => 'orders',
