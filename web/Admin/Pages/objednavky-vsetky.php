@@ -1,12 +1,31 @@
 <?php
 
-$dia->setScript("
+// Vyber mena produktu a pocet
+$orders = $db->dbSelect(
+  tableName: "orders",
+  conditions: [
+    "select" => "products.name, COUNT(products.id) as pocet",
+    "join" => [
+      "products" => [
+        "id_product",
+        "id"
+      ]
+    ],
+    "group_by" => "products.name"
+  ]
+);
 
-");
+$orders_names = [];
+$orders_count = [];
+
+foreach ($orders as $value) {
+  array_push($orders_names, $value['name']);
+  array_push($orders_count, $value['pocet']);
+}
 
 $chart = new Components\Chart("bar");
-$chart->labels(['Brana XL', 'Brana S', 'Zabradlie', 'Pristresok']);
-$chart->data([3,4,8,5]);
+$chart->labels($orders_names);
+$chart->data($orders_count);
 
 $table_orders = new Components\Table("orders");
 $table_orders->buttons(['edit', 'delete']);

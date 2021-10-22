@@ -63,25 +63,6 @@ namespace Components {
       return $this;
     }
 
-    public function table(string $table): object {
-      $this->list = $this->dbSelect(
-        tableName: $table
-      );
-
-      return $this;
-    }
-
-    public function labelsAndData(array $params): object {
-      /*if (
-        array_key_exists('table', $params)
-        && array_key_exists('columns', $params)
-      ) {
-
-      }*/
-
-      return $this;
-    }
-
     public function show() {
       return "
         <chart :params='{
