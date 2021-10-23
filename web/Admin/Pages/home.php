@@ -7,6 +7,8 @@ $chart->data([12, 19, 3, 5, 2, 3]);
 $table_products = new Components\Table("products");
 $table_products->columns(['id' => 'ID', 'name' => 'Meno', 'price|$' => 'Cena'])->buttons(['edit', 'delete']);
 
+$timer = new Components\Timer();
+
 $dia->template("
   <div class='row'>
     <div class='col-6'>
@@ -18,29 +20,38 @@ $dia->template("
       </div>
     </div>
     <div class='col-6'>
-      <div class='alert alert-primary' role='alert'>
-        This is a primary alert—check it out!
-      </div>
-      <div class='alert alert-secondary' role='alert'>
-        This is a secondary alert—check it out!
-      </div>
-      <div class='alert alert-success' role='alert'>
-        This is a success alert—check it out!
-      </div>
-      <div class='alert alert-danger' role='alert'>
-        This is a danger alert—check it out!
-      </div>
-      <div class='alert alert-warning' role='alert'>
-        This is a warning alert—check it out!
-      </div>
-      <div class='alert alert-info' role='alert'>
-        This is a info alert—check it out!
-      </div>
-      <div class='alert alert-light' role='alert'>
-        This is a light alert—check it out!
-      </div>
-      <div class='alert alert-dark' role='alert'>
-        This is a dark alert—check it out!
+      <div class='d-flex flex-column'>
+        <div class='p-2'>
+          <div class='alert alert-primary' role='alert'>
+            This is a primary alert—check it out!
+          </div>
+          <div class='alert alert-secondary' role='alert'>
+            This is a secondary alert—check it out!
+          </div>
+          <div class='alert alert-success' role='alert'>
+            This is a success alert—check it out!
+          </div>
+          <div class='alert alert-danger' role='alert'>
+            This is a danger alert—check it out!
+          </div>
+          <div class='alert alert-warning' role='alert'>
+            This is a warning alert—check it out!
+          </div>
+          <div class='alert alert-info' role='alert'>
+            This is a info alert—check it out!
+          </div>
+          <div class='alert alert-light' role='alert'>
+            This is a light alert—check it out!
+          </div>
+          <div class='alert alert-dark' role='alert'>
+            This is a dark alert—check it out!
+          </div>
+        </div>
+        <div class='p-2'>
+          <div class='card' style='height:250px;overflow:hidden'>
+            {$timer->show()}
+          </div>
+        </div>
       </div>
     </div>
   </div>

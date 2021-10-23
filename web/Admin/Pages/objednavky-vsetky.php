@@ -28,6 +28,11 @@ $chart->labels($orders_names);
 $chart->data($orders_count);
 
 $table_orders = new Components\Table("orders");
+$table_orders->columns([
+  'serial_number' => "Seriové číslo", 
+  "type" => "Typ",	
+  "count" => "Počet"]
+);
 $table_orders->buttons(['edit', 'delete']);
 
 $objednavkyHeader = $dia->vue('objednavkyHeader');
