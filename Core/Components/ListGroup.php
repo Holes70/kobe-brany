@@ -1,0 +1,46 @@
+<?php
+
+namespace Components {
+
+  class Listgroup extends \Core\Component {
+    
+    private array $data = [];
+    private string $title = '';
+    private string $bubble = '';
+    private string $url = '';
+
+    public function __construct(array $data) {
+      parent::__construct($this);
+
+      $this->data = $data;
+    }
+
+    public function title(string $title): object {
+      $this->title = $title;
+      return $this;
+    }
+
+    public function bubble(string $bubble): object {
+      $this->bubble = $bubble;
+      return $this;
+    }
+
+    public function url(string $url): object {
+      $this->url = $url;
+      return $this;
+    }
+
+    public function show() {
+      return "
+        <dia-listgroup :params='{
+          data: ".json_encode($this->data).",
+          title: \"{$this->title}\",
+          bubble: \"{$this->bubble}\",
+          url: \"{$this->url}\"
+        }'></dia-listgroup>
+      ";
+    }
+  
+  }
+
+}

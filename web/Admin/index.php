@@ -91,6 +91,8 @@
           'dia-dropzone': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/Dropzone.vue', options)),
           'dia-table-list': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/TableList.vue', options)),
           'chart': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/Chart.vue', options)),
+          'dia-listgroup': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/ListGroup.vue', options)),
+          'dia-collapse': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/Collapse.vue', options)),
           <?php
             foreach (\Core\Dia::$loadedWebComponents as $com) {
               echo "'$com': Vue.defineAsyncComponent( () => loadModule('./../Components/Admin/$com.vue', options)),";

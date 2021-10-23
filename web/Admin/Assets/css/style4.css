@@ -26,9 +26,13 @@
 .color-green {
   color: #17a2b8 !important;
 }
-
 .color-white {
   color: white;
+}
+
+.action-hover:hover {
+  background-color: #d7f7f3;
+  cursor: pointer;
 }
 
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";

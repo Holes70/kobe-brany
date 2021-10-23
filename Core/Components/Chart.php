@@ -48,8 +48,8 @@ namespace Components {
       return $this;
     }
 
-    public function borderWidth(string $label): object {
-      $this->label = $label;
+    public function borderWidth(string $borderWidth): object {
+      $this->label = $borderWidth;
       return $this;
     }
 

@@ -48,8 +48,8 @@
 CREATE TABLE orders (
     id INT AUTO_INCREMENT PRIMARY KEY,
     serial_number INT(8) NULL,
-    type INT(1) NULL,
     count INT(1) NOT NULL,
+    id_type INT NOT NULL,
     id_customer_uid INT NOT NULL,
     id_product INT NOT NULL,
     id_invoice INT NULL
@@ -62,6 +62,11 @@ CREATE TABLE products (
     price DOUBLE(14,2) NULL,
     id_product_info INT NULL,
     id_product_accessories INT NULL
+);
+
+CREATE table order_type (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL
 );
 
 */
