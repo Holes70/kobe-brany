@@ -42,6 +42,7 @@ $orders_types = $db->dbSelect(
   tableName: "orders",
   conditions: [
     "select" => "
+      order_type.id as id,
       order_type.name,
       CASE
         WHEN orders.id_type = 1 THEN 'objednavky-nove'
@@ -68,6 +69,7 @@ $typ_objednavky_listgroup->bubble("pocet");
 $typ_objednavky_listgroup->url("typ_url");
 
 $typy_objednavok_collapse = new Components\Collapse($orders_types);
+$typy_objednavok_collapse->title("name");
 
 $dia->template("
   <div class='row'>
