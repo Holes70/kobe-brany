@@ -72,6 +72,16 @@ namespace Core {
     }
 
     /**
+     * Create custom Vue Component
+     * from HTML in .php file
+     */
+    public function createVue(string $html) {
+      $htmlComponent = new \Components\Custom($html);
+
+      return $htmlComponent;
+    }
+
+    /**
      * TEMPLATE METHOD
      * Create template with will 
      * render Vue components

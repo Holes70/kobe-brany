@@ -15,9 +15,9 @@ namespace Components {
 
     public function show() {
       return "
-        <dia-custom 
-          html=\"{$this->html}\"
-        ></dia-custom>
+        <dia-custom>
+          {$this->html} 
+        </dia-custom>
       ";
     }
 

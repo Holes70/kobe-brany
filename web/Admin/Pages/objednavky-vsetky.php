@@ -71,6 +71,9 @@ $typ_objednavky_listgroup->url("typ_url");
 $typy_objednavok_collapse = new Components\Collapse($orders_types);
 $typy_objednavok_collapse->title("name");
 
+$includeListgroup = $dia->createVue(include("Objednavky/Vsetky/listgroup.php"));
+
+var_dump($timer); exit();
 $dia->template("
   <div class='row'>
     <div class='col-6'>
@@ -89,6 +92,7 @@ $dia->template("
           {$typ_objednavky_listgroup->show()}
         </div>
         <div class='p-2'>
+          {$includeListgroup->show()}
           {$typy_objednavok_collapse->show()}
         </div>
       </div>
