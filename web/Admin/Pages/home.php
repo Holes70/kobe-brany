@@ -9,6 +9,8 @@ $table_products->columns(['id' => 'ID', 'name' => 'Meno', 'price|$' => 'Cena'])-
 
 $timer = new Components\Timer();
 
+$test_tiket = new Components\Tiket();
+
 $dia->template("
   <div class='row'>
     <div class='col-6'>
@@ -77,27 +79,7 @@ $dia->template("
       </div>
     </div>
     <div class='col-3'>
-      <div class='media'>
-      <div class='media-left media-middle'>
-        <a href='#'>
-          <img class='media-object' src='...' alt='...'>
-        </a>
-      </div>
-      <div class='media-body'>
-        <h4 class='media-heading'>Middle aligned media</h4>
-        ...
-      </div>  <div class='media'>
-      <div class='media-left media-middle'>
-        <a href='#'>
-          <img class='media-object' src='...' alt='...'>
-        </a>
-      </div>
-      <div class='media-body'>
-        <h4 class='media-heading'>Middle aligned media</h4>
-        ...
-      </div>
-    </div>
-    </div>
+      {$test_tiket->show()}
     </div>
   </div>
 
