@@ -94,6 +94,7 @@
           'dia-listgroup': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/ListGroup.vue', options)),
           'dia-collapse': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/Collapse.vue', options)),
           'dia-tiket': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/Tiket.vue', options)),
+          'dia-table-card': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/TableCard.vue', options)),
           <?php
             foreach (\Core\Dia::$loadedWebComponents as $com) {
               echo "'$com': Vue.defineAsyncComponent( () => loadModule('./../Components/Admin/$com.vue', options)),";
