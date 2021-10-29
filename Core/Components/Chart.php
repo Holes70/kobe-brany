@@ -26,6 +26,8 @@ namespace Components {
       'rgba(255, 159, 64, 1)'
     ];
     private $list = NULL;
+    private int $width = 400;
+    private int $height = 400;
 
     public function __construct(string $type) {
       parent::__construct($this);
@@ -63,18 +65,33 @@ namespace Components {
       return $this;
     }
 
+    public function width(int $width): object {
+      $this->width = $width;
+      return $this;
+    }
+
+    public function height(int $height): object {
+      $this->height = $height;
+      return $this;
+    }
+
     public function show() {
       return "
-        <chart :params='{
-          type: \"{$this->type}\",
-          labels: ".json_encode($this->labels).",
-          data: ".json_encode($this->data).",
-          label: \"{$this->label}\",
-          uid: \"{$this->uid}\",
-          borderWidth: \"{$this->borderWidth}\",
-          backgroundColor: ".json_encode($this->backgroundColor).",
-          borderColor: ".json_encode($this->borderColor)."
-        }'></chart>
+        <chart 
+          id=\"{$this->uid}\"
+          height={$this->height}
+          width={$this->width}
+          :params='{
+            type: \"{$this->type}\",
+            labels: ".json_encode($this->labels).",
+            data: ".json_encode($this->data).",
+            label: \"{$this->label}\",
+            uid: \"{$this->uid}\",
+            borderWidth: \"{$this->borderWidth}\",
+            backgroundColor: ".json_encode($this->backgroundColor).",
+            borderColor: ".json_encode($this->borderColor)."
+          }'
+        ></chart>
       ";
     }
 

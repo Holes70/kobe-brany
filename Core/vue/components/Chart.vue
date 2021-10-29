@@ -1,17 +1,16 @@
 <template>
   <canvas 
     :id="id" 
-    width="400" 
-    height="400">
+    :width="100" 
+    :height="100">
   </canvas>
 </template>
 
 <script>
 export default {
-  props: ['params'],
+  props: ['params', 'id', 'width', 'height'],
   data() {
     return {
-      id: 'chart',
       //params
       type: '',
       label: '',
@@ -35,7 +34,8 @@ export default {
   mounted() {
     this.initParams();
 
-    var ctx = document.getElementById(this.id).getContext('2d');
+    //var ctx = document.getElementById(this.id).getContext('2d');
+    var ctx = $('#' + this.id);
 
     new Chart(ctx, {
       type: this.type,

@@ -70,6 +70,12 @@ $typ_objednavky_listgroup->url("typ_url");
 
 $includeListgroup = $dia->createVue(include("Objednavky/Vsetky/listgroup.php"));
 
+$grafTrzby = new Components\Chart("pie");
+$grafTrzby->labels([1,2,3]);
+$grafTrzby->data([1,2,3]);
+$grafTrzby->width(200);
+$grafTrzby->height(200);
+
 $dia->template("
   <div class='row'>
     <div class='col-6'>
@@ -88,7 +94,7 @@ $dia->template("
           {$typ_objednavky_listgroup->show()}
         </div>
         <div class='p-2'>
-          {$includeListgroup->show()}
+         {$grafTrzby->show()}
         </div>
       </div>
     </div>

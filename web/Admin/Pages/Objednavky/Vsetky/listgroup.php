@@ -2,7 +2,7 @@
   $uid = \Core\Bice::getUID();
 
   ${$uid. '_timer'} = new Components\Timer();
-
+  $tableCard = new Components\TableCard();
   $orderHtml = "";
 
   foreach($orders_types as $order) {
@@ -18,7 +18,7 @@
 
         <div id=\"collapse_{$order['id']}\" class='collapse' aria-labelledby=\"heading_{$order['id']}\" data-parent='#accordion'>
           <div class='card-body'>
-            {${$uid. '_timer'}->show()}
+           {$tableCard->show()}
           </div>
         </div>
       </div>
