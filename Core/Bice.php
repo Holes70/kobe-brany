@@ -28,7 +28,10 @@ namespace Core {
       }
 
       if ($currentPage != 0 && $countTotal != 0) {
-        return round($countTotal / $count) * $currentPage;
+        return [
+          "pages" => round($countTotal/$count),
+          "offset" => (round($countTotal / $count) * $currentPage) - 1
+        ];
       }
     }
     

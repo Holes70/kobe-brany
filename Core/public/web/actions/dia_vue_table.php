@@ -20,13 +20,23 @@
       $columns = (array)$data->params->columns;
       $buttons = (array)$data->params->buttons;
 
-      //$totalCount = $db->dbSelect(tableName: $data->params->table_name, conditions: ["select" => "count(*) as count"]);
-      //$offset = \Core\Bice::pagination(countTotal: reset($totalCount)['count']);
+      $count = 3;
+
+      $totalCount = $db->dbSelect(
+        tableName: $data->params->table_name, 
+        conditions: ["select" => "count(*) as count"]
+      );
+
+      $pagination = \Core\Bice::pagination(
+        countTotal: reset($totalCount)['count'],
+        currentPage: $data->params->currentPage ?? 1,
+        count: $count
+      );
 
       $data = $db->dbSelect(
         tableName: $data->params->table_name,
         conditions: [
-          "limit" => "1 OFFSET 2"
+          "limit" => "{$count} OFFSET {$pagination['offset']}"
         ]
       );
 
@@ -70,7 +80,8 @@
 
       echo json_encode([
         "table_data" => $tr_values,
-        "formatter" => $formatter_keys
+        "formatter" => $formatter_keys,
+        "pages" => $pagination['pages']
       ]);
 
   };

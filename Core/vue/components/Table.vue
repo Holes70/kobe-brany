@@ -27,9 +27,16 @@
         <li class="page-item disabled">
           <a class="page-link" href="#" tabindex="-1">Previous</a>
         </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li 
+          v-for="page in pages" 
+          :key="page" 
+          class="page-item"
+        >
+          <button 
+            @click="loadPage(page)"
+            class="page-link"
+          >{{ page }}</button>
+        </li>
         <li class="page-item">
           <a class="page-link" href="#">Next</a>
         </li>
@@ -78,6 +85,7 @@
         columnStyle: [],
         rowStyle: [],
         table_name_id: '',
+        pages: 0
       }
     },
     props: ['table_params'],
@@ -88,9 +96,9 @@
           'index.php?json_action=dia_vue_table', 
           { params: this.table_params }
         ).then((res) => {
-          console.log(res);
           this.data = res.data.table_data;
           this.formatter = res.data.formatter;
+          this.pages = res.data.pages;
         })
       },
       showEditFormFunc(params) {
