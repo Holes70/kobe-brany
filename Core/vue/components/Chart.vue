@@ -1,8 +1,8 @@
 <template>
   <canvas 
     :id="id" 
-    :width="100" 
-    :height="100">
+    width="auto" 
+    height="auto">
   </canvas>
 </template>
 

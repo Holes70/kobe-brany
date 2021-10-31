@@ -73,18 +73,41 @@ $includeListgroup = $dia->createVue(include("Objednavky/Vsetky/listgroup.php"));
 $grafTrzby = new Components\Chart("pie");
 $grafTrzby->labels([1,2,3]);
 $grafTrzby->data([1,2,3]);
-$grafTrzby->width(200);
-$grafTrzby->height(200);
+$grafTrzby->width(100);
+$grafTrzby->height(100);
 
 $dia->template("
   <div class='row'>
     <div class='col-6'>
-      <div class='card'>
-        <h4 class='card-header text-center'>
-          Objednané produkty
-        </h4>
-        <div class='card-body'>
-          {$chart->show()}
+      <div class='d-flex flex-column'>
+        <div class='p-1'>
+          <div class='card'>
+            <h4 class='card-header text-center'>
+              Objednané produkty
+            </h4>
+            <div class='card-body'>
+              {$chart->show()}
+            </div>
+          </div>
+        </div>
+        <div class='p-1'>
+          <div class='card'>
+            <div class='card-body'>
+              <h5 class='card-title'>Special title treatment</h5>
+              <p class='card-text'>With supporting text below as a natural lead-in to additional content.</p>
+              <a href='#' class='btn btn-primary'>Go somewhere</a>
+            </div>
+          </div>
+        </div>
+        <div class='p-1'>
+          <div class='card'>
+            <h4 class='card-header text-center'>
+              Objednané produkty
+            </h4>
+            <div class='card-body'>
+              {$grafTrzby->show()}
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -94,15 +117,15 @@ $dia->template("
           {$typ_objednavky_listgroup->show()}
         </div>
         <div class='p-2'>
-         {$grafTrzby->show()}
+          <div class='card'>
+            <h4 class='card-header text-center'>
+              Objednané produkty
+            </h4>
+            <div class='card-body' style='overflow:hidden'>
+              {$table_orders->show()}
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class='row mt-5'>
-    <div class='col-10'>
-      <div class='card'>
-        {$table_orders->show()}
       </div>
     </div>
   </div>
