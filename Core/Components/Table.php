@@ -16,6 +16,9 @@ namespace Components {
     private $rowStyle = array();
     private $formInputs;
 
+    // New properties from 31.10.2021
+    private array $data = [];
+
     public function __construct($table_name) {
       parent::__construct($this);
 
@@ -63,6 +66,12 @@ namespace Components {
       foreach ($params as $key => $val) {
         $this->rowStyle[$key] = $val;
       }
+      return $this;
+    }
+
+    // New methods from 31.10.2021
+    public function data(array $data): object {
+      $this->data = $data;
       return $this;
     }
 
@@ -124,7 +133,8 @@ namespace Components {
             class: \"{$this->class}\",
             formInputs: $formInputs,
             columnStyle: $columnStyle,
-            rowStyle: $rowStyle
+            rowStyle: $rowStyle,
+            data: ".json_encode($this->data)."
           }'
         ></dia-table>
       ";

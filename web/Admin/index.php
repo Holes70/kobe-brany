@@ -33,7 +33,7 @@
       // HLAVICKA 
       if ($dia->installed) $dia->getPageHeader();
       // OBSAH
-      $page = (isset($_GET['page']) && $_GET['page'] != '') ? $_GET['page'] : $dia->web_home();
+      $page = (isset($_GET['webPage']) && $_GET['webPage'] != '') ? $_GET['webPage'] : $dia->web_home();
 
       foreach ($dia->pages as $podstranka) {
         if ($podstranka != '' && $podstranka == $page) {

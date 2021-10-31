@@ -17,6 +17,20 @@ namespace Core {
       $out = \preg_replace("#(?<!\r)\n#", PHP_EOL, $out);
       echo $out;
     }
+
+    public static function pagination(
+      int|string $currentPage = 0, 
+      int|string $count = 5, 
+      int|string $countTotal = 0
+    ) {
+      if ($currentPage == 0) {
+        $currentPage = isset($_GET['page']) ? $_GET['page'] : 0;
+      }
+
+      if ($currentPage != 0 && $countTotal != 0) {
+        return round($countTotal / $count) * $currentPage;
+      }
+    }
     
   }
 

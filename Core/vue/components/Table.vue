@@ -22,6 +22,19 @@
         </tr>
       </tbody>
     </table>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1">Previous</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
     <div v-show="showEdit" :id="table_name_id" class="modal" style="display:block">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -73,7 +86,7 @@
       loadData() {
         axios.post(
           'index.php?json_action=dia_vue_table', 
-          { params: this.table_params}
+          { params: this.table_params }
         ).then((res) => {
           console.log(res);
           this.data = res.data.table_data;
@@ -149,22 +162,12 @@
       }
     },
     mounted() {
-      // AK SU PRAZDNE DATA ODKAZUJE NA ACTION
-      if (this.table_params['table_data'] == undefined) {
+      // Ak su data dosadene cez PHP tak nacitaj
+      if (this.table_params['data'].length > 0) {
+        console.log(this.table_params['data'].length);
+      } else {
         this.loadData();
         this.table_name = this.table_params['table_name'];
-      } else {
-        var random = Math.floor(Math.random() * 11);
-        // NACITAJU SA DATA KTORE BOLI DOSADENE CEZ VUE.PHP
-        this.data = this.table_params['table_data'];
-        this.table_name = this.table_params['table_name'];
-        this.formatter = this.table_params['formatter'];
-        this.css = this.table_params['class'];
-        this.style = this.table_params['style'];
-        this.columnStyle = this.table_params['columnStyle'];
-        this.rowStyle = this.table_params['rowStyle'];
-        this.href_table_name = '#' + this.table_params['table_name'] + '_' + random;
-        this.table_name_id = this.table_params['table_name'] + '_' + random;
       }
     },
   };

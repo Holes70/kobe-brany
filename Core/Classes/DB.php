@@ -292,6 +292,16 @@ namespace Core\Classes {
         $query .= " ORDER BY {$conditions['order_by']}";
       }
 
+       /**
+       * LIMIT
+       */
+      if (array_key_exists("limit", $conditions)) {
+        $query .= " LIMIT {$conditions['limit']}";
+      }
+
+      // DEBUG QUERY HERE
+
+      //exit();
       $res = $this->con->query($query);
 
       if ($res) {

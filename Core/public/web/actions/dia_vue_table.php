@@ -20,7 +20,15 @@
       $columns = (array)$data->params->columns;
       $buttons = (array)$data->params->buttons;
 
-      $data = $db->select($data->params->table_name);
+      //$totalCount = $db->dbSelect(tableName: $data->params->table_name, conditions: ["select" => "count(*) as count"]);
+      //$offset = \Core\Bice::pagination(countTotal: reset($totalCount)['count']);
+
+      $data = $db->dbSelect(
+        tableName: $data->params->table_name,
+        conditions: [
+          "limit" => "1 OFFSET 2"
+        ]
+      );
 
       if (array_key_exists('table_name', $data)) {
         array_pop($data);
