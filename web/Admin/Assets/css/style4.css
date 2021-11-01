@@ -8,7 +8,7 @@
   background-color: #d7f7f3!important;
 }
 .bg-secondary {
-  background-color: #07ada2 !important;
+  background-color: #1b8f83 !important;
 }
 .bg-green {
   background-color: #17a2b8 !important;
@@ -21,7 +21,7 @@
   color: #d7f7f3!important;
 }
 .color-secondary {
-  color: #07ada2 !important;
+  color: #1b8f83 !important;
 }
 .color-green {
   color: #17a2b8 !important;
@@ -93,10 +93,10 @@ span {
 }
 
 #sidebar {
-  min-width: 250px;
-  max-width: 250px;
+  min-width: 300px;
+  max-width: 300px;
   transition: all 0.3s;
-  border: 1px solid #c4c4c4;
+  border-right: 5px solid #1b8f83;
   box-shadow: 4px 0 4px -2px #c4c4c4;
 }
 

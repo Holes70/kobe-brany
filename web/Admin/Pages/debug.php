@@ -1,23 +1,12 @@
 <?php
 
-$count = 2;
-
-$totalCount = $db->dbSelect(
-  tableName: "products", 
-  conditions: ["select" => "count(*) as count"]
+$table_orders = new Components\Table("orders");
+$table_orders->columns([
+  "id" => "",
+  'serial_number' => "Seriové číslo", 
+  "type" => "Typ",	
+  "count" => "Počet"
+]
 );
-
-$pagination = \Core\Bice::pagination(
-  countTotal: reset($totalCount)['count'],
-  currentPage: 2 ?? 1,
-  count: $count
-);
-
-$data = $db->dbSelect(
-  tableName: "products",
-  conditions: [
-    "limit" => "{$count} OFFSET {$pagination['offset']}"
-  ]
-);
-
-var_dump($data);
+$table_orders->buttons(['edit', 'delete']);
+$table_orders->render();

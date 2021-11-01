@@ -88,47 +88,6 @@ namespace Components {
     }
 
     public function show() {
-      $tr_values = array();$i = 0;$formatter = array();
-      $data = $this->select($this->table_name);
-
-      if (array_key_exists('table_name', $data)) {
-        array_pop($data);
-      }
-
-      $data_keys[] = array_keys($data[0]);
-
-      if ($this->columns) {
-        $columns_keys = array_keys($this->columns);
-      } else {
-        $columns_keys = array_keys($data[0]);
-        foreach ($data[0] as $key => $val) {
-          $this->columns[$key] = $key;
-        }
-      }
-
-      foreach ($columns_keys as $col_key) {
-        if (strpos($col_key, '|')) {
-          $explode = explode('|', $col_key);
-          $formatter[$explode[0]] = $explode[1];
-          $formatter_keys[$explode[0]] = $this->columns[$col_key];
-        } else {
-          $formatter[$col_key] = '';
-          $formatter_keys[$col_key] = $this->columns[$col_key];
-        }
-      }
-
-      foreach ($data as $val) {
-        foreach ($formatter as $key => $value) {
-          if (array_key_exists($key, $val)) {
-            $tr_values[$i][$key] = "$val[$key]$formatter[$key]";
-          }
-        }
-        if ($this->buttons) {
-          $tr_values[$i]['buttons'] = $this->buttons;
-        }
-        $i++;
-      }
-
       $columnsJSON = json_encode($this->columns);
       $buttonsJSON = json_encode($this->buttons);
       $formInputs = json_encode($this->formInputs);

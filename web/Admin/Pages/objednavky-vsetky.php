@@ -29,10 +29,11 @@ $chart->data($orders_count);
 
 $table_orders = new Components\Table("orders");
 $table_orders->columns([
+  "id" => "id",
   'serial_number' => "Seriové číslo", 
-  "type" => "Typ",	
-  "count" => "Počet"]
-);
+  "id_type" => "Typ",	
+  "count" => "Počet"
+]);
 $table_orders->buttons(['edit', 'delete']);
 
 $objednavkyHeader = $dia->vue('objednavkyHeader');
@@ -78,7 +79,7 @@ $grafTrzby->height(100);
 
 $dia->template("
   <div class='row'>
-    <div class='col-6'>
+    <div class='col-lg-6 col-md-12 col-sm-12'>
       <div class='d-flex flex-column'>
         <div class='p-1'>
           <div class='card'>
@@ -91,11 +92,15 @@ $dia->template("
           </div>
         </div>
         <div class='p-1'>
-          <div class='card'>
+          <div class='card mt-5 mb-5'>
             <div class='card-body'>
-              <h5 class='card-title'>Special title treatment</h5>
-              <p class='card-text'>With supporting text below as a natural lead-in to additional content.</p>
-              <a href='#' class='btn btn-primary'>Go somewhere</a>
+              <h5 class='card-title'>Objednávky čakajúce na schválenie</h5>
+              <p class='card-text'>
+                <code class='highlighter-rouge'>
+                  Objednávky pred začatím práce treba scháliť a vystaviť záverečnú predfaktúru.
+                </code>
+              </p>
+              <a href='objednavky-nove' class='btn btn-primary'>Otvoriť nové objednávky</a>
             </div>
           </div>
         </div>
@@ -111,17 +116,17 @@ $dia->template("
         </div>
       </div>
     </div>
-    <div class='col-6'>
+    <div class='col-lg-6 col-md-12 col-sm-12'>
       <div class='d-flex flex-column'>
         <div class='p-2'>
           {$typ_objednavky_listgroup->show()}
         </div>
         <div class='p-2'>
-          <div class='card'>
+          <div class='card mt-5'>
             <h4 class='card-header text-center'>
-              Objednané produkty
+              Všetky objednávky
             </h4>
-            <div class='card-body' style='overflow:hidden'>
+            <div class='card-body'>
               {$table_orders->show()}
             </div>
           </div>

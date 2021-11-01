@@ -117,7 +117,6 @@
             }
           }).then((res) => {
             this.dataEdit = res.data[0];
-            //console.log(this.dataEdit);
           })
         }
         else {
