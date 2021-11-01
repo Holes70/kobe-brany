@@ -20,8 +20,6 @@
       $columns = (array)$data->params->columns;
       $buttons = (array)$data->params->buttons;
 
-      $count = 3;
-
       $totalCount = $db->dbSelect(
         tableName: $data->params->table_name, 
         conditions: ["select" => "count(*) as count"]
@@ -30,13 +28,13 @@
       $pagination = \Core\Bice::pagination(
         countTotal: reset($totalCount)['count'],
         currentPage: $data->params->currentPage ?? 1,
-        count: $count
+        count: $data->params->count
       );
 
       $data = $db->dbSelect(
         tableName: $data->params->table_name,
         conditions: [
-          "limit" => "{$count} OFFSET {$pagination['offset']}"
+          "limit" => "{$data->params->count} OFFSET {$pagination['offset']}"
         ]
       );
 

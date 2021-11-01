@@ -300,7 +300,7 @@ namespace Core\Classes {
       }
 
       // DEBUG QUERY HERE
-
+      //var_dump($query);
       //exit();
       $res = $this->con->query($query);
 

@@ -18,8 +18,8 @@ namespace Components {
 
     // New properties from 31.10.2021
     private array $data = [];
-    private int $count = 5;
-    private int $currentPage = 1;
+    private int $count = 10;
+    private int $currentPage = 0;
 
     public function __construct($table_name) {
       parent::__construct($this);
@@ -82,7 +82,7 @@ namespace Components {
       return $this;
     }
 
-    public function currentPage(array $currentPage): object {
+    public function currentPage(int $currentPage): object {
       $this->currentPage = $currentPage;
       return $this;
     }

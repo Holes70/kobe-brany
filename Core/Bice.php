@@ -19,20 +19,20 @@ namespace Core {
     }
 
     public static function pagination(
-      int|string $currentPage = 0, 
-      int|string $count = 5, 
+      int|string $currentPage = 1, 
+      int|string $count = 10, 
       int|string $countTotal = 0
     ) {
-      if ($currentPage == 0) {
-        $currentPage = isset($_GET['page']) ? $_GET['page'] : 0;
-      }
 
-      if ($currentPage != 0 && $countTotal != 0) {
+      if ($countTotal != 0) {
+        $offset = $currentPage > 1 ? $count * ($currentPage - 1) : 0;
+
         return [
-          "pages" => round($countTotal/$count),
-          "offset" => (round($countTotal / $count) * $currentPage) - 1
+          "pages" => ceil($countTotal / $count),
+          "offset" => $offset
         ];
       }
+
     }
     
   }
