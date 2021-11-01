@@ -18,6 +18,8 @@ namespace Components {
 
     // New properties from 31.10.2021
     private array $data = [];
+    private int $count = 5;
+    private int $currentPage = 1;
 
     public function __construct($table_name) {
       parent::__construct($this);
@@ -72,6 +74,16 @@ namespace Components {
     // New methods from 31.10.2021
     public function data(array $data): object {
       $this->data = $data;
+      return $this;
+    }
+
+    public function count(int $count): object {
+      $this->count = $count;
+      return $this;
+    }
+
+    public function currentPage(array $currentPage): object {
+      $this->currentPage = $currentPage;
       return $this;
     }
 
@@ -134,7 +146,9 @@ namespace Components {
             formInputs: $formInputs,
             columnStyle: $columnStyle,
             rowStyle: $rowStyle,
-            data: ".json_encode($this->data)."
+            data: ".json_encode($this->data).",
+            count: {$this->count},
+            currentPage: {$this->currentPage}
           }'
         ></dia-table>
       ";

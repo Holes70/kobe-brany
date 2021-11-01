@@ -101,6 +101,10 @@
           this.pages = res.data.pages;
         })
       },
+      loadPage(page) {
+        this.table_params['currentPage'] = page;
+        this.loadData();
+      },
       showEditFormFunc(params) {
         if (params.success) {
           this.showEdit = 'block';
