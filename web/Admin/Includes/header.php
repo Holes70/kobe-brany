@@ -2,7 +2,12 @@
   global $db, $dia;
 
   // Nacitaj Navbar
-  $navbarList = $db->select('dia_navbar');
+  $navbarList = $db->dbSelect(
+    tableName: 'dia_navbar',
+    conditions: [
+      "order_by" => "order_index ASC"
+    ]
+  );
 
   // Vytvorim si logiku v usporiadani navbaru
   // Vytvorim si viacrozmerne pole
@@ -74,45 +79,42 @@
       </ul>
       <ul class='list-unstyled CTAs'>
         <li>
-          <a href='https://bootstrapious.com/tutorial/files/sidebar.zip' class='download'>Download source</a>
-        </li>
-        <li>
-          <a href='https://bootstrapious.com/p/bootstrap-sidebar' class='article'>Back to article</a>
-        </li>
-        <li>
-          <a href='https://bootstrapious.com/p/bootstrap-sidebar' class='system-settings'>Systémové nastavenia</a>
+          <a href='systemove-nastavenia' class='system-settings'>Systémové nastavenia</a>
         </li>
       </ul>
     </nav>
     <div id='content'>
-          <nav class='navbar navbar-expand-lg navbar-light bg-primary'>
-            <div class='container-fluid'>
-              <button type='button' id='sidebarCollapse' class='btn btn-info'>
-                <i class='fas fa-align-left'></i>
-                <span>Toggle Sidebar</span>
-              </button>
-              <button class='btn btn-dark d-inline-block d-lg-none ml-auto' type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
-                <i class='fas fa-align-justify'></i>
-              </button>
+      <nav class='navbar navbar-expand-lg navbar-light bg-white'>
+        <div class='container-fluid'>
+          <button type='button' id='sidebarCollapse' class='btn btn-info'>
+            <i class='fas fa-arrow-left'></i>
+          </button>
+          <button class='btn btn-dark d-inline-block d-lg-none ml-auto' type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
+            <i class='fas fa-align-justify'></i>
+          </button>
 
-              <div class='collapse navbar-collapse' id='navbarSupportedContent'>
-                <ul class='nav navbar-nav ml-auto'>
-                  <li class='nav-item active'>
-                    <a class='nav-link' href='#'>Page</a>
-                  </li>
-                  <li class='nav-item'>
-                    <a class='nav-link' href='#'>Page</a>
-                  </li>
-                  <li class='nav-item'>
-                    <a class='nav-link' href='#'>Page</a>
-                  </li>
-                  <li class='nav-item'>
-                    <a class='nav-link' href='#'>Page</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
+          <div class='collapse navbar-collapse' id='navbarSupportedContent'>
+            <ul class='nav navbar-nav ml-auto'>
+              <li class='nav-item'>
+                <a href=''>
+                  <i class='fas fa-comments'></i>
+                </a>
+              </li>
+              <li class='nav-item'>
+                <a href=''>
+                  <i class='fas fa-envelope'></i>
+                </a>
+              </li>
+              <li class='nav-item'>
+                <a href=''>
+                  <i class='fas fa-user-tie'></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class='page-content'>
   ")->render();
 
   //$elasticSearch = new Components\Elasticsearch("logstash_test");

@@ -137,6 +137,7 @@ namespace Core {
           <script src='../../Core/public/js/sfc-loader.js'></script>
           <script src='../../Core/public/js/mitt.umd.js'></script>
           <script src='../../Core/public/js/dia.js'></script>
+          <script src='https://kit.fontawesome.com/e11c679b37.js' crossorigin='anonymous'></script>
         ";
       }
 
