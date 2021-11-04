@@ -19,6 +19,7 @@
           $children[] = [
             "name" => $flatItemSub['name'],
             "link" => $flatItemSub['link'],
+            "icon" => $flatItemSub['icon'],
           ];
         }
       }
@@ -26,6 +27,7 @@
       $menuItems[] = [
         "name" => $flatItem['name'],
         "link" => $flatItem['link'],
+        "icon" => $flatItem['icon'],
         "childrens" => $children,
       ];
     }
@@ -47,7 +49,7 @@
       $navigationHTML .= "
         <li class='active'>
           <a href='#menu_{$menuItem['link']}' data-toggle='collapse' aria-expanded='false' class='dropdown-toggle'>
-            <i class='fas fa-home'></i>
+            <i class='fas fa-{$menuItem['icon']}'></i>
             {$menuItem['name']}
           </a>
           <ul class='collapse list-unstyled' id='menu_{$menuItem['link']}'>
@@ -59,7 +61,7 @@
       $navigationHTML .= "
         <li>
           <a href='{$menuItem['link']}'>
-            <i class='fas fa-image'></i>
+            <i class='fas fa-{$menuItem['icon']}'></i>
             {$menuItem['name']}
           </a>
         </li>
