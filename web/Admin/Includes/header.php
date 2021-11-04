@@ -85,7 +85,8 @@
         </li>
       </ul>
     </nav>
-    <div id='content'>
+    <div class='loader' style='display:none'>LAODING</div>
+    <div id='content' style='display:none'>
       <nav class='navbar navbar-expand-lg navbar-light bg-white'>
         <div class='container-fluid'>
           <button type='button' id='sidebarCollapse' class='btn btn-info'>

@@ -136,6 +136,15 @@
       <?php
         $dia->getScript();
       ?>
+
+      $( document ).ready(function() {
+        $('.loader').show();
+        setTimeout(function() {
+          $('#content').show();
+          $('.loader').hide();
+        }, 500)
+      });
+
     </script>
 
   <?php
