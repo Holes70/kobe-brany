@@ -1,6 +1,11 @@
 <?php
   global $db, $dia;
 
+  $elasticSearch = new Components\Elasticsearch("logstash_test");
+  $elasticSearch->searchFields(['title', 'content']);
+
+  $profileCard = new Components\ProfileCard();
+
   // Nacitaj Navbar
   $navbarList = $db->dbSelect(
     tableName: 'dia_navbar',
@@ -95,7 +100,9 @@
           <button class='btn btn-dark d-inline-block d-lg-none ml-auto' type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
             <i class='fas fa-align-justify'></i>
           </button>
-
+          <div class='ml-3'>
+            {$elasticSearch->show()}
+          </div>
           <div class='collapse navbar-collapse' id='navbarSupportedContent'>
             <ul class='nav navbar-nav ml-auto'>
               <li class='nav-item'>
@@ -108,10 +115,11 @@
                   <i class='fas fa-envelope'></i>
                 </a>
               </li>
+              <li class='nav-item pl-4 pr-2'>
+                <div class='divider-v'></div>
+              </li>
               <li class='nav-item'>
-                <a href=''>
-                  <i class='fas fa-user-tie'></i>
-                </a>
+                {$profileCard->show()}
               </li>
             </ul>
           </div>

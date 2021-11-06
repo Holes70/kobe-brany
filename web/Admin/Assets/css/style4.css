@@ -30,6 +30,18 @@
   color: white;
 }
 
+.header-icon {
+  max-width: 45px;
+  max-height: 45px;
+}
+.header-icon img {
+  width: 100%;
+  border-radius: 50%;
+}
+.divider-v {
+  border: 1px solid black;
+  height: 100%;
+}
 .page-content {
 	margin: 2%;
 }
@@ -69,6 +81,8 @@ a:focus {
 }
 .nav-item {
 	margin-right: 15px;
+  line-height: 35px;
+  height: 35px;
 }
 .nav-item i {
   font-size: 30px;

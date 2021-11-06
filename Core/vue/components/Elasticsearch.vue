@@ -2,7 +2,7 @@
   <div v-if="index != 'offline'">
     <div class="form-inline">
       <input 
-        class="form-control col-lg-12 mt-5" 
+        class="form-control col-lg-12" 
         type="search" 
         placeholder="Search" 
         aria-label="Search"

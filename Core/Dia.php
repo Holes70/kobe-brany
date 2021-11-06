@@ -292,11 +292,11 @@ namespace Core {
       return $this->config['web']['pages'];
     }
 
-    public function web_files() {
-      return $this->config['web']['files'];
+    public function webFiles() {
+      return $this->dirRoot() . '/'. $this->config['web']['files'];
     }
 
-    public function dir_root() {
+    public function dirRoot() {
       return $this->config['dir']['root'];
     }
 
