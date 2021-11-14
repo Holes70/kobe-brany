@@ -6,7 +6,18 @@
       </div>
     </div>
     <div class='col-8'>
-      <p>{{ name }}</p>
+      <p>
+        <template v-if="nameOnClick['type'] == 'href'">
+          <a 
+            :href="nameOnClick['url']"
+          >
+            {{ name }}
+          </a>
+        </template>
+        <template v-else>
+          {{ name }}
+        </template>
+      </p>
     </div>
   </div>
 </template>
@@ -17,12 +28,14 @@
     data() {
       return {
         name: '',
-        img: ''
+        img: '',
+        nameOnClick: []
       }
     },
     mounted() {
       this.name = this.params['name'];
       this.img = this.params['img'];
+      this.nameOnClick = this.params['nameOnClick'];
     }
   }
 </script>

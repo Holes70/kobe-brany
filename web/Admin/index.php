@@ -96,6 +96,8 @@
           'dia-tiket': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/Tiket.vue', options)),
           'dia-table-card': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/TableCard.vue', options)),
           'dia-profile-card': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/ProfileCard.vue', options)),
+          'dia-profile-view': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/ProfileView.vue', options)),
+          'dia-social': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/Social.vue', options)),
           <?php
             foreach (\Core\Dia::$loadedWebComponents as $com) {
               echo "'$com': Vue.defineAsyncComponent( () => loadModule('./../Components/Admin/$com.vue', options)),";

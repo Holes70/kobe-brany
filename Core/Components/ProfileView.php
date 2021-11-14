@@ -2,11 +2,14 @@
 
 namespace Components {
 
-  class ProfileCard extends \Core\Component {
+  class ProfileView extends \Core\Component {
 
     private string $img = "profile.jpg";
     private string $name = "Firstname Lastname";
     private array $nameOnClick = [];
+
+    private string $desc = "";
+    private string $desc2 = "";
 
     public function __construct() {
       parent::__construct($this);
@@ -22,18 +25,24 @@ namespace Components {
       return $this;
     }
 
-    public function nameOnClick(array $params) {
-      $this->nameOnClick = $params;
+    public function desc(string $desc) {
+      $this->desc = $desc;
+      return $this;
+    }
+
+    public function desc2(string $desc) {
+      $this->desc2 = $desc;
       return $this;
     }
 
     public function show() {
       return "
-        <dia-profile-card :params='{
+        <dia-profile-view :params='{
           name: \"{$this->name}\",
           img: \"{$this->img}\",
-          nameOnClick: ".json_encode($this->nameOnClick)."
-        }'></dia-profile-card>
+          desc: \"{$this->desc}\",
+          desc2: \"{$this->desc2}\"
+        }'></dia-profile-view>
       ";
     }
 
