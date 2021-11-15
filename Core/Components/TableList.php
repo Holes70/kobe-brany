@@ -7,11 +7,10 @@ namespace Components {
     private $list = NULL;
     private array $columns = [];
     private array $addedColumns = [];
-    private array $conditions = [];
     private string $actionButton = "";
     private string $hideValue = "";
 
-    public function __construct(private string $tableName) {
+    public function __construct(public string $tableName) {
       parent::__construct($this);
     }
 
@@ -29,11 +28,6 @@ namespace Components {
       }
       return $this;
 
-    }
-
-    public function conditions(array $conditions) : object {
-      $this->conditions = $conditions;
-      return $this;
     }
 
     public function actionButton(array $params) : object {

@@ -8,7 +8,6 @@ namespace Components {
     private string $label = "Chart";
     private string $borderWidth = "1";
     private array $labels = [];
-    private array $data = [];
     private array $backgroundColor = [
       'rgba(255, 99, 132, 0.2)',
       'rgba(54, 162, 235, 0.2)',
@@ -37,11 +36,6 @@ namespace Components {
 
     public function labels(array $labels): object {
       $this->labels = $labels;
-      return $this;
-    }
-
-    public function data(array $data): object {
-      $this->data = $data;
       return $this;
     }
 

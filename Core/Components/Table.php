@@ -7,7 +7,6 @@ namespace Components {
 
     public $json;
 
-    private $table_name; 
     private $columns = array();
     private $buttons = array();
     private $class;
@@ -17,14 +16,11 @@ namespace Components {
     private $formInputs;
 
     // New properties from 31.10.2021
-    private array $data = [];
     private int $count = 10;
     private int $currentPage = 0;
 
-    public function __construct($table_name) {
+    public function __construct(public String $tableName) {
       parent::__construct($this);
-
-      $this->table_name = $table_name;
     }
 
     public function sql() {
@@ -71,12 +67,6 @@ namespace Components {
       return $this;
     }
 
-    // New methods from 31.10.2021
-    public function data(array $data): object {
-      $this->data = $data;
-      return $this;
-    }
-
     public function count(int $count): object {
       $this->count = $count;
       return $this;
@@ -99,7 +89,7 @@ namespace Components {
           :table_params='{
             columns: $columnsJSON,
             buttons: $buttonsJSON,
-            table_name: \"{$this->table_name}\",
+            tableName: \"{$this->tableName}\",
             style: \"{$this->style}\",
             class: \"{$this->class}\",
             formInputs: $formInputs,

@@ -4,15 +4,12 @@ namespace Components {
 
   class Listgroup extends \Core\Component {
     
-    private array $data = [];
     private string $title = '';
     private string $bubble = '';
     private string $url = '';
 
-    public function __construct(array $data) {
+    public function __construct(public array $data) {
       parent::__construct($this);
-
-      $this->data = $data;
     }
 
     public function title(string $title): object {
