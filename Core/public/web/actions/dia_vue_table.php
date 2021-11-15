@@ -7,7 +7,7 @@
   if (isset($data->params->table_id)) {
     echo json_encode(
       $db->select(
-        $data->params->table_name,
+        $data->params->tableName,
         [
           "where" => "id = {$data->params->table_id}"
         ],
@@ -21,7 +21,7 @@
       $buttons = (array)$data->params->buttons;
 
       $totalCount = $db->dbSelect(
-        tableName: $data->params->table_name, 
+        tableName: $data->params->tableName, 
         conditions: ["select" => "count(*) as count"]
       );
 
@@ -32,13 +32,13 @@
       );
 
       $data = $db->dbSelect(
-        tableName: $data->params->table_name,
+        tableName: $data->params->tableName,
         conditions: [
           "limit" => "{$data->params->count} OFFSET {$pagination['offset']}"
         ]
       );
 
-      if (array_key_exists('table_name', $data)) {
+      if (array_key_exists('tableName', $data)) {
         array_pop($data);
       }
 

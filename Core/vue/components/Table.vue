@@ -16,7 +16,7 @@
             </template>
             <template v-else v-for="(button) in items[index]" :key="button">
               <button v-if="button == 'delete'" @click="itemDelete(items['id'])" class='btn btn-danger mr-2'>🗑</button>
-              <button type="button" v-else @click="itemEdit(items['id'])" class='btn btn-warning mr-2' data-toggle="modal" :data-target="table_name_id">✎</button>
+              <button type="button" v-else @click="itemEdit(items['id'])" class='btn btn-warning mr-2' data-toggle="modal" :data-target="tableName_id">✎</button>
             </template>
           </td>
         </tr>
@@ -42,11 +42,11 @@
         </li>
       </ul>
     </nav>
-    <div v-show="showEdit" :id="table_name_id" class="modal" style="display:block">
+    <div v-show="showEdit" :id="tableName_id" class="modal" style="display:block">
       <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Table: <b>{{ table_name }}</b></h5>
+            <h5 class="modal-title" id="exampleModalLabel">Table: <b>{{ tableName }}</b></h5>
             <button @click="showEdit=false" type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -74,8 +74,8 @@
         data: [],
         columns: [],
         buttons: [],
-        table_name: '',
-        href_table_name: '',
+        tableName: '',
+        href_tableName: '',
         showEdit: false,
         dataEdit: [],
         formatter: [],
@@ -84,7 +84,7 @@
         //formInputs: [],
         columnStyle: [],
         rowStyle: [],
-        table_name_id: '',
+        tableName_id: '',
         pages: 0
       }
     },
@@ -111,7 +111,7 @@
           this.dataEdit = params.id;
           axios.post('index.php?json_action=dia_vue_select', {
             params: {
-              table_name: this.table_params['table_name'],
+              tableName: this.table_params['tableName'],
               table_id: params.id,
               form_inputs: this.table_params['formInputs'],
             }
@@ -140,7 +140,7 @@
         function(isConfirm) {
           if (isConfirm) {
             axios.post('index.php?json_action=dia_delete', {
-              table_name: table.table_name,
+              tableName: table.tableName,
               id: table_id
             })
             swal({
@@ -161,7 +161,7 @@
       editFormSave() {
         axios.put('index.php?json_action=dia_vue_update', {
           params: {
-            table_name: this.table_name,
+            tableName: this.tableName,
             data: this.dataEdit
           }
         });
@@ -178,7 +178,7 @@
         console.log(this.table_params['data'].length);
       } else {
         this.loadData();
-        this.table_name = this.table_params['table_name'];
+        this.tableName = this.table_params['tableName'];
       }
     },
   };

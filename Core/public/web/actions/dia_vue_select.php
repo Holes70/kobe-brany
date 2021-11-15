@@ -7,13 +7,13 @@
   if (isset($data->params->table_id)) {
     echo json_encode(
       $db->select(
-        $data->params->table_name,
+        $data->params->tableName,
         [
           "where" => "id = {$data->params->table_id}"
         ],
         $data->params->form_inputs,
       )
     );
-  } else echo json_encode($db->select($data->params->table_name));
+  } else echo json_encode($db->select($data->params->tableName));
 
 ?>

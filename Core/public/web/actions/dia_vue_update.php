@@ -4,6 +4,6 @@
 
   $data = $db->request_data();
 
-  $db->update($data->params->table_name, $data->params);
+  $db->update($data->params->tableName, $data->params);
 
 ?>

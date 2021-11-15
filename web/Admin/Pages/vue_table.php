@@ -29,6 +29,6 @@
   $alert = (new \Components\Alert("Totto je test alert"))->render();
 
   $table_products = new Components\Table("products");
-  $table_products->columns(['id' => 'ID', 'name' => 'Meno', 'price|$' => 'Cena'])->buttons(['edit'])->render();
+  $table_products->columns(['id' => 'ID', 'name' => 'Meno', 'price|$' => 'Cena'])->render();
 
 
