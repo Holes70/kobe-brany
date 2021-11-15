@@ -6,8 +6,11 @@
           <img src='profile.jpg' alt='profile' style='width:100%'>
         </div>
       </div>
-      <div class='col-8'>
+      <div class='col-6'>
         <p>{{ data.first_name }}</p>
+      </div>
+      <div class='col-2 logout'>
+        <i @click="logout()" class="fas fa-sign-out-alt"></i>
       </div>
     </template>
     <template v-else>
@@ -41,7 +44,15 @@
           if (res.data.status != 'fail') {
             this.data = res.data;
           }
-          console.log(this.data);
+        })
+      },
+      logout() {
+        axios.post('index.php?action=dia_user_logout', {
+          params: {
+            logout: true
+          }
+        }).then((res) => {
+          window.location.href = res.data;
         })
       }
     },

@@ -26,7 +26,7 @@ namespace Core\Controllers {
 
     public function checkIfUserLogged(&$page) {
       if ($page == "login") {
-        if (!empty($getLogged)) {
+        if (!empty($this->getLogged())) {
           $page = "profile";
         }
       }
