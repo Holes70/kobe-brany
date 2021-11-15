@@ -15,6 +15,7 @@ namespace Core {
     // Common component properties
     public string $tableName = "";
     public array $conditions = [];
+    public array $data = [];
 
     /**
      * Specific component[e.g.: Alert] 
@@ -166,6 +167,11 @@ namespace Core {
 
     public function conditions(array $conditions) {
       $this->conditions = $conditions;
+      return $this;
+    }
+
+    public function data(array $data) {
+      $this->data = $data;
       return $this;
     }
 

@@ -1,14 +1,16 @@
 <template>
-  <div class='card'>
-    <div class='card-body'>
-      <div class='d-flex flex-column align-items-center text-center'>
-        <img src='https://bootdey.com/img/Content/avatar/avatar7.png' alt='Admin' class='rounded-circle' width='150'>
-        <div class='mt-3'>
-          <h4>{{ name }}</h4>
-          <p v-html="desc" class='text-secondary mb-1'></p>
-          <p v-html="desc2" class='text-muted font-size-sm'></p>
-          <button class='btn btn-primary'>Follow</button>
-          <button class='btn btn-outline-primary'>Message</button>
+  <div v-for='item in data' :key='item.id'>
+    <div class='card'>
+      <div class='card-body'>
+        <div class='d-flex flex-column align-items-center text-center'>
+          <img src='https://bootdey.com/img/Content/avatar/avatar7.png' alt='Admin' class='rounded-circle' width='150'>
+          <div class='mt-3'>
+            <h4>{{ item.name }}</h4>
+            <p v-html="item.description" class='text-secondary mb-1'></p>
+            <p v-html="item.description2" class='text-muted font-size-sm'></p>
+            <!--<button class='btn btn-primary'>Follow</button>
+            <button class='btn btn-outline-primary'>Message</button>-->
+          </div>
         </div>
       </div>
     </div>
@@ -20,17 +22,34 @@
     props: ['params'],
     data() {
       return {
-        name: '',
-        img: '',
-        desc: '',
-        desc2: ''
+        data: [],
+        tableName: "",
+        conditions: []
+      }
+    },
+    methods: {
+      loadData() {
+        axios.post('index.php?json_action=dia_select', {
+          params: {
+            tableName: this.tableName,
+            conditions: this.conditions
+          }
+        }).then((res) => {
+          if (res.data.status != 'fail') {
+            this.data = res.data;
+          }
+        })
       }
     },
     mounted() {
-      this.name = this.params['name'];
-      this.img = this.params['img'];
-      this.desc = this.params['desc'];
-      this.desc2 = this.params['desc2'];
+      this.tableName = this.params['tableName'];
+      this.conditions = this.params['conditions'];
+
+      if (this.params['data'].length > 0) {
+        this.data = this.params['data'];
+      } else {
+        this.loadData();
+      }
     }
   }
 </script>

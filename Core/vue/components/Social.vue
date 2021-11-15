@@ -1,6 +1,6 @@
 <template>
    <ul class='list-group list-group-flush'>
-    <li v-for='item in data' :key='item.title' class='list-group-item d-flex justify-content-between align-items-center flex-wrap'>
+    <li v-for='item in data' :key='item.id' class='list-group-item d-flex justify-content-between align-items-center flex-wrap'>
       <h6 class='mb-0'>
         <i class="fab fa-facebook"></i>
         {{ item.title }}
