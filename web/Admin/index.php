@@ -134,11 +134,11 @@
       ?>
 
       $( document ).ready(function() {
-        $('.loader').show();
+        $('#loader').show();
         setTimeout(function() {
           $('.page-content').show();
-          $('.loader').hide();
-        }, 500)
+          $('#loader').hide();
+        }, 700)
       });
 
     </script>
