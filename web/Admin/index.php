@@ -116,16 +116,6 @@
               ?>
               </div><!-- end id content in header -->
             </div>
-            <draggable 
-              v-model="myArray" 
-              group="people" 
-              @start="drag=true" 
-              @end="drag=false" 
-              item-key="id">
-              <template #item="{element}">
-                <div>{{element.name}}</div>
-              </template>
-            </draggable>
           </body>
         `,
         data() {
@@ -143,7 +133,7 @@
       $( document ).ready(function() {
         $('.loader').show();
         setTimeout(function() {
-          $('#content').show();
+          $('.page-content').show();
           $('.loader').hide();
         }, 500)
       });

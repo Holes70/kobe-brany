@@ -90,8 +90,7 @@
         </li>
       </ul>
     </nav>
-    <div class='loader' style='display:none'>LAODING</div>
-    <div id='content' style='display:none'>
+    <div id='content'>
       <nav class='navbar navbar-expand-lg navbar-light bg-white'>
         <div class='container-fluid'>
           <button type='button' id='sidebarCollapse' class='btn btn-info'>
@@ -125,7 +124,8 @@
           </div>
         </div>
       </nav>
-      <div class='page-content'>
+      <div class='loader' style='display:none'>LAODING</div>
+      <div class='page-content' style='display:none'>
   ")->render();
 
   //$elasticSearch = new Components\Elasticsearch("logstash_test");
