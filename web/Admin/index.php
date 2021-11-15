@@ -35,6 +35,7 @@
       if ($dia->installed) $dia->getPageHeader();
       // OBSAH
       $page = (isset($_GET['webPage']) && $_GET['webPage'] != '') ? $_GET['webPage'] : $dia->web_home();
+      $userController->checkIfUserLogged($page);
 
       foreach ($dia->pages as $podstranka) {
         if ($podstranka != '' && $podstranka == $page) {

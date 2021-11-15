@@ -8,6 +8,11 @@ namespace Components {
       parent::__construct($this);
     }
 
+    public function loginInput(string $loginInput) {
+      $this->data['loginInput'] = $loginInput;
+      return $this;
+    }
+
     public function show() {
       return "
         <dia-login :params='{

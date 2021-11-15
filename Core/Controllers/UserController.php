@@ -8,6 +8,10 @@ namespace Core\Controllers {
       $_SESSION['logged'] = true;
     }
 
+    public function setUser(array $data) {
+      $_SESSION['user'] = $data;
+    }
+
     public function destroyLogged() {
       unset($_SESSION['logged']);
     }
@@ -17,7 +21,15 @@ namespace Core\Controllers {
     }
 
     public function getLoggedUser() {
-      return ["name" => "Jozef"];
+      return isset($_SESSION['user']) ? reset($_SESSION['user']) : [];
+    }
+
+    public function checkIfUserLogged(&$page) {
+      if ($page == "login") {
+        if (!empty($getLogged)) {
+          $page = "profile";
+        }
+      }
     }
 
   }

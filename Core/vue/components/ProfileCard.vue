@@ -7,7 +7,7 @@
         </div>
       </div>
       <div class='col-8'>
-        <p>{{ data.name }}</p>
+        <p>{{ data.first_name }}</p>
       </div>
     </template>
     <template v-else>
@@ -41,6 +41,7 @@
           if (res.data.status != 'fail') {
             this.data = res.data;
           }
+          console.log(this.data);
         })
       }
     },

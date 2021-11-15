@@ -269,6 +269,7 @@ namespace Core\Classes {
       if (array_key_exists("where", $conditions)) {
         $i = 0;
         foreach ($conditions['where'] as $column => $value) {
+          $value = is_string($value) ? "'$value'" : $value;
           if ($i == 0) {
             $query = $query . " WHERE {$column} = {$value}";
             $i++;
