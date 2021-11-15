@@ -10,11 +10,12 @@
 
   // SUBOROVE NASTAVENIA
   $config['dir']['root']        = dirname(__FILE__);
+  $config['dir']['web']         = dirname(__FILE__) . "/web/Admin";
 
   // NASTAVENIA DIE
   $config['web']['includes']    = "Includes";
   $config['web']['pages']       = "Pages";
-  $config['web']['actions']     = "actions";
+  $config['web']['actions']     = "Actions";
   $config['web']['home']        = "home";
   $config['web']['files']       = "files";
   $config['web']['bootstrap']   = TRUE;
