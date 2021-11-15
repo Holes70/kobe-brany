@@ -85,7 +85,7 @@
         if (this.tableName == params.tableName) {
           axios.post('index.php?json_action=dia_select', {
             params: {
-              table_name: params.tableName,
+              tableName: params.tableName,
               conditions: params.conditions
             }
           }).then((res) => {

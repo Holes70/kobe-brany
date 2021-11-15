@@ -12,6 +12,10 @@ namespace Core {
 
     public $render = FALSE;
 
+    // Common component properties
+    public string $tableName = "";
+    public array $conditions = [];
+
     /**
      * Specific component[e.g.: Alert] 
      * object push into Component constructor
@@ -156,6 +160,13 @@ namespace Core {
 
     public function vueJson($data) {
       return str_replace("\"", "\'", json_encode($data));
+    }
+
+    // Common components methods
+
+    public function conditions(array $conditions) {
+      $this->conditions = $conditions;
+      return $this;
     }
 
   }

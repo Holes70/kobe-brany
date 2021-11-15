@@ -36,7 +36,7 @@
         if (this.tableName == params.tableName) {
           axios.post('index.php?json_action=dia_select', {
             params: {
-              table_name: params.tableName,
+              tableName: params.tableName,
               conditions: params.conditions
             }
           }).then((res) => {
@@ -101,7 +101,7 @@
           var thisDropzone = this;
           axios.post('index.php?json_action=dia_select', {
             params: {
-              table_name: _this.tableName,
+              tableName: _this.tableName,
               conditions: _this.conditions
             }
           }).then((res) => {

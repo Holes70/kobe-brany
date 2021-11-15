@@ -6,7 +6,7 @@
 
   try {
     echo json_encode($db->dbSelect(
-      $data->params->table_name,
+      $data->params->tableName,
       (array)$data->params->conditions
     ));
   } catch(\Exception $e) {
