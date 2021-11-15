@@ -13,7 +13,7 @@ namespace Core\Controllers {
     }
 
     public function getLogged() {
-      return $_SESSION['logged'];
+      return isset($_SESSION['logged']) ? $this->getLoggedUser() : [];
     }
 
     public function getLoggedUser() {

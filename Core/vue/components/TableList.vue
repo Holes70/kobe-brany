@@ -27,10 +27,10 @@
         type: String,
       },
       list: {
-        type: Array
+        type: Object
       },
       columns: {
-        type: Array
+        type: Object
       },
       actionButton: {
         type: Object

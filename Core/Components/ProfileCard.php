@@ -4,35 +4,23 @@ namespace Components {
 
   class ProfileCard extends \Core\Component {
 
-    private string $img = "profile.jpg";
-    private string $name = "Firstname Lastname";
-    private array $nameOnClick = [];
+    public int $idUser = 0;
 
-    public function __construct() {
+    public function __construct(public String $tableName) {
       parent::__construct($this);
     }
 
-    public function img(string $img) {
-      $this->img = $img;
-      return $this;
-    }
-
-    public function name(string $name) {
-      $this->name = $name;
-      return $this;
-    }
-
-    public function nameOnClick(array $params) {
-      $this->nameOnClick = $params;
+    public function idUser(int $idUser) {
+      $this->idUser = $idUser;
       return $this;
     }
 
     public function show() {
       return "
         <dia-profile-card :params='{
-          name: \"{$this->name}\",
-          img: \"{$this->img}\",
-          nameOnClick: ".json_encode($this->nameOnClick)."
+          tableName: \"{$this->tableName}\",
+          data: ".json_encode($this->data).",
+          idUser: {$this->idUser}
         }'></dia-profile-card>
       ";
     }

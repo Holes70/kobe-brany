@@ -21,7 +21,7 @@
   export default {
     props: {
       params: {
-        type: Array
+        type: Object
       }
     },
     data() {

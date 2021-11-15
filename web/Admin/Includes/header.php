@@ -4,11 +4,11 @@
   $elasticSearch = new Components\Elasticsearch("logstash_test");
   $elasticSearch->searchFields(['title', 'content']);
 
-  $profileCard = new Components\ProfileCard();
-  $profileCard->nameOnClick([
+  $profileCard = new Components\ProfileCard("users");
+  /*$profileCard->nameOnClick([
     'type' => 'href', // Type of 
     'url' => 'profile' // Link
-  ]);
+  ]);*/
 
   // Nacitaj Navbar
   $navbarList = $db->dbSelect(
