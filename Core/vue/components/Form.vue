@@ -65,7 +65,7 @@
         this.validateRequiredInputs(); 
         
         if (this.errors.length == 0) {
-          axios.post('index.php?json_action=dia_insert', {
+          axios.post('index.php?action=dia_insert', {
             table_name: this.form_params['table_name'],
             data: this.inputs
           }).then((res) => {

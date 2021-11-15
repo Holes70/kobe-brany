@@ -33,7 +33,7 @@
     },
     methods: {
       loadData() {
-        axios.post('index.php?json_action=dia_select', {
+        axios.post('index.php?action=dia_select', {
           params: {
             tableName: this.tableName,
             conditions: this.conditions

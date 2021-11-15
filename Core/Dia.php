@@ -244,14 +244,13 @@ namespace Core {
       }
     }
 
-    public function json_action_find() {
-      
-      $json_action = isset($_GET['json_action']) ? $_GET['json_action'] : '';
+    public function AjaxAction() {
+      $action = isset($_GET['action']) ? $_GET['action'] : '';
 
-      if ((strstr($json_action, '_', true)) == "dia") {
-        return include ("{$this->rootDir}/Core/public/web/actions/" . $json_action . ".php");
+      if ((strstr($action, '_', true)) == "dia") {
+        return include ("{$this->rootDir}/Core/Actions/" . $action . ".php");
       } else {
-        return include ("web/{$this->config['web']['actions']}/" . $json_action . ".php");
+        return include ($this->getWebDir() . "/{$this->config['web']['actions']}/" . $action . ".php");
       }
     }
 
@@ -298,6 +297,10 @@ namespace Core {
 
     public function dirRoot() {
       return $this->config['dir']['root'];
+    }
+
+    public function getWebDir() {
+      return $this->config['dir']['web'];
     }
 
     // TESTOVACIE FUNKCIE

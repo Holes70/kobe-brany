@@ -83,7 +83,7 @@
       },
       action(params) {
         if (this.tableName == params.tableName) {
-          axios.post('index.php?json_action=dia_select', {
+          axios.post('index.php?action=dia_select', {
             params: {
               tableName: params.tableName,
               conditions: params.conditions

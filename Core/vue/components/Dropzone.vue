@@ -3,7 +3,7 @@
     {{ table_name }}
     <form 
       id='dia-dropzone' 
-      action="index.php?json_action=dia_upload" 
+      action="index.php?action=dia_upload" 
       class="dropzone">
     </form>
 
@@ -34,7 +34,7 @@
     methods: {
       action(params) {
         if (this.tableName == params.tableName) {
-          axios.post('index.php?json_action=dia_select', {
+          axios.post('index.php?action=dia_select', {
             params: {
               tableName: params.tableName,
               conditions: params.conditions
@@ -79,7 +79,7 @@
       },
       removeAllFiles() {
         axios.post(
-          'index.php?json_action=dia_delete',
+          'index.php?action=dia_delete',
           {
             table_name: this.tableName,
             id: this.uploadedFiles
@@ -99,7 +99,7 @@
       this.dropzone = new Dropzone("#dia-dropzone", {
        init: function() {
           var thisDropzone = this;
-          axios.post('index.php?json_action=dia_select', {
+          axios.post('index.php?action=dia_select', {
             params: {
               tableName: _this.tableName,
               conditions: _this.conditions
@@ -140,7 +140,7 @@
         });
 
         if (uploadFile == true) {
-          axios.post('index.php?json_action=dia_insert', {
+          axios.post('index.php?action=dia_insert', {
             'table_name': this.tableName,
             'data': {
               'user_id': 1,

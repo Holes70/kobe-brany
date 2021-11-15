@@ -93,7 +93,7 @@
       // NACITANIE DAT ZO ZADANEJ TABULKY
       loadData() {
         axios.post(
-          'index.php?json_action=dia_vue_table', 
+          'index.php?action=dia_vue_table', 
           { params: this.table_params }
         ).then((res) => {
           this.data = res.data.table_data;
@@ -109,7 +109,7 @@
         if (params.success) {
           this.showEdit = 'block';
           this.dataEdit = params.id;
-          axios.post('index.php?json_action=dia_vue_select', {
+          axios.post('index.php?action=dia_vue_select', {
             params: {
               tableName: this.table_params['tableName'],
               table_id: params.id,
@@ -139,7 +139,7 @@
         },
         function(isConfirm) {
           if (isConfirm) {
-            axios.post('index.php?json_action=dia_delete', {
+            axios.post('index.php?action=dia_delete', {
               tableName: table.tableName,
               id: table_id
             })
@@ -159,7 +159,7 @@
         this.showEditFormFunc({ success: true, id: table_id });
       },
       editFormSave() {
-        axios.put('index.php?json_action=dia_vue_update', {
+        axios.put('index.php?action=dia_vue_update', {
           params: {
             tableName: this.tableName,
             data: this.dataEdit

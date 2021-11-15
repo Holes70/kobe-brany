@@ -74,7 +74,7 @@
         if (params.success) {
           this.showEdit = 'block';
           this.dataEdit = params.id;
-          axios.post('index.php?json_action=dia_vue_select', {
+          axios.post('index.php?action=dia_vue_select', {
             params: {
               table_name: this.table_params['table_name'],
               table_id: params.id,
@@ -105,7 +105,7 @@
         },
         function(isConfirm) {
           if (isConfirm) {
-            axios.post('index.php?json_action=dia_delete', {
+            axios.post('index.php?action=dia_delete', {
               table_name: table.table_name,
               id: table_id
             })
@@ -127,7 +127,7 @@
         this.showEditFormFunc({ success: true, id: table_id });
       },
       editFormSave() {
-        axios.put('index.php?json_action=dia_vue_update', {
+        axios.put('index.php?action=dia_vue_update', {
           params: {
             table_name: this.table_name,
             data: this.dataEdit

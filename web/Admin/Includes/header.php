@@ -5,6 +5,10 @@
   $elasticSearch->searchFields(['title', 'content']);
 
   $profileCard = new Components\ProfileCard();
+  $profileCard->nameOnClick([
+    'type' => 'href', // Type of 
+    'url' => 'profile' // Link
+  ]);
 
   // Nacitaj Navbar
   $navbarList = $db->dbSelect(

@@ -51,7 +51,7 @@ export default {
   props: ['index', 'searchFields'],
   watch: {
     search(val) {
-      axios.post('index.php?json_action=dia_elasticsearch_get', {
+      axios.post('index.php?action=dia_elasticsearch_get', {
         search: val,
         index: this.index,
         searchFields: this.searchFields

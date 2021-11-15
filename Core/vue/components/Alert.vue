@@ -60,7 +60,7 @@ export default {
 
     deleteAlertAxios() {
       axios.post(
-        'index.php?json_action=dia_delete',
+        'index.php?action=dia_delete',
         {
           table_name: 'dia_alerts',
           id: this.alertId

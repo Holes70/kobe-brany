@@ -22,8 +22,9 @@
 
   $db = new \Core\Classes\DB();
   $vue = new \Core\Vue();
+  $userController = new \Core\Controllers\UserController;
 
-  if (!isset($_GET['json_action'])) {
+  if (!isset($_GET['action'])) {
 
     // HEAD
     $dia->daj_zahlavie();
@@ -154,8 +155,8 @@
     $dia->action_find();
 
   } else {
-    // HLADA AKCIE JSON
-    $dia->json_action_find();
+    // Ajax volania
+    $dia->AjaxAction();
   }
   ob_end_flush();
 ?>
