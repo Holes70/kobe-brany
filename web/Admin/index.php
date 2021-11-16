@@ -23,6 +23,7 @@
   $db = new \Core\Classes\DB();
   $vue = new \Core\Vue();
   $userController = new \Core\Controllers\UserController;
+  $webController = new \Core\Controllers\WebController;
 
   if (!isset($_GET['action'])) {
 
@@ -36,6 +37,7 @@
       // OBSAH
       $page = (isset($_GET['webPage']) && $_GET['webPage'] != '') ? $_GET['webPage'] : $dia->web_home();
       $userController->checkIfUserLogged($page);
+      $webController->setUrlForMemory($page);
 
       foreach ($dia->pages as $podstranka) {
         if ($podstranka != '' && $podstranka == $page) {
@@ -101,6 +103,7 @@
           'dia-profile-view': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/ProfileView.vue', options)),
           'dia-social': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/Social.vue', options)),
           'dia-login': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/Login.vue', options)),
+          'dia-memory': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/Memory.vue', options)),
           <?php
             foreach (\Core\Dia::$loadedWebComponents as $com) {
               echo "'$com': Vue.defineAsyncComponent( () => loadModule('./../Components/Admin/$com.vue', options)),";

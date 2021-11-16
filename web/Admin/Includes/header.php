@@ -1,6 +1,8 @@
 <?php
   global $db, $dia;
 
+  $memory = new Components\Memory();
+
   $elasticSearch = new Components\Elasticsearch("logstash_test");
   $elasticSearch->searchFields(['title', 'content']);
 
@@ -82,8 +84,8 @@
   $dia->template("
     <nav id='sidebar' class='bg-white'>
       <div class='sidebar-header'>
-        <h3 class='color-secondary'>Dia administration</h3>
-        <strong>BS</strong>
+        <h3 class='color-secondary'>Dia</h3>
+        <strong>Dia</strong>
       </div>
       <ul class='list-unstyled components'>
         {$navigationHTML}
@@ -128,6 +130,7 @@
           </div>
         </div>
       </nav>
+      {$memory->show()}
       <div id='loader' style='display:none'>
         <div class='loader'>
           <svg viewBox='0 0 80 80'>
