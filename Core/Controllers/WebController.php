@@ -2,7 +2,7 @@
 
 namespace Core\Controllers {
 
-  class WebController extends \Core\Classes\DB {
+  class WebController extends \Core\Dia {
 
     public function setMemory(string $url) {
       $_SESSION['memory'][$url] = $url;
@@ -38,6 +38,16 @@ namespace Core\Controllers {
       $this->setUrlForMemory($this->getCurrentPage());
 
       return $this->getAllMemory();
+    }
+
+    public function getPage() {
+      $pageToInclude = $this->getWebDir() . '/' . $this->getWebPages() . '/' . $this->getCurrentPage() . '.php';
+
+      if (!is_file($pageToInclude)) {
+        $pageToInclude = $this->getWebDir() . '/' . $this->getWebIncludes() . '/' . $this->getNotFound() . '.php';
+      }
+
+      return $pageToInclude;
     }
 
   }

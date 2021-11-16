@@ -18,6 +18,7 @@
   $config['web']['actions']     = "Actions";
   $config['web']['home']        = "home";
   $config['web']['files']       = "files";
+  $config['web']['notfound']    = "404";
   $config['web']['bootstrap']   = TRUE;
   $config['web']['vue']         = TRUE;
   $config['web']['vega']        = TRUE;
@@ -29,7 +30,7 @@
   // NASTAVENA HLAVICKY
   $config['head']['lang']       = "sk";
   $config['head']['charset']    = "utf-8";
-  $config['head']['css']        = ['sweetalert.css', /*'materialize.css'*/ 'style4.css'];
+  $config['head']['css']        = ['sweetalert.css', /*'materialize.css'*/ 'style4.css', 'notfound.css'];
   $config['head']['script']     = ['sweetalert.js', 'jquery.js', 'main.js'/*'materialize.js'*/];
 
   $config['dir']['admin'] = "{$config['dir']['root']}/web/{$config['web']['admin']}"

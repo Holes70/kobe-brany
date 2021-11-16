@@ -36,14 +36,15 @@
       if ($dia->installed) $dia->getPageHeader();
       // OBSAH
       $page = (isset($_GET['webPage']) && $_GET['webPage'] != '') ? $_GET['webPage'] : $dia->web_home();
+
+      // Ked je prihlaseny redirect na profile nie login
       $userController->checkIfUserLogged($page);
+
+      // Nastav memory
       $webController->setUrlForMemory($page);
 
-      foreach ($dia->pages as $podstranka) {
-        if ($podstranka != '' && $podstranka == $page) {
-          include "{$dia->config['dir']['root']}/web/Admin/{$dia->config['web']['pages']}/{$page}.php";
-        }
-      }
+      // Get page
+      include($webController->getPage());
     } else {
       include "Core/public/web/pages/install.php";
     }

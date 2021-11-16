@@ -283,11 +283,11 @@ namespace Core {
       return $this->config['web']['actions'];
     }
 
-    public function web_includes() {
+    public function getWebIncludes() {
       return $this->config['web']['includes'];
     }
 
-    public function web_pages() {
+    public function getWebPages() {
       return $this->config['web']['pages'];
     }
 
@@ -301,6 +301,10 @@ namespace Core {
 
     public function getWebDir() {
       return $this->config['dir']['web'];
+    }
+
+    public function getNotFound() {
+      return $this->config['web']['notfound'];
     }
 
     // TESTOVACIE FUNKCIE
