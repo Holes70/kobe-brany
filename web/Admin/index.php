@@ -105,6 +105,7 @@
           'dia-social': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/Social.vue', options)),
           'dia-login': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/Login.vue', options)),
           'dia-memory': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/Memory.vue', options)),
+          'dia-table-large': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/TableLarge.vue', options)),
           <?php
             foreach (\Core\Dia::$loadedWebComponents as $com) {
               echo "'$com': Vue.defineAsyncComponent( () => loadModule('./../Components/Admin/$com.vue', options)),";
