@@ -36,7 +36,7 @@ export default defineComponent({
 })*/
 
 //import { defineComponent } from 'vue'
-import { Vue3JsonEditor } from '../../../node_modules/vue3-json-editor/dist/vue3-json-editor.esm.mjs'
+import { Vue3JsonEditor } from '../../../node_modules/vue3-json-editor/dist/vue3-json-editor.esm.prod.mjs'
 
 export default {
   components: {
