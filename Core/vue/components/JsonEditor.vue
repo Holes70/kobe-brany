@@ -2,7 +2,6 @@
   <div>
     <json-editor-com
       v-model="data"
-      :show-btns="true"
       :expandedOnStart="true"
       @json-change="onJsonChange"
     />
