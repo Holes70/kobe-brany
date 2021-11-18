@@ -1,3 +1,3 @@
 <?php
 
-$vue->setData(["myArray" => [1,2,3]]); 
+$dia->template("<json-editor></json-editor>")->render(); 
