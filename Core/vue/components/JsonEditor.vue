@@ -1,11 +1,19 @@
 <template>
   <div>
     <json-editor-com
-      v-model="json"
+      v-model="data"
       :show-btns="true"
       :expandedOnStart="true"
       @json-change="onJsonChange"
     />
+  </div>
+  <div class="jsoneditor-btns">
+    <button
+      class="json-save-btn"
+      type="button"
+      @click="onSave()"
+      :disabled="error"
+    >Ulozit</button>
   </div>
 </template>
 
@@ -16,14 +24,55 @@ export default {
   components: {
     "json-editor-com": Vue3JsonEditor
   },
+  props: {
+    params: {
+      type: Object
+    }
+  },
   data() {
     return {
-      json: {}
+      data: [],
+      tableName: "",
+      conditions: []
     }
   },
   methods: {
     onJsonChange (value) {
       console.log('value:', value)
+    },
+    onSave() {
+      this.updateData();
+    },
+    updateData() {
+      axios.put('index.php?action=dia_update_input', {
+        params: {
+          tableName: this.tableName,
+          data: this.data
+        }
+      });
+    },
+    loadData() {
+      axios.post('index.php?action=dia_select&reset=true&unset=structure', {
+        params: {
+          tableName: this.tableName,
+          conditions: this.conditions
+        }
+      }).then((res) => {
+        if (res.data.status != 'fail') {
+          this.data = res.data;
+        }
+        console.log(this.data);
+      })
+    }
+  },
+  mounted() {
+    this.tableName = this.params['tableName'];
+    this.conditions = this.params['conditions'];
+
+    if (this.params['data'].length > 0) {
+      this.data = this.params['data'];
+    } else {
+      this.loadData();
     }
   }
 }

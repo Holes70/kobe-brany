@@ -1,11 +1,11 @@
 <?php
 
-  global $db;
+  global $db, $webController;
 
   $data = $db->request_data();
 
   try {
-    echo json_encode($db->dbSelect(
+    $webController->getJson($db->dbSelect(
       $data->params->tableName,
       (array)$data->params->conditions
     ));

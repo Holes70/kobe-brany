@@ -50,6 +50,29 @@ namespace Core\Controllers {
       return $pageToInclude;
     }
 
+    public function getJson(array $data) {
+      $dataToArray = $data;
+
+      if ($this->checkParamIfExists('reset')) {
+        $dataToArray = reset($data);
+      }
+
+      if ($this->checkParamIfExists('unset')) {
+        $dataToArray = $dataToArray[$this->getParam('unset')];
+      }
+
+      // Pozn. volam decode aj encode lebo v niektorych pripadoch nechcem vratit string ale object bez ""
+      echo json_encode(json_decode($dataToArray));
+    }
+
+    public function checkParamIfExists(string $param) {
+      return isset($_GET[$param]) ? true : false;
+    }
+
+    public function getParam(string $param) {
+      return isset($_GET[$param]) ? $_GET[$param] : "";
+    }
+
   }
 
 }
