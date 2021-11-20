@@ -61,8 +61,12 @@ namespace Core\Controllers {
         $dataToArray = $dataToArray[$this->getParam('unset')];
       }
 
+      if ($this->checkParamIfExists('json')) {
+        $dataToArray = json_decode($dataToArray);
+      }
+
       // Pozn. volam decode aj encode lebo v niektorych pripadoch nechcem vratit string ale object bez ""
-      echo json_encode(json_decode($dataToArray));
+      echo json_encode($dataToArray);
     }
 
     public function checkParamIfExists(string $param) {

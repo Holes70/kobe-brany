@@ -51,7 +51,7 @@ export default {
       });
     },
     loadData() {
-      axios.post('index.php?action=dia_select&reset=true&unset=structure', {
+      axios.post('index.php?action=dia_select&reset=true&unset=structure&json=true', {
         params: {
           tableName: this.tableName,
           conditions: this.conditions
