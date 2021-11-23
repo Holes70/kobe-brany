@@ -84,8 +84,8 @@
   $dia->template("
     <nav id='sidebar' class='bg-white'>
       <div class='sidebar-header'>
-        <h3 class='color-secondary'>Dia</h3>
-        <strong>Dia</strong>
+        <h3 class='color-secondary'>Admin</h3>
+        <strong>Admin</strong>
       </div>
       <ul class='list-unstyled components'>
         {$navigationHTML}
@@ -93,6 +93,12 @@
       <ul class='list-unstyled CTAs'>
         <li>
           <a href='systemove-nastavenia' class='system-settings'>Systémové nastavenia</a>
+        </li>
+        <li>
+          <a href='debug' style='background:#b7f57d'>JSON</a>
+        </li>
+        <li>
+          <a href='pisomka' style='background:#f5a97d'>Dropzone</a>
         </li>
       </ul>
     </nav>
