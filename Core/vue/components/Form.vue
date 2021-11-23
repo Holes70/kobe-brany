@@ -47,7 +47,7 @@
       return {
         inputs: [],
         showInputs: [],
-        table_name: '',
+        tableName: '',
         requiredInputs: [],
         errors: []
       };
@@ -66,7 +66,7 @@
         
         if (this.errors.length == 0) {
           axios.post('index.php?action=dia_insert', {
-            table_name: this.form_params['table_name'],
+            tableName: this.form_params['tableName'],
             data: this.inputs
           }).then((res) => {
             if (res.data ==  'success') {
@@ -79,7 +79,7 @@
     mounted() {
       this.inputs = this.form_params['inputs'];
       this.showInputs = this.form_params['showInputs'];
-      this.table_name = this.form_params['table_name'];
+      this.tableName = this.form_params['tableName'];
       this.requiredInputs = this.form_params['requiredInputs'];
     },
   };

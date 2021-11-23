@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{ table_name }}
+    {{ tableName }}
     <form 
       id='dia-dropzone' 
       action="index.php?action=dia_upload" 
@@ -81,7 +81,7 @@
         axios.post(
           'index.php?action=dia_delete',
           {
-            table_name: this.tableName,
+            tableName: this.tableName,
             id: this.uploadedFiles
           }
         ).then(() => {
@@ -141,7 +141,7 @@
 
         if (uploadFile == true) {
           axios.post('index.php?action=dia_insert', {
-            'table_name': this.tableName,
+            'tableName': this.tableName,
             'data': {
               'user_id': 1,
               'test_id': 1,

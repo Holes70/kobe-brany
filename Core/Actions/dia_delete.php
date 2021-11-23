@@ -11,7 +11,7 @@
    * @return TRUE
   */
   $db->delete(
-    $data->table_name, 
+    $data->tableName, 
     ['id' => $data->id]
   );
 

@@ -9,17 +9,8 @@
   <script type="module" src='index.js'></script>
   <script type="module" src='./esm/index.js'></script>
   <title>Document</title>
-    <div id='app'>
-      <test></test>
-      <test></test>
-      <test2></test2>
-    </div>
-    <div id='app2'></div>
 </head>
 <body>
-  
-<script>
-
-</script>
+  <h1>Tu bude showcase stranka</h1>
 </body>
 </html>

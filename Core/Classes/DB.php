@@ -54,7 +54,7 @@ namespace Core\Classes {
         } else if($showTableName == FALSE) {
           return $data;
         } else {
-          $data['table_name'] = $table;
+          $data['tableName'] = $table;
           return $data;
         }
       }
