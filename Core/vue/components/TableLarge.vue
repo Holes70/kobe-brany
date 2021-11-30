@@ -2,15 +2,14 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th v-for="col in tableColumns" :key="col" scope="col">{{ col }}</th>
       </tr>
     </thead>
     <tbody>
       <tr v-for='itemData in data' :key='itemData.id'>
-        <td v-for='item in itemData' :key='item.id'>{{ item }}</td>
+        <template v-for='(item, colName) in itemData' :key='item.id'>
+          <td v-if='checkBeforeRender(item, colName)'>{{ checkBeforeRender(item, colName) }}</td>
+        </template>
       </tr>
     </tbody>
   </table>
@@ -23,7 +22,10 @@
       return {
         data: [],
         tableName: "",
-        conditions: []
+        conditions: [],
+        tableColumns: [],
+        formColumns: [],
+        tableStructure: []
       }
     },
     methods: {
@@ -38,17 +40,48 @@
             this.data = res.data;
           }
         })
+      },
+      /*checkBeforeRender(item, colName) {
+        if (typeof this.tableColumns != "undefined") {
+          var tableColumnsKeys = Object.keys(this.tableColumns);
+          if (tableColumnsKeys.includes(colName)) {
+            return item;
+          }
+        } else {
+          return item;
+        }
+      },*/
+      checkBeforeRender(item, colName) {
+        //console.log(this.tableStructure);
+      },
+      loadTableStructure() {
+        axios.post('index.php?action=dia_select&reset=true&unset=structure&json=true', {
+          params: {
+            tableName: this.tableName,
+            conditions: this.conditions
+          }
+        }).then((res) => {
+          if (res.data.status != 'fail') {
+            this.tableStructure = res.data;
+          }
+          console.log(res);
+        })
       }
     },
     mounted() {
       this.tableName = this.params['tableName'];
       this.conditions = this.params['conditions'];
 
+      this.tableColumns = this.params['tableColumns'];
+      this.formColumns = this.params['formColumns'];
+
       if (this.params['data'].length > 0) {
         this.data = this.params['data'];
       } else {
         this.loadData();
       }
+
+       this.loadTableStructure();
     }
   }
 </script>
