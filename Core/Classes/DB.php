@@ -178,7 +178,7 @@ namespace Core\Classes {
       return TRUE;
     }
 
-    public function update($table = '', $data = array()) {
+    public function update(string $tableName = '', $data = []) {
       $data = (array) $data; $update = "";
       $data = (array) $data['data'];
 
@@ -195,7 +195,7 @@ namespace Core\Classes {
   
       $update = substr($update, 0, -2);
     
-      $query = "UPDATE {$table} SET {$update} WHERE id = $id";
+      $query = "UPDATE {$tableName} SET {$update} WHERE id = $id";
 
       if (!$this->con->query($query)) { 
         echo $this->con->error;
@@ -301,7 +301,7 @@ namespace Core\Classes {
       }
 
       // DEBUG QUERY HERE
-      var_dump($query);
+      //var_dump($query);
       //exit();
       $res = $this->con->query($query);
 

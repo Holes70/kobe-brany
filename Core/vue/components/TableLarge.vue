@@ -24,6 +24,7 @@
         tableName: "",
         conditions: [],
         tableColumns: [],
+        tableColumnsKeys: [],
         formColumns: [],
         tableStructure: []
       }
@@ -52,19 +53,32 @@
         }
       },*/
       checkBeforeRender(item, colName) {
-        //console.log(this.tableStructure);
+        if (this.checkIfShowInTable(colName)) {
+          return item;
+        }
+      },
+      /**
+       * Nacitavanie struktury tabulky
+       * TODO: Spravit to nejako dynamicky pre kazdu tabulku
+       */
+      checkIfShowInTable(colName) {
+        if (this.tableStructure[colName]) {
+          if (this.tableStructure[colName]['show_in_table']) {
+            return true;
+          }
+        }
       },
       loadTableStructure() {
         axios.post('index.php?action=dia_select&reset=true&unset=structure&json=true', {
           params: {
-            tableName: this.tableName,
+            tableName: "dia_tables",
             conditions: this.conditions
           }
         }).then((res) => {
           if (res.data.status != 'fail') {
             this.tableStructure = res.data;
+            this.tableColumnsKeys = Object.keys(this.tableStructure);
           }
-          console.log(res);
         })
       }
     },
