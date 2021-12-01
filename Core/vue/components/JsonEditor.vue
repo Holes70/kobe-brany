@@ -1,17 +1,16 @@
 <template>
   <div>
     <json-editor-com
-      v-model="data"
+      v-model="data" 
       :expandedOnStart="true"
-      @json-change="onJsonChange"
-    />
+      @json-change="onJsonChange()"
+    ></json-editor-com>
   </div>
   <div class="jsoneditor-btns">
     <button
       class="json-save-btn"
       type="button"
       @click="onSave()"
-      :disabled="error"
     >Ulozit</button>
   </div>
 </template>
@@ -36,8 +35,8 @@ export default {
     }
   },
   methods: {
-    onJsonChange (value) {
-      console.log('value:', value)
+    onJsonChange() {
+      console.log('value:');
     },
     onSave() {
       this.updateData();
@@ -51,6 +50,7 @@ export default {
           data: this.data
         }
       });
+      console.log(this.data);
     },
     loadData() {
       axios.post('index.php?action=dia_select&reset=true&unset=structure&json=true', {
