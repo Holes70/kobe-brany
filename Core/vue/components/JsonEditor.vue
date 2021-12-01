@@ -46,6 +46,8 @@ export default {
       axios.put('index.php?action=dia_update_input', {
         params: {
           tableName: this.tableName,
+          tableId: 1,
+          column: "structure",
           data: this.data
         }
       });

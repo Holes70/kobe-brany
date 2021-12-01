@@ -65,7 +65,6 @@ namespace Core\Controllers {
         $dataToArray = json_decode($dataToArray);
       }
 
-      // Pozn. volam decode aj encode lebo v niektorych pripadoch nechcem vratit string ale object bez ""
       echo json_encode($dataToArray);
     }
 

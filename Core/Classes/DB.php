@@ -178,11 +178,15 @@ namespace Core\Classes {
       return TRUE;
     }
 
-    public function update(string $tableName = '', $data = []) {
+    public function update(string $tableName = '', int $tableId = 0, $data = []) {
       $data = (array) $data; $update = "";
       $data = (array) $data['data'];
 
-      $id = (int) array_shift($data);
+      if ($tableId > 0) {
+        $id = $tableId;
+      } else {
+        $id = (int) array_shift($data);
+      }
 
       foreach ($data as $key => $value) {
         if (is_numeric($value)) {
@@ -328,6 +332,52 @@ namespace Core\Classes {
       } else {
         throw new \Exception($this->con->error);
       }
+    }
+
+    /*public function dbUpdate(string $tableName = '', int $tableId = 0, $data = []) {
+      $update = "";
+
+      if ($tableId < 1) {
+        throw new \Exception("TableId is incorrect or empty");
+      }
+
+      foreach ($data as $key => $value) {
+        if (is_numeric($value)) {
+          $value = (int) $value;
+          $update .= "$key=$value, ";
+        } else {
+          $update .= "$key='$value', ";
+        }
+      }
+  
+      $update = substr($update, 0, -2);
+    
+      $query = "UPDATE {$tableName} SET {$update} WHERE id = $id";
+
+      if (!$this->con->query($query)) { 
+        echo $this->con->error;
+        $this->error_function($this->con->errorr);
+      }
+    }*/
+
+    public function dbUpdateRow(string $tableName, int $rowId, string $column, $data) {
+      if (!$tableName) throw new \Exception("TableName is empty or incorrect");
+      if (!$rowId) throw new \Exception("RowId is empty or incorrect");
+      if (!$column) throw new \Exception("Column is empty or incorrect");
+      if (!$data) throw new \Exception("Data are empty or incorrect");
+
+      switch (gettype($data)) {
+        case "object":
+          $data = json_encode($data);
+        break;
+        case "array":
+          $data = json_encode($data);
+        break;
+      }
+
+      $query = "UPDATE {$tableName} SET {$column}='{$data}'";
+
+      if (!$this->con->query($query)) return $this->con->error;
     }
   }
 

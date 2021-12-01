@@ -4,6 +4,18 @@
 
   $data = $db->request_data();
 
-  $db->update($data->params->tableName, $data->params);
+  try {
+    $db->dbUpdateRow(
+      tableName: $data->params->tableName, 
+      rowId: $data->params->tableId,
+      column: $data->params->column,
+      data: $data->params->data
+    );
+  } catch(\Exception $e) {
+    echo json_encode([
+      "status" => "fail",
+      "message" => $e->getMessage()
+    ]);
+  }
 
 ?>
