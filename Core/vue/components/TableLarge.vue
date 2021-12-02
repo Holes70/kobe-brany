@@ -1,18 +1,38 @@
 <template>
-  <table class="table">
-    <thead>
-      <tr>
-        <th v-for="col in tableColumns" :key="col" scope="col">{{ col }}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for='itemData in data' :key='itemData.id'>
-        <template v-for='(item, colName) in itemData'>
-          <td :key='colName' v-if='checkBeforeRender(item, colName)'>{{ checkBeforeRender(item, colName) }}</td>
-        </template>
-      </tr>
-    </tbody>
-  </table>
+  <div>
+    <table v-show='!showEdit' class="table table-hover">
+      <thead>
+        <tr>
+          <th v-for="col in tableColumns" :key="col" scope="col">{{ col }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for='itemData in data' :key='itemData.id' @click="edit(itemData['id'])" style='cursor:pointer'>
+          <template v-for='(item, colName) in itemData'>
+            <td :key='colName' v-show='checkBeforeRender(item, colName)'>{{ checkBeforeRender(item, colName) }}</td>
+          </template>
+        </tr>
+      </tbody>
+    </table>
+    <div v-show='showEdit' class='card' style='height:750px;width:100%;'>
+        <p class="card-header">
+          <button @click='showEdit = !showEdit' class='btn'>
+            <i class="fas fa-arrow-left" aria-hidden="true"></i>
+          </button>
+        </p>
+        <div class="card-body">
+          <template v-for='itemData in data'>
+            <div v-if="itemData['id'] == showEditId" :key='itemData.id'>
+              <div v-for='(item, colName) in itemData' :key='colName' class="form-group row">
+                <label :for="colName" class="col-sm-2 col-form-label">{{ colName }}</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" :id="colName" :value="item">
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -26,7 +46,9 @@
         tableColumns: {},
         tableColumnsKeys: [],
         formColumns: [],
-        tableStructure: []
+        tableStructure: [],
+        showEdit: false,
+        showEditId: 0,
       }
     },
     methods: {
@@ -42,16 +64,6 @@
           }
         })
       },
-      /*checkBeforeRender(item, colName) {
-        if (typeof this.tableColumns != "undefined") {
-          var tableColumnsKeys = Object.keys(this.tableColumns);
-          if (tableColumnsKeys.includes(colName)) {
-            return item;
-          }
-        } else {
-          return item;
-        }
-      },*/
       checkBeforeRender(item, colName) {
         if (this.checkIfShowInTable(colName)) {
           // ak je v tabulke HODNOTA null tak vrat ' ' inak chybuje tabulka
@@ -69,6 +81,10 @@
             return true;
           }
         }
+      },
+      edit(showEditId) {
+        this.showEdit = true;
+        this.showEditId = showEditId;
       },
       loadTableStructure() {
         axios.post('index.php?action=dia_select&reset=true&unset=structure&json=true', {
