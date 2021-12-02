@@ -7,8 +7,8 @@
     </thead>
     <tbody>
       <tr v-for='itemData in data' :key='itemData.id'>
-        <template v-for='(item, colName) in itemData' :key='item.id'>
-          <td v-if='checkBeforeRender(item, colName)'>{{ checkBeforeRender(item, colName) }}</td>
+        <template v-for='(item, colName) in itemData'>
+          <td :key='colName' v-if='checkBeforeRender(item, colName)'>{{ checkBeforeRender(item, colName) }}</td>
         </template>
       </tr>
     </tbody>
@@ -23,7 +23,7 @@
         data: [],
         tableName: "",
         conditions: [],
-        tableColumns: [],
+        tableColumns: {},
         tableColumnsKeys: [],
         formColumns: [],
         tableStructure: []
@@ -54,7 +54,9 @@
       },*/
       checkBeforeRender(item, colName) {
         if (this.checkIfShowInTable(colName)) {
-          return item;
+          // ak je v tabulke HODNOTA null tak vrat ' ' inak chybuje tabulka
+          if (item) return item;
+          else return ' ';
         }
       },
       /**
@@ -77,7 +79,19 @@
         }).then((res) => {
           if (res.data.status != 'fail') {
             this.tableStructure = res.data;
+            
+            // Vytvara mena stlpcov podla dia_table
+            // show_in_table == true tak vypise
+            // name_in_table - nazov pre zobrazenie
+            // TODO: Data to neajko pekne von
+            var cols = {};
             this.tableColumnsKeys = Object.keys(this.tableStructure);
+            this.tableColumnsKeys.forEach((item) => {
+              if (this.tableStructure[item]['show_in_table']) {
+                cols[item] = this.tableStructure[item]['name_in_table'];
+              }
+            });
+            this.tableColumns = cols;
           }
         })
       }
