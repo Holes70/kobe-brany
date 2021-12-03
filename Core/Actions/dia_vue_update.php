@@ -4,6 +4,10 @@
 
   $data = $db->request_data();
 
-  $db->update($data->params->tableName, $data->params);
+  $db->update(
+    tableName: (string)$data->params->tableName,
+    rowId: (int)$data->params->rowId,
+    data: (array)$data->params->data
+  );
 
 ?>

@@ -178,12 +178,16 @@ namespace Core\Classes {
       return TRUE;
     }
 
-    public function update(string $tableName = '', int $tableId = 0, $data = []) {
-      $data = (array) $data; $update = "";
-      $data = (array) $data['data'];
+    public function update(string $tableName = '', int $rowId = 0, array $data = []) {
+      $update = "";
 
-      if ($tableId > 0) {
-        $id = $tableId;
+      if (!$tableName) throw new \Exception("TableName is empty or incorrect");
+      //if (!$rowId) throw new \Exception("RowId is empty or incorrect");
+      if (!$data) throw new \Exception("Data are empty or incorrect");
+
+      // Ak nie je zadane rowId vytiahni si z tabulky
+      if ($rowId > 0) {
+        $id = $rowId;
       } else {
         $id = (int) array_shift($data);
       }

@@ -8,37 +8,39 @@
       </thead>
       <tbody>
         <tr v-for='itemData in data' :key='itemData.id' @click="edit(itemData['id'])" style='cursor:pointer'>
-          <template v-for='(item, colName) in itemData' :key='colName'>
-            <td v-show="checkBeforeRender(item, colName, 'show_in_table')">{{ item }}</td>
+          <template v-for='(item, colName) in itemData'>
+            <td :key='colName' v-show="checkBeforeRender(item, colName, 'show_in_table')">{{ item }}</td>
           </template>
         </tr>
       </tbody>
     </table>
     
     <div v-show='showEdit' class='card' style='height:750px;width:100%;'>
-      <div class="row ml-1 mr-1" style="background:#0a6c91;padding:10px">
-        <div class="col-8">
-          <button @click='showEdit = !showEdit' class='btn btn-danger'>
-            <i class="fas fa-arrow-left" aria-hidden="true"></i>
-          </button>
+      <template v-for='itemData in data'>
+        <div v-if="itemData['id'] == showEditId" :key='itemData.id' class="row ml-1 mr-1" style="background:#0a6c91;padding:10px">
+          <div class="col-8">
+            <button @click='showEdit = !showEdit' class='btn btn-danger'>
+              <i class="fas fa-arrow-left" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="col-2">
+            <button @click="save(itemData)" class='btn btn-success'>
+              Ulozit
+            </button>
+          </div>
+          <div class="col-2">
+            <button @click="deleteItem(itemData['id'])" class='btn btn-danger'>
+              Vymazat
+            </button>
+          </div>
         </div>
-        <div class="col-2">
-          <button @click='showEdit = !showEdit' class='btn btn-success'>
-            Ulozit
-          </button>
-        </div>
-        <div class="col-2">
-          <button @click='showEdit = !showEdit' class='btn btn-danger'>
-            Vymazat
-          </button>
-        </div>
-      </div>
+      </template>
       <div class="card-body">
         <template v-for='itemData in data'>
           <div v-if="itemData['id'] == showEditId" :key='itemData.id'>
-            <template v-for='(item, colName) in itemData' :key='colName'>
-              <div v-show="checkBeforeRender(item, colName, 'show_in_form')" class="form-group row">
-                <label :for="colName" class="col-sm-2 col-form-label">{{ colName }}</label>
+            <template v-for='(item, colName) in itemData'>
+              <div :key='colName' v-show="checkBeforeRender(item, colName, 'show_in_form')" class="form-group row">
+                <label :for="colName" v-html="checkBeforeRenderReturnValue(tableColumns[colName], colName, 'show_in_form')" class="col-sm-2 col-form-label"/>
                 <div class="col-sm-9">
                   <div class="input-group mb-2">
                     <div v-if="checkBeforeRender(item, colName, 'required')" class="input-group-prepend">
@@ -95,6 +97,13 @@
           else return ' ';
         }
       },
+      checkBeforeRenderReturnValue(item, colName, structureParam) {
+        if (this.checkIfShowInTable(colName, structureParam)) {
+          // ak je v tabulke HODNOTA null tak vrat ' ' inak chybuje tabulka
+          if (item) return item;
+          else return "<i color='green'>" + colName + "</i>";
+        }
+      },
       /**
        * Nacitavanie struktury tabulky
        * TODO: Spravit to nejako dynamicky pre kazdu tabulku
@@ -110,8 +119,53 @@
         this.showEdit = true;
         this.showEditId = showEditId;
       },
-      save() {
-        console.log('save');
+      save(itemData) {
+        axios.put('index.php?action=dia_vue_update', {
+          params: {
+            tableName: this.tableName,
+            rowId: itemData['id'],
+            data: itemData
+          }
+        }).then(() => {
+          this.showEdit = false;
+          swal({
+            title: "Uložené",
+            text: "Zmeny boli uložené",
+            type: "success"
+          })
+        })
+      },
+      deleteItem(rowId) {
+        var table = this;
+        swal({
+          title: "Ste si istý?",
+          text: "Naozaj chcete vymazať tento záznam?",
+          type: "warning",
+          showCancelButton: true,
+          cancelButtonClass: "btn btn-secondary",
+          confirmButtonClass: "btn btn-danger",
+          confirmButtonText: "Áno",
+          cancelButtonText: "Nie",
+          closeOnConfirm: false,
+          closeOnCancel: false,
+        },
+        function(isConfirm) {
+          if (isConfirm) {
+            axios.post('index.php?action=dia_delete', {
+              tableName: table.tableName,
+              id: rowId
+            })
+            swal({
+              title: "Vymazané",
+              text: "Záznam bol vymazaný!",
+              type: "success"
+            })
+            table.loadData();
+            table.showEdit = false;
+          } else {
+            swal("Zrušené", "Záznam nebol vymazaný!", "warning") 
+          }
+        });
       },
       loadTableStructure() {
         axios.post('index.php?action=dia_select&reset=true&unset=structure&json=true', {
