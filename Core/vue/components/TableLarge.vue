@@ -48,7 +48,7 @@
                         <i class="fas fa-exclamation"></i>
                       </div>
                     </div>
-                    <input type="text" class="form-control" :id="colName" v-model="itemData[colName]">
+                    <input :type="getStructureValue(colName, 'type', 'text')" class="form-control" :id="colName" v-model="itemData[colName]">
                   </div>
                 </div>
               </div>
@@ -104,6 +104,14 @@
           else return "<i color='green'>" + colName + "</i>";
         }
       },
+      getStructureValue(colName, structureParam, defaultReturnParam) {
+        if (this.tableStructure[colName]) {
+          if (this.tableStructure[colName][structureParam]) {
+            if (this.tableStructure[colName][structureParam]) return this.tableStructure[colName][structureParam];
+            else return defaultReturnParam;
+          }
+        }
+      },
       /**
        * Nacitavanie struktury tabulky
        * TODO: Spravit to nejako dynamicky pre kazdu tabulku
@@ -130,8 +138,9 @@
           this.showEdit = false;
           swal({
             title: "Uložené",
-            text: "Zmeny boli uložené",
-            type: "success"
+            type: "success",
+            timer: 600,
+            showConfirmButton: false
           })
         })
       },
