@@ -9,7 +9,14 @@
       <tbody>
         <tr v-for='itemData in data' :key='itemData.id' @click="edit(itemData['id'])" style='cursor:pointer'>
           <template v-for='(item, colName) in itemData'>
-            <td :key='colName' v-show="checkBeforeRender(item, colName, 'show_in_table')">{{ item }}</td>
+            <td :key='colName' v-show="checkBeforeRender(item, colName, 'show_in_table')">
+              <template v-if="getStructureValue(colName, 'type', 'text') != 'image'">
+                {{ item }}
+              </template>
+              <template v-else>
+                <img src="test.jpg" width="35" height="35"/>
+              </template>
+            </td>
           </template>
         </tr>
       </tbody>
@@ -48,7 +55,14 @@
                         <i class="fas fa-exclamation"></i>
                       </div>
                     </div>
-                    <input :type="getStructureValue(colName, 'type', 'text')" class="form-control" :id="colName" v-model="itemData[colName]">
+                    <template v-if="getStructureValue(colName, 'type', 'text') != 'image'">
+                      <input :type="getStructureValue(colName, 'type', 'text')" class="form-control" :id="colName" v-model="itemData[colName]"/>
+                    </template>
+                    <template v-else>
+                      <div>
+                        <img src="test.jpg" width="100" height="100"/>
+                      </div>
+                    </template>
                   </div>
                 </div>
               </div>
