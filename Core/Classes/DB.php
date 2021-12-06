@@ -196,6 +196,8 @@ namespace Core\Classes {
         if (is_numeric($value)) {
           $value = (int) $value;
           $update .= "$key=$value, ";
+        } else if(is_bool($value)) {
+          $update .= "$key=".(int)$value.", ";
         } else {
           $update .= "$key='$value', ";
         }
@@ -204,6 +206,7 @@ namespace Core\Classes {
       $update = substr($update, 0, -2);
     
       $query = "UPDATE {$tableName} SET {$update} WHERE id = $id";
+      //var_dump($query);
 
       if (!$this->con->query($query)) { 
         echo $this->con->error;

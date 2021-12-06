@@ -10,8 +10,16 @@
         <tr v-for='itemData in data' :key='itemData.id' @click="edit(itemData['id'])" style='cursor:pointer'>
           <template v-for='(item, colName) in itemData'>
             <td :key='colName' v-show="checkBeforeRender(item, colName, 'show_in_table')">
-              <template v-if="getStructureValue(colName, 'type', 'text') != 'image'">
-                {{ item }}
+              <template v-if="getStructureValue(colName, 'type', '') == 'checkbox'">
+                <template v-if="item == '1'">
+                  <i class="fas fa-check"></i>
+                </template>
+                <template v-else>
+                  <i style='color:red' class="fas fa-times"></i>
+                </template>
+              </template>
+              <template v-else-if="getStructureValue(colName, 'type', 'text') != 'image'">
+                {{ item }} {{ getStructureValue(colName, 'unit', '') }}
               </template>
               <template v-else>
                 <img src="test.jpg" width="35" height="35"/>
@@ -55,7 +63,15 @@
                         <i class="fas fa-exclamation"></i>
                       </div>
                     </div>
-                    <template v-if="getStructureValue(colName, 'type', 'text') != 'image'">
+                    <template v-if="getStructureValue(colName, 'type', '') == 'checkbox'">
+                      <template v-if="item == 1">
+                        <input :type="getStructureValue(colName, 'type', 'text')" class="form-control" :id="colName" v-model="itemData[colName]" checked/>
+                      </template>
+                      <template v-else>
+                        <input :type="getStructureValue(colName, 'type', 'text')" class="form-control" :id="colName" v-model="itemData[colName]"/>
+                      </template>
+                    </template>
+                    <template v-else-if="getStructureValue(colName, 'type', '') != 'image'">
                       <input :type="getStructureValue(colName, 'type', 'text')" class="form-control" :id="colName" v-model="itemData[colName]"/>
                     </template>
                     <template v-else>
