@@ -18,6 +18,11 @@
                   <i style='color:red' class="fas fa-times"></i>
                 </template>
               </template>
+              <template v-else-if="getStructureValue(colName, 'type', '') == 'lookup'">
+                <a :href="getStructureValue(colName, 'lookup_url', '') + '?id=' + itemData.id">
+                  <i style='font-size:20px' class="fas fa-clipboard-list"></i>
+                </a>
+              </template>
               <template v-else-if="getStructureValue(colName, 'type', 'text') != 'image'">
                 {{ item }} {{ getStructureValue(colName, 'unit', '') }}
               </template>

@@ -7,7 +7,7 @@ $orders = $db->dbSelect(
     "select" => "products.name, COUNT(products.id) as pocet",
     "join" => [
       "products" => [
-        "id_product",
+        "id_cart",
         "id"
       ]
     ],
@@ -52,7 +52,7 @@ $orders_types = $db->dbSelect(
         WHEN orders.id_type = 4 THEN 'objednavky-hotove'
         WHEN orders.id_type = 5 THEN 'objednavky-odovzdane'
       END as typ_url,
-      COUNT(orders.id_product) as pocet
+      COUNT(orders.id_cart) as pocet
     ",
     "join" => [
       "order_type" => [

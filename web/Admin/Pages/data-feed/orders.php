@@ -11,7 +11,7 @@ for ($i=1;$i<=15;$i++) {
       'count' => rand(1, 5),
       'id_type' => rand(1, 5),
       'id_customer_uid' => rand(1, 5), 
-      'id_product' =>  rand(1, 5), 
+      'id_cart' =>  rand(1, 5), 
       'id_invoice' => 0
     ]
   ]);
