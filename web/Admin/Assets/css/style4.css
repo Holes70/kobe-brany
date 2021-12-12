@@ -544,3 +544,6 @@ body .dribbble img {
 .onclick {
   cursor: pointer;
 }
+.disabled-nav {
+  background-color: grey;
+}

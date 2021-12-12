@@ -35,6 +35,7 @@
         "name" => $flatItem['name'],
         "link" => $flatItem['link'],
         "icon" => $flatItem['icon'],
+        "is_enabled" => $flatItem['is_enabled'],
         "childrens" => $children,
       ];
     }
@@ -67,7 +68,10 @@
     } else {
       $navigationHTML .= "
         <li>
-          <a href='{$menuItem['link']}'>
+          <a 
+            href='{$menuItem['link']}'
+            ".($menuItem['is_enabled'] == 0 ? 'class=\'disabled-nav\'' : '')."
+          >
             <i class='fas fa-{$menuItem['icon']}'></i>
             {$menuItem['name']}
           </a>
