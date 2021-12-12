@@ -174,6 +174,8 @@
     },
     mounted() {
       // Ak su data dosadene cez PHP tak nacitaj
+      this.conditions = this.table_params['conditions'];
+
       if (this.table_params['data'].length > 0) {
         console.log(this.table_params['data'].length);
       } else {

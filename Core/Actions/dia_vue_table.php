@@ -31,11 +31,14 @@
         count: $data->params->count
       );
 
+      $conditions = array_merge(
+        ["limit" => "{$data->params->count} OFFSET {$pagination['offset']}"],
+        (array)$data->params->conditions ?? [],
+      );
+
       $data = $db->dbSelect(
         tableName: $data->params->tableName,
-        conditions: [
-          "limit" => "{$data->params->count} OFFSET {$pagination['offset']}"
-        ]
+        conditions: $conditions
       );
 
       if (array_key_exists('tableName', $data)) {

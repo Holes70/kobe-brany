@@ -97,7 +97,8 @@ namespace Components {
             rowStyle: $rowStyle,
             data: ".json_encode($this->data).",
             count: {$this->count},
-            currentPage: {$this->currentPage}
+            currentPage: {$this->currentPage},
+            conditions: ".json_encode($this->conditions).",
           }'
         ></dia-table>
       ";

@@ -9,6 +9,10 @@ $produkty->conditions([
   ]
 ]);
 
+$produkty->buttons([
+  ["name" => "Príslušenstvo", "link" => "prislusenstvo"]
+]);
+
 $dia->template("
   {$produkty->show()}
 ")->render();

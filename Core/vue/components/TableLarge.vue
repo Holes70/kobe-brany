@@ -43,12 +43,17 @@
               <i class="fas fa-arrow-left" aria-hidden="true"></i>
             </button>
           </div>
-          <div class="col-2">
+          <div v-for="button in buttons" :key="button" class="col">
+            <a :href="button['link'] + '?id=' + itemData['id']" class='btn btn-warning'>
+              {{ button['name'] }}
+            </a>
+          </div>
+          <div class="col">
             <button @click="save(itemData)" class='btn btn-success'>
               Ulozit
             </button>
           </div>
-          <div class="col-2">
+          <div class="col">
             <button @click="deleteItem(itemData['id'])" class='btn btn-danger'>
               Vymazat
             </button>
@@ -252,6 +257,8 @@
 
       this.tableColumns = this.params['tableColumns'];
       this.formColumns = this.params['formColumns'];
+
+      this.buttons = this.params['buttons'];
 
       if (this.params['data'].length > 0) {
         this.data = this.params['data'];
