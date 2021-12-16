@@ -1,103 +1,109 @@
 <template>
   <div>
-    <table v-show='!showEdit' class="table table-hover">
-      <thead>
-        <tr>
-          <th v-for="col in tableColumns" :key="col" scope="col">{{ col }}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for='itemData in data' :key='itemData.id' @click="edit(itemData['id'])" style='cursor:pointer'>
-          <template v-for='(item, colName) in itemData'>
-            <td :key='colName' v-show="checkBeforeRender(item, colName, 'show_in_table')">
-              <template v-if="getStructureValue(colName, 'type', '') == 'checkbox'">
-                <template v-if="item == '1'">
-                  <i class="fas fa-check"></i>
+    <template v-if="!error">
+      <table v-show='!showEdit' class="table table-hover">
+        <thead>
+          <tr>
+            <th v-for="col in tableColumns" :key="col" scope="col">{{ col }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for='itemData in data' :key='itemData.id' @click="edit(itemData['id'])" style='cursor:pointer'>
+            <template v-for='(item, colName) in itemData'>
+              <td :key='colName' v-show="checkBeforeRender(item, colName, 'show_in_table')">
+                <template v-if="getStructureValue(colName, 'type', '') == 'checkbox'">
+                  <template v-if="item == '1'">
+                    <i class="fas fa-check"></i>
+                  </template>
+                  <template v-else>
+                    <i style='color:red' class="fas fa-times"></i>
+                  </template>
+                </template>
+                <template v-else-if="getStructureValue(colName, 'type', '') == 'lookup'">
+                  <a :href="getStructureValue(colName, 'lookup_url', '') + '?id=' + itemData.id">
+                    <i style='font-size:20px' class="fas fa-clipboard-list"></i>
+                  </a>
+                </template>
+                <template v-else-if="getStructureValue(colName, 'type', 'text') != 'image'">
+                  {{ item }} {{ getStructureValue(colName, 'unit', '') }}
                 </template>
                 <template v-else>
-                  <i style='color:red' class="fas fa-times"></i>
+                  <img src="test.jpg" width="35" height="35"/>
                 </template>
-              </template>
-              <template v-else-if="getStructureValue(colName, 'type', '') == 'lookup'">
-                <a :href="getStructureValue(colName, 'lookup_url', '') + '?id=' + itemData.id">
-                  <i style='font-size:20px' class="fas fa-clipboard-list"></i>
-                </a>
-              </template>
-              <template v-else-if="getStructureValue(colName, 'type', 'text') != 'image'">
-                {{ item }} {{ getStructureValue(colName, 'unit', '') }}
-              </template>
-              <template v-else>
-                <img src="test.jpg" width="35" height="35"/>
-              </template>
-            </td>
-          </template>
-        </tr>
-      </tbody>
-    </table>
-    
-    <div v-show='showEdit' class='card' style='height:750px;width:100%;'>
-      <template v-for='itemData in data'>
-        <div v-if="itemData['id'] == showEditId" :key='itemData.id' class="row ml-1 mr-1" style="background:#0a6c91;padding:10px">
-          <div class="col-8">
-            <button @click='showEdit = !showEdit' class='btn btn-danger'>
-              <i class="fas fa-arrow-left" aria-hidden="true"></i>
-            </button>
-          </div>
-          <div v-for="button in buttons" :key="button" class="col">
-            <a :href="button['link'] + '?id=' + itemData['id']" class='btn btn-warning'>
-              {{ button['name'] }}
-            </a>
-          </div>
-          <div class="col">
-            <button @click="save(itemData)" class='btn btn-success'>
-              Ulozit
-            </button>
-          </div>
-          <div class="col">
-            <button @click="deleteItem(itemData['id'])" class='btn btn-danger'>
-              Vymazat
-            </button>
-          </div>
-        </div>
-      </template>
-      <div class="card-body">
-        <template v-for='itemData in data'>
-          <div v-if="itemData['id'] == showEditId" :key='itemData.id'>
-            <template v-for='(item, colName) in itemData'>
-              <div :key='colName' v-show="checkBeforeRender(item, colName, 'show_in_form')" class="form-group row">
-                <label :for="colName" v-html="checkBeforeRenderReturnValue(tableColumns[colName], colName, 'show_in_form')" class="col-sm-2 col-form-label"/>
-                <div class="col-sm-9">
-                  <div class="input-group mb-2">
-                    <div v-if="checkBeforeRender(item, colName, 'required')" class="input-group-prepend">
-                      <div class="input-group-text">
-                        <i class="fas fa-exclamation"></i>
-                      </div>
-                    </div>
-                    <template v-if="getStructureValue(colName, 'type', '') == 'checkbox'">
-                      <template v-if="item == 1">
-                        <input :type="getStructureValue(colName, 'type', 'text')" class="form-control" :id="colName" v-model="itemData[colName]" checked/>
-                      </template>
-                      <template v-else>
-                        <input :type="getStructureValue(colName, 'type', 'text')" class="form-control" :id="colName" v-model="itemData[colName]"/>
-                      </template>
-                    </template>
-                    <template v-else-if="getStructureValue(colName, 'type', '') != 'image'">
-                      <input :type="getStructureValue(colName, 'type', 'text')" class="form-control" :id="colName" v-model="itemData[colName]"/>
-                    </template>
-                    <template v-else>
-                      <div>
-                        <img src="test.jpg" width="100" height="100"/>
-                      </div>
-                    </template>
-                  </div>
-                </div>
-              </div>
+              </td>
             </template>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div v-show='showEdit' class='card' style='height:750px;width:100%;'>
+        <template v-for='itemData in data'>
+          <div v-if="itemData['id'] == showEditId" :key='itemData.id' class="row ml-1 mr-1" style="background:#0a6c91;padding:10px">
+            <div class="col-8">
+              <button @click='showEdit = !showEdit' class='btn btn-danger'>
+                <i class="fas fa-arrow-left" aria-hidden="true"></i>
+              </button>
+            </div>
+            <div v-for="button in buttons" :key="button" class="col">
+              <a :href="button['link'] + '?id=' + itemData['id']" class='btn btn-warning'>
+                {{ button['name'] }}
+              </a>
+            </div>
+            <div class="col">
+              <button @click="save(itemData)" class='btn btn-success'>
+                Ulozit
+              </button>
+            </div>
+            <div class="col">
+              <button @click="deleteItem(itemData['id'])" class='btn btn-danger'>
+                Vymazat
+              </button>
+            </div>
           </div>
         </template>
+        <div class="card-body">
+          <template v-for='itemData in data'>
+            <div v-if="itemData['id'] == showEditId" :key='itemData.id'>
+              <template v-for='(item, colName) in itemData'>
+                <div :key='colName' v-show="checkBeforeRender(item, colName, 'show_in_form')" class="form-group row">
+                  <label :for="colName" v-html="checkBeforeRenderReturnValue(tableColumns[colName], colName, 'show_in_form')" class="col-sm-2 col-form-label"/>
+                  <div class="col-sm-9">
+                    <div class="input-group mb-2">
+                      <div v-if="checkBeforeRender(item, colName, 'required')" class="input-group-prepend">
+                        <div class="input-group-text">
+                          <i class="fas fa-exclamation"></i>
+                        </div>
+                      </div>
+                      <template v-if="getStructureValue(colName, 'type', '') == 'checkbox'">
+                        <template v-if="item == 1">
+                          <input :type="getStructureValue(colName, 'type', 'text')" class="form-control" :id="colName" v-model="itemData[colName]" checked/>
+                        </template>
+                        <template v-else>
+                          <input :type="getStructureValue(colName, 'type', 'text')" class="form-control" :id="colName" v-model="itemData[colName]"/>
+                        </template>
+                      </template>
+                      <template v-else-if="getStructureValue(colName, 'type', '') != 'image'">
+                        <input :type="getStructureValue(colName, 'type', 'text')" class="form-control" :id="colName" v-model="itemData[colName]"/>
+                      </template>
+                      <template v-else>
+                        <div>
+                          <img src="test.jpg" width="100" height="100"/>
+                        </div>
+                      </template>
+                    </div>
+                  </div>
+                </div>
+              </template>
+            </div>
+          </template>
+        </div>
       </div>
-    </div>
-
+    </template>
+    <template v-else>
+      <div class="text-center" style="margin-top:20%">
+        <h1 style='color:grey'>{{ emptyDataMessage }}</h1>
+      </div>
+    </template>
   </div>
 </template>
 
@@ -115,6 +121,8 @@
         tableStructure: [],
         showEdit: false,
         showEditId: 0,
+        error: false,
+        emptyDataMessage: 'No records'
       }
     },
     methods: {
@@ -127,6 +135,8 @@
         }).then((res) => {
           if (res.data.status != 'fail') {
             this.data = res.data;
+          } else {
+            this.error = true;
           }
         })
       },
@@ -259,6 +269,11 @@
       this.formColumns = this.params['formColumns'];
 
       this.buttons = this.params['buttons'];
+      this.emptyDataMessage = 
+        this.params['emptyDataMessage'] 
+        ? this.params['emptyDataMessage'] 
+        : 'No records'
+      ;
 
       if (this.params['data'].length > 0) {
         this.data = this.params['data'];
@@ -266,7 +281,7 @@
         this.loadData();
       }
 
-       this.loadTableStructure();
+      this.loadTableStructure();
     }
   }
 </script>
