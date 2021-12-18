@@ -12,7 +12,7 @@
             <template v-for='(item, colName) in itemData'>
               <td :key='colName' v-show="checkBeforeRender(item, colName, 'show_in_table')">
                 <template v-if="getStructureValue(colName, 'type', '') == 'checkbox'">
-                  <template v-if="item == '1'">
+                  <template v-if="item == '1'" >
                     <i class="fas fa-check"></i>
                   </template>
                   <template v-else>
@@ -45,7 +45,7 @@
               </button>
             </div>
             <div v-for="button in buttons" :key="button" class="col">
-              <a :href="button['link'] + '?id=' + itemData['id']" class='btn btn-warning'>
+              <a :href="button['link'] + '?id=' + itemData['id'] + '&last_page=produkty&form_id=1'" class='btn btn-warning'>
                 {{ button['name'] }}
               </a>
             </div>

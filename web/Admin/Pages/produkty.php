@@ -13,6 +13,8 @@ $produkty->buttons([
   ["name" => "Príslušenstvo", "link" => "prislusenstvo"]
 ]);
 
-$dia->template("
-  {$produkty->show()}
-")->render();
+$dia->template(
+  $dia->cardBook( 
+    $produkty->show()
+  )
+)->render();

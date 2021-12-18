@@ -91,6 +91,32 @@ namespace Core {
       return $this->html($html);
     }
 
+    public function cardBook(string $html) {
+      $params = $_GET;
+      $returnHtml = "";
+
+      array_shift($params);
+    
+      foreach ($params as $param) {
+        $returnHtml .= "
+          <div class='card p-3' style='border:1px solid red'>
+            <button style='width:5%' class='btn btn-danger'>x</button>
+            <div class='card-body'>
+        ";
+      }
+
+      $returnHtml .= $html;
+
+      foreach ($params as $param) {
+        $returnHtml .= "
+          </div>
+         </div>
+        ";
+      }
+
+      return $returnHtml;
+    }
+
     public function setScript(string $script) {
       $this->script .= $script;
     }
