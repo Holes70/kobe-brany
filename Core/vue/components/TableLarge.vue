@@ -40,12 +40,12 @@
         <template v-for='itemData in data'>
           <div v-if="itemData['id'] == showEditId" :key='itemData.id' class="row ml-1 mr-1" style="background:#0a6c91;padding:10px">
             <div class="col-8">
-              <button @click='showEdit = !showEdit' class='btn btn-danger'>
+              <button @click='hideEdit()' class='btn btn-danger'>
                 <i class="fas fa-arrow-left" aria-hidden="true"></i>
               </button>
             </div>
             <div v-for="button in buttons" :key="button" class="col">
-              <a :href="button['link'] + '?id=' + itemData['id'] + '&last_page=produkty&form_id=1'" class='btn btn-warning'>
+              <a :href="button['link'] + '?id=' + itemData['id'] + '&last_page=produkty&last_page_id_form=5'" class='btn btn-warning'>
                 {{ button['name'] }}
               </a>
             </div>
@@ -176,6 +176,11 @@
       edit(showEditId) {
         this.showEdit = true;
         this.showEditId = showEditId;
+        dia.addToUrl('id_form', showEditId);
+      },
+      hideEdit() {
+        this.showEdit = false;
+        dia.deleteFromUrl('id_form');
       },
       save(itemData) {
         axios.put('index.php?action=dia_vue_update', {
@@ -279,6 +284,11 @@
         this.data = this.params['data'];
       } else {
         this.loadData();
+      }
+
+      if (dia.getUrlParam('id_form') > 0) {
+        this.showEdit = true;
+        this.showEditId = dia.getUrlParam('id_form');
       }
 
       this.loadTableStructure();

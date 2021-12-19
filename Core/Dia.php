@@ -96,20 +96,28 @@ namespace Core {
       $returnHtml = "";
 
       array_shift($params);
+      $paramsLength = count($params);
+      $href = "{$params['last_page']}?id_form={$params['last_page_id_form']}";
     
+      $i = 0;
       foreach ($params as $param) {
         $returnHtml .= "
-          <div class='card p-3' style='border:1px solid red'>
-            <button style='width:5%' class='btn btn-danger'>x</button>
-            <div class='card-body'>
+          <div style='padding-left: 10px;border:1px solid grey'>
         ";
+
+        if ($paramsLength > 1 && ++$i == $paramsLength) {
+          $returnHtml .= "
+            <a
+              href='{$href}'
+            >x</a>
+          ";
+        }
       }
 
       $returnHtml .= $html;
 
       foreach ($params as $param) {
         $returnHtml .= "
-          </div>
          </div>
         ";
       }

@@ -17,6 +17,8 @@ $prislusenstvo->conditions([
   ]
 ]);
 
-$dia->template("
-  {$prislusenstvo->show()}
-")->render();
+$dia->template(
+  $dia->cardBook(
+    $prislusenstvo->show()
+  )
+)->render();

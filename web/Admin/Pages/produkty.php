@@ -14,7 +14,9 @@ $produkty->buttons([
 ]);
 
 $dia->template(
-  $dia->cardBook( 
-    $produkty->show()
+  $dia->cardBook(
+    "<div class='card'>
+      ".$produkty->show()."
+    </div>"
   )
 )->render();
