@@ -93,33 +93,45 @@ namespace Core {
 
     public function cardBook(string $html) {
       $params = $_GET;
+      $newParams = [];
       $returnHtml = "";
 
       array_shift($params);
-      $paramsLength = count($params);
-      $href = "{$params['last_page']}?id_form={$params['last_page_id_form']}";
-    
-      $i = 0;
-      foreach ($params as $param) {
-        $returnHtml .= "
-          <div style='padding-left: 10px;border:1px solid grey'>
-        ";
-
-        if ($paramsLength > 1 && ++$i == $paramsLength) {
-          $returnHtml .= "
-            <a
-              href='{$href}'
-            >x</a>
-          ";
+      
+      foreach ($params as $key => $param) {
+        if ($key != 'last_page_id_form') {
+          $newParams[$key] = $param;
         }
       }
 
-      $returnHtml .= $html;
+      $paramsLength = count($newParams);
+      $href = "{$newParams['last_page']}?id_form={$newParams['last_page_id_form']}";
+      
+      if ($paramsLength > 1) {
+        $i = 0;
+        foreach ($newParams as $param) {
+          $returnHtml .= "
+            <div style='padding-left: 10px;border:1px solid grey'>
+          ";
 
-      foreach ($params as $param) {
-        $returnHtml .= "
-         </div>
-        ";
+          if (++$i == $paramsLength) {
+            $returnHtml .= "
+              <a
+                href='{$href}'
+              >x</a>
+            ";
+          }
+        }
+
+        $returnHtml .= $html;
+
+        foreach ($newParams as $param) {
+          $returnHtml .= "
+          </div>
+          ";
+        }
+      } else {
+        $returnHtml = $html;
       }
 
       return $returnHtml;
