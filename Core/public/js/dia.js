@@ -1,4 +1,10 @@
-class Dia {
+class Dia extends CustomFunctions {
+
+  constructor() {
+    super();
+    this.currentWebPage = this.getCurrentWebPage();
+    this.previousWebPage = this.getPreviousWebPage();
+  }
 
   addToUrl(param, data) {
     var url = new URL(window.location.href);
@@ -31,5 +37,18 @@ class Dia {
     var params = this.getSearchParameters();
     return params[param];
   };
+
+  getPreviousWebPage() {
+    if (typeof this.getUrlParam('previous_page') != 'undefined') {
+      return this.getUrlParam('previous_page');
+    } else {
+      return '';
+    }
+  }
+
+  getCurrentWebPage() {
+    return this.getLastWord(location.pathname, "/");
+  }
+
  
 }

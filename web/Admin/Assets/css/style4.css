@@ -5,8 +5,11 @@
 */
 
 .bg-primary {
-  background-color: #fcde67 !important;
+  background-color: #0a6c91 !important;
 }
+/*.bg-primary {
+  background-color: #fcde67 !important;
+}*/
 .bg-secondary {
   background-color: #5bccf6 !important;
 }
@@ -18,7 +21,7 @@
 }
 
 .color-primary {
-  color: #d7f7f3 !important;
+  color: #0a6c91 !important;
 }
 .color-secondary {
   color: #5bccf6 !important;
@@ -32,6 +35,29 @@
 .color-red {
   color: #bf5656 !important;
 }
+.color-success {
+  color: #1b7531 !important;
+}
+.color-red-dark {
+  color: #8f271e!important
+}
+
+.btn-success {
+  background-color: #a1ffb8 !important;
+}
+.btn-danger {
+  background-color: #ff988f !important;
+}
+.btn-warning {
+  background-color: #fcde67 !important;
+}
+.btn-primary {
+  background-color: #0a6c91 !important;
+}
+.btn-secondary {
+  background-color: #5bccf6 !important;
+}
+
 
 i {
   color: #0a6c91;

@@ -99,13 +99,13 @@ namespace Core {
       array_shift($params);
       
       foreach ($params as $key => $param) {
-        if ($key != 'last_page_id_form') {
+        if ($key != 'previous_page_id_form') {
           $newParams[$key] = $param;
         }
       }
 
       $paramsLength = count($newParams);
-      $href = "{$newParams['last_page']}?id_form={$newParams['last_page_id_form']}";
+      $href = "{$newParams['previous_page']}?id_form={$params['previous_page_id_form']}";
       
       if ($paramsLength > 1) {
         $i = 0;
@@ -192,6 +192,7 @@ namespace Core {
           <script src='../../Core/public/js/bootstrap.js'></script>
           <script src='../../Core/public/js/sfc-loader.js'></script>
           <script src='../../Core/public/js/mitt.umd.js'></script>
+          <script src='../../Core/public/js/CustomFunctions.js'></script>
           <script src='../../Core/public/js/dia.js'></script>
           <script src='../../Core/public/js/fontawesome.js'></script>
         ";

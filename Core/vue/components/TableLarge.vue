@@ -38,25 +38,23 @@
       
       <div v-show='showEdit' class='card' style='height:750px;width:100%;'>
         <template v-for='itemData in data'>
-          <div v-if="itemData['id'] == showEditId" :key='itemData.id' class="row ml-1 mr-1" style="background:#0a6c91;padding:10px">
+          <div v-if="itemData['id'] == showEditId" :key='itemData.id' class="card-header row p-1" style="margin:0px">
             <div class="col-8">
-              <button @click='hideEdit()' class='btn btn-danger'>
-                <i class="fas fa-arrow-left" aria-hidden="true"></i>
+              <button @click='hideEdit()' class='btn btn-primary'>
+                <i class="fas fa-arrow-left color-secondary" aria-hidden="true"></i>
               </button>
             </div>
             <div v-for="button in buttons" :key="button" class="col">
-              <a :href="button['link'] + '?id=' + itemData['id'] + '&last_page=produkty&last_page_id_form=5'" class='btn btn-warning'>
+              <a :href="button['link'] + '?id=' + itemData['id'] + '&previous_page=' + dia.currentWebPage + '&previous_page_id_form=' + itemData['id']" class='btn btn-warning'>
                 {{ button['name'] }}
               </a>
             </div>
-            <div class="col">
+            <div class="col-md-3 col-sm-4 col-lg-2">
               <button @click="save(itemData)" class='btn btn-success'>
-                Ulozit
+                <i class="far fa-save color-success"></i>
               </button>
-            </div>
-            <div class="col">
-              <button @click="deleteItem(itemData['id'])" class='btn btn-danger'>
-                Vymazat
+              <button @click="deleteItem(itemData['id'])" class='btn btn-danger ml-3'>
+                <i class="fas fa-trash-alt color-red-dark"></i>
               </button>
             </div>
           </div>
@@ -122,7 +120,8 @@
         showEdit: false,
         showEditId: 0,
         error: false,
-        emptyDataMessage: 'No records'
+        emptyDataMessage: 'No records',
+        dia: dia
       }
     },
     methods: {
