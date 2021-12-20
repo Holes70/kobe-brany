@@ -5,7 +5,6 @@ $(document).ready(function(){
     });
     
     $(".zoom").hover(function(){
-		
 		$(this).addClass('transition');
 	}, function(){
         

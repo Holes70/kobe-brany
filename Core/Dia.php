@@ -168,7 +168,6 @@ namespace Core {
 
       if ($this->config['web']['bootstrap']) {
         $bootstrap = "<link rel='stylesheet' href='../../Core/public/css/bootstrap.min.css'>";
-        $script_files .= "<script src='../../Core/public/js/bootstrap.js'></script>";
       }
 
       if ($this->config['web']['dropzone']) {
@@ -179,23 +178,20 @@ namespace Core {
         ";
       }
 
-      if ($this->config['web']['vega']) {
-        $vega = "<link rel='stylesheet' href='../../Core/public/css/vega.css'>";
-      }
-
       if ($this->config['web']['vue']) {
         $vue = "
           <script src='../../Core/public/js/popper.js'></script>
           <script src='../../Core/public/js/vue.js'></script>
           <script src='../../Core/public/js/axios.js'></script>
           <script src='../../Core/public/js/chart.js'></script>
+          <script src='../../Core/public/js/jquery.js'></script>
           <script src='../../Core/public/js/bootstrap.js'></script>
           <script src='../../Core/public/js/sfc-loader.js'></script>
           <script src='../../Core/public/js/mitt.umd.js'></script>
           <script src='../../Core/public/js/CustomFunctions.js'></script>
           <script src='../../Core/public/js/dia.js'></script>
           <script src='../../Core/public/js/fontawesome.js'></script>
-          <script src='https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js'></script>
+          <script src='../../Core/public/js/fancybox.js'></script>
         ";
       }
 
@@ -206,10 +202,9 @@ namespace Core {
         <head>
           {$bootstrap}
           {$dropzone}
-          {$vega}
           {$css_files}
-          {$script_files}
           {$vue}
+          {$script_files}
         </head>
         <body> 
       ";

@@ -30,8 +30,8 @@
   // NASTAVENA HLAVICKY
   $config['head']['lang']       = "sk";
   $config['head']['charset']    = "utf-8";
-  $config['head']['css']        = ['sweetalert.css', /*'materialize.css'*/ 'style4.css', 'notfound.css', 'gallery.css', 'lightbox.css'];
-  $config['head']['script']     = ['sweetalert.js', 'jquery.js', 'main.js', 'gallery.js', 'fancybox.js'/*'materialize.js'*/];
+  $config['head']['css']        = ['sweetalert.css', /*'materialize.css'*/ 'style4.css', 'notfound.css', 'fancybox.css', 'gallery.css'];
+  $config['head']['script']     = ['sweetalert.js', 'main.js', 'gallery.js', /*'materialize.js'*/];
 
   $config['dir']['admin'] = "{$config['dir']['root']}/web/{$config['web']['admin']}"
 
