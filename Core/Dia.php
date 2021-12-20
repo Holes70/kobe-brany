@@ -110,15 +110,25 @@ namespace Core {
       if ($paramsLength > 1) {
         $i = 0;
         foreach ($newParams as $param) {
+          $i++;
           $returnHtml .= "
-            <div style='padding-left: 10px;border:1px solid grey'>
+            <div style='
+              padding-left:10px;
+              border:1px solid #cccccc;
+              border-radius:5px;
+              ".($i != $paramsLength ? 'background:#ebebeb' : 'background:#f8f9fa;').";
+            '>
           ";
 
-          if (++$i == $paramsLength) {
+          if ($i == $paramsLength) {
             $returnHtml .= "
-              <a
-                href='{$href}'
-              >x</a>
+              <div class='row'>
+                <a href='{$href}' style='margin:5px;margin-left:15px'>
+                  <button class='btn btn-light'>
+                    <i class='fas fa-times color-red'></i>
+                  </button>
+                </a>
+              </div>
             ";
           }
         }
@@ -183,7 +193,7 @@ namespace Core {
           <script src='../../Core/public/js/sfc-loader.js'></script>
           <script src='../../Core/public/js/mitt.umd.js'></script>
           <script src='../../Core/public/js/dia.js'></script>
-          <script src='https://kit.fontawesome.com/e11c679b37.js' crossorigin='anonymous'></script>
+          <script src='../../Core/public/js/fontawesome.js'></script>
         ";
       }
 

@@ -18,16 +18,19 @@
 }
 
 .color-primary {
-  color: #d7f7f3!important;
+  color: #d7f7f3 !important;
 }
 .color-secondary {
   color: #5bccf6 !important;
 }
 .color-green {
-  color: #fcde67!important;
+  color: #fcde67 !important;
 }
 .color-white {
-  color: white;
+  color: white !important;
+}
+.color-red {
+  color: #bf5656 !important;
 }
 
 i {
