@@ -45,7 +45,7 @@
               </button>
             </div>
             <div v-for="button in buttons" :key="button" class="col">
-              <a :href="button['link'] + '?id=' + itemData['id'] + '&previous_page=' + dia.currentWebPage + '&previous_page_id_form=' + itemData['id']" class='btn btn-warning'>
+              <a :href="button['link'] + '?id=' + itemData['id'] + '&previous_page=' + diaData.currentWebPage + '&previous_page_id_form=' + itemData['id']" class='btn btn-warning'>
                 {{ button['name'] }}
               </a>
             </div>
@@ -69,7 +69,7 @@
                     <div class="input-group mb-2">
                       <div v-if="checkBeforeRender(item, colName, 'required')" class="input-group-prepend">
                         <div class="input-group-text">
-                          <i class="fas fa-exclamation"></i>
+                          <i class="fas fa-exclamation" :class="classObjectRequired(colName)"></i>
                         </div>
                       </div>
                       <template v-if="getStructureValue(colName, 'type', '') == 'checkbox'">
@@ -81,7 +81,7 @@
                         </template>
                       </template>
                       <template v-else-if="getStructureValue(colName, 'type', '') != 'image'">
-                        <input :type="getStructureValue(colName, 'type', 'text')" class="form-control" :id="colName" v-model="itemData[colName]"/>
+                        <input :type="getStructureValue(colName, 'type', 'text')" :class="classObject(colName)" :id="colName" v-model="itemData[colName]"/>
                       </template>
                       <template v-else>
                         <div>
@@ -111,6 +111,7 @@
     data() {
       return {
         data: [],
+        recoveryData: [],
         tableName: "",
         conditions: [],
         tableColumns: {},
@@ -121,7 +122,8 @@
         showEditId: 0,
         error: false,
         emptyDataMessage: 'No records',
-        dia: dia
+        diaData: dia,
+        emptyRequiredInputs: []
       }
     },
     methods: {
@@ -176,27 +178,32 @@
         this.showEdit = true;
         this.showEditId = showEditId;
         dia.addToUrl('id_form', showEditId);
+        this.recoveryData = this.data;
       },
       hideEdit() {
         this.showEdit = false;
         dia.deleteFromUrl('id_form');
       },
       save(itemData) {
-        axios.put('index.php?action=dia_vue_update', {
-          params: {
-            tableName: this.tableName,
-            rowId: itemData['id'],
-            data: itemData
-          }
-        }).then(() => {
+        // Prever prazdne povinne polia
+        this.emptyRequiredInputs = dia.checkRequiredInputs(itemData, this.tableStructure);
+        if (this.emptyRequiredInputs.length < 1) {
+          axios.put('index.php?action=dia_vue_update', {
+            params: {
+              tableName: this.tableName,
+              rowId: itemData['id'],
+              data: itemData
+            }
+          }).then(() => {
           this.showEdit = false;
-          swal({
-            title: "Uložené",
-            type: "success",
-            timer: 600,
-            showConfirmButton: false
+            swal({
+              title: "Uložené",
+              type: "success",
+              timer: 600,
+              showConfirmButton: false
+            })
           })
-        })
+        }
       },
       deleteItem(rowId) {
         var table = this;
@@ -263,7 +270,18 @@
             this.formColumns = formCols;
           }
         })
-      }
+      },
+      classObject(item) {
+        return {
+          'form-control' : true,
+          'required': this.emptyRequiredInputs.includes(item)
+        }
+      },
+      classObjectRequired(item) {
+        return {
+          'requiredColor': this.emptyRequiredInputs.includes(item)
+        }
+      },
     },
     mounted() {
       this.tableName = this.params['tableName'];

@@ -58,6 +58,13 @@
   background-color: #5bccf6 !important;
 }
 
+.required {
+  background-color: #ffc7c7 !important;
+}
+.requiredColor {
+  color: #8f271e!important;
+}
+
 
 i {
   color: #0a6c91;

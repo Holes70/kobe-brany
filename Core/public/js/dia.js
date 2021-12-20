@@ -50,5 +50,19 @@ class Dia extends CustomFunctions {
     return this.getLastWord(location.pathname, "/");
   }
 
+  checkRequiredInputs(itemsData, tableStructure) {
+    var errorInputs = [];
+    Object.keys(tableStructure).forEach((item) => {
+      if (tableStructure[item]['required']) {
+        if (itemsData[item] == '') {
+          //alert('TODO: PRAZDNE POVINNE POLIA!');
+          errorInputs.push(item);
+        }
+      }
+    })
+
+    return errorInputs;
+  }
+
  
 }

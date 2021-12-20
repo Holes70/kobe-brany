@@ -17,6 +17,10 @@ $prislusenstvo->conditions([
   ]
 ]);
 
+$prislusenstvo->buttons([
+  ["name" => "Odstrániť z príslušenstva", "ajaxAction" => "todo"]
+]);
+
 $dia->template(
   $dia->cardBook(
     $prislusenstvo->show()
