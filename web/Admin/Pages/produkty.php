@@ -18,5 +18,6 @@ $dia->template(
     "<div class='card'>
       ".$produkty->show()."
     </div>"
+    . "<dia-gallery></dia-gallery>"
   )
 )->render();

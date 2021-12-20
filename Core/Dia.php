@@ -195,6 +195,9 @@ namespace Core {
           <script src='../../Core/public/js/CustomFunctions.js'></script>
           <script src='../../Core/public/js/dia.js'></script>
           <script src='../../Core/public/js/fontawesome.js'></script>
+          <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+          <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js'></script>
+          <script src='https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js'></script>
         ";
       }
 

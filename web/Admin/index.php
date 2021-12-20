@@ -108,6 +108,7 @@
           'dia-table-large': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/TableLarge.vue', options)),
           'json-editor': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/JsonEditor.vue', options)),
           'dia-calendar': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/Calendar.vue', options)),
+          'dia-gallery': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/Gallery.vue', options)),
           <?php
             foreach (\Core\Dia::$loadedWebComponents as $com) {
               echo "'$com': Vue.defineAsyncComponent( () => loadModule('./../Components/Admin/$com.vue', options)),";
