@@ -28,7 +28,7 @@
                   {{ item }} {{ getStructureValue(colName, 'unit', '') }}
                 </template>
                 <template v-else>
-                  <img src="test.jpg" width="35" height="35"/>
+                  <img :src="'http://localhost/holes/dia/files/'  + this.tableName + '/' + itemData['image']" width="35" height="35"/>
                 </template>
               </td>
             </template>
@@ -85,7 +85,7 @@
                       </template>
                       <template v-else>
                         <div>
-                          <img src="test.jpg" width="100" height="100"/>
+                          <img :src="'http://localhost/holes/dia/files/' + this.tableName + '/' + itemData['image']" width="100" height="100"/>
                         </div>
                       </template>
                     </div>
@@ -187,6 +187,7 @@
       save(itemData) {
         // Prever prazdne povinne polia
         this.emptyRequiredInputs = dia.checkRequiredInputs(itemData, this.tableStructure);
+
         if (this.emptyRequiredInputs.length < 1) {
           axios.put('index.php?action=dia_vue_update', {
             params: {
@@ -195,7 +196,8 @@
               data: itemData
             }
           }).then(() => {
-          this.showEdit = false;
+            this.showEdit = false;
+            dia.deleteFromUrl('id_form');
             swal({
               title: "Uložené",
               type: "success",

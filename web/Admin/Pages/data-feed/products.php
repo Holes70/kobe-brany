@@ -5,7 +5,7 @@ for ($i=1;$i<=100;$i++) {
     'table' => 'products',
     'table_data' => [
       'id' => $i,
-      'image' => 'default.jpg',
+      'image' => "product_" . rand(1, 3) . ".png",
       'name' => 'Product_' . $i,	
       'description' => 'Popis', 	
       'price' => rand(0,1000),

@@ -64,5 +64,9 @@ class Dia extends CustomFunctions {
     return errorInputs;
   }
 
+  lol() {
+    return 'default.jpg';
+  }
+
  
 }
