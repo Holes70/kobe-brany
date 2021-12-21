@@ -10,10 +10,9 @@ $produkty->conditions([
 ]);
 
 $produkty->buttons([
-  ["name" => "Príslušenstvo", "link" => "prislusenstvo"]
+  ["name" => "Príslušenstvo", "link" => "prislusenstvo"],
+  ["name" => "Galéria", "link" => "galeria"]
 ]);
-
-$galeria = new \Components\Gallery("products_gallery");
 
 $dia->template("
   {$produkty->show()}
@@ -21,6 +20,5 @@ $dia->template("
     <div class='card-header'>
       <h4>Galéria</h4>
     </div>
-    {$galeria->show()}
   </div>
 ")->render();
