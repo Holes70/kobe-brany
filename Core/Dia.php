@@ -91,6 +91,16 @@ namespace Core {
       return $this->html($html);
     }
 
+    public function card(string $html = "") {
+      return "
+        <div class='card'>
+          <div class='card-body'>
+            {$html}
+          </div>
+        </div>
+      ";
+    }
+
     public function cardBook(string $html) {
       $params = $_GET;
       $newParams = [];
@@ -99,28 +109,33 @@ namespace Core {
       array_shift($params);
       
       foreach ($params as $key => $param) {
-        if ($key != 'previous_page_id_form') {
+        if ($key != 'previous_page_id_form' && $key != 'id') {
           $newParams[$key] = $param;
         }
       }
 
       $paramsLength = count($newParams);
-      $href = "{$newParams['previous_page']}?id_form={$params['previous_page_id_form']}";
-      
-      if ($paramsLength > 1) {
+
+      if (isset($params['previous_page_id_form'])) {
+        $href = "{$newParams['previous_page']}?id_form={$params['previous_page_id_form']}";
+      } else {
+        $href = "{$newParams['previous_page']}";
+      }
+     
+      if ($paramsLength > 0) {
         $i = 0;
-        foreach ($newParams as $param) {
+        for ($j=0;$j<$paramsLength+1;$j++) {
           $i++;
           $returnHtml .= "
             <div style='
               padding-left:10px;
               border:1px solid #cccccc;
               border-radius:5px;
-              ".($i != $paramsLength ? 'background:#ebebeb' : 'background:#f8f9fa;').";
+              ".($i != $paramsLength + 1 ? 'background:#ebebeb' : 'background:#f8f9fa;').";
             '>
           ";
 
-          if ($i == $paramsLength) {
+          if ($i == $paramsLength + 1) {
             $returnHtml .= "
               <div class='row'>
                 <a href='{$href}' style='margin:5px;margin-left:15px'>

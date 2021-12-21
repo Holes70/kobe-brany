@@ -15,16 +15,12 @@ $produkty->buttons([
 
 $galeria = new \Components\Gallery("products_gallery");
 
-$dia->template(
-  $dia->cardBook("
-    <div class='card'>
-      {$produkty->show()}
+$dia->template("
+  {$produkty->show()}
+  <div class='card mt-5'>
+    <div class='card-header'>
+      <h4>Galéria</h4>
     </div>
-    <div class='card mt-5'>
-      <div class='card-header'>
-        <h4>Galéria</h4>
-      </div>
-      {$galeria->show()}
-    </div>
-  ")
-)->render();
+    {$galeria->show()}
+  </div>
+")->render();

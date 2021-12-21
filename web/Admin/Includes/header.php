@@ -94,12 +94,6 @@
         <li>
           <a href='systemove-nastavenia' class='system-settings'>Systémové nastavenia</a>
         </li>
-        <li>
-          <a href='json' style='background:#b7f57d'>JSON</a>
-        </li>
-        <li>
-          <a href='pisomka' style='background:#f5a97d'>Dropzone</a>
-        </li>
       </ul>
     </nav>
     <div id='content'>

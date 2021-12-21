@@ -77,23 +77,25 @@
     ]
   ]);
 
-  $dia->template("
-    {$nadpis->render()}
-    <!--<button @click='forcex()'>Re-rendruj komponentu</button>-->
-    <div class='row'>
-      <div class='col-6' style='padding-left:100px;padding-right:100px'>
-        <div id='test'>
-          {$tests->show()}
+  $dia->template(
+    $dia->cardBook("
+      {$nadpis->render()}
+      <!--<button @click='forcex()'>Re-rendruj komponentu</button>-->
+      <div class='row'>
+        <div class='col-6' style='padding-left:100px;padding-right:100px'>
+          <div id='test'>
+            {$tests->show()}
+          </div>
+          <div id='dropzone'>
+            {$dropzone->show()}
+          </div>
         </div>
-        <div id='dropzone'>
-          {$dropzone->show()}
+        <div class='col-6'>
+          {$list_user_test->show()}
         </div>
       </div>
-      <div class='col-6'>
-        {$list_user_test->show()}
-      </div>
-    </div>
-  ")->render();
+    ")
+  )->render();
 
   $dia->setScript("
     function lol() {
