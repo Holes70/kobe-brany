@@ -68,5 +68,35 @@ class Dia extends CustomFunctions {
     return 'default.jpg';
   }
 
+  itemDelete(tableName, rowId) {
+    swal({
+      title: "Ste si istý?",
+      text: "Naozaj chcete vymazať tento záznam?",
+      type: "warning",
+      showCancelButton: true,
+      cancelButtonClass: "btn btn-secondary",
+      confirmButtonClass: "btn btn-danger",
+      confirmButtonText: "Áno",
+      cancelButtonText: "Nie",
+      closeOnConfirm: false,
+      closeOnCancel: false,
+    },
+    function(isConfirm) {
+      if (isConfirm) {
+        axios.post('index.php?action=dia_delete', {
+          tableName: tableName,
+          id: rowId
+        })
+        swal({
+          title: "Vymazané",
+          text: "Záznam bol vymazaný!",
+          type: "success"
+        })
+      } else {
+        swal("Zrušené", "Záznam nebol vymazaný!", "warning") 
+      }
+    });
+  }
+
  
 }
