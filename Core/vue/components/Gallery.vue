@@ -35,6 +35,9 @@
         </div>
       </div>
     </div>
+    <div class="row m-5">
+      <input class="form-control" type="file" id="formFile">
+    </div>
 
   </div>
 </template>
