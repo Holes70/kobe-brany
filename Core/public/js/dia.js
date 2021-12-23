@@ -68,7 +68,7 @@ class Dia extends CustomFunctions {
     return 'default.jpg';
   }
 
-  itemDelete(tableName, rowId) {
+  itemDelete(tableName, rowId, callback) {
     swal({
       title: "Ste si istý?",
       text: "Naozaj chcete vymazať tento záznam?",
@@ -92,6 +92,9 @@ class Dia extends CustomFunctions {
           text: "Záznam bol vymazaný!",
           type: "success"
         })
+        if (typeof callback == "function") {
+          callback();
+        }
       } else {
         swal("Zrušené", "Záznam nebol vymazaný!", "warning") 
       }

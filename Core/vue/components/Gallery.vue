@@ -69,7 +69,13 @@ export default {
       this.itemEdit = item;
     },
     deleteItem(itemId) {
-      dia.itemDelete(this.tableName, itemId);
+      dia.itemDelete(
+        this.tableName, 
+        itemId,
+        function () {
+          window.location.reload();
+        }
+      );
     }
   },
   mounted() {
