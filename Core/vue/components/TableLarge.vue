@@ -45,7 +45,7 @@
               </button>
             </div>
             <div v-for="button in buttons" :key="button" class="col">
-              <a :href="button['link'] + '?id=' + itemData['id'] + '&previous_page=' + diaData.currentWebPage + '&previous_page_id_form=' + itemData['id']" class='btn btn-warning'>
+              <a :href="button['link'] + '?id=' + itemData['id'] + '&previous_page=' + currentWebPage + '&previous_page_id_form=' + itemData['id']" class='btn btn-warning'>
                 {{ button['name'] }}
               </a>
             </div>
@@ -109,38 +109,15 @@
   export default {
     props: ['params'],
     data() {
-      return {
-        data: [],
-        recoveryData: [],
-        tableName: "",
-        conditions: [],
-        tableColumns: {},
-        tableColumnsKeys: [],
-        formColumns: [],
-        tableStructure: [],
+      return Object.assign(dia, {
         showEdit: false,
         showEditId: 0,
         error: false,
         emptyDataMessage: 'No records',
-        diaData: dia,
         emptyRequiredInputs: []
-      }
+      })
     },
-    methods: {
-      loadData() {
-        axios.post('index.php?action=dia_select', {
-          params: {
-            tableName: this.tableName,
-            conditions: this.conditions
-          }
-        }).then((res) => {
-          if (res.data.status != 'fail') {
-            this.data = res.data;
-          } else {
-            this.error = true;
-          }
-        })
-      },
+    methods: {    
       checkBeforeRender(item, colName, structureParam) {
         if (this.checkIfShowInTable(colName, structureParam)) {
           // ak je v tabulke HODNOTA null tak vrat ' ' inak chybuje tabulka
@@ -208,70 +185,14 @@
         }
       },
       deleteItem(rowId) {
-        var table = this;
-        swal({
-          title: "Ste si istý?",
-          text: "Naozaj chcete vymazať tento záznam?",
-          type: "warning",
-          showCancelButton: true,
-          cancelButtonClass: "btn btn-secondary",
-          confirmButtonClass: "btn btn-danger",
-          confirmButtonText: "Áno",
-          cancelButtonText: "Nie",
-          closeOnConfirm: false,
-          closeOnCancel: false,
-        },
-        function(isConfirm) {
-          if (isConfirm) {
-            axios.post('index.php?action=dia_delete', {
-              tableName: table.tableName,
-              id: rowId
-            })
-            swal({
-              title: "Vymazané",
-              text: "Záznam bol vymazaný!",
-              type: "success"
-            })
-            table.loadData();
-            table.showEdit = false;
-          } else {
-            swal("Zrušené", "Záznam nebol vymazaný!", "warning") 
+        dia.itemDelete(
+          this.tableName,
+          rowId,
+          () => {
+            dia.loadData(this);
+            this.showEdit = false;
           }
-        });
-      },
-      loadTableStructure() {
-        axios.post('index.php?action=dia_select&reset=true&unset=structure&json=true', {
-          params: {
-            tableName: "dia_tables",
-            conditions: {
-              "where": {
-                "table_name": this.tableName
-              }
-            }
-          }
-        }).then((res) => {
-          if (res.data.status != 'fail') {
-            this.tableStructure = res.data;
-            
-            // Vytvara mena stlpcov podla dia_table
-            // show_in_table == true tak vypise
-            // name_in_table - nazov pre zobrazenie
-            // TODO: Data to neajko pekne von
-            var cols = {};
-            var formCols = {};
-            this.tableColumnsKeys = Object.keys(this.tableStructure);
-            this.tableColumnsKeys.forEach((item) => {
-              if (this.tableStructure[item]['show_in_table']) {
-                cols[item] = this.tableStructure[item]['name_in_table'];
-              }
-              if (this.tableStructure[item]['show_in_form']) {
-                formCols[item] = this.tableStructure[item]['name_in_table'];
-              }
-            });
-            this.tableColumns = cols;
-            this.formColumns = formCols;
-          }
-        })
+        );
       },
       classObject(item) {
         return {
@@ -286,11 +207,16 @@
       },
     },
     mounted() {
-      this.tableName = this.params['tableName'];
-      this.conditions = this.params['conditions'];
+      dia.setComponentParams(this);
+      dia.setComponentData(this);
+      dia.loadTableStructure(this);
 
-      this.tableColumns = this.params['tableColumns'];
-      this.formColumns = this.params['formColumns'];
+
+      // Custom Component functions
+      if (dia.getUrlParam('id_form') > 0) {
+        this.showEdit = true;
+        this.showEditId = dia.getUrlParam('id_form');
+      }
 
       this.buttons = this.params['buttons'];
       this.emptyDataMessage = 
@@ -298,19 +224,6 @@
         ? this.params['emptyDataMessage'] 
         : 'No records'
       ;
-
-      if (this.params['data'].length > 0) {
-        this.data = this.params['data'];
-      } else {
-        this.loadData();
-      }
-
-      if (dia.getUrlParam('id_form') > 0) {
-        this.showEdit = true;
-        this.showEditId = dia.getUrlParam('id_form');
-      }
-
-      this.loadTableStructure();
     }
   }
 </script>
