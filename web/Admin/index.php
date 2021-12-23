@@ -25,7 +25,7 @@
   $userController = new \Core\Controllers\UserController;
   $webController = new \Core\Controllers\WebController;
 
-  if (!isset($_GET['action'])) {
+  if (!isset($_GET['action']) && !isset($_POST['action'])) {
 
     // HEAD
     $dia->daj_zahlavie();
@@ -167,6 +167,7 @@
 
   } else {
     // Ajax volania
+
     $dia->AjaxAction();
   }
   ob_end_flush();
