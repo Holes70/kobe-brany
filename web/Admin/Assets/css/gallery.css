@@ -7,11 +7,11 @@
   background-color:#6fb936;
 }
 .thumb{
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .page-top{
-    margin-top:85px;
+  margin-top:85px;
 }
 img.zoom {
   width: 100%;
@@ -25,6 +25,7 @@ img.zoom {
   -moz-box-shadow: 0 0 3px #ccc;
   -webkit-box-shadow: 0 0 3px #ccc;
   box-shadow: 0 0 3px black;
+  cursor: pointer;
 }
 img.zoom:hover {
   height: 250px;
@@ -32,7 +33,6 @@ img.zoom:hover {
   -moz-box-shadow: 0 0 3px #ccc;
   -webkit-box-shadow: 0 0 3px #ccc;
   box-shadow: 0 0 10px black;
-}
 }
 .transition {
   -webkit-transform: scale(1.2); 
