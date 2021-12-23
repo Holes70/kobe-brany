@@ -9,6 +9,7 @@ class Dia extends CustomFunctions {
     this.data = [];
     this.conditions = [];
     this.tableStructure = [];
+    this.error = "";
 
     this.tableColumns = {};
     this.tableColumnsKeys = [];

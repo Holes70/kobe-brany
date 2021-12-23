@@ -26,7 +26,7 @@
           <div class="dia-image">
             <img :src="'http://localhost/holes/dia/files/products/' + item['image']" class="zoom img-fluid"  :alt="item['image']">
             <button 
-              @click="deleteItem(item.id)"
+              @click="itemDelete(item.id)"
               class="btn btn-danger btn-image-delete text-center"
             >
               <i class="fas fa-trash-alt color-red-dark"/>
@@ -43,32 +43,15 @@
 export default {
   props: ['params'],
   data() {
-    return {
-      data: [],
-      tableName: "",
-      conditions: [],
+    return Object.assign(dia, {
       itemEdit: []
-    }
+    });
   },
   methods: {
-    loadData() {
-      axios.post('index.php?action=dia_select', {
-        params: {
-          tableName: this.tableName,
-          conditions: this.conditions
-        }
-      }).then((res) => {
-        if (res.data.status != 'fail') {
-          this.data = res.data;
-        } else {
-          this.error = true;
-        }
-      })
-    },
     edit(item) {
       this.itemEdit = item;
     },
-    deleteItem(itemId) {
+    itemDelete(itemId) {
       dia.itemDelete(
         this.tableName, 
         itemId,
@@ -79,14 +62,8 @@ export default {
     }
   },
   mounted() {
-    this.tableName = this.params['tableName'];
-    this.conditions = this.params['conditions'];
-
-    if (this.params['data'].length > 0) {
-      this.data = this.params['data'];
-    } else {
-      this.loadData();
-    }
+    dia.setComponentParams(this);
+    dia.setComponentData(this);
   }
 }
 </script>
