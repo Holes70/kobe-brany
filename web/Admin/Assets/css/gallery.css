@@ -49,3 +49,8 @@ img.zoom:hover {
 .modal-footer{
   display:none;  
 }
+.btn-image-delete {
+  position: absolute;
+  margin-left: -44px;
+  margin-top: 4px;
+}
