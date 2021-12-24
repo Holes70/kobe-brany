@@ -76,6 +76,10 @@ namespace Core\Controllers {
       return isset($_GET[$param]) ? $_GET[$param] : "";
     }
 
+    public function getPostParam(string $param) {
+      return isset($_POST[$param]) ? $_POST[$param] : "";
+    }
+
   }
 
 }
