@@ -1,6 +1,6 @@
 <?php
 
-  global $dia;
+  global $dia, $webController;
 
   if (empty($_FILES['file'])) {
     var_dump($_FILES); exit();
@@ -21,8 +21,9 @@
       mkdir($upload_dir, 0777);
     }
 
-    $ok = @move_uploaded_file($file_to_upload['tmp_name'], $upload_dir."/".$upload_filename);
-    @chmod($upload_dir."/".$upload_filename, 0775);
+    $ok = move_uploaded_file($file_to_upload['tmp_name'], $upload_dir."/".$upload_filename);
+
+    chmod($upload_dir."/".$upload_filename, 0777);
 
     $error_tmp = ob_get_contents();
     ob_end_clean();
@@ -32,4 +33,12 @@
     }
   }
 
-  echo $error;
+  //$redirect = $webController->getParam("redirect");
+  var_dump(json_decode(file_get_contents("php://input"), true)); exit();
+
+  if ($error == "") {
+    header ("Location: produkty");
+    exit();
+  } else {
+    echo $error;
+  }
