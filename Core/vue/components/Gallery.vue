@@ -37,7 +37,8 @@
     </div>
     <div>
       <dia-file-uploader :params='{
-        tableName: this.tableName
+        tableName: this.tableName,
+        uploadAction: this.uploadAction
       }'></dia-file-uploader>
     </div>
 
@@ -54,7 +55,8 @@ export default {
   props: ['params'],
   data() {
     return Object.assign(dia, {
-      itemEdit: []
+      itemEdit: [],
+      uploadAction: "upload_product_image"
     });
   },
   methods: {
@@ -74,6 +76,8 @@ export default {
   mounted() {
     dia.setComponentParams(this);
     dia.setComponentData(this);
+
+    //this.uploadAction = this.params['uploadAction'];
   }
 }
 </script>
