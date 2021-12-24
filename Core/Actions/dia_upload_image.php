@@ -2,6 +2,7 @@
 
   global $dia, $webController;
 
+  var_dump($_POST); exit();
   if (empty($_FILES['file'])) {
     var_dump($_FILES); exit();
   }
@@ -34,7 +35,6 @@
   }
 
   //$redirect = $webController->getParam("redirect");
-  var_dump(json_decode(file_get_contents("php://input"), true)); exit();
 
   if ($error == "") {
     header ("Location: produkty");
