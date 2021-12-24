@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import fileUploader from './FileUploader.vue';
+import fileUploader from './FileUploader2.vue';
 
 export default {
   components: {

@@ -2,7 +2,6 @@
 
   global $dia, $webController;
 
-  var_dump($_POST); exit();
   if (empty($_FILES['file'])) {
     var_dump($_FILES); exit();
   }
@@ -34,10 +33,10 @@
     }
   }
 
-  //$redirect = $webController->getParam("redirect");
+  $redirect = $webController->getPostParam("redirect");
 
   if ($error == "") {
-    header ("Location: produkty");
+    header ("Location: {$redirect}");
     exit();
   } else {
     echo $error;
