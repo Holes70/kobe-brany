@@ -48,7 +48,7 @@
               <a 
                 v-for="button in buttons" 
                 :key="button" 
-                :href="button['link'] + '?id=' + itemData['id'] + '&previous_page=' + currentWebPage + '&previous_page_id_form=' + itemData['id']" 
+                :href="getButtonHref(button, itemData)" 
                 :class="buttonClass(button)"
                 class="ml-3"
               >
@@ -216,6 +216,13 @@
           return button['class'];
         } else {
           return "btn btn-primary";
+        }
+      },
+      getButtonHref(button, itemData) {
+        if (typeof button['customLink'] != "undefined") {
+          return button['customLink'];
+        } else {
+          return button['link'] + '?id=' + itemData['id'] + '&previous_page=' + this.currentWebPage + '&previous_page_id_form=' + itemData['id'];
         }
       }
     },

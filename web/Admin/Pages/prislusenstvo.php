@@ -1,6 +1,7 @@
 <?php
 
-$idProduct = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+$idProduct = $webController->getParam('id');
+$idProductAccessory = $webController->getParam('id_form');
 
 $prislusenstvo = new Components\TableLarge("products_accessories");
 $prislusenstvo->emptyDataMessage("Žiadne príšlušenstvo pre produkt");
@@ -19,7 +20,10 @@ $prislusenstvo->conditions([
 $prislusenstvo->fileDir("products");
 
 $prislusenstvo->buttons([
-  ["name" => "Odstrániť z príslušenstva", "ajaxAction" => "todo"]
+  [
+    "name" => "Odstrániť z príslušenstva", 
+    "customLink" => "index.php?action=prislusenstvo_odstran_produkt&table_name=products_accessories&id_accessory={$idProductAccessory}&id_product={$idProduct}"
+  ]
 ]);
 
 $dia->template(
