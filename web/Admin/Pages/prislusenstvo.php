@@ -1,7 +1,11 @@
 <?php
 
 $idProduct = $webController->getParam('id');
-$idProductAccessory = $webController->getParam('id_form');
+//$idProductAccessory = $webController->getParam('id_form');
+
+// Ak je id_form dosadeni cez JS tak $_GET je prazdny.
+// V tomto pripade sa dosadi cez JS code pomocou {%%}
+$idProductAccessory = "{%id_form%}";
 
 $prislusenstvo = new Components\TableLarge("products_accessories");
 $prislusenstvo->emptyDataMessage("Žiadne príšlušenstvo pre produkt");

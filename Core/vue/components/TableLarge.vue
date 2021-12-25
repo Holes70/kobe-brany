@@ -161,6 +161,7 @@
         this.showEdit = true;
         this.showEditId = showEditId;
         dia.addToUrl('id_form', showEditId);
+        dia.refactorCustomLinks(this);
         this.recoveryData = this.data;
       },
       hideEdit() {
