@@ -10,8 +10,8 @@ $produkty->conditions([
 ]);
 
 $produkty->buttons([
-  ["name" => "Príslušenstvo", "link" => "prislusenstvo"],
-  ["name" => "Galéria", "link" => "galeria"]
+  ["name" => "Príslušenstvo", "link" => "prislusenstvo", "class" => "btn btn-primary"],
+  ["name" => "Galéria", "link" => "galeria", "class" => "btn btn-secondary"]
 ]);
 
 $dia->template("

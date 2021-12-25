@@ -44,8 +44,14 @@
                 <i class="fas fa-arrow-left color-secondary" aria-hidden="true"></i>
               </button>
             </div>
-            <div v-for="button in buttons" :key="button" class="col">
-              <a :href="button['link'] + '?id=' + itemData['id'] + '&previous_page=' + currentWebPage + '&previous_page_id_form=' + itemData['id']" class='btn btn-warning'>
+            <div class="col">
+              <a 
+                v-for="button in buttons" 
+                :key="button" 
+                :href="button['link'] + '?id=' + itemData['id'] + '&previous_page=' + currentWebPage + '&previous_page_id_form=' + itemData['id']" 
+                :class="buttonClass(button)"
+                class="ml-3"
+              >
                 {{ button['name'] }}
               </a>
             </div>
@@ -205,6 +211,13 @@
           'requiredColor': this.emptyRequiredInputs.includes(item)
         }
       },
+      buttonClass(button) {
+        if (typeof button['class'] != "undefined") {
+          return button['class'];
+        } else {
+          return "btn btn-primary";
+        }
+      }
     },
     mounted() {
       dia.setComponentParams(this);
