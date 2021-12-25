@@ -36,8 +36,9 @@
   $redirect = $webController->getPostParam("redirect");
 
   if ($error == "") {
-    header ("Location: {$redirect}");
-    exit();
+   // header ("Location: {$redirect}");
+   // exit();
   } else {
     echo $error;
+    exit();
   }
