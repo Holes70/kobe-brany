@@ -31,7 +31,7 @@ namespace Components {
     public function show() {
       $columnsJSON = $this->columns ? json_encode($this->columns) : [];
 
-     // $this->checkElasticConnection();
+      $this->checkElasticConnection();
 
       return "
         <dia-elasticsearch 
