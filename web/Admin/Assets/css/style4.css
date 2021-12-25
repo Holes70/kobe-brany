@@ -607,3 +607,14 @@ body .dribbble img {
   width: 100%;
   margin-top: -12px;
 }
+
+.search-div {
+  position: absolute;
+  z-index: 99;
+}
+.search-div li {
+  cursor: pointer;
+}
+.search-div li:hover {
+  background-color: #fcde67;
+}

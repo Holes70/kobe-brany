@@ -3,7 +3,7 @@
 
   $memory = new Components\Memory();
 
-  $elasticSearch = new Components\Elasticsearch("logstash_test");
+  $elasticSearch = new Components\Elasticsearch("test_index_1");
   $elasticSearch->searchFields(['title', 'content']);
 
   $profileCard = new Components\ProfileCard("users");
