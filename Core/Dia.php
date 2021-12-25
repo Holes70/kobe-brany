@@ -245,19 +245,6 @@ namespace Core {
       return "<input type='hidden' name='token' value=$action>";
     }
 
-    public function redirect($redirect, $alert = array()) {
-      $string_alert = "&alert=on";
-
-      if (isset($alert)) {
-
-        foreach ($alert as $key => $value) {
-          $string_alert .= "&" . $key . "=" . $value;
-        }
-
-      }
-      header("Location: index.php?page={$redirect}{$string_alert}");
-    }
-
     public function find_alert() {
       if (isset($_GET['alert'])) {
         return $_GET;
