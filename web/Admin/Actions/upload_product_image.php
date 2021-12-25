@@ -1,6 +1,6 @@
 <?php
 
-global $db;
+global $db, $webController;
 
 require ("{$this->rootDir}/Core/Actions/dia_upload_image.php");
 
@@ -14,7 +14,7 @@ $idGallery = $db->insert_array([
 $db->insert_array([
   'table' => 'products_gallery',
   'table_data' => [
-    'id_product' => 1,
+    'id_product' => $webController->getPostParam('id'),
     'id_gallery' => $idGallery
   ]
 ]);
