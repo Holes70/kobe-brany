@@ -153,6 +153,8 @@ namespace Core\Classes {
       if (!$this->con->query($query)) { 
         echo $this->con->error;
         $this->error_function($error);
+      } else {
+        return $this->con->insert_id;
       }
     }
 
