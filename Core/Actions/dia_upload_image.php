@@ -33,12 +33,7 @@
     }
   }
 
-  $redirect = $webController->getPostParam("redirect");
-
-  if ($error == "") {
-   // header ("Location: {$redirect}");
-   // exit();
-  } else {
+  if ($error != "") {
     echo $error;
     exit();
   }

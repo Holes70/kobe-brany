@@ -4,10 +4,10 @@ global $db;
 
 require ("{$this->rootDir}/Core/Actions/dia_upload_image.php");
 
-$db->insert_array([
+$idGallery = $db->insert_array([
   'table' => 'gallery',
   'table_data' => [
-    'image' => $_FILES['name']
+    'image' => $_FILES['file']['name']
   ]
 ]);
 
@@ -15,13 +15,11 @@ $db->insert_array([
   'table' => 'products_gallery',
   'table_data' => [
     'id_product' => 1,
-    'id_product_gallery' => 1
+    'id_gallery' => $idGallery
   ]
 ]);
 
-/*$data = $db->request_data();
+$redirect = $webController->getPostParam("redirect");
 
-$db->insert_array([
-  'table' => $data->tableName,
-  'table_data' => (array) $data->data
-]);*/
+header ("Location: {$redirect}");
+exit();
