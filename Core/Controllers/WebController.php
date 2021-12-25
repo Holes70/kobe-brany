@@ -80,6 +80,10 @@ namespace Core\Controllers {
       return isset($_POST[$param]) ? $_POST[$param] : "";
     }
 
+    public function redirect(string $redirectUrl) {
+      header("Location: {$redirectUrl}");
+    }
+
   }
 
 }
