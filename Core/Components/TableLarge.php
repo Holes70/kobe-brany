@@ -6,6 +6,7 @@ namespace Components {
 
     private array $buttons = [];
     private string $emptyDataMessage = "";
+    private string $fileDir= "";
 
     public function __construct(public string $tableName) {
       parent::__construct($this);
@@ -13,6 +14,11 @@ namespace Components {
 
     public function buttons(array $buttons) {
       $this->buttons = $buttons;
+      return $this;
+    }
+
+    public function fileDir(string $fileDir) {
+      $this->fileDir = $fileDir;
       return $this;
     }
 
@@ -28,7 +34,8 @@ namespace Components {
           conditions: ".json_encode($this->conditions).",
           data: ".json_encode($this->data).",
           buttons: ".json_encode($this->buttons).",
-          emptyDataMessage: \"{$this->emptyDataMessage}\"
+          emptyDataMessage: \"{$this->emptyDataMessage}\",
+          fileDir: \"{$this->fileDir}\"
         }'></dia-table-large>
       ";
     }

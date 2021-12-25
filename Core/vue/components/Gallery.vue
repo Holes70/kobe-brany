@@ -17,7 +17,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div v-if="data.length > 0" class="row">
       <div 
         v-for="item in data" :key="item" 
         class="col-lg-3 col-md-4 col-xs-6 thumb"
@@ -35,6 +35,10 @@
         </div>
       </div>
     </div>
+    <div v-else>
+      <h5 class="text-center">Žiadne obrázky</h5>
+    </div>
+
     <div>
       <dia-file-uploader :params='{
         tableName: this.tableName,

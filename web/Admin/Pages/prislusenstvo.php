@@ -16,6 +16,7 @@ $prislusenstvo->conditions([
     ]
   ]
 ]);
+$prislusenstvo->fileDir("products");
 
 $prislusenstvo->buttons([
   ["name" => "Odstrániť z príslušenstva", "ajaxAction" => "todo"]

@@ -167,6 +167,12 @@ class Dia extends CustomFunctions {
 
     _this.tableColumns = _this.params['tableColumns'];
     _this.formColumns = _this.params['formColumns'];
+
+    if (_this.params['fileDir'] == "") {
+      _this.fileDir = _this.params['tableName'];
+    } else {
+      _this.fileDir = _this.params['fileDir'];
+    }
   }
 
   setComponentData(_this) {
