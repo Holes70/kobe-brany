@@ -48,6 +48,10 @@ class Dia extends CustomFunctions {
     return params[param];
   };
 
+  getUrl() {
+    return window.location.href;
+  }
+
   getPreviousWebPage() {
     if (typeof this.getUrlParam('previous_page') != 'undefined') {
       return this.getUrlParam('previous_page');
