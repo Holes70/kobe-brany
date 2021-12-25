@@ -65,6 +65,10 @@
   color: #8f271e!important;
 }
 
+.hover-primary {
+  background-color: #b5ebff;
+}
+
 
 i {
   color: #0a6c91;
@@ -616,5 +620,9 @@ body .dribbble img {
   cursor: pointer;
 }
 .search-div li:hover {
-  background-color: #fcde67;
+  background-color: #e8f8ff;
+}
+
+var {
+  font-style: normal;  
 }
