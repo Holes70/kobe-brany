@@ -189,6 +189,7 @@
           }).then(() => {
             this.showEdit = false;
             dia.deleteFromUrl('id_form');
+            dia.loadDataAgain(this);
             swal({
               title: "Uložené",
               type: "success",
