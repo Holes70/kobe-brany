@@ -31,7 +31,7 @@ $table_orders = new Components\Table("orders");
 $table_orders->columns([
   "id" => "id",
   'serial_number' => "Seriové číslo", 
-  "id_type" => "Typ",	
+  "type" => "Typ",	
   "count" => "Počet"
 ]);
 $table_orders->buttons(['edit', 'delete']);
@@ -46,17 +46,17 @@ $orders_types = $db->dbSelect(
       order_type.id as id,
       order_type.name,
       CASE
-        WHEN orders.id_type = 1 THEN 'objednavky-nove'
-        WHEN orders.id_type = 2 THEN 'objednavky-schvalene'
-        WHEN orders.id_type = 3 THEN 'objednavky-zaplatene'
-        WHEN orders.id_type = 4 THEN 'objednavky-hotove'
-        WHEN orders.id_type = 5 THEN 'objednavky-odovzdane'
+        WHEN orders.type = 1 THEN 'objednavky-nove'
+        WHEN orders.type = 2 THEN 'objednavky-schvalene'
+        WHEN orders.type = 3 THEN 'objednavky-zaplatene'
+        WHEN orders.type = 4 THEN 'objednavky-hotove'
+        WHEN orders.type = 5 THEN 'objednavky-odovzdane'
       END as typ_url,
       COUNT(orders.id_cart) as pocet
     ",
     "join" => [
       "order_type" => [
-        "id_type",
+        "type",
         "id"
       ]
     ],
