@@ -79,17 +79,11 @@
                         </div>
                       </div>
                       <template v-if="getStructureValue(colName, 'type', '') == 'checkbox'">
-                        <template v-if="item == 1">
-                          <input :type="getStructureValue(colName, 'type', 'text')" class="form-control" :id="colName" v-model="itemData[colName]" checked/>
-                        </template>
-                        <template v-else>
-                          <input :type="getStructureValue(colName, 'type', 'text')" class="form-control" :id="colName" v-model="itemData[colName]"/>
-                        </template>
+                        <input :type="getStructureValue(colName, 'type', 'text')" class="form-control" :id="colName" v-model="itemData[colName]" :checked="item == 1"/>
                       </template>
-                      <template v-if="getStructureValue(colName, 'type', '') == 'radio'">
+                      <template v-else-if="getStructureValue(colName, 'type', '') == 'radio'">
                         <div class="mr-3" v-for="(radioItem, index) in getStructureValue(colName, 'radio', '')" :key="radioItem">
-                          <input v-if="item == index" type="radio" :id="index" :name="colName" :value="index" v-model="itemData[colName]" checked/>
-                          <input v-else type="radio" :id="index" :name="colName" :value="index" v-model="itemData[colName]"/>
+                          <input v-if="item == index" type="radio" :id="index" :name="colName" :value="index" v-model="itemData[colName]" :checked="item == index"/>
                           <label :for="index" class="ml-1">{{ radioItem }}</label>
                         </div>
                       </template>
