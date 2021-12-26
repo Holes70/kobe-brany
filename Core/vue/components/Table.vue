@@ -57,7 +57,7 @@
               <input v-else type="text" class="form-control" :value="item" disabled>
             </div>
           </div>
-          <div class="modal-footer">
+          <div class="modal-footer" style="display:block">
             <button @click.prevent="editFormSave()" type="submit" class="btn btn-success">Uložiť</button>
             <button class="btn btn-danger" @click="showEdit = false">Zavrieť</button>
           </div>
