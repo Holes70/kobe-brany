@@ -2,19 +2,24 @@
   <div v-if="index != 'offline'">
     <div class="form-inline">
       <input 
-        class="form-control col-lg-12" 
+        class="form-control col" 
         type="search" 
         placeholder="Search" 
         aria-label="Search"
         v-model="search"
-      >
+      />
+      <template v-if="filteredSearch.length > 0">
+        <i @click="cleanSearch()" class="fas fa-hand-sparkles col" style="cursor:pointer"/>
+      </template>
     </div>
-    <ul v-for="hit in filteredSearch" :key="hit._id" class="list-group">
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        <var v-html="hit.hit">{{ hit.hit }}</var>
-        <span class="badge badge-primary badge-pill">{{ hit.id }}</span>
-      </li>
-    </ul>
+    <div class="search-div">
+      <ul v-for="hit in filteredSearch" :key="hit._id" class="list-group">
+        <li @click="openUrl(hit.link)" class="list-group-item d-flex justify-content-between align-items-center">
+          <var class="color-primary mr-2">{{ hit.hit }}</var>
+          <span class="badge badge-primary badge-pill bg-primary"> {{ hit.id }}</span>
+        </li>
+      </ul>
+    </div>
   </div>
   <div v-else>
     <p class='border border-danger text-center mt-5'>
@@ -67,11 +72,20 @@ export default {
         function(hit) { 
           return { 
             hit: "" + hit._source.title + "",
+            link: hit._source.link,
             id: hit._id 
           } 
         }
       );
     }
   },
+  methods: {
+    openUrl(link) {
+      window.location.href = link;
+    },
+    cleanSearch() {
+      this.search = "";
+    }
+  }
 }
 </script>
