@@ -2,7 +2,7 @@
 
 namespace Components {
 
-  class TableLarge extends \Core\Component {
+  class Form2 extends \Core\Component {
 
     public function __construct(public string $tableName) {
       parent::__construct($this);
