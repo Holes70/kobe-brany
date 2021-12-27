@@ -16,5 +16,5 @@
 
   $form_users2->render();
 
-  $form_products = new Components\Form("products");
+  $form_products = new Components\Form("users");
   $form_products->render();
