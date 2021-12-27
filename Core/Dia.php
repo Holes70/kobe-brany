@@ -205,6 +205,7 @@ namespace Core {
           <script src='../../Core/public/js/mitt.umd.js'></script>
           <script src='../../Core/public/js/CustomFunctions.js'></script>
           <script src='../../Core/public/js/dia.js'></script>
+          <script src='../../Core/public/js/diaTables.js'></script>
           <script src='../../Core/public/js/fontawesome.js'></script>
           <script src='../../Core/public/js/fancybox.js'></script>
         ";
