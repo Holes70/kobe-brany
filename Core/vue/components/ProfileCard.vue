@@ -36,10 +36,8 @@
     methods: {
       loadData() {
         axios.post('index.php?action=dia_user_logged', {
-          params: {
-            tableName: this.tableName,
-            conditions: this.conditions
-          }
+          tableName: this.tableName,
+          conditions: this.conditions
         }).then((res) => {
           if (res.data.status != 'fail') {
             this.data = res.data;
