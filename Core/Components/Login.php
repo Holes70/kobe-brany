@@ -10,6 +10,13 @@ namespace Components {
 
     public function loginInput(string $loginInput) {
       $this->data['loginInput'] = $loginInput;
+      $this->data['loginVal'] = "";
+      return $this;
+    }
+
+    public function passwordInput(string $passwordInput) {
+      $this->data['passwordInput'] = $passwordInput;
+      $this->data['passwordVal'] = "";
       return $this;
     }
 

@@ -6,10 +6,10 @@
 
   try {
     $selectUserIfExists = $db->dbSelect(
-      $data->params->tableName,
+      $data->tableName,
       [
         "where" => [
-          $data->params->data->loginInput => $data->params->data->login
+          $data->data->loginInput => $data->data->loginVal
         ]
       ]
     );

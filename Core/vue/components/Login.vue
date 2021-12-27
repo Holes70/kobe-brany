@@ -10,14 +10,14 @@
                 <div class='form-group row'>
                   <label for='email_address' class='col-md-4 col-form-label text-md-right'>E-Mail Address</label>
                   <div class='col-md-6'>
-                    <input type='text' v-model="login" class='form-control' name='email-address' required autofocus>
+                    <input type='text' v-model="data['loginVal']" class='form-control' name='email-address' required autofocus>
                   </div>
                 </div>
 
                 <div class='form-group row'>
                   <label for='password' class='col-md-4 col-form-label text-md-right'>Password</label>
                   <div class='col-md-6'>
-                    <input type='password' v-model="password" class='form-control' name='password' required>
+                    <input type='password' v-model="data['passwordVal']" class='form-control' name='password' required>
                   </div>
                 </div>
 
@@ -68,14 +68,8 @@
     methods: {
       submitForm() {
         axios.post('index.php?action=dia_login', {
-          params: {
-            tableName: this.tableName,
-            data: {
-              "loginInput": this.data['loginInput'],
-              "password": this.password,
-              "login": this.login
-            }
-          }
+          tableName: this.tableName,
+          data: this.data
         }).then((res) => {
           if (res.data.status == "fail") {
             this.error = "Učet neexistuje";
