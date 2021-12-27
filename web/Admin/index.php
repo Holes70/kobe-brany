@@ -110,6 +110,7 @@
           'dia-calendar': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/Calendar.vue', options)),
           'dia-gallery': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/Gallery.vue', options)),
           'dia-file-uploader': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/FileUploader.vue', options)),
+          'dia-form-new': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/Form2.vue', options)),
           <?php
             foreach (\Core\Dia::$loadedWebComponents as $com) {
               echo "'$com': Vue.defineAsyncComponent( () => loadModule('./../Components/Admin/$com.vue', options)),";
