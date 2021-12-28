@@ -113,10 +113,12 @@
 </template>
 
 <script>
+  var diaTableLarge = Object();
+
   export default {
     props: ['params'],
     data() {
-      return Object.assign(dia, {
+      return Object.assign(diaTableLarge, {
         showEdit: false,
         showEditId: 0,
         error: false,
@@ -161,17 +163,17 @@
       edit(showEditId) {
         this.showEdit = true;
         this.showEditId = showEditId;
-        dia.addToUrl('id_form', showEditId);
-        dia.refactorCustomLinks(this);
+        diaTableLarge.addToUrl('id_form', showEditId);
+        diaTableLarge.refactorCustomLinks(this);
         this.recoveryData = this.data;
       },
       hideEdit() {
         this.showEdit = false;
-        dia.deleteFromUrl('id_form');
+        diaTableLarge.deleteFromUrl('id_form');
       },
       save(itemData) {
         // Prever prazdne povinne polia
-        this.emptyRequiredInputs = dia.checkRequiredInputs(itemData, this.tableStructure);
+        this.emptyRequiredInputs = diaTableLarge.checkRequiredInputs(itemData, this.tableStructure);
 
         if (this.emptyRequiredInputs.length < 1) {
           axios.put('index.php?action=dia_vue_update', {
@@ -182,8 +184,8 @@
             }
           }).then(() => {
             this.showEdit = false;
-            dia.deleteFromUrl('id_form');
-            dia.loadDataAgain(this);
+            diaTableLarge.deleteFromUrl('id_form');
+            diaTableLarge.loadDataAgain(this);
             swal({
               title: "Uložené",
               type: "success",
@@ -194,11 +196,11 @@
         }
       },
       deleteItem(rowId) {
-        dia.itemDelete(
+        diaTableLarge.itemDelete(
           this.tableName,
           rowId,
           () => {
-            dia.loadData(this);
+            diaTableLarge.loadData(this);
             this.showEdit = false;
           }
         );
@@ -229,16 +231,19 @@
         }
       }
     },
+    beforeCreate() {
+      diaTableLarge = new Dia();
+    },
     mounted() {
-      dia.setComponentParams(this);
-      dia.setComponentData(this);
-      dia.loadTableStructure(this);
+      diaTableLarge.setComponentParams(this);
+      diaTableLarge.setComponentData(this);
+      diaTableLarge.loadTableStructure(this);
 
 
       // Custom Component functions
-      if (dia.getUrlParam('id_form') > 0) {
+      if (diaTableLarge.getUrlParam('id_form') > 0) {
         this.showEdit = true;
-        this.showEditId = dia.getUrlParam('id_form');
+        this.showEditId = diaTableLarge.getUrlParam('id_form');
       }
 
       this.buttons = this.params['buttons'];
