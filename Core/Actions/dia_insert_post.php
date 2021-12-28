@@ -1,6 +1,6 @@
 <?php
 
-  global $db, $webController;
+  global $db, $webController, $dia;
 
   $data = $webController->getPostParams();
   $tableName = array_pop($data);
@@ -15,5 +15,11 @@
     'table' => $tableName,
     'table_data' => $data
   ]);
+
+  $webController->redirect(
+    $dia->convertTableNameToUrl($tableName) 
+    . "?id_form=". 
+    $db->getLastItemId($tableName)['id']
+  );
 
 ?>
