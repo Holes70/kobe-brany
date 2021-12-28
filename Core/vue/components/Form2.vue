@@ -8,13 +8,20 @@
             :for="'form_' + this.tableName + colName"
             class="col-sm-2 col-form-label" 
           />
-          <div class="col-sm-10">
-            <input 
-              :placeholder="getStructureValue(colName, 'name_in_table', colName)"
-              :type="getStructureValue(colName, 'type', colName)" 
-              class="form-control" 
-              :id="'form_' + this.tableName + colName"
-            >
+          <div class="col-sm-9">
+            <div class="input-group mb-2">
+              <div v-if="getStructureValue(colName, 'required')" class="input-group-prepend">
+                <div class="input-group-text">
+                  <i class="fas fa-exclamation"></i>
+                </div>
+              </div>
+              <input 
+                :placeholder="getStructureValue(colName, 'name_in_table', colName)"
+                :type="getStructureValue(colName, 'type', colName)" 
+                class="form-control" 
+                :id="'form_' + this.tableName + colName"
+              />
+            </div>
           </div>
         </div>
         <!--<div class="form-group row">
@@ -64,6 +71,9 @@
             <button type="submit" class="btn btn-primary">Sign in</button>
           </div>
         </div>-->
+      </div>
+      <div class="card-footer text-center">
+        <button class="btn btn-primary">Vytvoriť</button>
       </div>
     </div>
   </div>
