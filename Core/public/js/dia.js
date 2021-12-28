@@ -16,6 +16,9 @@ class Dia extends CustomFunctions {
 
     this.formColumns = [];
     this.allTableColumns = [];
+
+    // Array for new form of table
+    this.formValues = [];
   }
 
   addToUrl(param, data) {
@@ -128,7 +131,7 @@ class Dia extends CustomFunctions {
     })
   }
 
-  loadTableStructure(_this) {
+  loadTableStructure(_this, initAddForm = false) {
     axios.post('index.php?action=dia_select&reset=true&unset=structure&json=true', {
       params: {
         tableName: "dia_tables",
@@ -158,7 +161,13 @@ class Dia extends CustomFunctions {
             formCols[item] = _this.tableStructure[item]['name_in_table'];
           }
 
-          colsAll[item] = (typeof _this.tableStructure[item]['name_in_table'] != "undefined" ? _this.tableStructure[item]['name_in_table'] : item);
+          if (item != "id") {
+            colsAll[item] = (typeof _this.tableStructure[item]['name_in_table'] != "undefined" ? _this.tableStructure[item]['name_in_table'] : item);
+          }
+
+          if (initAddForm == true) {
+            _this.formValues[item] = "";
+          }
         });
         _this.tableColumns = cols;
         _this.formColumns = formCols;
