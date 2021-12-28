@@ -1,81 +1,67 @@
 <template>
   <div>
-    <div class="card">
-      <div class="card-body">
-        <div v-for="(colVal, colName) in tableColumns" :key="colName" class="form-group row">
-          <label 
-            v-html="getStructureValue(colName, 'name_in_table', colName, true)"
-            :for="'form_' + this.tableName + colName"
-            class="col-sm-2 col-form-label" 
-          />
-          <div class="col-sm-9">
-            <div class="input-group mb-2">
-              <div v-if="getStructureValue(colName, 'required')" class="input-group-prepend">
-                <div class="input-group-text">
-                  <i class="fas fa-exclamation"></i>
+    <form action="index.php?action=dia_insert_post" method="POST"> 
+      <div class="card">
+        <div class="card-body">
+          <div v-for="(colVal, colName) in allTableColumns" :key="colName" class="form-group row">
+            <label 
+              v-html="getStructureValue(colName, 'name_in_table', colName, true)"
+              :for="'form_' + this.tableName + colName"
+              class="col-sm-2 col-form-label" 
+            />
+            <div class="col-sm-9">
+              <div class="input-group mb-2">
+                <div v-if="getStructureValue(colName, 'required')" class="input-group-prepend">
+                  <div class="input-group-text">
+                    <i class="fas fa-exclamation"></i>
+                  </div>
                 </div>
-              </div>
-              <input 
-                :placeholder="getStructureValue(colName, 'name_in_table', colName)"
-                :type="getStructureValue(colName, 'type', colName)" 
-                class="form-control" 
-                :id="'form_' + this.tableName + colName"
-              />
-            </div>
-          </div>
-        </div>
-        <!--<div class="form-group row">
-          <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-          <div class="col-sm-10">
-            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-          </div>
-        </div>
-        <fieldset class="form-group">
-          <div class="row">
-            <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
-            <div class="col-sm-10">
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                <label class="form-check-label" for="gridRadios1">
-                  First radio
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                <label class="form-check-label" for="gridRadios2">
-                  Second radio
-                </label>
-              </div>
-              <div class="form-check disabled">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
-                <label class="form-check-label" for="gridRadios3">
-                  Third disabled radio
-                </label>
+                <template v-if="getStructureValue(colName, 'type') == 'checkbox'">
+                  <input 
+                    type="checkbox" 
+                    class="form-control" 
+                    :name="colName" 
+                    :id="colName" 
+                    v-model="formValues[colName]"
+                  />
+                </template>
+                <template v-else-if="getStructureValue(colName, 'type') == 'radio'">
+                  <div class="mr-3" v-for="(radioItem, index) in getStructureValue(colName, 'radio', '')" :key="radioItem">
+                    <input 
+                      type="radio" 
+                      :id="index" 
+                      :name="colName" 
+                      :value="index"
+                      v-model="formValues[colName]" 
+                      :checked="getStructureValue(colName, 'default_value') == index"
+                    />
+                    <label :for="index" class="ml-1">{{ radioItem }}</label>
+                  </div>
+                </template>
+                <template v-else>
+                  <input 
+                    :placeholder="getStructureValue(colName, 'name_in_table', colName)"
+                    :type="getStructureValue(colName, 'type', colName)"
+                    :name="colName"  
+                    class="form-control" 
+                    :id="'form_' + this.tableName + colName"
+                    v-model="formValues[colName]"
+                  />
+                </template>
               </div>
             </div>
           </div>
-        </fieldset>
-        <div class="form-group row">
-          <div class="col-sm-2">Checkbox</div>
-          <div class="col-sm-10">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" id="gridCheck1">
-              <label class="form-check-label" for="gridCheck1">
-                Example checkbox
-              </label>
-            </div>
-          </div>
         </div>
-        <div class="form-group row">
-          <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary">Sign in</button>
-          </div>
-        </div>-->
+        <div class="card-footer text-center">
+          <input type="hidden" name="tableName" :value="tableName"/>
+          <input 
+            type="submit" 
+            class="btn btn-primary"
+            value="Vytvoriť"
+          />
+        </div>
       </div>
-      <div class="card-footer text-center">
-        <button class="btn btn-primary">Vytvoriť</button>
-      </div>
-    </div>
+    </form>
   </div>
 </template>
 
@@ -103,7 +89,7 @@ export default {
   },
   mounted() {
     diaForm.setComponentParams(this);
-    diaForm.loadTableStructure(this);
+    diaForm.loadTableStructure(this, true);
   }
 }
 </script>
