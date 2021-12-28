@@ -1,6 +1,10 @@
 <template>
   <div>
-    <form action="index.php?action=dia_insert_post" method="POST"> 
+    <form 
+      @submit="checkRequiredsInputs"
+      action="index.php?action=dia_insert_post" 
+      method="POST"
+    > 
       <div class="card">
         <div class="card-body">
           <div v-for="(colVal, colName) in allTableColumns" :key="colName" class="form-group row">
@@ -20,6 +24,7 @@
                   <input 
                     type="checkbox" 
                     class="form-control" 
+                    :class="validateInput(colName)"
                     :name="colName" 
                     :id="colName" 
                     v-model="formValues[colName]"
@@ -32,6 +37,7 @@
                       :id="index" 
                       :name="colName" 
                       :value="index"
+                      :class="validateInput(colName)"
                       v-model="formValues[colName]" 
                       :checked="getStructureValue(colName, 'default_value') == index"
                     />
@@ -43,7 +49,8 @@
                     :placeholder="getStructureValue(colName, 'name_in_table', colName)"
                     :type="getStructureValue(colName, 'type', colName)"
                     :name="colName"  
-                    class="form-control" 
+                    class="form-control"
+                    :class="validateInput(colName)" 
                     :id="'form_' + this.tableName + colName"
                     v-model="formValues[colName]"
                   />
@@ -82,6 +89,12 @@ export default {
         this.tableStructure, 
         addItallic
       );
+    },
+    checkRequiredsInputs(e) {
+      diaTables.checkRequiredsInputs(e, this);
+    },
+    validateInput(item) {
+      return diaTables.validateInput(this, item);
     }
   },
   beforeCreate() {

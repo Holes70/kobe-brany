@@ -1,4 +1,4 @@
 <?php
 
-$form2 = new \Components\Form2("orders");
+$form2 = new \Components\Form2("customers");
 $form2->render();
