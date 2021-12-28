@@ -88,7 +88,7 @@
                         </div>
                       </template>
                       <template v-else-if="getStructureValue(colName, 'type', '') != 'image'">
-                        <input :type="getStructureValue(colName, 'type', 'text')" :class="classObject(colName)" :id="colName" v-model="itemData[colName]"/>
+                        <input :type="getStructureValue(colName, 'type', 'text')" class="form-control" :class="classObject(colName)" :id="colName" v-model="itemData[colName]"/>
                       </template>
                       <template v-else>
                         <div>
@@ -206,10 +206,7 @@
         );
       },
       classObject(item) {
-        return {
-          'form-control' : true,
-          'required': this.emptyRequiredInputs.includes(item)
-        }
+        return diaTables.validateInput(this, item);
       },
       classObjectRequired(item) {
         return {
