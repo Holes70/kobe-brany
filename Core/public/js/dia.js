@@ -19,6 +19,7 @@ class Dia extends CustomFunctions {
 
     // Array for new form of table
     this.formValues = [];
+    this.emptyRequiredInputs = [];
   }
 
   addToUrl(param, data) {
