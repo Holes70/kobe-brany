@@ -33,6 +33,10 @@
   $config['head']['css']        = ['sweetalert.css', /*'materialize.css'*/ 'style4.css', 'notfound.css', 'fancybox.css', 'gallery.css'];
   $config['head']['script']     = ['sweetalert.js', 'main.js', 'gallery.js', /*'materialize.js'*/];
 
-  $config['dir']['admin'] = "{$config['dir']['root']}/web/{$config['web']['admin']}"
+  $config['dir']['admin'] = "{$config['dir']['root']}/web/{$config['web']['admin']}";
+
+  $config['urls'] = [
+    "customers" => "zakaznici"
+  ];
 
 ?>

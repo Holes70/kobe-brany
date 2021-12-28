@@ -310,6 +310,10 @@ namespace Core {
       }
     }
 
+    public function convertTableNameToUrl($tableName) : string {
+      return isset($this->config['urls'][$tableName]) ? $this->config['urls'][$tableName] : $tableName;
+    }
+
     protected function error_function($error) {
       echo "<h1>Nezadany parameter:</h1>";
       echo "<h2>{$error}</h2>";
