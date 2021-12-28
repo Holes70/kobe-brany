@@ -2,10 +2,19 @@
   <div>
     <div class="card">
       <div class="card-body">
-        <div v-for="(columnName, column) in tableColumns" :key="column" class="form-group row">
-          <label for="inputEmail3" class="col-sm-2 col-form-label">{{ getStructureValue() }}</label>
+        <div v-for="(colVal, colName) in tableColumns" :key="colName" class="form-group row">
+          <label 
+            v-html="getStructureValue(colName, 'name_in_table', colName, true)"
+            :for="'form_' + this.tableName + colName"
+            class="col-sm-2 col-form-label" 
+          />
           <div class="col-sm-10">
-            <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+            <input 
+              :placeholder="getStructureValue(colName, 'name_in_table', colName)"
+              :type="getStructureValue(colName, 'type', colName)" 
+              class="form-control" 
+              :id="'form_' + this.tableName + colName"
+            >
           </div>
         </div>
         <!--<div class="form-group row">
@@ -69,8 +78,14 @@ export default {
     })
   },
   methods: {
-    getStructureValue() {
-      diaTables.getStructureValue();
+    getStructureValue(colName, structureParam, defaultReturnParam, addItallic = false) {
+      return diaTables.getStructureValue(
+        colName, 
+        structureParam, 
+        defaultReturnParam, 
+        this.tableStructure, 
+        addItallic
+      );
     }
   },
   mounted() {
