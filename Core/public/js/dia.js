@@ -13,7 +13,9 @@ class Dia extends CustomFunctions {
 
     this.tableColumns = {};
     this.tableColumnsKeys = [];
+
     this.formColumns = [];
+    this.allTableColumns = [];
   }
 
   addToUrl(param, data) {
@@ -146,6 +148,7 @@ class Dia extends CustomFunctions {
         // TODO: Data to neajko pekne von
         var cols = {};
         var formCols = {};
+        var colsAll = {};
         _this.tableColumnsKeys = Object.keys(_this.tableStructure);
         _this.tableColumnsKeys.forEach((item) => {
           if (_this.tableStructure[item]['show_in_table']) {
@@ -154,9 +157,12 @@ class Dia extends CustomFunctions {
           if (_this.tableStructure[item]['show_in_form']) {
             formCols[item] = _this.tableStructure[item]['name_in_table'];
           }
+
+          colsAll[item] = (typeof _this.tableStructure[item]['name_in_table'] != "undefined" ? _this.tableStructure[item]['name_in_table'] : item);
         });
         _this.tableColumns = cols;
         _this.formColumns = formCols;
+        _this.allTableColumns = colsAll;
       }
     })
   }
