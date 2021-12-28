@@ -80,12 +80,12 @@
 </template>
 
 <script>
+var diaForm = Object();
+
 export default {
   props: ['params'],
   data() {
-    return Object.assign(dia, {
-
-    })
+    return Object.assign(diaForm, {});
   },
   methods: {
     getStructureValue(colName, structureParam, defaultReturnParam, addItallic = false) {
@@ -98,9 +98,12 @@ export default {
       );
     }
   },
+  beforeCreate() {
+    diaForm = new Dia();
+  },
   mounted() {
-    dia.setComponentParams(this);
-    dia.loadTableStructure(this);
+    diaForm.setComponentParams(this);
+    diaForm.loadTableStructure(this);
   }
 }
 </script>
