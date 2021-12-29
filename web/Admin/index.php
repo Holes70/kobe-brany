@@ -110,7 +110,7 @@
           'json-editor': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/JsonEditor.vue', options)),
           'dia-calendar': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/Calendar.vue', options)),
           'dia-gallery': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/Gallery.vue', options)),
-          'dia-file-uploader': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/FileUploader.vue', options)),
+          'dia-file-uploader': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/FileUploader4.vue', options)),
           'dia-form-new': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/Form2.vue', options)),
           'dia-row': Vue.defineAsyncComponent( () => loadModule('./../../Core/vue/components/Row.vue', options)),
           <?php
