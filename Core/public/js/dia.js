@@ -117,8 +117,10 @@ class Dia extends CustomFunctions {
     });
   }
 
-  loadData(_this) {
-    axios.post('index.php?action=dia_select', {
+  // Nacitavaj data asynchronne pri komponentach v komponentach
+  // musi data nacitat skor nez ich vklada do child komponenty
+  async loadData(_this) {
+    await axios.post('index.php?action=dia_select', {
       params: {
         tableName: _this.tableName,
         conditions: _this.conditions
