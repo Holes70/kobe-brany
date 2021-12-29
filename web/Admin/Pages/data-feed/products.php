@@ -11,8 +11,7 @@ for ($i=1;$i<=100;$i++) {
       'price' => rand(0,1000),
       'available' => rand(0,1),
       'count' => rand(0,15),
-      'type' => rand(1,2),
-      'id_product_info' => rand(1, 5), 	
+      'type' => rand(1,2)
     ]
   ]);
 }
