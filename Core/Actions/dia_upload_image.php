@@ -8,7 +8,7 @@
 
   $file_to_upload = $_FILES['file'];
   $upload_filename = $file_to_upload['name'];
-  $upload_dir = $dia->config['dir']['root']."/files/products";
+  $upload_dir = $dia->config['dir']['root']."/files/{$uploadToDir}";
 
   $error = "";
 
