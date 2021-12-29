@@ -1,6 +1,9 @@
 <?php
 
-$produkty = new Components\TableLarge("products");
+use Components\TableLarge;
+use Components\Row;
+
+$produkty = new TableLarge("products");
 
 // Vyber iba produktu s typom 1 cize custom produkt
 $produkty->conditions([
@@ -14,6 +17,9 @@ $produkty->buttons([
   ["name" => "Galéria", "link" => "galeria", "class" => "btn btn-secondary"]
 ]);
 
+$pridat = new Row("products");
+
 $dia->template("
+  {$pridat->show()}
   {$produkty->show()}
 ")->render();
