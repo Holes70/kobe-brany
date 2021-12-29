@@ -167,7 +167,15 @@ class Dia extends CustomFunctions {
           }
 
           if (initAddForm == true) {
-            _this.formValues[item] = "";
+            if (_this.tableStructure[item]['type'] == "checkbox") {
+              if (_this.tableStructure[item]['default_value'] == true) {
+                _this.formValues[item] = true;
+              } else {
+                _this.formValues[item] = false;
+              }
+            } else {
+              _this.formValues[item] = "";
+            }
           }
         });
         _this.tableColumns = cols;
