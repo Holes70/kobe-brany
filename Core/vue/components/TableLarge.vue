@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :id="componentName">
     <template v-if="!error">
       <table v-show='!showEdit' class="table table-hover">
         <thead>
@@ -131,6 +131,7 @@
     props: ['params'],
     data() {
       return Object.assign(diaTableLarge, {
+        componentName: "tablelarge",
         showEdit: false,
         showEditId: 0,
         error: false,

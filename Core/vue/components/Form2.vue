@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :id="componentName">
     <form 
       @submit="checkRequiredsInputs"
       action="index.php?action=dia_insert_post" 
@@ -88,7 +88,8 @@ export default {
   props: ['params'],
   data() {
     return Object.assign(diaForm, {
-      uploadAction: ""
+      uploadAction: "",
+      componentName: "form2"
     });
   },
   methods: {
