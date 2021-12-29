@@ -190,6 +190,7 @@
       hideEdit() {
         this.showEdit = false;
         diaTableLarge.deleteFromUrl('id_form');
+        diaTableLarge.loadDataAgain(this);
       },
       save(itemData) {
         // Prever prazdne povinne polia
