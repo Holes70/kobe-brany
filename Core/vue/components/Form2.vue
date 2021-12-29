@@ -22,12 +22,13 @@
                 </div>
                 <template v-if="getStructureValue(colName, 'type') == 'checkbox'">
                   <input 
-                    type="checkbox" 
-                    class="form-control" 
+                    type="checkbox"
+                    class="form-checkbox"
                     :class="validateInput(colName)"
                     :name="colName" 
                     :id="colName" 
                     v-model="formValues[colName]"
+                    :checked="getStructureValue(colName, 'default_value')"
                   />
                 </template>
                 <template v-else-if="getStructureValue(colName, 'type') == 'radio'">

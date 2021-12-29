@@ -626,3 +626,8 @@ body .dribbble img {
 var {
   font-style: normal;  
 }
+
+.form-checkbox {
+  width: 30px;
+  height: 30px;
+}
