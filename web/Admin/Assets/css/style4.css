@@ -631,3 +631,9 @@ var {
   width: 30px;
   height: 30px;
 }
+
+.img-not-found {
+}
+.img-not-found img {
+  width: 100%;
+}
