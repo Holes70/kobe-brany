@@ -11,7 +11,7 @@
 </template>
 
 <script>
-  module.exports = {
-    props: ['params']
-  }
+export default {
+  props: ['params']
+}
 </script>
