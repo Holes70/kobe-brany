@@ -4,6 +4,7 @@
       @submit="checkRequiredsInputs"
       action="index.php?action=dia_insert_post" 
       method="POST"
+      enctype="multipart/form-data"
     > 
       <div class="card">
         <div class="card-body">
@@ -45,6 +46,13 @@
                     <label :for="index" class="ml-1">{{ radioItem }}</label>
                   </div>
                 </template>
+                <template v-else-if="getStructureValue(colName, 'type') == 'image'">
+                  <input 
+                    type="file" 
+                    :id="'form_' + this.tableName + colName"
+                    name="file"
+                  />
+                </template>
                 <template v-else>
                   <input 
                     :placeholder="getStructureValue(colName, 'name_in_table', colName)"
@@ -79,7 +87,9 @@ var diaForm = Object();
 export default {
   props: ['params'],
   data() {
-    return Object.assign(diaForm, {});
+    return Object.assign(diaForm, {
+      uploadAction: ""
+    });
   },
   methods: {
     getStructureValue(colName, structureParam, defaultReturnParam, addItallic = false) {

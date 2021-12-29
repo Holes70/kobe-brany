@@ -2,9 +2,9 @@
 
   global $dia, $webController;
 
-  if (empty($_FILES['file'])) {
-    var_dump($_FILES); exit();
-  }
+  //if (empty($_FILES['file'])) {
+  //  var_dump($_FILES); exit();
+  //}
 
   $file_to_upload = $_FILES['file'];
   $upload_filename = $file_to_upload['name'];

@@ -5,6 +5,12 @@
   $data = $webController->getPostParams();
   $tableName = array_pop($data);
 
+  if (!empty($_FILES)) {
+    $uploadToDir = $tableName;
+    $data['image'] = $_FILES['file']['name'];
+    require ("{$this->rootDir}/Core/Actions/dia_upload_image.php");
+  }
+
   /** 
    * INSERT request 
    * tableName
