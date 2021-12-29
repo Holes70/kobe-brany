@@ -6,7 +6,7 @@
   //  var_dump($_FILES); exit();
   //}
 
-  $file_to_upload = $_FILES['file'];
+  $file_to_upload = $_FILES[$colNameFile];
   $upload_filename = $file_to_upload['name'];
   $upload_dir = $dia->config['dir']['root']."/files/{$uploadToDir}";
 

@@ -50,7 +50,7 @@
                   <input 
                     type="file" 
                     :id="'form_' + this.tableName + colName"
-                    name="file"
+                    :name="colName"
                   />
                 </template>
                 <template v-else>

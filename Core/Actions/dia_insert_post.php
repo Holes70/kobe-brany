@@ -6,8 +6,9 @@
   $tableName = array_pop($data);
 
   if (!empty($_FILES)) {
+    $colNameFile = array_key_first($_FILES);
     $uploadToDir = $tableName;
-    $data['image'] = $_FILES['file']['name'];
+    $data[$colNameFile] = $_FILES[$colNameFile]['name'];
     require ("{$this->rootDir}/Core/Actions/dia_upload_image.php");
   }
 
