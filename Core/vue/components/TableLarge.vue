@@ -88,8 +88,15 @@
                         />
                       </template>
                       <template v-else-if="getStructureValue(colName, 'type', '') == 'radio'">
-                        <div class="mr-3" v-for="(radioItem, index) in getStructureValue(colName, 'radio', '')" :key="radioItem">
-                          <input v-if="item == index" type="radio" :id="index" :name="colName" :value="index" v-model="itemData[colName]" :checked="item == index"/>
+                        <div class="mr-3" v-for="(radioItem, index) in getStructureValue(colName, 'radio')" :key="radioItem">
+                          <input 
+                            type="radio" 
+                            :id="index" 
+                            :name="colName" 
+                            :value="index" 
+                            v-model="itemData[colName]" 
+                            :checked="item == index"
+                          />
                           <label :for="index" class="ml-1">{{ radioItem }}</label>
                         </div>
                       </template>

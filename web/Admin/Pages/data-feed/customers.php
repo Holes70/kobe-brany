@@ -12,6 +12,7 @@ for ($i=1;$i<=30;$i++) {
       'last_name' => "Priezvisko_" . $i,
       'email' => "zakaznik_{$i}@gmail.com", 
       'phone_number' =>  rand(11111111, 99999999), 
+      'state' => rand(1,3),
       'password' => 123455
     ]
   ]);
