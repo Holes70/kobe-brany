@@ -27,16 +27,16 @@
                     class="form-checkbox"
                     :class="validateInput(colName)"
                     :name="colName" 
-                    :id="colName" 
-                    v-model="formValues[colName]"
-                    :checked="getStructureValue(colName, 'default_value')"
+                    :id="'form_' + this.tableName + colName"
+                    :value="formValues[colName]" 
+                    :checked="getStructureValue(colName, 'default_value') == 1"
                   />
                 </template>
                 <template v-else-if="getStructureValue(colName, 'type') == 'radio'">
                   <div class="mr-3" v-for="(radioItem, index) in getStructureValue(colName, 'radio', '')" :key="radioItem">
                     <input 
                       type="radio" 
-                      :id="index" 
+                      :id="'form_' + this.tableName + colName" 
                       :name="colName" 
                       :value="index"
                       :class="validateInput(colName)"

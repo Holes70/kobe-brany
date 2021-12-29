@@ -80,7 +80,7 @@
                       </div>
                       <template v-if="getStructureValue(colName, 'type', '') == 'checkbox'">
                         <input 
-                          :type="getStructureValue(colName, 'type', 'text')" 
+                          type="checkbox" 
                           class="form-checkbox" 
                           :id="colName" 
                           v-model="itemData[colName]" 
