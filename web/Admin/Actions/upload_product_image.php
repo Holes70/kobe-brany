@@ -2,6 +2,8 @@
 
 global $db, $webController;
 
+$uploadToDir = "products";
+
 require ("{$this->rootDir}/Core/Actions/dia_upload_image.php");
 
 $idGallery = $db->insert_array([
