@@ -108,6 +108,16 @@
                           <label :for="index" class="ml-1">{{ radioItem }}</label>
                         </div>
                       </template>
+                      <template v-else-if="getStructureValue(colName, 'type') == 'lookup'">
+                        {{ getLookupColumns(itemData, colName) }}
+                        <a 
+                          onclick="window.event.cancelBubble = true" 
+                          :href="getStructureValue(colName, 'lookup_url', '') + '?id_form=' + itemData.id"
+                          class="lookup-icon"
+                        >
+                          <i style='font-size:20px' :class="'fas fa-' + getStructureValue(colName, 'lookup_icon', 'clipboard-list')"></i>
+                        </a>
+                      </template>
                       <template v-else-if="getStructureValue(colName, 'type', '') != 'image'">
                         <input 
                           :type="getStructureValue(colName, 'type', 'text')" 
@@ -259,6 +269,10 @@
         } else {
           return button['link'] + '?id=' + itemData['id'] + '&previous_page=' + this.currentWebPage + '&previous_page_id_form=' + itemData['id'];
         }
+      },
+      getLookupColumns(itemData, colName) {
+        var lookupTable = this.getStructureValue(colName, 'lookup_table');
+        return itemData[colName] + lookupTable;
       }
     },
     beforeCreate() {
