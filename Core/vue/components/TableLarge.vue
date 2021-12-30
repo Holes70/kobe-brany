@@ -20,12 +20,12 @@
                   </template>
                 </template>
                 <template v-else-if="getStructureValue(colName, 'type', '') == 'lookup'">
-                  <a :href="getStructureValue(colName, 'lookup_url', '') + '?id=' + itemData.id">
+                  <a :href="getStructureValue(colName, 'lookup_url', '') + '?id_form=' + itemData.id">
                     <i style='font-size:20px' class="fas fa-clipboard-list"></i>
                   </a>
                 </template>
                 <template v-else-if="getStructureValue(colName, 'type', 'text') != 'image'">
-                  {{ item }} {{ getStructureValue(colName, 'unit', '') }}
+                  {{ item }} {{ getStructureValue(colName, 'unit') }}
                 </template>
                 <template v-else>
                   <img :src="'http://localhost/holes/dia/files/'  + this.fileDir + '/' + itemData['image']" width="35" height="35"/>
@@ -88,7 +88,7 @@
                         />
                       </template>
                       <template v-else-if="getStructureValue(colName, 'type', '') == 'radio'">
-                        <div class="mr-3" v-for="(radioItem, index) in getStructureValue(colName, 'radio')" :key="radioItem">
+                        <div class="mr-3 mt-2" v-for="(radioItem, index) in getStructureValue(colName, 'radio')" :key="radioItem">
                           <input 
                             type="radio" 
                             :id="index" 
@@ -108,6 +108,9 @@
                           :id="colName" 
                           v-model="itemData[colName]"
                         />
+                        <div v-if="getStructureValue(colName, 'unit')" class="input-group-append">
+                          <span class="input-group-text">{{ getStructureValue(colName, 'unit') }}</span>
+                        </div>
                       </template>
                       <template v-else>
                         <div>
