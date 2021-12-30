@@ -9,6 +9,7 @@ $objednavkyNove->conditions([
     "type" => 1
   ]
 ]);
+$objednavkyNove->emptyDataMessage("Žiadne nové objednávky");
 
 $pridat = new Row("orders");
 

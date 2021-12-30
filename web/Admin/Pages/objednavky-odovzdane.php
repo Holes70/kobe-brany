@@ -3,18 +3,17 @@
 use Components\TableLarge;
 use Components\Row;
 
-$objednavkySchvalene = new TableLarge("orders");
-/*$objednavkySchvalene->conditions([
+$objednavkyOdovzdane = new TableLarge("orders");
+$objednavkyOdovzdane->conditions([
   "where" => [
-    "id_invoice" => ""
+    "type" => 4
   ]
-]);*/
-
-//TODO: Pridat ak ma id_invocie tak vypise
+]);
+$objednavkyOdovzdane->emptyDataMessage("Žiadne odovzdané objednávky");
 
 $pridat = new Row("orders");
 
 $dia->template("
   {$pridat->show()}
-  {$objednavkySchvalene->show()}
+  {$objednavkyOdovzdane->show()}
 ")->render();

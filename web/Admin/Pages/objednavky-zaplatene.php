@@ -3,16 +3,18 @@
 use Components\TableLarge;
 use Components\Row;
 
-$objednavkySchvalene = new TableLarge("orders");
-$objednavkySchvalene->conditions([
+$objednavkyZaplatene = new TableLarge("orders");
+$objednavkyZaplatene->conditions([
   "where" => [
     "type" => 3
   ]
 ]);
 
+$objednavkyZaplatene->emptyDataMessage("Žiadne zapaltené objednávky");
+
 $pridat = new Row("orders");
 
 $dia->template("
   {$pridat->show()}
-  {$objednavkySchvalene->show()}
+  {$objednavkyZaplatene->show()}
 ")->render();

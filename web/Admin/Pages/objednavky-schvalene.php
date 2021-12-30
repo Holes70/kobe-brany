@@ -9,6 +9,7 @@ $objednavkySchvalene->conditions([
     "type" => 2
   ]
 ]);
+$objednavkySchvalene->emptyDataMessage("Žiadne schválené objednávky");
 
 $pridat = new Row("orders");
 
