@@ -6,11 +6,14 @@ use Components\Row;
 $idForm = $webController->getParam('id_form');
 
 $objednavky = new TableLarge("orders");
-$objednavky->conditions([
-  "where" => [
-    "id" => $idForm
-  ]
-]);
+
+if ($idForm > 0) {
+  $objednavky->conditions([
+    "where" => [
+      "id" => $idForm
+    ]
+  ]);
+}
 $objednavky->emptyDataMessage("Žiadne objednávky");
 
 $pridat = new Row("orders");

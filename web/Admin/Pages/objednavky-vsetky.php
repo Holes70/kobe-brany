@@ -121,6 +121,17 @@ $dia->template("
         <div class='p-2'>
           {$typ_objednavky_listgroup->show()}
         </div>
+        <div class='card mt-5 mb-4'>
+          <div class='card-body'>
+            <h5 class='card-title'>Všetky objednávky</h5>
+            <p class='card-text'>
+              <code class='highlighter-rouge'>
+                Zobraziť všetky objednávky na samostatnej stránke
+              </code>
+            </p>
+            <a href='objednavky' class='btn btn-warning'>Zobraziť všetky objednávky</a>
+          </div>
+        </div>
         <div class='p-2'>
           <div class='card mt-5'>
             <h4 class='card-header text-center'>
