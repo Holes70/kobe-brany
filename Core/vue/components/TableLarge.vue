@@ -20,7 +20,7 @@
                   </template>
                 </template>
                 <template v-else-if="getStructureValue(colName, 'type', '') == 'lookup'">
-                  <a :href="getStructureValue(colName, 'lookup_url', '') + '?id_form=' + itemData.id">
+                  <a onclick="window.event.cancelBubble = true" :href="getStructureValue(colName, 'lookup_url', '') + '?id_form=' + itemData.id">
                     <i style='font-size:20px' class="fas fa-clipboard-list"></i>
                   </a>
                 </template>
