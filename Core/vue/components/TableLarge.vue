@@ -272,7 +272,44 @@
       },
       getLookupColumns(itemData, colName) {
         var lookupTable = this.getStructureValue(colName, 'lookup_table');
-        return itemData[colName] + lookupTable;
+        var lookupTableCol = this.getStructureValue(colName, 'lookup_table_col');
+        var lookupColumns = this.getStructureValue(colName, 'lookup_columns');
+        var responsex = [];
+
+        var obj = {};
+        obj[lookupTableCol] = itemData[colName];
+
+        function lol() {
+          return axios.post('index.php?action=dia_select', {
+            params: {
+              tableName: lookupTable,
+              conditions: {
+                "where": obj
+              }
+            }
+          }).then((res) => {
+            return res.data[0];
+          })
+        }
+
+        lol().then(response => {
+         responsex.push(response);
+        });
+
+        console.log(responsex);
+
+        /*Object.keys(response).forEach((key) => {
+          console.log('x');
+        })
+        var returnValues = "";
+        if (typeof lookupColumns != "undefined") {
+          Object.values(lookupColumns).forEach((item) => {
+            returnValues += itemData[item] + " ";
+          })
+        }*/
+
+        //return itemData[colName] + lookupTable;
+        return 'x';
       }
     },
     beforeCreate() {
