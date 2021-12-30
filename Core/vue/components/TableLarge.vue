@@ -20,8 +20,12 @@
                   </template>
                 </template>
                 <template v-else-if="getStructureValue(colName, 'type', '') == 'lookup'">
-                  <a onclick="window.event.cancelBubble = true" :href="getStructureValue(colName, 'lookup_url', '') + '?id_form=' + itemData.id">
-                    <i style='font-size:20px' class="fas fa-clipboard-list"></i>
+                  <a 
+                    onclick="window.event.cancelBubble = true" 
+                    :href="getStructureValue(colName, 'lookup_url', '') + '?id_form=' + itemData.id"
+                    class="lookup-icon"
+                  >
+                    <i style='font-size:20px' :class="'fas fa-' + getStructureValue(colName, 'lookup_icon', 'clipboard-list')"></i>
                   </a>
                 </template>
                 <template v-else-if="getStructureValue(colName, 'type', 'text') != 'image'">
@@ -70,7 +74,11 @@
             <div v-if="itemData['id'] == showEditId" :key='itemData.id'>
               <template v-for='(item, colName) in itemData'>
                 <div :key='colName' v-show="checkBeforeRender(item, colName, 'show_in_form')" class="form-group row">
-                  <label :for="colName" v-html="checkBeforeRenderReturnValue(tableColumns[colName], colName, 'show_in_form')" class="col-sm-2 col-form-label"/>
+                  <label 
+                    :for="colName" 
+                    v-html="getStructureValue(colName, 'name_in_table', '', true)" 
+                    class="col-sm-2 col-form-label"
+                  />
                   <div class="col-sm-9">
                     <div class="input-group mb-2">
                       <div v-if="checkBeforeRender(item, colName, 'required')" class="input-group-prepend">
@@ -164,13 +172,14 @@
           else return "<i color='green'>" + colName + "</i>";
         }
       },
-      getStructureValue(colName, structureParam, defaultReturnParam) {
-        if (this.tableStructure[colName]) {
-          if (this.tableStructure[colName][structureParam]) {
-            if (this.tableStructure[colName][structureParam]) return this.tableStructure[colName][structureParam];
-            else return defaultReturnParam;
-          }
-        }
+      getStructureValue(colName, structureParam, defaultReturnParam, addItallic = false) {
+        return diaTables.getStructureValue(
+          colName, 
+          structureParam, 
+          defaultReturnParam, 
+          this.tableStructure, 
+          addItallic
+        );
       },
       /**
        * Nacitavanie struktury tabulky

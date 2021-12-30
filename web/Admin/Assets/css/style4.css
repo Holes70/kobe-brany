@@ -637,3 +637,6 @@ var {
 .img-not-found img {
   width: 100%;
 }
+.lookup-icon i:hover {
+  color: #5bccf6;
+}
