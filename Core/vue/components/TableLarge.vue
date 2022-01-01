@@ -164,7 +164,8 @@
         showEditId: 0,
         error: false,
         emptyDataMessage: 'No records',
-        emptyRequiredInputs: []
+        emptyRequiredInputs: [],
+        lookups: []
       })
     },
     methods: {    
@@ -278,26 +279,26 @@
 
         var obj = {};
         obj[lookupTableCol] = itemData[colName];
+        var xxx;
 
-        function lol() {
-          return axios.post('index.php?action=dia_select', {
-            params: {
-              tableName: lookupTable,
-              conditions: {
-                "where": obj
-              }
+        axios.post('index.php?action=dia_select', {
+          params: {
+            tableName: lookupTable,
+            conditions: {
+              "where": obj
             }
-          }).then((res) => {
-            return res.data[0];
-          })
-        }
-
-        lol().then(response => {
-         responsex.push(response);
-        });
-
-        console.log(responsex);
-
+          }
+        }).then((res) => {
+         // return res.data[0];
+          //xxx = res.data[0]['id'];
+           //console.log(res.data[0]['id']);
+          if (res.data.status != "fail") {
+            this.lookups = res.data[0];
+          } else {
+            this.lookups = [];
+          }
+        })
+       // console.log(this.lookups );
         /*Object.keys(response).forEach((key) => {
           console.log('x');
         })
@@ -309,7 +310,9 @@
         }*/
 
         //return itemData[colName] + lookupTable;
-        return 'x';
+        //return this.lookups;
+
+        return 1;
       }
     },
     beforeCreate() {
