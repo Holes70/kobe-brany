@@ -1,11 +1,11 @@
 <template>
-  <div :id="componentName">
+  <div :id="componentName" style="text-align:center">
     <form method="post" :action="'index.php?action=' + uploadAction" enctype="multipart/form-data">
-      <div classs="row">
-        <div class="col-2 text-center">
+      <div class="row text-center">
+        <div class="col-12 text-center">
           <div id="yourBtn" onclick="getFile()">Click to upload!</div>
         </div>
-        <div id="submitFile" class="col-2 text-center" style="display:none">
+        <div id="submitFile" class="col-12 text-center" style="display:none">
           <input type="submit" value="Nahrať" class="mt-2 btn btn-primary"/>
         </div>
         <div style="display:none">
