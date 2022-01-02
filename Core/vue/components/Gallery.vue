@@ -68,6 +68,8 @@ export default {
       this.itemEdit = item;
     },
     itemDelete(itemId) {
+      window.event.cancelBubble = true;
+      
       dia.itemDelete(
         this.tableName, 
         itemId,
