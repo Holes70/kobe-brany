@@ -640,3 +640,14 @@ var {
 .lookup-icon i:hover {
   color: #5bccf6;
 }
+
+#yourBtn {
+  font-family: calibri;
+  padding: 10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border: 1px dashed #BBB;
+  text-align: center;
+  background-color: #DDD;
+  cursor: pointer;
+}
