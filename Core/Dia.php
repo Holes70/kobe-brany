@@ -207,7 +207,7 @@ namespace Core {
           <script src='../../Core/public/js/dia.js'></script>
           <script src='../../Core/public/js/diaTables.js'></script>
           <script src='../../Core/public/js/fontawesome.js'></script>
-          <script src='../../node_modules/fancybox/dist/js/jquery.fancybox.js'></script>
+          <script src='../../Core/public/js/fancybox.js'></script>
         ";
       }
 
