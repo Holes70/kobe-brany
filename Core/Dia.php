@@ -200,7 +200,7 @@ namespace Core {
           <script src='../../node_modules/axios/dist/axios.min.js'></script>
           <script src='../../node_modules/chart.js/dist/chart.min.js'></script>
           <script src='../../node_modules/jquery/dist/jquery.min.js'></script>
-          <script src='../../node_modules/bootstrap/dist/js/bootstrap.min.js'></script>
+          <script src='../../Core/public/js/bootstrap.js'></script>
           <script src='../../node_modules/vue3-sfc-loader/dist/vue3-sfc-loader.js'></script>
           <script src='../../node_modules/mitt/dist/mitt.umd.js'></script>
           <script src='../../Core/public/js/CustomFunctions.js'></script>
