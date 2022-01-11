@@ -32,7 +32,7 @@
                   {{ item }} {{ getStructureValue(colName, 'unit') }}
                 </template>
                 <template v-else>
-                  <img :src="'http://localhost/holes/dia/files/'  + this.fileDir + '/' + itemData['image']" width="35" height="35"/>
+                  <img :src="'http://localhost/'+ this.dir +'/files/'  + this.fileDir + '/' + itemData['image']" width="35" height="35"/>
                 </template>
               </td>
             </template>
@@ -132,7 +132,7 @@
                       </template>
                       <template v-else>
                         <div>
-                          <img :src="'http://localhost/holes/dia/files/' + this.fileDir + '/' + itemData['image']" width="100" height="100"/>
+                          <img :src="'http://localhost/'+ this.dir +'/files/' + this.fileDir + '/' + itemData['image']" width="100" height="100"/>
                         </div>
                       </template>
                     </div>
