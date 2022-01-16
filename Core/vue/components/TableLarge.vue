@@ -21,8 +21,12 @@
                 </template>
                 <template v-else-if="getStructureValue(colName, 'type', '') == 'lookup'">
                   <a 
-                    onclick="window.event.cancelBubble = true" 
-                    :href="getStructureValue(colName, 'lookup_url', '') + '?id_form=' + itemData.id"
+                    onclick="window.event.cancelBubble = true"
+                    :href="getStructureValue(colName, 'lookup_url', '') + '?' 
+                      + getStructureValue(colName, 'lookup_url_type') + 
+                      '=' 
+                      + itemData[getStructureValue(colName, 'lookup_table_col')]
+                    "
                     class="lookup-icon"
                   >
                     <i style='font-size:20px' :class="'fas fa-' + getStructureValue(colName, 'lookup_icon', 'clipboard-list')"></i>
