@@ -337,6 +337,8 @@ namespace Core\Classes {
        */
       if (array_key_exists("order_by", $conditions)) {
         $query .= " ORDER BY {$conditions['order_by']}";
+      } else {
+        $query .= " ORDER BY id DESC";
       }
 
        /**

@@ -3,7 +3,7 @@
     <form method="post" :action="'index.php?action=' + uploadAction" enctype="multipart/form-data">
       <div class="row text-center">
         <div class="col-12 text-center">
-          <div id="yourBtn" onclick="getFile()">Nahrajte obrázok</div>
+          <div id="yourBtn" onclick="getFile()">Vybrať obrázok</div>
         </div>
         <div id="submitFile" class="col-12 text-center" style="display:none">
           <input type="submit" value="Nahrať" class="mt-2 btn btn-primary"/>
