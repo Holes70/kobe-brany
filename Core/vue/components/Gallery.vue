@@ -60,7 +60,7 @@ export default {
   data() {
     return Object.assign(dia, {
       itemEdit: [],
-      uploadAction: "upload_product_image"
+      uploadAction: "upload_gallery_image"
     });
   },
   methods: {
