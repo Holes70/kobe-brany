@@ -146,7 +146,8 @@
                           <div class="col pt-4">
                             <dia-file-uploader :params="{
                               tableName: this.tableName,
-                              uploadAction: getStructureValue(colName, 'upload_action')
+                              uploadAction: getStructureValue(colName, 'upload_action'),
+                              idItem: itemData['id']
                             }"></dia-file-uploader>
                           </div>
                         </div>
