@@ -6,8 +6,23 @@
 
   $totalCount = $db->dbSelect(
     tableName: $data->params->tableName, 
-    conditions: ["select" => "count(*) as count"]
+    conditions: [
+      "select" => "count(*) as count",
+      "whereArray" => [
+        ["type", "=", 1]
+      ]
+    ]
   );
+
+  /*$totalCount = $db->dbSelect(
+    tableName: $data->params->tableName, 
+    conditions: [
+      "select" => "count(*) as count",
+      "whereArray" => [
+        ["type", "=", 1]
+      ]
+    ]
+  );*/
 
   $pagination = \Core\Bice::pagination(
     countTotal: reset($totalCount)['count'],
