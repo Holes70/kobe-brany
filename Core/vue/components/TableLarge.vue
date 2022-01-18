@@ -207,7 +207,8 @@
         error: false,
         emptyDataMessage: 'No records',
         emptyRequiredInputs: [],
-        lookups: []
+        lookups: [],
+        dataToSet: ['pages']
       })
     },
     methods: {    
@@ -241,7 +242,7 @@
       hideEdit() {
         this.showEdit = false;
         diaTableLarge.deleteFromUrl('id_form');
-        diaTableLarge.loadDataAgain(this);
+        diaTableLarge.loadDataAgain(this, "dia_select_with_pagination", this.dataToSet);
       },
       save(itemData) {
         // Prever prazdne povinne polia
@@ -257,7 +258,7 @@
           }).then(() => {
             this.showEdit = false;
             diaTableLarge.deleteFromUrl('id_form');
-            diaTableLarge.loadDataAgain(this);
+            diaTableLarge.loadDataAgain(this, "dia_select_with_pagination", this.dataToSet);
             swal({
               title: "Uložené",
               type: "success",
@@ -272,7 +273,7 @@
           this.tableName,
           rowId,
           () => {
-            diaTableLarge.loadData(this);
+            diaTableLarge.loadData(this, "dia_select_with_pagination", this.dataToSet);
             this.showEdit = false;
           }
         );
@@ -354,7 +355,7 @@
     },
     mounted() {
       diaTableLarge.setComponentParams(this);
-      diaTableLarge.setComponentData(this, "dia_select_with_pagination");
+      diaTableLarge.setComponentData(this, "dia_select_with_pagination", this.dataToSet);
       diaTableLarge.loadTableStructure(this);
 
 
