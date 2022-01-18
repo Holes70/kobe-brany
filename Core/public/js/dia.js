@@ -120,7 +120,7 @@ class Dia extends CustomFunctions {
 
   // Nacitavaj data asynchronne pri komponentach v komponentach
   // musi data nacitat skor nez ich vklada do child komponenty
-  async loadData(_this, customAction = "") {
+  async loadData(_this, customAction = "", dataToSet = []) {
     this.emptyRequiredInputs = [];
     customAction = customAction != "" ? customAction : "dia_select";
 
@@ -131,7 +131,10 @@ class Dia extends CustomFunctions {
       }
     }).then((res) => {
       if (res.data.status != 'fail') {
-        _this.data = res.data;
+        _this.data = res.data['data'];
+        dataToSet.forEach((item) => {
+          _this[item] = res.data[item];
+        })
       } else {
         _this.error = true;
       }
@@ -207,16 +210,16 @@ class Dia extends CustomFunctions {
     }
   }
 
-  setComponentData(_this, customAction = "") {
+  setComponentData(_this, customAction = "", dataToSet = []) {
     if (_this.params['data'].length > 0) {
       _this.data = _this.params['data'];
     } else {
-      this.loadData(_this, customAction);
+      this.loadData(_this, customAction, dataToSet);
     }
   }
 
-  loadDataAgain(_this) {
-    this.loadData(_this);
+  loadDataAgain(_this, customAction = "", dataToSet = []) {
+    this.loadData(_this, customAction, dataToSet);
   }
 
   refactorCustomLinks(_this) {
