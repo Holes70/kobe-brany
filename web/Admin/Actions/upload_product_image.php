@@ -9,7 +9,7 @@ require ("{$this->rootDir}/Core/Actions/dia_upload_image.php");
 
 $db->update(
   tableName: "products",
-  rowId: $webController->getPostParam("id"),
+  rowId: (int)$webController->getPostParam("id"),
   data: ['image' => $_FILES[$colNameFile]['name']]
 );
 
