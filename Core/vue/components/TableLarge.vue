@@ -170,7 +170,7 @@
 </template>
 
 <script>
-  import fileUploader from './FileUploader4.vue';
+  import fileUploader from './FileUploader5.vue';
 
   var diaTableLarge = Object();
 

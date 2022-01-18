@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import fileUploader from './FileUploader4.vue';
+import fileUploader from './FileUploader5.vue';
 
 export default {
   components: {
