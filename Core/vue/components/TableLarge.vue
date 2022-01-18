@@ -10,8 +10,8 @@
         <tbody>
           <tr v-for='itemData in data' :key='itemData.id' @click="edit(itemData['id'])" style='cursor:pointer'>
             <template v-for='(item, colName) in itemData'>
-              <td :key='colName' v-show="checkBeforeRender(item, colName, 'show_in_table')">
-                <template v-if="getStructureValue(colName, 'type', '') == 'checkbox'">
+              <td :key='colName' v-show="getStructureValue(colName, 'show_in_table')">
+                <template v-if="getStructureValue(colName, 'type') == 'checkbox'">
                   <template v-if="item == '1'" >
                     <i class="fas fa-check"></i>
                   </template>
@@ -77,7 +77,7 @@
           <template v-for='itemData in data'>
             <div v-if="itemData['id'] == showEditId" :key='itemData.id'>
               <template v-for='(item, colName) in itemData'>
-                <div :key='colName' v-show="checkBeforeRender(item, colName, 'show_in_form')" class="form-group row">
+                <div :key='colName' v-show="getStructureValue(colName, 'show_in_form')" class="form-group row">
                   <label 
                     :for="colName" 
                     v-html="getStructureValue(colName, 'name_in_table', '', true)" 
@@ -85,7 +85,7 @@
                   />
                   <div class="col-sm-9">
                     <div class="input-group mb-2">
-                      <div v-if="checkBeforeRender(item, colName, 'required')" class="input-group-prepend">
+                      <div v-if="getStructureValue(colName, 'required')" class="input-group-prepend">
                         <div class="input-group-text">
                           <i class="fas fa-exclamation" :class="classObjectRequired(colName)"></i>
                         </div>
@@ -135,15 +135,13 @@
                         </div>
                       </template>
                       <template v-else>
-                        <div class="row">
-                          <div class="col">
-                            <img 
-                              :src="'http://localhost/'+ this.dir +'/files/' + this.fileDir + '/' + itemData['image']" 
-                              width="100" 
-                              height="100"
-                            />
-                          </div>
-                          <div class="col pt-4">
+                        <div :class="imageRequired(colName)">
+                          <img 
+                            :src="'http://localhost/'+ this.dir +'/files/' + this.fileDir + '/' + itemData['image']" 
+                            width="100" 
+                            height="100"
+                          />
+                          <div class='pt-4 pl-3'>
                             <dia-file-uploader :params="{
                               tableName: this.tableName,
                               uploadAction: getStructureValue(colName, 'upload_action'),
@@ -191,20 +189,6 @@
       })
     },
     methods: {    
-      checkBeforeRender(item, colName, structureParam) {
-        if (this.checkIfShowInTable(colName, structureParam)) {
-          // ak je v tabulke HODNOTA null tak vrat ' ' inak chybuje tabulka
-          if (item) return item;
-          else return ' ';
-        }
-      },
-      checkBeforeRenderReturnValue(item, colName, structureParam) {
-        if (this.checkIfShowInTable(colName, structureParam)) {
-          // ak je v tabulke HODNOTA null tak vrat ' ' inak chybuje tabulka
-          if (item) return item;
-          else return "<i color='green'>" + colName + "</i>";
-        }
-      },
       getStructureValue(colName, structureParam, defaultReturnParam, addItallic = false) {
         return diaTables.getStructureValue(
           colName, 
@@ -284,6 +268,12 @@
           return button['class'];
         } else {
           return "btn btn-primary";
+        }
+      },
+      imageRequired(colName) {
+        return {
+          'row': true,
+          'ml-2': this.getStructureValue(colName, 'required')
         }
       },
       getButtonHref(button, itemData) {
