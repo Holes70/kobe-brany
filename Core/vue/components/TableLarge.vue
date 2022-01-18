@@ -135,8 +135,20 @@
                         </div>
                       </template>
                       <template v-else>
-                        <div>
-                          <img :src="'http://localhost/'+ this.dir +'/files/' + this.fileDir + '/' + itemData['image']" width="100" height="100"/>
+                        <div class="row">
+                          <div class="col">
+                            <img 
+                              :src="'http://localhost/'+ this.dir +'/files/' + this.fileDir + '/' + itemData['image']" 
+                              width="100" 
+                              height="100"
+                            />
+                          </div>
+                          <div class="col pt-4">
+                            <dia-file-uploader :params="{
+                              tableName: this.tableName,
+                              uploadAction: getStructureValue(colName, 'upload_action')
+                            }"></dia-file-uploader>
+                          </div>
                         </div>
                       </template>
                     </div>
@@ -157,9 +169,14 @@
 </template>
 
 <script>
+  import fileUploader from './FileUploader4.vue';
+
   var diaTableLarge = Object();
 
   export default {
+    components: {
+      'dia-file-uploader': fileUploader
+    },
     props: ['params'],
     data() {
       return Object.assign(diaTableLarge, {
