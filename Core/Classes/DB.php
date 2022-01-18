@@ -292,6 +292,38 @@ namespace Core\Classes {
         }
       }
 
+       /**
+       * WHERE ARRAY syntax
+       */
+      if (array_key_exists("whereArray", $conditions)) {
+        $i = 0;
+        foreach ($conditions['whereArray'] as $whereCondition) {
+
+          $fullValues = "";
+          if (is_array($whereCondition[2])) {
+            foreach ($whereCondition[2] as $val) {
+              if ($val != end($whereCondition[2])) {
+                $fullValues .= is_string($val) ? "'$val'" : $val .",";
+              } else {
+                $fullValues .= is_string($val) ? "'$val'" : $val;
+              }
+            }
+            $value = $fullValues;
+          } else if(is_string($whereCondition[2])) {
+            $value = "'$whereCondition[2]'";
+          } else if (is_numeric($whereCondition[2])) {
+            $value = $whereCondition[2];
+          }
+
+          if ($i == 0) {
+            $query = $query . " WHERE {$whereCondition[0]} ". strtoupper($whereCondition[1]) ."". ($whereCondition[1] == "in" ? "({$value})" : "{$value}");
+            $i++;
+          } else {
+            $query = $query . " AND {$whereCondition[0]} ". strtoupper($whereCondition[1]) ."". ($whereCondition[1] == "in" ? "({$value})" : "{$value}");
+          }
+        }
+      }
+
       /**
        * GROUP BY
        */
