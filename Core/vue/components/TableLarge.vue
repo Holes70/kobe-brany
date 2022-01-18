@@ -348,7 +348,11 @@
         //return this.lookups;
 
         return 1;
-      }
+      },
+      loadPage(page) {
+        this.conditions['currentPage'] = page;
+        diaTableLarge.loadData(this, "dia_select_with_pagination", this.dataToSet);
+      },
     },
     beforeCreate() {
       diaTableLarge = new Dia();

@@ -11,7 +11,7 @@
 
   $pagination = \Core\Bice::pagination(
     countTotal: reset($totalCount)['count'],
-    currentPage: $data->params->currentPage ?? 1,
+    currentPage: $data->params->conditions->currentPage ?? 1,
     count: 15
   );
 
