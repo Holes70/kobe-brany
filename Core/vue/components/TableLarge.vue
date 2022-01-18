@@ -1,48 +1,70 @@
 <template>
   <div :id="componentName">
     <template v-if="!error">
-      <table v-show='!showEdit' class="table table-hover">
-        <thead>
-          <tr>
-            <th v-for="col in tableColumns" :key="col" scope="col">{{ col }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for='itemData in data' :key='itemData.id' @click="edit(itemData['id'])" style='cursor:pointer'>
-            <template v-for='(item, colName) in itemData'>
-              <td :key='colName' v-show="getStructureValue(colName, 'show_in_table')">
-                <template v-if="getStructureValue(colName, 'type') == 'checkbox'">
-                  <template v-if="item == '1'" >
-                    <i class="fas fa-check"></i>
+      <div v-show='!showEdit'>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th v-for="col in tableColumns" :key="col" scope="col">{{ col }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for='itemData in data' :key='itemData.id' @click="edit(itemData['id'])" style='cursor:pointer'>
+              <template v-for='(item, colName) in itemData'>
+                <td :key='colName' v-show="getStructureValue(colName, 'show_in_table')">
+                  <template v-if="getStructureValue(colName, 'type') == 'checkbox'">
+                    <template v-if="item == '1'" >
+                      <i class="fas fa-check"></i>
+                    </template>
+                    <template v-else>
+                      <i style='color:red' class="fas fa-times"></i>
+                    </template>
+                  </template>
+                  <template v-else-if="getStructureValue(colName, 'type', '') == 'lookup'">
+                    <a 
+                      onclick="window.event.cancelBubble = true"
+                      :href="getStructureValue(colName, 'lookup_url', '') + '?' 
+                        + getStructureValue(colName, 'lookup_url_type') + 
+                        '=' 
+                        + itemData[getStructureValue(colName, 'lookup_table_col')]
+                      "
+                      class="lookup-icon"
+                    >
+                      <i style='font-size:20px' :class="'fas fa-' + getStructureValue(colName, 'lookup_icon', 'clipboard-list')"></i>
+                    </a>
+                  </template>
+                  <template v-else-if="getStructureValue(colName, 'type', 'text') != 'image'">
+                    {{ item }} {{ getStructureValue(colName, 'unit') }}
                   </template>
                   <template v-else>
-                    <i style='color:red' class="fas fa-times"></i>
+                    <img :src="'http://localhost/'+ this.dir +'/files/'  + this.fileDir + '/' + itemData['image']" width="35" height="35"/>
                   </template>
-                </template>
-                <template v-else-if="getStructureValue(colName, 'type', '') == 'lookup'">
-                  <a 
-                    onclick="window.event.cancelBubble = true"
-                    :href="getStructureValue(colName, 'lookup_url', '') + '?' 
-                      + getStructureValue(colName, 'lookup_url_type') + 
-                      '=' 
-                      + itemData[getStructureValue(colName, 'lookup_table_col')]
-                    "
-                    class="lookup-icon"
-                  >
-                    <i style='font-size:20px' :class="'fas fa-' + getStructureValue(colName, 'lookup_icon', 'clipboard-list')"></i>
-                  </a>
-                </template>
-                <template v-else-if="getStructureValue(colName, 'type', 'text') != 'image'">
-                  {{ item }} {{ getStructureValue(colName, 'unit') }}
-                </template>
-                <template v-else>
-                  <img :src="'http://localhost/'+ this.dir +'/files/'  + this.fileDir + '/' + itemData['image']" width="35" height="35"/>
-                </template>
-              </td>
-            </template>
-          </tr>
-        </tbody>
-      </table>
+                </td>
+              </template>
+            </tr>
+          </tbody>
+        </table>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+            <li 
+              v-for="page in pages" 
+              :key="page" 
+              class="page-item"
+            >
+              <button 
+                @click="loadPage(page)"
+                class="page-link"
+              >{{ page }}</button>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
       
       <div v-show='showEdit' class='card' style='height:750px;width:100%;'>
         <template v-for='itemData in data'>
@@ -332,7 +354,7 @@
     },
     mounted() {
       diaTableLarge.setComponentParams(this);
-      diaTableLarge.setComponentData(this);
+      diaTableLarge.setComponentData(this, "dia_select_with_pagination");
       diaTableLarge.loadTableStructure(this);
 
 
