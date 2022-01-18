@@ -209,6 +209,7 @@ namespace Core\Classes {
     
       $query = "UPDATE {$tableName} SET {$update} WHERE id = $id";
       //var_dump($query);
+      //exit();
 
       if (!$this->con->query($query)) { 
         echo $this->con->error;
