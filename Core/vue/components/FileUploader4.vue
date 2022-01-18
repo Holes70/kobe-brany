@@ -31,7 +31,13 @@ export default {
   },
   mounted() {
     this.uploadAction = this.params['uploadAction'];
-    this.idItem = dia.getUrlParam('id');
+
+    if (this.params['idItem'] > 0) {
+      this.idItem = this.params['idItem'];
+    } else {
+      this.idItem = dia.getUrlParam('id');
+    }
+    
     this.redirect = dia.getUrl();
   }
 }
