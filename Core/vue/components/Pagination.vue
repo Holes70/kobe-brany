@@ -70,7 +70,7 @@ export default {
   },
   beforeMount(){
     diaPagination.setComponentParams(this);
-console.log(this.params['pages']);
+
     this.pages = this.params['pages'];
   }
 }

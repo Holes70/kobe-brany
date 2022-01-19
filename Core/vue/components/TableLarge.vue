@@ -344,7 +344,6 @@
       diaTableLarge.setComponentData(this, "dia_select_with_pagination", this.dataToSet);
       diaTableLarge.loadTableStructure(this);
 
-
       // Custom Component functions
       if (diaTableLarge.getUrlParam('id_form') > 0) {
         this.showEdit = true;
