@@ -137,6 +137,7 @@ class Dia extends CustomFunctions {
         })
       } else {
         _this.error = true;
+        console.log(res);
       }
     })
   }
