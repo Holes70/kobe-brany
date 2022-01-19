@@ -1,15 +1,24 @@
 <?php
 
-$kosikId = isset($_GET['id']) ? $_GET['id'] : '';
+use Components\TableLarge;
 
-$kosikData = $db->dbSelect(
-  tableName: "carts_products",
-  conditions: [
-    "where" => [
-      "id_cart" => $kosikId
+$idCart = $_GET['idcart'];
+
+$carts = new TableLarge("carts_products");
+$carts->conditions([
+  "select" => "products.*",
+  "join" => [
+    "products" => [
+      "id_product",
+      "id"
     ]
+  ],
+  "where" => [
+    "carts_products.id_cart" => $idCart 
   ]
-);
+]);
+$carts->fileDir("products");
 
-$tableKosik = new \Components\Table("carts_products");
-$tableKosik->data($kosikData);
+$dia->template("
+  {$carts->show()}
+")->render();

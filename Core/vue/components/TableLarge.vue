@@ -21,17 +21,22 @@
                     </template>
                   </template>
                   <template v-else-if="getStructureValue(colName, 'type', '') == 'lookup'">
-                    <a 
-                      onclick="window.event.cancelBubble = true"
-                      :href="getStructureValue(colName, 'lookup_url', '') + '?' 
-                        + getStructureValue(colName, 'lookup_url_type') + 
-                        '=' 
-                        + itemData[getStructureValue(colName, 'lookup_table_col')]
-                      "
-                      class="lookup-icon"
-                    >
-                      <i style='font-size:20px' :class="'fas fa-' + getStructureValue(colName, 'lookup_icon', 'clipboard-list')"></i>
-                    </a>
+                    <template v-if="parseInt(itemData[getStructureValue(colName, 'lookup_table_col')]) > 0">
+                      <a 
+                        onclick="window.event.cancelBubble = true"
+                        :href="getStructureValue(colName, 'lookup_url', '') + '?' 
+                          + getStructureValue(colName, 'lookup_url_type', 'id_form') + 
+                          '=' 
+                          + itemData[getStructureValue(colName, 'lookup_table_col')]
+                        "
+                        class="lookup-icon"
+                      >
+                        <i style='font-size:20px' :class="'fas fa-' + getStructureValue(colName, 'lookup_icon', 'clipboard-list')"></i>
+                      </a>
+                    </template>
+                    <template v-else>
+                      {{ getStructureValue(colName, 'lookup_table_empty', 'Record doesnt exists') }}
+                    </template>
                   </template>
                   <template v-else-if="getStructureValue(colName, 'type', 'text') != 'image'">
                     {{ item }} {{ getStructureValue(colName, 'unit') }}
@@ -121,13 +126,27 @@
                       </template>
                       <template v-else-if="getStructureValue(colName, 'type') == 'lookup'">
                         {{ getLookupColumns(itemData, colName) }}
-                        <a 
-                          onclick="window.event.cancelBubble = true" 
-                          :href="getStructureValue(colName, 'lookup_url', '') + '?id_form=' + itemData.id"
-                          class="lookup-icon"
-                        >
-                          <i style='font-size:20px' :class="'fas fa-' + getStructureValue(colName, 'lookup_icon', 'clipboard-list')"></i>
-                        </a>
+                        <template v-if="parseInt(itemData[getStructureValue(colName, 'lookup_table_col')]) > 0">
+                          <a 
+                            onclick="window.event.cancelBubble = true" 
+                            :href="getStructureValue(colName, 'lookup_url', '') + '?' 
+                              + getStructureValue(colName, 'lookup_url_type', 'id_form') + 
+                              '=' 
+                              + itemData[getStructureValue(colName, 'lookup_table_col')]
+                            "
+                            class="lookup-icon"
+                          >
+                            <i style='font-size:20px' :class="'fas fa-' + getStructureValue(colName, 'lookup_icon', 'clipboard-list')"></i>
+                          </a>
+                        </template>
+                        <template v-else>
+                          <a
+                            :href="'index.php?action=' + getLookupAction(colName, itemData['id'])"
+                            class="btn btn-warning"
+                          >
+                            {{ getStructureValue(colName, 'lookup_table_empty_text', 'Akcia') }}
+                          </a>
+                        </template> 
                       </template>
                       <template v-else-if="getStructureValue(colName, 'type', '') != 'image'">
                         <input 
@@ -335,6 +354,15 @@
         //return this.lookups;
 
         return 1;
+      },
+      getLookupAction(colName, id) {
+        var action = this.getStructureValue(colName, 'lookup_table_empty_action', 'action');
+
+        if (action != "action") {
+          action = action.replace("%id%", id);
+        }
+
+        return action;
       }
     },
     beforeCreate() {
