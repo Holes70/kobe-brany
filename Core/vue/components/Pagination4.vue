@@ -42,7 +42,9 @@ export default {
     loadPage(page) {
       this.conditions['currentPage'] = page;
       diaPagination.addToUrl('page', page);
-      diaPagination.loadData(this, "dia_select_with_pagination", this.dataToSet);
+
+      // hideEdit obsahuje funckiu na novo nacitane data
+      this.$parent.hideEdit();
     },
     loadPreviousPage() {
       var currentPage = diaPagination.getUrlParam('page');

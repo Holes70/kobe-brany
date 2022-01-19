@@ -176,7 +176,7 @@
 
 <script>
   import fileUploader from './FileUploader5.vue';
-  import pagination from './Pagination2.vue';
+  import pagination from './Pagination4.vue';
 
   var diaTableLarge = Object();
 
