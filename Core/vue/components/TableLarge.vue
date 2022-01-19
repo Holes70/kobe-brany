@@ -56,7 +56,7 @@
             >
               <button 
                 @click="loadPage(page)"
-                class="page-link"
+                :class="pagination(page)"
               >{{ page }}</button>
             </li>
             <li class="page-item">
@@ -299,6 +299,12 @@
           'ml-2': this.getStructureValue(colName, 'required')
         }
       },
+      pagination(page) {
+        return {
+          'page-link': true,
+          'btn btn-secondary': diaTableLarge.getUrlParam('page') == page
+        }
+      },
       getButtonHref(button, itemData) {
         if (typeof button['customLink'] != "undefined") {
           return button['customLink'];
@@ -351,6 +357,7 @@
       },
       loadPage(page) {
         this.conditions['currentPage'] = page;
+        diaTableLarge.addToUrl('page', page);
         diaTableLarge.loadData(this, "dia_select_with_pagination", this.dataToSet);
       },
     },

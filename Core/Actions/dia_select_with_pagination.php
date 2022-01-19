@@ -8,9 +8,6 @@
     tableName: $data->params->tableName, 
     conditions: [
       "select" => "count(*) as count",
-      "whereArray" => [
-        ["type", "=", 1]
-      ]
     ]
   );
 

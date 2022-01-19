@@ -651,3 +651,7 @@ var {
   background-color: #DDD;
   cursor: pointer;
 }
+
+.page-link {
+  color: #404040 !important;
+}
