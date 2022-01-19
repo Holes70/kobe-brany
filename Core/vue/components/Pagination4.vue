@@ -77,6 +77,12 @@ export default {
     setTimeout(() => { 
       this.pages = this.params['pages'];
     }, 300);
+
+    // Init page 1
+    if (typeof diaPagination.getUrlParam('page') == "undefined") {
+      diaPagination.addToUrl('page', 1);
+      this.conditions['currentPage'] = 1;
+    }
    
   }
 }
