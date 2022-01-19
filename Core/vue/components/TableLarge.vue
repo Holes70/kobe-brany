@@ -316,11 +316,9 @@
         var lookupTable = this.getStructureValue(colName, 'lookup_table');
         var lookupTableCol = this.getStructureValue(colName, 'lookup_table_col');
         var lookupColumns = this.getStructureValue(colName, 'lookup_columns');
-        var responsex = [];
 
         var obj = {};
         obj[lookupTableCol] = itemData[colName];
-        var xxx = 1;
 
         axios.post('index.php?action=dia_select', {
           params: {
@@ -330,10 +328,6 @@
             }
           }
         }).then((res) => {
-        // return res.data[0];
-          //xxx = res.data[0]['id'];
-          //console.log(res.data[0]['id']);
-        
           if (res.data.status != "fail") {
             var data = res.data[0];
 
@@ -343,22 +337,7 @@
           }
         })
         
-        //console.log(this.lookups);
         return itemData[colName];
-       // console.log(this.lookups );
-        /*Object.keys(response).forEach((key) => {
-          console.log('x');
-        })
-        var returnValues = "";
-        if (typeof lookupColumns != "undefined") {
-          Object.values(lookupColumns).forEach((item) => {
-            returnValues += itemData[item] + " ";
-          })
-        }*/
-
-        //return itemData[colName] + lookupTable;
-        //return this.lookups;
-       // return xxx; 
       },
       getLookupAction(colName, id) {
         var action = this.getStructureValue(colName, 'lookup_table_empty_action', 'action');
