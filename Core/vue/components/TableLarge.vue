@@ -46,8 +46,11 @@
         </table>
         <nav aria-label="Page navigation example">
           <ul class="pagination justify-content-center">
-            <li class="page-item disabled">
-              <a class="page-link" href="#" tabindex="-1">Previous</a>
+            <li class="page-item">
+              <button 
+                class="page-link"
+                @click="loadPreviousPage()"
+              >Prechádzajúca</button>
             </li>
             <li 
               v-for="page in pages" 
@@ -60,7 +63,10 @@
               >{{ page }}</button>
             </li>
             <li class="page-item">
-              <a class="page-link" href="#">Next</a>
+              <button 
+                class="page-link"
+                @click="loadNextPage()"
+              >Ďalšia</button>
             </li>
           </ul>
         </nav>
@@ -359,6 +365,21 @@
         this.conditions['currentPage'] = page;
         diaTableLarge.addToUrl('page', page);
         diaTableLarge.loadData(this, "dia_select_with_pagination", this.dataToSet);
+      },
+      loadPreviousPage() {
+        var currentPage = diaTableLarge.getUrlParam('page');
+
+        if (currentPage != 1) {
+          this.loadPage(currentPage - 1)
+        }
+        
+      },
+      loadNextPage() {
+        var currentPage = diaTableLarge.getUrlParam('page');
+
+        if (currentPage != this.pages) {
+          this.loadPage(parseInt(currentPage) + 1)
+        }
       },
     },
     beforeCreate() {
