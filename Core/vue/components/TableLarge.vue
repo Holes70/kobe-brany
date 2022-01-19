@@ -44,32 +44,10 @@
             </tr>
           </tbody>
         </table>
-        <nav aria-label="Page navigation example">
-          <ul class="pagination justify-content-center">
-            <li class="page-item">
-              <button 
-                class="page-link"
-                @click="loadPreviousPage()"
-              >Prechádzajúca</button>
-            </li>
-            <li 
-              v-for="page in pages" 
-              :key="page" 
-              class="page-item"
-            >
-              <button 
-                @click="loadPage(page)"
-                :class="pagination(page)"
-              >{{ page }}</button>
-            </li>
-            <li class="page-item">
-              <button 
-                class="page-link"
-                @click="loadNextPage()"
-              >Ďalšia</button>
-            </li>
-          </ul>
-        </nav>
+        <dia-pagination :params="{
+          tableName: this.tableName,
+          pages: this.pages
+        }"></dia-pagination>
       </div>
       
       <div v-show='showEdit' class='card' style='height:750px;width:100%;'>
@@ -197,12 +175,14 @@
 
 <script>
   import fileUploader from './FileUploader5.vue';
+  import pagination from './Pagination.vue';
 
   var diaTableLarge = Object();
 
   export default {
     components: {
-      'dia-file-uploader': fileUploader
+      'dia-file-uploader': fileUploader,
+      'dia-pagination': pagination
     },
     props: ['params'],
     data() {
@@ -305,12 +285,6 @@
           'ml-2': this.getStructureValue(colName, 'required')
         }
       },
-      pagination(page) {
-        return {
-          'page-link': true,
-          'btn btn-secondary': diaTableLarge.getUrlParam('page') == page
-        }
-      },
       getButtonHref(button, itemData) {
         if (typeof button['customLink'] != "undefined") {
           return button['customLink'];
@@ -360,32 +334,12 @@
         //return this.lookups;
 
         return 1;
-      },
-      loadPage(page) {
-        this.conditions['currentPage'] = page;
-        diaTableLarge.addToUrl('page', page);
-        diaTableLarge.loadData(this, "dia_select_with_pagination", this.dataToSet);
-      },
-      loadPreviousPage() {
-        var currentPage = diaTableLarge.getUrlParam('page');
-
-        if (currentPage != 1) {
-          this.loadPage(currentPage - 1)
-        }
-        
-      },
-      loadNextPage() {
-        var currentPage = diaTableLarge.getUrlParam('page');
-
-        if (currentPage != this.pages) {
-          this.loadPage(parseInt(currentPage) + 1)
-        }
-      },
+      }
     },
     beforeCreate() {
       diaTableLarge = new Dia();
     },
-    mounted() {
+    beforeMount() {
       diaTableLarge.setComponentParams(this);
       diaTableLarge.setComponentData(this, "dia_select_with_pagination", this.dataToSet);
       diaTableLarge.loadTableStructure(this);
