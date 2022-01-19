@@ -51,6 +51,8 @@
                     type="file" 
                     :id="'form_' + this.tableName + colName"
                     :name="colName"
+                    :class="validateInput(colName)" 
+                    class="pl-2 pt-1"
                   />
                 </template>
                 <template v-else>
