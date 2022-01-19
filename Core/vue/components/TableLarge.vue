@@ -46,7 +46,8 @@
         </table>
         <dia-pagination :params="{
           tableName: this.tableName,
-          pages: this.pages
+          pages: this.pages,
+          conditions: this.conditions
         }"></dia-pagination>
       </div>
       
@@ -175,7 +176,7 @@
 
 <script>
   import fileUploader from './FileUploader5.vue';
-  import pagination from './Pagination.vue';
+  import pagination from './Pagination2.vue';
 
   var diaTableLarge = Object();
 
@@ -343,7 +344,6 @@
       diaTableLarge.setComponentParams(this);
       diaTableLarge.setComponentData(this, "dia_select_with_pagination", this.dataToSet);
       diaTableLarge.loadTableStructure(this);
-
 
       // Custom Component functions
       if (diaTableLarge.getUrlParam('id_form') > 0) {

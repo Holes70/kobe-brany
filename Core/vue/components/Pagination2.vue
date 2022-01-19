@@ -34,7 +34,8 @@ export default {
   props: ['params'],
   data() {
     return Object.assign(diaPagination, {
-      componentName: "pagination"
+      componentName: "pagination",
+      pages: 0
     })
   },
   methods: {
@@ -61,7 +62,7 @@ export default {
     pagination(page) {
       return {
         'page-link': true,
-        'btn btn-secondary': diaTableLarge.getUrlParam('page') == page
+        'btn btn-secondary': diaPagination.getUrlParam('page') == page
       }
     },
   },
@@ -71,7 +72,10 @@ export default {
   beforeMount(){
     diaPagination.setComponentParams(this);
 
-    this.pages = this.params['pages'];
+    setTimeout(() => { 
+      this.pages = this.params['pages'];
+    }, 300);
+   
   }
 }
 </script>
