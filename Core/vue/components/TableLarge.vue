@@ -125,8 +125,8 @@
                         </div>
                       </template>
                       <template v-else-if="getStructureValue(colName, 'type') == 'lookup'">
-                        {{ getLookupColumns(itemData, colName) }}
                         <template v-if="parseInt(itemData[getStructureValue(colName, 'lookup_table_col')]) > 0">
+                          {{ getLookupColumns(itemData, colName) }}
                           <a 
                             onclick="window.event.cancelBubble = true" 
                             :href="getStructureValue(colName, 'lookup_url', '') + '?' 
@@ -320,7 +320,7 @@
 
         var obj = {};
         obj[lookupTableCol] = itemData[colName];
-        var xxx;
+        var xxx = 1;
 
         axios.post('index.php?action=dia_select', {
           params: {
@@ -330,15 +330,21 @@
             }
           }
         }).then((res) => {
-         // return res.data[0];
+        // return res.data[0];
           //xxx = res.data[0]['id'];
-           //console.log(res.data[0]['id']);
+          //console.log(res.data[0]['id']);
+        
           if (res.data.status != "fail") {
-            this.lookups = res.data[0];
-          } else {
-            this.lookups = [];
+            var data = res.data[0];
+
+            Object.values(lookupColumns).forEach((item) => {
+              itemData[colName] += data[item] + " ";
+            })
           }
         })
+        
+        //console.log(this.lookups);
+        return itemData[colName];
        // console.log(this.lookups );
         /*Object.keys(response).forEach((key) => {
           console.log('x');
@@ -352,8 +358,7 @@
 
         //return itemData[colName] + lookupTable;
         //return this.lookups;
-
-        return 1;
+       // return xxx; 
       },
       getLookupAction(colName, id) {
         var action = this.getStructureValue(colName, 'lookup_table_empty_action', 'action');
