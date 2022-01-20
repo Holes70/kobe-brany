@@ -328,6 +328,8 @@
         var obj = {};
         obj[lookupTableCol] = itemData[colName];
 
+        //var conditions = Object.assign(this.conditions, obj)
+
         axios.post('index.php?action=dia_select', {
           params: {
             tableName: lookupTable,
