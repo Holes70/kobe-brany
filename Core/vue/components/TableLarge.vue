@@ -148,6 +148,13 @@
                           </a>
                         </template> 
                       </template>
+                      <template v-else-if="getStructureValue(colName, 'type') == 'text'">
+                        <textarea 
+                          class="form-control" 
+                          v-model="itemData[colName]"
+                          rows="4"
+                        />
+                      </template>
                       <template v-else-if="getStructureValue(colName, 'type', '') != 'image'">
                         <input 
                           :type="getStructureValue(colName, 'type', 'text')" 
