@@ -162,6 +162,7 @@
                           :class="classObject(colName)" 
                           :id="colName" 
                           v-model="itemData[colName]"
+                          step="0.01"
                         />
                         <div v-if="getStructureValue(colName, 'unit')" class="input-group-append">
                           <span class="input-group-text">{{ getStructureValue(colName, 'unit') }}</span>
