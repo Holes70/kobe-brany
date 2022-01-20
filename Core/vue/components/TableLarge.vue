@@ -126,7 +126,8 @@
                       </template>
                       <template v-else-if="getStructureValue(colName, 'type') == 'lookup'">
                         <template v-if="parseInt(itemData[getStructureValue(colName, 'lookup_table_col')]) > 0">
-                          {{ getLookupColumns(itemData, colName) }}
+                          {{ getLookupColumns(itemData, colName) }} 
+                          &nbsp;
                           <a 
                             onclick="window.event.cancelBubble = true" 
                             :href="getStructureValue(colName, 'lookup_url', '') + '?' 
@@ -342,7 +343,7 @@
             var data = res.data[0];
 
             Object.values(lookupColumns).forEach((item) => {
-              itemData[colName] += data[item] + " ";
+              itemData[colName] = data[item] + " ";
             })
           }
         })
