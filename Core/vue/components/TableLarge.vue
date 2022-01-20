@@ -7,7 +7,7 @@
             <a 
               v-for="button in tableButtons" 
               :key="button" 
-              :href="getButtonHref(button, itemData)" 
+              :href="getButtonHref(button, button['itemData'])" 
               :class="buttonClass(button)"
               class="ml-3"
             >
