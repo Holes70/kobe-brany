@@ -249,17 +249,6 @@
           addItallic
         );
       },
-      /**
-       * Nacitavanie struktury tabulky
-       * TODO: Spravit to nejako dynamicky pre kazdu tabulku
-       */
-      checkIfShowInTable(colName, structureParam) {
-        if (this.tableStructure[colName]) {
-          if (this.tableStructure[colName][structureParam]) {
-            return true;
-          }
-        }
-      },
       edit(showEditId) {
         this.showEdit = true;
         this.showEditId = showEditId;
@@ -343,7 +332,9 @@
         obj[lookupTableCol] = itemData[colName];
 
         //var conditions = Object.assign(this.conditions, obj)
+        //var conditions = JSON.parse(JSON.stringify(Object.assign(this.conditions, {"where": obj})));
 
+        //console.log(obj);
         axios.post('index.php?action=dia_select', {
           params: {
             tableName: lookupTable,
