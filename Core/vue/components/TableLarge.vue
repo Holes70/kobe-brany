@@ -2,6 +2,19 @@
   <div :id="componentName">
     <template v-if="!error">
       <div v-show='!showEdit'>
+        <div class="row mb-2 mr-2 text-right">
+          <div class="col">
+            <a 
+              v-for="button in tableButtons" 
+              :key="button" 
+              :href="getButtonHref(button, itemData)" 
+              :class="buttonClass(button)"
+              class="ml-3"
+            >
+              {{ button['name'] }}
+            </a>
+          </div>
+        </div>
         <table class="table table-hover">
           <thead>
             <tr>
@@ -375,6 +388,7 @@
       }
 
       this.buttons = this.params['buttons'];
+      this.tableButtons = this.params['tableButtons'];
       this.emptyDataMessage = 
         this.params['emptyDataMessage'] 
         ? this.params['emptyDataMessage'] 

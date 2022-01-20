@@ -30,6 +30,13 @@ $prislusenstvo->buttons([
   ]
 ]);
 
+$prislusenstvo->tableButtons([
+  [
+    "name" => "Pridať produkt do príslušenstva", 
+    "customLink" => "xxx"
+  ]
+]);
+
 $dia->template(
   $dia->cardBook(
     $prislusenstvo->show()
