@@ -4,7 +4,7 @@
 
   $data = $db->request_data();
 
-  $conditions = array_merge(["select" => "count(*) as count"], (array)$data->params->conditions);
+  $conditions = array_merge((array)$data->params->conditions, ["select" => "count(*) as count"]);
 
   $totalCount = $db->dbSelect(
     tableName: $data->params->tableName, 
