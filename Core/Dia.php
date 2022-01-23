@@ -101,7 +101,7 @@ namespace Core {
       ";
     }
 
-    public function cardBook(string $html) {
+    public function cardBook(string $html, string $redirectType = "id_form") {
       $params = $_GET;
       $newParams = [];
       $returnHtml = "";
@@ -117,7 +117,7 @@ namespace Core {
       $paramsLength = count($newParams);
 
       if (isset($params['previous_page_id_form'])) {
-        $href = "{$newParams['previous_page']}?id_form={$params['previous_page_id_form']}";
+        $href = "{$newParams['previous_page']}?{$redirectType}={$params['previous_page_id_form']}";
       } else {
         $href = "{$newParams['previous_page']}";
       }

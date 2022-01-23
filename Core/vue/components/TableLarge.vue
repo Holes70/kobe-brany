@@ -69,7 +69,6 @@
                   onclick="window.event.cancelBubble = true"
                   @click="customColumnAction(customColumn, itemData)"
                   class="btn btn-warning"
-                  style="margin-top:10px"
                 >
                   {{ customColumn['title'] }}
                 </button>
@@ -336,7 +335,14 @@
         if (typeof button['customLink'] != "undefined") {
           return button['customLink'];
         } else {
-          return button['link'] + '?id=' + itemData['id'] + '&previous_page=' + this.currentWebPage + '&previous_page_id_form=' + itemData['id'];
+          return button['link'] 
+            + '?id=' 
+            + itemData['id'] 
+            + '&previous_page=' 
+            + this.currentWebPage 
+            + '&previous_page_id_form=' 
+            + itemData['id']
+          ;
         }
       },
       getLookupColumns(itemData, colName) {

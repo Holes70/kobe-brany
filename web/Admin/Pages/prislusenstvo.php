@@ -34,12 +34,13 @@ $prislusenstvo->tableButtons([
   [
     "name" => "Pridať produkt do príslušenstva", 
     "link" => "prislusenstvo_pridat",
+    "linkId" => "id",
     "itemData" => ["id" => $idProduct]
   ]
 ]);
 
 $dia->template(
   $dia->cardBook(
-    $prislusenstvo->show()
+    html: $prislusenstvo->show()
   )
 )->render();

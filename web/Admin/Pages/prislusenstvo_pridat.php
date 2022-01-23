@@ -43,6 +43,7 @@ $prislusenstvo->customColumns([
 
 $dia->template(
   $dia->cardBook(
-    $prislusenstvo->show()
+    html: $prislusenstvo->show(),
+    redirectType: "id"
   )
 )->render();
