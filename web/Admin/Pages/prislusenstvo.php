@@ -33,7 +33,8 @@ $prislusenstvo->buttons([
 $prislusenstvo->tableButtons([
   [
     "name" => "Pridať produkt do príslušenstva", 
-    "link" => "prislusenstvo_pridat"
+    "link" => "prislusenstvo_pridat",
+    "itemData" => ["id" => $idProduct]
   ]
 ]);
 

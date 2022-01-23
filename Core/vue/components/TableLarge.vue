@@ -2,7 +2,10 @@
   <div :id="componentName">
     <template v-if="!error">
       <div v-show='!showEdit'>
-        <div class="row mb-2 mr-2 text-right">
+        <div 
+          v-if="tableButtons.length > 0" 
+          class="row mb-2 mr-2 text-right"
+        >
           <div class="col">
             <a 
               v-for="button in tableButtons" 
