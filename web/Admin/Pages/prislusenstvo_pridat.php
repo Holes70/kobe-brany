@@ -16,7 +16,8 @@ $prislusenstvo->customColumns([
     "params" => [
       "id_product_accessory" => "id",
       "get" => "id", 
-    ]
+    ],
+    "except" => [6] // Produkty ktore sa uz nachadazaju v prislusentsve produktu
   ]
 ]);
 

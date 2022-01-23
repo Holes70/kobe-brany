@@ -63,15 +63,17 @@
                   </template>
                 </td>
               </template>
-              <template v-for="customColumn in customColumns" :key="customColumn">
+              <td v-for="customColumn in customColumns" :key="customColumn">
                 <button
+                  v-if="customColumnExcept(customColumn, itemData)"
                   onclick="window.event.cancelBubble = true"
                   @click="customColumnAction(customColumn, itemData)"
                   class="btn btn-warning"
+                  style="margin-top:10px"
                 >
                   {{ customColumn['title'] }}
                 </button>
-              </template>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -394,6 +396,17 @@
           tableName: customColumn['tableName'],
           data: params
         });
+      },
+      customColumnExcept(customColumn, itemData) {
+        var returnVal = {};
+
+        if (Object.values(customColumn['except']).includes(parseInt(itemData['id']))) {
+          returnVal = false;
+        } else {
+          returnVal = true;
+        }
+
+        return returnVal;
       }
     },
     beforeCreate() {
