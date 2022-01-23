@@ -22,6 +22,7 @@
           <thead>
             <tr>
               <th v-for="col in tableColumns" :key="col" scope="col">{{ col }}</th>
+              <th v-for="customColumn in customColumns" :key="customColumn" scope="col"></th>
             </tr>
           </thead>
           <tbody>
@@ -61,6 +62,15 @@
                     <img :src="'http://localhost/'+ this.dir +'/files/'  + this.fileDir + '/' + itemData['image']" width="35" height="35"/>
                   </template>
                 </td>
+              </template>
+              <template v-for="customColumn in customColumns" :key="customColumn">
+                <button
+                  onclick="window.event.cancelBubble = true"
+                  @click="customColumnAction(customColumn, itemData)"
+                  class="btn btn-warning"
+                >
+                  {{ customColumn['title'] }}
+                </button>
               </template>
             </tr>
           </tbody>
@@ -239,7 +249,8 @@
         emptyDataMessage: 'No records',
         emptyRequiredInputs: [],
         lookups: [],
-        dataToSet: ['pages']
+        dataToSet: ['pages'],
+        customColumns: []
       })
     },
     methods: {    
@@ -365,6 +376,26 @@
         }
 
         return action;
+      },
+      customColumnAction(customColumn, itemData) {
+        var params = {};
+
+        Object.keys(customColumn['params']).forEach((item) => {
+          if (item.toString() != "get") {
+            params[item] = itemData[customColumn['params'][item]];
+          } else {
+            params[customColumn['params'][item]] = diaTableLarge.getUrlParam('id');
+          }
+        })
+        
+        console.log(params);
+    
+        axios.put('index.php?action=' + customColumn['action'], {
+          params: {
+            tableName: customColumn['tableName'],
+            data: params
+          }
+        });
       }
     },
     beforeCreate() {
@@ -383,6 +414,8 @@
 
       this.buttons = this.params['buttons'];
       this.tableButtons = this.params['tableButtons'];
+      this.customColumns = this.params['customColumns'];
+
       this.emptyDataMessage = 
         this.params['emptyDataMessage'] 
         ? this.params['emptyDataMessage'] 
