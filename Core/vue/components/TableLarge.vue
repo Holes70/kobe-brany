@@ -391,10 +391,8 @@
         console.log(params);
     
         axios.put('index.php?action=' + customColumn['action'], {
-          params: {
-            tableName: customColumn['tableName'],
-            data: params
-          }
+          tableName: customColumn['tableName'],
+          data: params
         });
       }
     },
