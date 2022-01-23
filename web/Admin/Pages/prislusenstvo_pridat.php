@@ -1,4 +1,22 @@
 <?php
+
+
+// Vyber produkty ktore sa uz nachdazju prislesenstve tohto produktu
+$except = [];
+
+$prislusenstvoProduktu = $db->dbSelect(
+  "products_accessories",
+  [
+    "where" => [
+      "id_product" => $webController->getParam('id')
+    ]
+  ]
+);
+
+foreach($prislusenstvoProduktu as $produkt) {
+  array_push($except, (int)$produkt['id']);
+}
+
 $prislusenstvo = new Components\TableLarge("products");
 
 $prislusenstvo->emptyDataMessage("Žiadne príšlušenstvo pre produkt");
@@ -17,7 +35,7 @@ $prislusenstvo->customColumns([
       "id_product_accessory" => "id",
       "get" => "id", 
     ],
-    "except" => [6] // Produkty ktore sa uz nachadazaju v prislusentsve produktu
+    "except" => $except // Produkty ktore sa uz nachadazaju v prislusentsve produktu
   ]
 ]);
 
