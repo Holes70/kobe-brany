@@ -63,7 +63,7 @@
                   </template>
                 </td>
               </template>
-              <td v-for="customColumn in customColumns" :key="customColumn">
+              <td v-for="customColumn in customColumns" :key="customColumn['except'].length">
                 <button
                   v-if="customColumnExcept(customColumn, itemData)"
                   onclick="window.event.cancelBubble = true"
@@ -389,12 +389,18 @@
             params[customColumn['params'][item]] = diaTableLarge.getUrlParam('id');
           }
         })
-        
-        console.log(params);
     
         axios.put('index.php?action=' + customColumn['action'], {
           tableName: customColumn['tableName'],
           data: params
+        }).then((res) => {
+          //TODO: Refresh by mal fungovat po pridani noveho udaju to pola
+          Object.keys(this.customColumns).forEach((index) => {
+            this.customColumns[index]['except'].push(parseInt(res.data['id']));
+            console.log(this.customColumns[index]['except']);
+          })
+
+          location.reload(); 
         });
       },
       customColumnExcept(customColumn, itemData) {

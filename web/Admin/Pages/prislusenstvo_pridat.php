@@ -14,7 +14,7 @@ $prislusenstvoProduktu = $db->dbSelect(
 );
 
 foreach($prislusenstvoProduktu as $produkt) {
-  array_push($except, (int)$produkt['id']);
+  array_push($except, (int)$produkt['id_product_accessory']);
 }
 
 $prislusenstvo = new Components\TableLarge("products");
@@ -28,6 +28,7 @@ $prislusenstvo->conditions([
 $prislusenstvo->fileDir("products");
 $prislusenstvo->customColumns([
   [
+    "id" => 1,
     "title" => "Pridať do príslušenstva", 
     "action" => "prislusenstvo_pridat_action",
     "tableName" => "products_accessories",
