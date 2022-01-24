@@ -28,11 +28,12 @@
   if (!isset($_GET['action']) && !isset($_POST['action'])) {
 
     // HEAD
-    $dia->daj_zahlavie();
+    //$dia->daj_zahlavie();
+    @include 'Includes/header.php';
 
     echo "<div id='app'>";
     // HLAVICKA 
-    if ($dia->installed) $dia->getPageHeader();
+    //if ($dia->installed) $dia->getPageHeader();
     // OBSAH
     $page = (isset($_GET['webPage']) && $_GET['webPage'] != '') ? $_GET['webPage'] : "domov";
 
@@ -43,7 +44,7 @@
     $webController->setUrlForMemory($page);
 
     // Get page
-    include($webController->getPage());
+    include "Pages/{$page}.php";
 
     // VUE LOADER START
   ?>
