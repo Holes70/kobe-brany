@@ -25,6 +25,45 @@
   $userController = new \Core\Controllers\UserController;
   $webController = new \Core\Controllers\WebController;
 
+  echo "
+    <!DOCTYPE html>
+    <html lang='en'>
+    <head>
+      <meta charset='UTF-8'>
+      <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+      <meta name='description' content=''>
+      <meta name='author' content=''>
+      <link rel='preconnect' href='https://fonts.googleapis.com'>
+      <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+      <link href='https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap' rel='stylesheet'>
+  
+      <title>Chain App Dev - App Landing Page HTML5 Template</title>
+  
+      <!-- Bootstrap core CSS -->
+      <link href='vendor/bootstrap/css/bootstrap.min.css' rel='stylesheet'>
+  
+      <script src='../Core/public/js/popper.js'></script>
+      <script src='../node_modules/vue/dist/vue.global.prod.js'></script>
+      <script src='../node_modules/axios/dist/axios.min.js'></script>
+      <script src='../node_modules/chart.js/dist/chart.min.js'></script>
+      <script src='../node_modules/jquery/dist/jquery.min.js'></script>
+      <script src='../Core/public/js/bootstrap.js'></script>
+      <script src='../node_modules/vue3-sfc-loader/dist/vue3-sfc-loader.js'></script>
+      <script src='../node_modules/mitt/dist/mitt.umd.js'></script>
+      <script src='../Core/public/js/CustomFunctions.js'></script>
+      <script src='../Core/public/js/dia.js'></script>
+      <script src='../Core/public/js/diaTables.js'></script>
+      <script src='../Core/public/js/fontawesome.js'></script>
+      <script src='../Core/public/js/fancybox.js'></script>
+  
+      <!-- Additional CSS Files -->
+      <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.1/css/all.css' integrity='sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf' crossorigin='anonymous'>
+      <link rel='stylesheet' href='assets/css/templatemo-chain-app-dev.css'>
+      <link rel='stylesheet' href='assets/css/animated.css'>
+      <link rel='stylesheet' href='assets/css/owl.css'>
+    </head>
+  ";
+
   if (!isset($_GET['action']) && !isset($_POST['action'])) {
     @include 'Includes/header.php';
 
@@ -49,14 +88,6 @@
       const emitter = mitt();
       const dia = new Dia();
       const diaTables = new DiaTables();
-
-      //console.log(emitter);
-      // GET vue data z aktualnej stranky
-      // ak je prazdne tak do var object kvoli chybe
-      var diaData = JSON.parse('<?php $vue->getData() ?>');
-      if (diaData == false) {
-        diaData = {}; 
-      }
 
       const options = {
         moduleCache: {
@@ -97,52 +128,35 @@
                   }
                 }
               ?>
-              </div><!-- end id content in header -->
+              </div>
             </div>
           </body>
-        `,
-        data() {
-          return diaData
-        },
-        methods: { <?php $vue->getMethods(); ?> }
+        `
       });
 
       app_loader.mount('#app');
-
-      <?php
-        $dia->getScript();
-      ?>
-
-      $( document ).ready(function() {
-        $('#loader').show();
-        setTimeout(function() {
-          $('.page-content').show();
-          $('#loader').hide();
-        }, 700)
-      });
-
-      function getFile() {
-        $('#file').click();
-      }
-
-      function sub(obj) {
-        var file = obj.value;
-        var fileName = file.split("\\");
-        document.getElementById("yourBtn").innerHTML = fileName[fileName.length - 1];
-        $('#submitFile').show();
-  
-        event.preventDefault();
-      }
     </script>
 
   <?php
 
     // ZAPATICKA
-    $dia->daj_zapaticku();
+    //$dia->daj_zapaticku();
 
     echo "</div></template></div>";
     
     @include 'Includes/footer.php';
+
+    echo "
+      <script src='vendor/jquery/jquery.min.js'></script>
+      <script src='vendor/bootstrap/js/bootstrap.bundle.min.js'></script>
+      <script src='assets/js/owl-carousel.js'></script>
+      <script src='assets/js/animation.js'></script>
+      <script src='assets/js/imagesloaded.js'></script>
+      <script src='assets/js/popup.js'></script>
+      <script src='assets/js/custom.js'></script>
+      </body>
+      </html>
+    ";
 
     // HLADA AKCIE
     $dia->action_find();
