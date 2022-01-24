@@ -67,7 +67,7 @@
   if (!isset($_GET['action']) && !isset($_POST['action'])) {
     @include 'Includes/header.php';
 
-    echo "<div id='app'>";
+    //echo "<div id='app'>";
     // HLAVICKA 
     //if ($dia->installed) $dia->getPageHeader();
     // OBSAH
@@ -112,23 +112,12 @@
 
       const app_loader = Vue.createApp({
         components: {
-          <?php
-            foreach (\Core\Dia::$loadedWebComponents as $com) {
-              echo "'$com': Vue.defineAsyncComponent( () => loadModule('./../Components/Admin/$com.vue', options)),";
-            }
-          ?> }
-        ,
+          'website-component': Vue.defineAsyncComponent( () => loadModule('./../Components/Website.vue', options)),
+        },
         template: `
           <body>
-            <div class='wrapper'>
-              <?php 
-                foreach (\Core\Dia::$loadedComponents as $com) {
-                  if ($com->render === TRUE) {
-                    $com->preRender();
-                  }
-                }
-              ?>
-              </div>
+            <div id='app'>
+              <website-component></website-component>
             </div>
           </body>
         `
@@ -142,7 +131,7 @@
     // ZAPATICKA
     //$dia->daj_zapaticku();
 
-    echo "</div></template></div>";
+   // echo "</div></template></div>";
     
     @include 'Includes/footer.php';
 
