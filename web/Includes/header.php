@@ -17,6 +17,20 @@
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+    <script src='../Core/public/js/popper.js'></script>
+    <script src='../node_modules/vue/dist/vue.global.prod.js'></script>
+    <script src='../node_modules/axios/dist/axios.min.js'></script>
+    <script src='../node_modules/chart.js/dist/chart.min.js'></script>
+    <script src='../node_modules/jquery/dist/jquery.min.js'></script>
+    <script src='../Core/public/js/bootstrap.js'></script>
+    <script src='../node_modules/vue3-sfc-loader/dist/vue3-sfc-loader.js'></script>
+    <script src='../node_modules/mitt/dist/mitt.umd.js'></script>
+    <script src='../Core/public/js/CustomFunctions.js'></script>
+    <script src='../Core/public/js/dia.js'></script>
+    <script src='../Core/public/js/diaTables.js'></script>
+    <script src='../Core/public/js/fontawesome.js'></script>
+    <script src='../Core/public/js/fancybox.js'></script>
+
 <!--
 
 TemplateMo 570 Chain App Dev
