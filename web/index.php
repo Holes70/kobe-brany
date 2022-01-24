@@ -65,6 +65,8 @@
   ";
 
   if (!isset($_GET['action']) && !isset($_POST['action'])) {
+    echo " <body>
+    <div id='app'>";
     @include 'Includes/header.php';
 
     //echo "<div id='app'>";
@@ -112,14 +114,10 @@
 
       const app_loader = Vue.createApp({
         components: {
-          'website-component': Vue.defineAsyncComponent( () => loadModule('./../Components/Website.vue', options)),
+          'website-component': Vue.defineAsyncComponent( () => loadModule('./Components/Website.vue', options)),
         },
         template: `
-          <body>
-            <div id='app'>
-              <website-component></website-component>
-            </div>
-          </body>
+          <website-component></website-component>
         `
       });
 
@@ -134,6 +132,8 @@
    // echo "</div></template></div>";
     
     @include 'Includes/footer.php';
+
+    echo "</div></body>";
 
     echo "
       <script src='vendor/jquery/jquery.min.js'></script>
