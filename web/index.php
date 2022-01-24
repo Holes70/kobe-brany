@@ -26,9 +26,6 @@
   $webController = new \Core\Controllers\WebController;
 
   if (!isset($_GET['action']) && !isset($_POST['action'])) {
-
-    // HEAD
-    //$dia->daj_zahlavie();
     @include 'Includes/header.php';
 
     echo "<div id='app'>";
@@ -145,8 +142,7 @@
 
     echo "</div></template></div>";
     
-    // PATICKA
-    $dia->getPageFooter();
+    @include 'Includes/footer.php';
 
     // HLADA AKCIE
     $dia->action_find();

@@ -1,5 +1,3 @@
 <?php
 
-echo "x";
-
-exit();
+$dia->template("x")->render();
