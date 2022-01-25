@@ -116,9 +116,7 @@
         components: {
           'website-component': Vue.defineAsyncComponent( () => loadModule('./Components/Website.vue', options)),
         },
-        template: `
-          <website-component></website-component>
-        `
+        template: `<website-component></website-component>`
       });
 
       app_loader.mount('#app');
