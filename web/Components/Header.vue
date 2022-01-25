@@ -49,6 +49,8 @@ export default {
     }).then((res) => {
       this.menuItems = res.data;
     })
+
+    console.log(this.$parent);
   }
 }
 </script>

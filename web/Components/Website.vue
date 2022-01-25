@@ -106,9 +106,17 @@ import header from './Header.vue';
 import footer from './Footer.vue';
 
 export default {
+  data() {
+    return {
+      dia: {}
+    }
+  },
   components: {
     'header-com': header,
     'footer-com': footer
+  },
+  beforeCreate() {
+    this.dia = new Dia();
   }
 }
 
