@@ -12,11 +12,13 @@
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
-              <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-              <li class="scroll-to-section"><a href="#services">Services</a></li>
-              <li class="scroll-to-section"><a href="#about">About</a></li>
-              <li class="scroll-to-section"><a href="#pricing">Pricing</a></li>
-              <li class="scroll-to-section"><a href="#newsletter">Newsletter</a></li>
+              <li 
+                v-for="menuItem in menuItems"
+                :key="menuItem.id"
+                class="scroll-to-section"
+              >
+                <a :href="menuItem.link">{{ menuItem.title }}</a>
+              </li>
               <li><div class="gradient-button"><a id="modal_trigger" href="#modal"><i class="fa fa-sign-in-alt"></i> Sign In Now</a></div></li> 
             </ul>        
             <a class='menu-trigger'>
@@ -30,3 +32,23 @@
   </header>
   <!-- ***** Header Area End ***** -->
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      menuItems: []
+    }
+  },
+  beforeMount() {
+    axios.post('Admin/index.php?action=dia_select', {
+      params: {
+        tableName: "menu",
+        conditions: {}
+      }
+    }).then((res) => {
+      this.menuItems = res.data;
+    })
+  }
+}
+</script>
