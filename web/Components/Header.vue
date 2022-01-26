@@ -17,11 +17,11 @@
                 :key="menuItem.id"
                 class="scroll-to-section"
               >
-                <a :href="menuItem.link">{{ menuItem.title }}</a>
+                <a :href="'#' + menuItem.link">{{ menuItem.title }}</a>
               </li>
               <li>
                 <div class="gradient-button-gold">
-                  <a href="">
+                  <a href="produkty">
                     Katalóg produktov
                   </a>
                 </div>

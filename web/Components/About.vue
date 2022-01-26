@@ -1,5 +1,5 @@
 <template>
-  <div id="about" class="about-us section">
+  <div id="o-nas" class="about-us section">
     <div class="container">
       <div class="row">
         <div class="col-lg-6 align-self-center">

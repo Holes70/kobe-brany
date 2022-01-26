@@ -1,5 +1,5 @@
 <template>
-  <div id="clients" class="the-clients">
+  <div id="kontakt" class="the-clients">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 offset-lg-2">
