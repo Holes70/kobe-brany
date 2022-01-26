@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jan 26, 2022 at 01:12 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.10
+-- Hostiteľ: 127.0.0.1
+-- Čas generovania: St 26.Jan 2022, 20:53
+-- Verzia serveru: 10.4.22-MariaDB
+-- Verzia PHP: 8.0.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `eshop`
+-- Databáza: `eshop`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `accessories`
+-- Štruktúra tabuľky pre tabuľku `accessories`
 --
 
 CREATE TABLE `accessories` (
@@ -38,7 +38,7 @@ CREATE TABLE `accessories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `accessories`
+-- Sťahujem dáta pre tabuľku `accessories`
 --
 
 INSERT INTO `accessories` (`id`, `image`, `name`, `price`, `available`, `description`, `count`) VALUES
@@ -47,7 +47,7 @@ INSERT INTO `accessories` (`id`, `image`, `name`, `price`, `available`, `descrip
 -- --------------------------------------------------------
 
 --
--- Table structure for table `addresses`
+-- Štruktúra tabuľky pre tabuľku `addresses`
 --
 
 CREATE TABLE `addresses` (
@@ -59,7 +59,7 @@ CREATE TABLE `addresses` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `addresses`
+-- Sťahujem dáta pre tabuľku `addresses`
 --
 
 INSERT INTO `addresses` (`id`, `city`, `street`, `house_number`, `zipcode`) VALUES
@@ -71,7 +71,7 @@ INSERT INTO `addresses` (`id`, `city`, `street`, `house_number`, `zipcode`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Štruktúra tabuľky pre tabuľku `admin`
 --
 
 CREATE TABLE `admin` (
@@ -81,7 +81,7 @@ CREATE TABLE `admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `admin`
+-- Sťahujem dáta pre tabuľku `admin`
 --
 
 INSERT INTO `admin` (`id`, `name`, `password`) VALUES
@@ -90,7 +90,7 @@ INSERT INTO `admin` (`id`, `name`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admins`
+-- Štruktúra tabuľky pre tabuľku `admins`
 --
 
 CREATE TABLE `admins` (
@@ -100,7 +100,7 @@ CREATE TABLE `admins` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `admins`
+-- Sťahujem dáta pre tabuľku `admins`
 --
 
 INSERT INTO `admins` (`id`, `id_user`, `permission`) VALUES
@@ -109,7 +109,7 @@ INSERT INTO `admins` (`id`, `id_user`, `permission`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `carts`
+-- Štruktúra tabuľky pre tabuľku `carts`
 --
 
 CREATE TABLE `carts` (
@@ -121,7 +121,7 @@ CREATE TABLE `carts` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `carts_products`
+-- Štruktúra tabuľky pre tabuľku `carts_products`
 --
 
 CREATE TABLE `carts_products` (
@@ -131,7 +131,7 @@ CREATE TABLE `carts_products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `carts_products`
+-- Sťahujem dáta pre tabuľku `carts_products`
 --
 
 INSERT INTO `carts_products` (`id`, `id_cart`, `id_product`) VALUES
@@ -141,7 +141,7 @@ INSERT INTO `carts_products` (`id`, `id_cart`, `id_product`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customers`
+-- Štruktúra tabuľky pre tabuľku `customers`
 --
 
 CREATE TABLE `customers` (
@@ -155,7 +155,7 @@ CREATE TABLE `customers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `customers`
+-- Sťahujem dáta pre tabuľku `customers`
 --
 
 INSERT INTO `customers` (`id`, `first_name`, `last_name`, `email`, `phone_number`, `state`, `password`) VALUES
@@ -193,7 +193,7 @@ INSERT INTO `customers` (`id`, `first_name`, `last_name`, `email`, `phone_number
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customers_uids`
+-- Štruktúra tabuľky pre tabuľku `customers_uids`
 --
 
 CREATE TABLE `customers_uids` (
@@ -203,7 +203,7 @@ CREATE TABLE `customers_uids` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `customers_uids`
+-- Sťahujem dáta pre tabuľku `customers_uids`
 --
 
 INSERT INTO `customers_uids` (`id`, `uid`, `id_customer`) VALUES
@@ -213,7 +213,7 @@ INSERT INTO `customers_uids` (`id`, `uid`, `id_customer`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dia_alerts`
+-- Štruktúra tabuľky pre tabuľku `dia_alerts`
 --
 
 CREATE TABLE `dia_alerts` (
@@ -227,7 +227,7 @@ CREATE TABLE `dia_alerts` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dia_alerts_users`
+-- Štruktúra tabuľky pre tabuľku `dia_alerts_users`
 --
 
 CREATE TABLE `dia_alerts_users` (
@@ -239,7 +239,7 @@ CREATE TABLE `dia_alerts_users` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dia_navbar`
+-- Štruktúra tabuľky pre tabuľku `dia_navbar`
 --
 
 CREATE TABLE `dia_navbar` (
@@ -254,7 +254,7 @@ CREATE TABLE `dia_navbar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `dia_navbar`
+-- Sťahujem dáta pre tabuľku `dia_navbar`
 --
 
 INSERT INTO `dia_navbar` (`id`, `id_parent`, `name`, `link`, `description`, `icon`, `order_index`, `is_enabled`) VALUES
@@ -282,7 +282,7 @@ INSERT INTO `dia_navbar` (`id`, `id_parent`, `name`, `link`, `description`, `ico
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dia_tables`
+-- Štruktúra tabuľky pre tabuľku `dia_tables`
 --
 
 CREATE TABLE `dia_tables` (
@@ -292,7 +292,7 @@ CREATE TABLE `dia_tables` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `dia_tables`
+-- Sťahujem dáta pre tabuľku `dia_tables`
 --
 
 INSERT INTO `dia_tables` (`id`, `table_name`, `structure`) VALUES
@@ -304,12 +304,13 @@ INSERT INTO `dia_tables` (`id`, `table_name`, `structure`) VALUES
 (6, 'products_accessories', '{\"id\":{\"type\":\"number\",\"show_in_table\":false,\"show_in_form\":false},\"image\":{\"type\":\"image\",\"show_in_table\":true,\"show_in_form\":true},\"name\":{\"show_in_table\":true,\"name_in_table\":\"Produkt\",\"show_in_form\":true,\"required\":true},\"price\":{\"type\":\"number\",\"show_in_table\":true,\"name_in_table\":\"Cena\",\"show_in_form\":true,\"required\":true,\"unit\":\"€\"},\"available\":{\"type\":\"checkbox\",\"show_in_table\":true,\"name_in_table\":\"Dostupný\",\"show_in_form\":true},\"count\":{\"type\":\"number\",\"show_in_table\":true,\"name_in_table\":\"Skladom\",\"show_in_form\":true},\"description\":{\"type\":\"text\",\"show_in_table\":false,\"name_in_table\":\"Popis\",\"show_in_form\":true},\"type\":{\"type\":\"radio\",\"default_value\":1,\"radio\":{\"1\":\"Na mieru\",\"2\":\"Príslušenstvo\"},\"show_in_table\":false,\"name_in_table\":\"Typ\",\"show_in_form\":true}}'),
 (7, 'invoices', '{\"number\":{\"type\":\"number\",\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Číslo\"},\"price\":{\"type\":\"number\",\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Cena\",\"unit\":\"€\"},\"id_order\":{\"type\":\"lookup\",\"lookup_table\":\"orders\",\"lookup_table_col\":\"id\",\"lookup_columns\":{\"1\":\"serial_number\"},\"lookup_url\":\"objednavky\",\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Objednávka\"},\"state\":{\"type\":\"radio\",\"default_value\":1,\"radio\":{\"1\":\"Vystavená\",\"2\":\"Zaplatená\"},\"show_in_table\":false,\"show_in_form\":true,\"name_in_table\":\"Stav\"}}\n'),
 (8, 'carts_products', '{\"id\":{\"type\":\"number\",\"show_in_table\":false,\"show_in_form\":false},\"image\":{\"type\":\"image\",\"show_in_table\":true,\"show_in_form\":true},\"name\":{\"show_in_table\":true,\"name_in_table\":\"Produkt\",\"show_in_form\":true,\"required\":true},\"price\":{\"type\":\"number\",\"show_in_table\":true,\"name_in_table\":\"Cena\",\"show_in_form\":true,\"required\":true,\"unit\":\"€\"},\"available\":{\"type\":\"checkbox\",\"default_value\":true,\"show_in_table\":true,\"name_in_table\":\"Dostupný\",\"show_in_form\":true},\"count\":{\"type\":\"number\",\"show_in_table\":true,\"name_in_table\":\"Skladom\",\"show_in_form\":true},\"description\":{\"type\":\"text\",\"show_in_table\":false,\"name_in_table\":\"Popis\",\"show_in_form\":true},\"type\":{\"type\":\"number\",\"show_in_table\":false,\"name_in_table\":\"Typ\",\"show_in_form\":true}}'),
-(9, 'dia_navbar', '{\"id\":{\"type\":\"number\",\"show_in_table\":false,\"show_in_form\":true},\"id_parent\":{\"type\":\"number\",\"show_in_table\":true,\"show_in_form\":true},\"name\":{\"show_in_table\":true,\"show_in_form\":true,\"type\":\"text\"},\"link\":{\"show_in_table\":true,\"show_in_form\":true,\"type\":\"text\"},\"description\":{\"show_in_table\":true,\"show_in_form\":true,\"type\":\"text\"},\"icon\":{\"show_in_table\":true,\"show_in_form\":true,\"type\":\"text\"},\"order_index\":{\"type\":\"number\",\"show_in_table\":false,\"show_in_form\":true},\"is_enabled\":{\"type\":\"checkbox\",\"show_in_table\":false,\"show_in_form\":true,\"default_value\":true}}');
+(9, 'dia_navbar', '{\"id\":{\"type\":\"number\",\"show_in_table\":false,\"show_in_form\":true},\"id_parent\":{\"type\":\"number\",\"show_in_table\":true,\"show_in_form\":true},\"name\":{\"show_in_table\":true,\"show_in_form\":true,\"type\":\"text\"},\"link\":{\"show_in_table\":true,\"show_in_form\":true,\"type\":\"text\"},\"description\":{\"show_in_table\":true,\"show_in_form\":true,\"type\":\"text\"},\"icon\":{\"show_in_table\":true,\"show_in_form\":true,\"type\":\"text\"},\"order_index\":{\"type\":\"number\",\"show_in_table\":false,\"show_in_form\":true},\"is_enabled\":{\"type\":\"checkbox\",\"show_in_table\":false,\"show_in_form\":true,\"default_value\":true}}'),
+(10, 'menu', '{\"id\":{\"type\":\"number\",\"show_in_table\":false,\"show_in_form\":true},\"title\":{\"show_in_table\":true,\"show_in_form\":true,\"type\":\"text\"},\"link\":{\"show_in_table\":true,\"show_in_form\":true,\"type\":\"text\"}}');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `employees`
+-- Štruktúra tabuľky pre tabuľku `employees`
 --
 
 CREATE TABLE `employees` (
@@ -319,7 +320,7 @@ CREATE TABLE `employees` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `employees`
+-- Sťahujem dáta pre tabuľku `employees`
 --
 
 INSERT INTO `employees` (`id`, `first_name`, `last_name`) VALUES
@@ -329,7 +330,7 @@ INSERT INTO `employees` (`id`, `first_name`, `last_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `gallery`
+-- Štruktúra tabuľky pre tabuľku `gallery`
 --
 
 CREATE TABLE `gallery` (
@@ -338,7 +339,7 @@ CREATE TABLE `gallery` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `gallery`
+-- Sťahujem dáta pre tabuľku `gallery`
 --
 
 INSERT INTO `gallery` (`id`, `image`) VALUES
@@ -450,7 +451,7 @@ INSERT INTO `gallery` (`id`, `image`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `invoices`
+-- Štruktúra tabuľky pre tabuľku `invoices`
 --
 
 CREATE TABLE `invoices` (
@@ -461,7 +462,7 @@ CREATE TABLE `invoices` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `invoices`
+-- Sťahujem dáta pre tabuľku `invoices`
 --
 
 INSERT INTO `invoices` (`id`, `number`, `price`, `state`) VALUES
@@ -472,7 +473,7 @@ INSERT INTO `invoices` (`id`, `number`, `price`, `state`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menu`
+-- Štruktúra tabuľky pre tabuľku `menu`
 --
 
 CREATE TABLE `menu` (
@@ -483,17 +484,20 @@ CREATE TABLE `menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `menu`
+-- Sťahujem dáta pre tabuľku `menu`
 --
 
 INSERT INTO `menu` (`id`, `title`, `link`, `order_index`) VALUES
 (1, 'Domov', 'domov', 1),
-(2, 'Produkty', 'produkty', 2);
+(2, 'Služby', 'sluzby', 2),
+(3, 'O nás', 'o-nas', 3),
+(4, 'Kontakt', 'kontakt', 4),
+(5, 'Cenník', 'cennik', 5);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Štruktúra tabuľky pre tabuľku `orders`
 --
 
 CREATE TABLE `orders` (
@@ -506,7 +510,7 @@ CREATE TABLE `orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `orders`
+-- Sťahujem dáta pre tabuľku `orders`
 --
 
 INSERT INTO `orders` (`id`, `serial_number`, `type`, `id_customer`, `id_cart`, `id_invoice`) VALUES
@@ -613,7 +617,7 @@ INSERT INTO `orders` (`id`, `serial_number`, `type`, `id_customer`, `id_cart`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_type`
+-- Štruktúra tabuľky pre tabuľku `order_type`
 --
 
 CREATE TABLE `order_type` (
@@ -622,7 +626,7 @@ CREATE TABLE `order_type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `order_type`
+-- Sťahujem dáta pre tabuľku `order_type`
 --
 
 INSERT INTO `order_type` (`id`, `name`) VALUES
@@ -635,7 +639,7 @@ INSERT INTO `order_type` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products`
+-- Štruktúra tabuľky pre tabuľku `products`
 --
 
 CREATE TABLE `products` (
@@ -650,7 +654,7 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `products`
+-- Sťahujem dáta pre tabuľku `products`
 --
 
 INSERT INTO `products` (`id`, `image`, `name`, `price`, `available`, `count`, `description`, `type`) VALUES
@@ -760,7 +764,7 @@ INSERT INTO `products` (`id`, `image`, `name`, `price`, `available`, `count`, `d
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products_accessories`
+-- Štruktúra tabuľky pre tabuľku `products_accessories`
 --
 
 CREATE TABLE `products_accessories` (
@@ -770,7 +774,7 @@ CREATE TABLE `products_accessories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `products_accessories`
+-- Sťahujem dáta pre tabuľku `products_accessories`
 --
 
 INSERT INTO `products_accessories` (`id`, `id_product`, `id_product_accessory`) VALUES
@@ -887,7 +891,7 @@ INSERT INTO `products_accessories` (`id`, `id_product`, `id_product_accessory`) 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products_discounts`
+-- Štruktúra tabuľky pre tabuľku `products_discounts`
 --
 
 CREATE TABLE `products_discounts` (
@@ -899,7 +903,7 @@ CREATE TABLE `products_discounts` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `products_gallery`
+-- Štruktúra tabuľky pre tabuľku `products_gallery`
 --
 
 CREATE TABLE `products_gallery` (
@@ -909,7 +913,7 @@ CREATE TABLE `products_gallery` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `products_gallery`
+-- Sťahujem dáta pre tabuľku `products_gallery`
 --
 
 INSERT INTO `products_gallery` (`id`, `id_product`, `id_gallery`) VALUES
@@ -1019,7 +1023,7 @@ INSERT INTO `products_gallery` (`id`, `id_product`, `id_gallery`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `stock`
+-- Štruktúra tabuľky pre tabuľku `stock`
 --
 
 CREATE TABLE `stock` (
@@ -1032,7 +1036,7 @@ CREATE TABLE `stock` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `stock`
+-- Sťahujem dáta pre tabuľku `stock`
 --
 
 INSERT INTO `stock` (`id`, `id_product`, `count`, `available`, `sale`, `sale_prize`) VALUES
@@ -1051,7 +1055,7 @@ INSERT INTO `stock` (`id`, `id_product`, `count`, `available`, `sale`, `sale_pri
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tests`
+-- Štruktúra tabuľky pre tabuľku `tests`
 --
 
 CREATE TABLE `tests` (
@@ -1060,7 +1064,7 @@ CREATE TABLE `tests` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tests`
+-- Sťahujem dáta pre tabuľku `tests`
 --
 
 INSERT INTO `tests` (`id`, `name`) VALUES
@@ -1070,7 +1074,7 @@ INSERT INTO `tests` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `test_dropzone`
+-- Štruktúra tabuľky pre tabuľku `test_dropzone`
 --
 
 CREATE TABLE `test_dropzone` (
@@ -1079,7 +1083,7 @@ CREATE TABLE `test_dropzone` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `test_dropzone`
+-- Sťahujem dáta pre tabuľku `test_dropzone`
 --
 
 INSERT INTO `test_dropzone` (`id`, `filename`) VALUES
@@ -1126,7 +1130,7 @@ INSERT INTO `test_dropzone` (`id`, `filename`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Štruktúra tabuľky pre tabuľku `users`
 --
 
 CREATE TABLE `users` (
@@ -1141,7 +1145,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `users`
+-- Sťahujem dáta pre tabuľku `users`
 --
 
 INSERT INTO `users` (`id`, `id_address`, `avatar`, `first_name`, `last_name`, `email`, `phone_number`, `password`) VALUES
@@ -1152,7 +1156,7 @@ INSERT INTO `users` (`id`, `id_address`, `avatar`, `first_name`, `last_name`, `e
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users_socials`
+-- Štruktúra tabuľky pre tabuľku `users_socials`
 --
 
 CREATE TABLE `users_socials` (
@@ -1164,7 +1168,7 @@ CREATE TABLE `users_socials` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users_socials`
+-- Sťahujem dáta pre tabuľku `users_socials`
 --
 
 INSERT INTO `users_socials` (`id`, `title`, `icon`, `description`, `id_user`) VALUES
@@ -1175,7 +1179,7 @@ INSERT INTO `users_socials` (`id`, `title`, `icon`, `description`, `id_user`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_tests`
+-- Štruktúra tabuľky pre tabuľku `user_tests`
 --
 
 CREATE TABLE `user_tests` (
@@ -1187,7 +1191,7 @@ CREATE TABLE `user_tests` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user_tests`
+-- Sťahujem dáta pre tabuľku `user_tests`
 --
 
 INSERT INTO `user_tests` (`id`, `user_id`, `test_id`, `filename`, `size`) VALUES
@@ -1198,66 +1202,66 @@ INSERT INTO `user_tests` (`id`, `user_id`, `test_id`, `filename`, `size`) VALUES
 (76, 2, 1, 'packeta.jpg', 8424);
 
 --
--- Indexes for dumped tables
+-- Kľúče pre exportované tabuľky
 --
 
 --
--- Indexes for table `accessories`
+-- Indexy pre tabuľku `accessories`
 --
 ALTER TABLE `accessories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `addresses`
+-- Indexy pre tabuľku `addresses`
 --
 ALTER TABLE `addresses`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `admin`
+-- Indexy pre tabuľku `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `admins`
+-- Indexy pre tabuľku `admins`
 --
 ALTER TABLE `admins`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indexes for table `carts`
+-- Indexy pre tabuľku `carts`
 --
 ALTER TABLE `carts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `carts_products`
+-- Indexy pre tabuľku `carts_products`
 --
 ALTER TABLE `carts_products`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `customers`
+-- Indexy pre tabuľku `customers`
 --
 ALTER TABLE `customers`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `customers_uids`
+-- Indexy pre tabuľku `customers_uids`
 --
 ALTER TABLE `customers_uids`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `dia_alerts`
+-- Indexy pre tabuľku `dia_alerts`
 --
 ALTER TABLE `dia_alerts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `dia_alerts_users`
+-- Indexy pre tabuľku `dia_alerts_users`
 --
 ALTER TABLE `dia_alerts_users`
   ADD PRIMARY KEY (`id`),
@@ -1265,272 +1269,272 @@ ALTER TABLE `dia_alerts_users`
   ADD KEY `id_alert` (`id_alert`) USING BTREE;
 
 --
--- Indexes for table `dia_navbar`
+-- Indexy pre tabuľku `dia_navbar`
 --
 ALTER TABLE `dia_navbar`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `dia_tables`
+-- Indexy pre tabuľku `dia_tables`
 --
 ALTER TABLE `dia_tables`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `employees`
+-- Indexy pre tabuľku `employees`
 --
 ALTER TABLE `employees`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `gallery`
+-- Indexy pre tabuľku `gallery`
 --
 ALTER TABLE `gallery`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `invoices`
+-- Indexy pre tabuľku `invoices`
 --
 ALTER TABLE `invoices`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `menu`
+-- Indexy pre tabuľku `menu`
 --
 ALTER TABLE `menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `orders`
+-- Indexy pre tabuľku `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `order_type`
+-- Indexy pre tabuľku `order_type`
 --
 ALTER TABLE `order_type`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `products`
+-- Indexy pre tabuľku `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `products_accessories`
+-- Indexy pre tabuľku `products_accessories`
 --
 ALTER TABLE `products_accessories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `products_discounts`
+-- Indexy pre tabuľku `products_discounts`
 --
 ALTER TABLE `products_discounts`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `products_gallery`
+-- Indexy pre tabuľku `products_gallery`
 --
 ALTER TABLE `products_gallery`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `stock`
+-- Indexy pre tabuľku `stock`
 --
 ALTER TABLE `stock`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_product` (`id_product`);
 
 --
--- Indexes for table `tests`
+-- Indexy pre tabuľku `tests`
 --
 ALTER TABLE `tests`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `test_dropzone`
+-- Indexy pre tabuľku `test_dropzone`
 --
 ALTER TABLE `test_dropzone`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `users`
+-- Indexy pre tabuľku `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_address` (`id_address`);
 
 --
--- Indexes for table `users_socials`
+-- Indexy pre tabuľku `users_socials`
 --
 ALTER TABLE `users_socials`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_user_index` (`id_user`);
 
 --
--- Indexes for table `user_tests`
+-- Indexy pre tabuľku `user_tests`
 --
 ALTER TABLE `user_tests`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pre exportované tabuľky
 --
 
 --
--- AUTO_INCREMENT for table `accessories`
+-- AUTO_INCREMENT pre tabuľku `accessories`
 --
 ALTER TABLE `accessories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `addresses`
+-- AUTO_INCREMENT pre tabuľku `addresses`
 --
 ALTER TABLE `addresses`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT pre tabuľku `admin`
 --
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `admins`
+-- AUTO_INCREMENT pre tabuľku `admins`
 --
 ALTER TABLE `admins`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `carts`
+-- AUTO_INCREMENT pre tabuľku `carts`
 --
 ALTER TABLE `carts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `carts_products`
+-- AUTO_INCREMENT pre tabuľku `carts_products`
 --
 ALTER TABLE `carts_products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `customers`
+-- AUTO_INCREMENT pre tabuľku `customers`
 --
 ALTER TABLE `customers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT for table `customers_uids`
+-- AUTO_INCREMENT pre tabuľku `customers_uids`
 --
 ALTER TABLE `customers_uids`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `dia_alerts`
+-- AUTO_INCREMENT pre tabuľku `dia_alerts`
 --
 ALTER TABLE `dia_alerts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `dia_alerts_users`
+-- AUTO_INCREMENT pre tabuľku `dia_alerts_users`
 --
 ALTER TABLE `dia_alerts_users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `dia_navbar`
+-- AUTO_INCREMENT pre tabuľku `dia_navbar`
 --
 ALTER TABLE `dia_navbar`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=218;
 
 --
--- AUTO_INCREMENT for table `dia_tables`
+-- AUTO_INCREMENT pre tabuľku `dia_tables`
 --
 ALTER TABLE `dia_tables`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `employees`
+-- AUTO_INCREMENT pre tabuľku `employees`
 --
 ALTER TABLE `employees`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `gallery`
+-- AUTO_INCREMENT pre tabuľku `gallery`
 --
 ALTER TABLE `gallery`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
--- AUTO_INCREMENT for table `invoices`
+-- AUTO_INCREMENT pre tabuľku `invoices`
 --
 ALTER TABLE `invoices`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `menu`
+-- AUTO_INCREMENT pre tabuľku `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `orders`
+-- AUTO_INCREMENT pre tabuľku `orders`
 --
 ALTER TABLE `orders`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
--- AUTO_INCREMENT for table `order_type`
+-- AUTO_INCREMENT pre tabuľku `order_type`
 --
 ALTER TABLE `order_type`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `products`
+-- AUTO_INCREMENT pre tabuľku `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 
 --
--- AUTO_INCREMENT for table `products_accessories`
+-- AUTO_INCREMENT pre tabuľku `products_accessories`
 --
 ALTER TABLE `products_accessories`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
 
 --
--- AUTO_INCREMENT for table `products_discounts`
+-- AUTO_INCREMENT pre tabuľku `products_discounts`
 --
 ALTER TABLE `products_discounts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `products_gallery`
+-- AUTO_INCREMENT pre tabuľku `products_gallery`
 --
 ALTER TABLE `products_gallery`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
--- AUTO_INCREMENT for table `tests`
+-- AUTO_INCREMENT pre tabuľku `tests`
 --
 ALTER TABLE `tests`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `test_dropzone`
+-- AUTO_INCREMENT pre tabuľku `test_dropzone`
 --
 ALTER TABLE `test_dropzone`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
--- AUTO_INCREMENT for table `users_socials`
+-- AUTO_INCREMENT pre tabuľku `users_socials`
 --
 ALTER TABLE `users_socials`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `user_tests`
+-- AUTO_INCREMENT pre tabuľku `user_tests`
 --
 ALTER TABLE `user_tests`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
