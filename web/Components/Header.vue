@@ -19,7 +19,14 @@
               >
                 <a :href="menuItem.link">{{ menuItem.title }}</a>
               </li>
-              <li><div class="gradient-button"><a id="modal_trigger" href="#modal"><i class="fa fa-sign-in-alt"></i> Sign In Now</a></div></li> 
+              <li>
+                <div class="gradient-button">
+                  <a id="modal_trigger" href="#modal">
+                    <i class="fa fa-sign-in-alt"></i> 
+                    Zaregistrovať
+                  </a>
+                </div>
+              </li> 
             </ul>        
             <a class='menu-trigger'>
                 <span>Menu</span>

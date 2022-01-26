@@ -13,6 +13,11 @@
 <!-- ***** Preloader End ***** -->
 
 <header-com></header-com>
+<banner-com></banner-com>
+<services-com></services-com>
+<about-com></about-com>
+<clients-com></clients-com>
+<prices-com></prices-com>
   
 <div id="modal" class="popupContainer" style="display:none;">
   <div class="popupHeader">
@@ -104,6 +109,11 @@
 
 import header from './Header.vue';
 import footer from './Footer.vue';
+import banner from './Banner.vue';
+import services from './Services.vue';
+import about from './About.vue';
+import clients from './Clients.vue';
+import prices from './Prices.vue';
 
 export default {
   data() {
@@ -113,7 +123,12 @@ export default {
   },
   components: {
     'header-com': header,
-    'footer-com': footer
+    'footer-com': footer,
+    'banner-com': banner,
+    'services-com': services,
+    'about-com': about,
+    'clients-com': clients,
+    'prices-com': prices
   },
   beforeCreate() {
     this.dia = new Dia();
