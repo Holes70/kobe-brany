@@ -17,13 +17,12 @@
                 :key="menuItem.id"
                 class="scroll-to-section"
               >
-                <a :href="'#' + menuItem.link">{{ menuItem.title }}</a>
+                <!--<a :href="'#' + menuItem.link">{{ menuItem.title }}</a>-->
+                <router-link to="/holes/dia/web/">{{ menuItem.title }}</router-link>
               </li>
               <li>
                 <div class="gradient-button-gold">
-                  <a href="produkty">
-                    Katalóg produktov
-                  </a>
+                  <router-link to="/holes/dia/web/produkty">Katalóg produktov</router-link>
                 </div>
               </li> 
               <li>
@@ -45,6 +44,7 @@
     </div>
   </header>
   <!-- ***** Header Area End ***** -->
+  <router-view />
 </template>
 
 <script>

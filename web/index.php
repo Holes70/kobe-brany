@@ -56,6 +56,7 @@
       <script src='../Core/public/js/fontawesome.js'></script>
       <script src='../Core/public/js/fancybox.js'></script>
       <script src='https://unpkg.com/vue-router@4'></script>
+      <script src='./assets/js/diaWeb.js'></script>
   
       <!-- Additional CSS Files -->
       <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.1/css/all.css' integrity='sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf' crossorigin='anonymous'>
@@ -88,28 +89,7 @@
     // VUE LOADER START
   ?>
     <script type="module">
-      const emitter = mitt();
-      const dia = new Dia();
-      const diaTables = new DiaTables();
-
-      const { createRouter, createWebHistory, createWebHashHistory } = VueRouter
-      const { createApp } = Vue
-
-      const Home = {
-        template: `<div>home</div>`,
-      }
-
-      const Foo = { template: '<div>z</div>' }
-      const Bar = { template: '<div>bar</div>' }
-
-      const router = createRouter({
-        history: createWebHistory(),
-        routes: [
-          { path: '/home', component: Home },
-          { path: '/foo', component: Foo },
-          { path: '/bar', component: Bar },
-        ],
-      })
+     const diaWeb = new DiaWeb();
 
       const options = {
         moduleCache: {
@@ -134,10 +114,21 @@
 
       const app_loader = Vue.createApp({
         components: {
-          'website-component': Vue.defineAsyncComponent( () => loadModule('./Components/Website.vue', options)),
+          'website-component': Vue.defineAsyncComponent( () => loadModule('./Components/Header.vue', options)),
         },
         template: `<website-component></website-component>`
       });
+
+      const { createRouter, createWebHistory, createWebHashHistory } = VueRouter
+      const { createApp } = Vue;
+
+      const router = createRouter({
+        history: createWebHistory(),
+        routes: [
+          { path: diaWeb.rootUrl, component: Vue.defineAsyncComponent( () => loadModule('./Components/Website.vue', options)) },
+          { path: diaWeb.rootUrl + '/produkty', component: Vue.defineAsyncComponent( () => loadModule('./Components/Produkty.vue', options)) },
+        ],
+      })
 
       app_loader.use(router);
       window.vm = app_loader.mount('#app');

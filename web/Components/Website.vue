@@ -12,14 +12,6 @@
 </div>-->
 <!-- ***** Preloader End ***** -->
 
- <div id="nav">
-      <router-link to="/home">Home</router-link> |
-      <router-link to="/foo">About</router-link>
-      <router-link to="/bar">Bar</router-link>
-  </div>
-  <router-view />
-
-<header-com></header-com>
 <banner-com></banner-com>
 <services-com></services-com>
 <about-com></about-com>
@@ -114,7 +106,6 @@
 
 <script>
 
-import header from './Header.vue';
 import footer from './Footer.vue';
 import banner from './Banner.vue';
 import services from './Services.vue';
@@ -129,7 +120,6 @@ export default {
     }
   },
   components: {
-    'header-com': header,
     'footer-com': footer,
     'banner-com': banner,
     'services-com': services,
