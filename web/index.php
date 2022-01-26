@@ -55,7 +55,7 @@
       <script src='../Core/public/js/diaTables.js'></script>
       <script src='../Core/public/js/fontawesome.js'></script>
       <script src='../Core/public/js/fancybox.js'></script>
-      <script src='../node_modules/vue-router/dist/vue-router.global.js'></script>
+      <script src='https://unpkg.com/vue-router@4'></script>
   
       <!-- Additional CSS Files -->
       <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.1/css/all.css' integrity='sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf' crossorigin='anonymous'>
@@ -92,6 +92,25 @@
       const dia = new Dia();
       const diaTables = new DiaTables();
 
+      const { createRouter, createWebHistory, createWebHashHistory } = VueRouter
+      const { createApp } = Vue
+
+      const Home = {
+        template: `<div>home</div>`,
+      }
+
+      const Foo = { template: '<div>z</div>' }
+      const Bar = { template: '<div>bar</div>' }
+
+      const router = createRouter({
+        history: createWebHistory(),
+        routes: [
+          { path: '/home', component: Home },
+          { path: '/foo', component: Foo },
+          { path: '/bar', component: Bar },
+        ],
+      })
+
       const options = {
         moduleCache: {
           vue: Vue
@@ -120,15 +139,8 @@
         template: `<website-component></website-component>`
       });
 
-      const routes = [
-        {
-          path: "/",
-          name: "Home",
-          component: Vue.defineAsyncComponent( () => loadModule('./Components/Website.vue')),
-        }
-      ];
-
-      app_loader.use(routes).mount('#app');
+      app_loader.use(router);
+      window.vm = app_loader.mount('#app');
     </script>
 
   <?php

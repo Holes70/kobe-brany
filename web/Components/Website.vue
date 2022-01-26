@@ -12,6 +12,13 @@
 </div>-->
 <!-- ***** Preloader End ***** -->
 
+ <div id="nav">
+      <router-link to="/home">Home</router-link> |
+      <router-link to="/foo">About</router-link>
+      <router-link to="/bar">Bar</router-link>
+  </div>
+  <router-view />
+
 <header-com></header-com>
 <banner-com></banner-com>
 <services-com></services-com>
