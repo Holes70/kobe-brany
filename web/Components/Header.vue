@@ -20,6 +20,13 @@
                 <a :href="menuItem.link">{{ menuItem.title }}</a>
               </li>
               <li>
+                <div class="gradient-button-gold">
+                  <a href="">
+                    Katalóg produktov
+                  </a>
+                </div>
+              </li> 
+              <li>
                 <div class="gradient-button">
                   <a id="modal_trigger" href="#modal">
                     <i class="fa fa-sign-in-alt"></i> 

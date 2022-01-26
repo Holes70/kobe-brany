@@ -261,6 +261,23 @@ body {
   background: linear-gradient(105deg, rgba(91,104,235,1) 0%, rgba(40,225,253,1) 100%);
 }
 
+.gradient-button-gold a {
+  display: inline-block !important;
+  color: #fff !important;
+  text-transform: capitalize;
+  font-size: 15px;
+  background: linear-gradient(105deg, #deab4e 0%, #d47e15 100%);
+  border-radius: 23px;
+  font-weight: 500 !important;
+  letter-spacing: 0.3px !important;
+  transition: all .5s;
+}
+
+.gradient-button-gold a:hover {
+  color: #fff !important;
+  background: linear-gradient(105deg, #fac86e 0%, #de804e 100%);
+}
+
 .border-button a {
   display: inline-block !important;
   padding: 10px 20px !important;
