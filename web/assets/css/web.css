@@ -1,0 +1,9 @@
+.katalog-item-img {
+  height: 185px;
+  overflow: hidden;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+.katalog-item-img img {
+  width: 100%;
+}
