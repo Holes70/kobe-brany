@@ -2,7 +2,7 @@
   <div :id="'katalog-item-' + item.id" class="item-hover col-lg-3 mb-4">
     <div class="service-item first-service">
       <div class="katalog-item-img">
-        <img src="assets/images/brana-1.jpg"/>
+        <img :src="'http://localhost/holes/dia/files/products/' + item.image"/>
       </div>
       <h4>{{ item.name }}</h4>
       <h5>{{ item.price }}€</h3>
