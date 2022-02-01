@@ -20,8 +20,7 @@
                           v-model="data['loginVal']" 
                           class='form-control' 
                           name='email' 
-                          required 
-                          autofocus
+                          :class="errorClass('email')"
                         >
                       </div>
                     </div>
@@ -34,7 +33,7 @@
                           v-model="data['passwordVal']" 
                           class='form-control' 
                           name='password' 
-                          required
+                          :class="errorClass('password')"
                         >
                       </div>
                     </div>
@@ -79,12 +78,33 @@
     props: ['params'],
     data() {
       return Object.assign(diaRow, {
-        componentName: "row"
+        componentName: "row",
+        loginError: false,
+        passwordError: false
       })
     },
     methods: {
-      validateBeforePost() {
+      validateBeforePost(e) {
+        this.loginError = false;
+        this.passwordError = false;
 
+        if (this.data['loginVal'] == "") {
+          this.loginError = true;
+          e.preventDefault();
+        }
+
+        if (this.data['passwordVal'] == "") {
+          this.passwordError = true;
+          e.preventDefault();
+        }
+
+      },
+      errorClass(input) {
+        if (input == "email") {
+          return { 'required': this.loginError };
+        } else {
+          return { 'required': this.passwordError };
+        }
       }
     },
     beforeCreate() {
@@ -92,6 +112,8 @@
     },
     beforeMount() {
       diaRow.setComponentParams(this);
+
+      this.data = this.params['data'];
     }
   }
 </script>
