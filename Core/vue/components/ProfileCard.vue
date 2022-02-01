@@ -14,7 +14,7 @@
       </div>
     </template>
     <template v-else>
-      <a href='login'>LOGIN</a>
+      <a href='login'>Prihlásiť</a>
     </template>
   </div>
 </template>
