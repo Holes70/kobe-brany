@@ -302,6 +302,19 @@ a.system-settings:hover {
     color: #fff !important;
 }
 
+a.system-users,
+a.system-users:hover {
+    background: #ff988f !important;
+    color: #fff !important;
+}
+a.system-eshop,
+a.system-eshop:hover {
+    background: #75baff !important;
+    color: white !important;
+    font-weight: 700 !important;
+    font-size: 25px;
+
+}
 /* ---------------------------------------------------
     CONTENT STYLE
 ----------------------------------------------------- */

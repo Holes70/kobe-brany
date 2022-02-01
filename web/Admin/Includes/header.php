@@ -92,6 +92,12 @@
       </ul>
       <ul class='list-unstyled CTAs'>
         <li>
+          <a href='eshop' class='system-eshop'>E-shop</a>
+        </li>
+        <li>
+          <a href='uzivatelia' class='system-users'>Užívatelia</a>
+        </li>
+        <li>
           <a href='systemove-nastavenia' class='system-settings'>Systémové nastavenia</a>
         </li>
       </ul>
