@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hostiteľ: 127.0.0.1
--- Čas generovania: St 26.Jan 2022, 20:53
+-- Čas generovania: Út 01.Feb 2022, 12:12
 -- Verzia serveru: 10.4.22-MariaDB
 -- Verzia PHP: 8.0.14
 
