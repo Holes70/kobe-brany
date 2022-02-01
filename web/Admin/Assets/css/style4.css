@@ -183,6 +183,13 @@ span {
     text-align: center;
 }
 
+#sidebar .sidebar-header {
+  background-color: #0a6c91;
+}
+.sidebar-header h3 {
+  color: white !important;
+  font-size: 32px;
+}
 #sidebar.active .sidebar-header h3,
 #sidebar.active .CTAs {
     display: none;
@@ -223,13 +230,15 @@ span {
 }
 
 #sidebar .sidebar-header {
-	padding: 13px;
+  text-align: center;
+	padding: 11px;
 	border-bottom: 2px solid #5bccf6;
 }
 
 #sidebar .sidebar-header strong {
   display: none;
   font-size: 1.8em;
+  color: white;
 }
 
 #sidebar ul.components {
