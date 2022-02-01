@@ -183,6 +183,8 @@ namespace Core {
 
       if ($this->config['web']['bootstrap']) {
         $bootstrap = "<link rel='stylesheet' href='../../Core/public/css/bootstrap.min.css'>";
+        $bootstrap .= "<link rel='stylesheet' href='../../Core/public/css/ionicons.min.css'>";
+        $bootstrap .= "<link rel='stylesheet' href='../../Core/public/css/style.css'>";
       }
 
       if ($this->config['web']['dropzone']) {
