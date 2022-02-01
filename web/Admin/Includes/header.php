@@ -84,8 +84,8 @@
   $dia->template("
     <nav id='sidebar' class='bg-white'>
       <div class='sidebar-header'>
-        <h3 class='color-secondary'>Admin</h3>
-        <strong>Admin</strong>
+        <h3 class='color-secondary'>DIA CMS</h3>
+        <strong>DIA CMS</strong>
       </div>
       <ul class='list-unstyled components'>
         {$navigationHTML}
