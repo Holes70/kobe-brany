@@ -655,3 +655,14 @@ var {
 .page-link {
   color: #404040 !important;
 }
+.dia-row {
+  background-color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+}
+.dia-row-title {
+  color: #0a6c91;
+  font-weight: 500;
+}

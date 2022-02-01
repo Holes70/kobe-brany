@@ -1,5 +1,5 @@
 <template>
-  <div :id="componentName">
+  <div :id="componentName" class="dia-row mb-3">
     <!-- Modal -->
     <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog modal-lg" role="document">
@@ -22,8 +22,13 @@
     </div>
     <!-- End modal -->
 
-    <div class="row float-right m-1">
-      <button data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-primary">Pridať záznam</button>
+    <div class="row m-1">
+      <div class="col-6 text-left">
+        <h3 class="dia-row-title">{{ title }}</h3>
+      </div>
+      <div class="col-6 text-right">
+        <button data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-primary">Pridať záznam</button>
+      </div>
     </div>
     <div class="clearfix"></div>
   </div>
@@ -49,6 +54,8 @@ export default {
   },
   beforeMount() {
     diaRow.setComponentParams(this);
+
+    this.title = this.params['title'];
   }
 }
 </script>

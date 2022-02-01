@@ -18,8 +18,11 @@ $produkty->buttons([
 ]);
 
 $pridat = new Row("products");
+$pridat->title("Produkty");
 
 $dia->template("
   {$pridat->show()}
-  {$produkty->show()}
+  ".$dia->card(
+    $produkty->show()
+  )."
 ")->render();

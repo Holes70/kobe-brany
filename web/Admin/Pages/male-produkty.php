@@ -16,5 +16,5 @@ $pridat = new Row("products");
 
 $dia->template("
   {$pridat->show()}
-  {$produkty->show()}
+  ".$dia->card($produkty->show())."
 ")->render();

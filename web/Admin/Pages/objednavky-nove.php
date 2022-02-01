@@ -15,5 +15,5 @@ $pridat = new Row("orders");
 
 $dia->template("
   {$pridat->show()}
-  {$objednavkyNove->show()}
+  ".$dia->card($objednavkyNove->show())."
 ")->render();
