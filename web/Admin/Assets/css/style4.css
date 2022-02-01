@@ -233,19 +233,23 @@ span {
 }
 
 #sidebar ul.components {
-    padding: 20px 0;
-    border-bottom: 1px solid #47748b;
+  padding: 20px 0;
+  border-bottom: 1px solid #47748b;
 }
 
 #sidebar ul li a {
-    padding: 10px;
-    font-size: 1.1em;
-    display: block;
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+  color: #0a6c91;
+  font-size: 20px;
 }
 
 #sidebar ul li a:hover {
-    color: #fcde67;
-    background: #d7f7f3;
+  color: #5bccf6;
+  background: #f8f9fa;
+  transition: color 0.5s ease;
+  transition: background-color 0.5s ease-out;
 }
 
 #sidebar ul li a i {
