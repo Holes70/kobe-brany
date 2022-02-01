@@ -20,5 +20,7 @@ $carts->conditions([
 $carts->fileDir("products");
 
 $dia->template("
-  {$carts->show()}
+  ".$dia->card(
+    $carts->show()
+  )."
 ")->render();
