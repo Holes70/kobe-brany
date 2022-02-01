@@ -9,7 +9,7 @@
               <div :id="componentName">
                  <form 
                     @submit="validateBeforePost"
-                    action="index.php?action=dia_insert_post" 
+                    action="index.php?action=dia_login" 
                     method="POST"
                   > 
                     <div class='form-group row'>
@@ -51,6 +51,8 @@
                       </div>
                     </div>
 
+                    <input type="hidden" name="tableName" :value="tableName"/>
+                    
                     <div class='col-md-6 offset-md-4'>
                       <input 
                         type='submit' 

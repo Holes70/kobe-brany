@@ -1,15 +1,15 @@
 <?php
 
-  global $db, $userController;
+  global $db, $userController, $webController;
 
-  $data = $db->request_data();
-
+  $data = $webController->getPostParams();
+  print_r($data); exit();
   try {
     $selectUserIfExists = $db->dbSelect(
-      $data->tableName,
+      $data['tableName'],
       [
         "where" => [
-          $data->data->loginInput => $data->data->loginVal
+          'email' => $data['email']
         ]
       ]
     );
