@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hostiteľ: 127.0.0.1
--- Čas generovania: Út 01.Feb 2022, 12:12
+-- Čas generovania: Út 01.Feb 2022, 20:23
 -- Verzia serveru: 10.4.22-MariaDB
 -- Verzia PHP: 8.0.14
 
@@ -159,7 +159,7 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `first_name`, `last_name`, `email`, `phone_number`, `state`, `password`) VALUES
-(1, 'xxx', 'Priezvisko_1', 'zakaznik_1@gmail.com', 13102523, 1, '123455'),
+(1, 'Meno_1', 'Priezvisko_1', 'zakaznik_1@gmail.com', 13102523, 1, '123455'),
 (2, 'Meno_2', 'Priezvisko_2', 'zakaznik_2@gmail.com', 26527492, 3, '123455'),
 (3, 'Meno_3', 'Priezvisko_3', 'zakaznik_3@gmail.com', 59002038, 3, '123455'),
 (4, 'Meno_4', 'Priezvisko_4', 'zakaznik_4@gmail.com', 30765647, 3, '123455'),
@@ -296,7 +296,7 @@ CREATE TABLE `dia_tables` (
 --
 
 INSERT INTO `dia_tables` (`id`, `table_name`, `structure`) VALUES
-(1, 'users', '{\"id\":{\"type\":\"number\",\"show_in_table\":false,\"show_in_form\":true},\"id_address\":{\"type\":\"number\",\"show_in_table\":false,\"show_in_form\":true,\"type\":\"lookup\",\"lookup_table\":\"addresses\"},\"avatar\":{\"show_in_table\":true,\"show_in_form\":true,\"type\":\"image\"},\"first_name\":{\"type\":\"text\",\"required\":true,\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"First Name\"},\"last_name\":{\"type\":\"text\",\"required\":true,\"show_in_table\":true,\"show_in_form\":true},\"email\":{\"type\":\"email\",\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Email\"},\"phone_number\":{\"type\":\"number\",\"required\":true,\"show_in_form\":true,\"show_in_table\":true},\"password\":{\"type\":\"password\",\"required\":true,\"show_in_form\":true,\"show_in_table\":true}}'),
+(1, 'users', '{\"id\":{\"type\":\"number\",\"show_in_table\":false,\"show_in_form\":false},\"avatar\":{\"show_in_table\":true,\"show_in_form\":true,\"type\":\"image\"},\"first_name\":{\"required\":true,\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Meno\"},\"last_name\":{\"required\":true,\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Priezvisko\"},\"email\":{\"type\":\"email\",\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"E-mail\",\"required\":true},\"password\":{\"type\":\"password\",\"required\":true,\"show_in_form\":true,\"show_in_table\":true,\"name_in_table\":\"Heslo\"}}'),
 (2, 'products', '{\"id\":{\"type\":\"number\",\"show_in_table\":false,\"show_in_form\":false},\"image\":{\"type\":\"image\",\"show_in_table\":true,\"show_in_form\":true,\"upload_action\":\"upload_product_image\",\"required\":true},\"name\":{\"show_in_table\":true,\"name_in_table\":\"Produkt\",\"show_in_form\":true,\"required\":true},\"price\":{\"type\":\"number\",\"show_in_table\":true,\"name_in_table\":\"Cena\",\"show_in_form\":true,\"required\":true,\"unit\":\"€\"},\"available\":{\"type\":\"checkbox\",\"default_value\":true,\"show_in_table\":true,\"name_in_table\":\"Dostupný\",\"show_in_form\":true},\"count\":{\"type\":\"number\",\"show_in_table\":true,\"name_in_table\":\"Skladom\",\"show_in_form\":true},\"description\":{\"type\":\"text\",\"show_in_table\":false,\"name_in_table\":\"Popis\",\"show_in_form\":true},\"type\":{\"type\":\"radio\",\"default_value\":1,\"radio\":{\"1\":\"Na mieru\",\"2\":\"Príslušenstvo\"},\"show_in_table\":false,\"name_in_table\":\"Typ\",\"show_in_form\":true}}'),
 (3, 'accessories', '{\"id\":{\"type\":\"number\",\"show_in_table\":false,\"show_in_form\":false},\"image\":{\"type\":\"image\",\"show_in_table\":true,\"show_in_form\":true},\"name\":{\"show_in_table\":true,\"name_in_table\":\"Produkt\",\"show_in_form\":true,\"required\":true},\"price\":{\"type\":\"number\",\"show_in_table\":true,\"name_in_table\":\"Cena\",\"show_in_form\":true,\"required\":true,\"unit\":\"€\"},\"available\":{\"type\":\"checkbox\",\"show_in_table\":true,\"name_in_table\":\"Dostupný\",\"show_in_form\":true},\"description\":{\"type\":\"text\",\"show_in_table\":false,\"name_in_table\":\"Popis\",\"show_in_form\":true},\"count\":{\"type\":\"number\",\"show_in_table\":true,\"name_in_table\":\"Počet\",\"show_in_form\":true}}'),
 (4, 'customers', '{\"first_name\":{\"disabled\":true,\"required\":true,\"show_in_table\":true,\"name_in_table\":\"Meno\",\"show_in_form\":true},\"last_name\":{\"required\":true,\"show_in_table\":true,\"name_in_table\":\"Priezvisko\",\"show_in_form\":true},\"email\":{\"required\":false,\"show_in_table\":true,\"name_in_table\":\"E-mail\",\"show_in_form\":true},\"phone_number\":{\"required\":true,\"show_in_table\":true,\"name_in_table\":\"Mobil\",\"show_in_form\":true},\"state\":{\"type\":\"radio\",\"name_in_table\":\" \",\"default_value\":\"1\",\"radio\":{\"1\":\"Nový\",\"2\":\"Overený\",\"3\":\"Dlžný\"},\"show_in_table\":true,\"show_in_form\":true}}'),
@@ -1135,12 +1135,10 @@ INSERT INTO `test_dropzone` (`id`, `filename`) VALUES
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `id_address` int(11) DEFAULT NULL,
   `avatar` varchar(55) DEFAULT 'avatar.png',
   `first_name` varchar(25) NOT NULL,
   `last_name` varchar(25) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `phone_number` varchar(10) NOT NULL,
   `password` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1148,10 +1146,10 @@ CREATE TABLE `users` (
 -- Sťahujem dáta pre tabuľku `users`
 --
 
-INSERT INTO `users` (`id`, `id_address`, `avatar`, `first_name`, `last_name`, `email`, `phone_number`, `password`) VALUES
-(0, 1, 'wallpaper.jpeg', 'Test', 'Test', 'administrator@gmail.com', '9999', 'administrator'),
-(1, 1, 'avatar.png', 'Patrik', 'Holes', 'test@sk.sk', '94231231', 'Heslo'),
-(2, 3, 'avatar.png', 'Robert', 'Haas', 'xxsssxx@email.sk', '94233113', 'Heslo');
+INSERT INTO `users` (`id`, `avatar`, `first_name`, `last_name`, `email`, `password`) VALUES
+(0, '', 'Test', 'Test', 'administrator@gmail.com', 'administrator'),
+(1, '', 'Patrik', 'Holes', 'test@sk.sk', 'Heslo'),
+(2, '', 'Robert', 'Haas', 'xxsssxx@email.sk', 'Heslo');
 
 -- --------------------------------------------------------
 
@@ -1363,8 +1361,7 @@ ALTER TABLE `test_dropzone`
 -- Indexy pre tabuľku `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_address` (`id_address`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexy pre tabuľku `users_socials`
