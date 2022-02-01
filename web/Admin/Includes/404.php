@@ -1,9 +1,7 @@
 <?php
 
 $dia->template("
-  <div style='text-align:center'>
-    <div class='img-not-found' style='margin-top:100px'>
-      <img src='http://localhost/holes/dia/files/notfound.gif' alt='not found'/>
-    </div>
+  <div class='container text-center' style='margin-top:150px'>
+    <h1 style='color:#adadad'>Stránka neexistuje</h1>
   </div>
 ")->render();

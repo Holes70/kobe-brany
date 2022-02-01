@@ -59,7 +59,11 @@
                     {{ item }} {{ getStructureValue(colName, 'unit') }}
                   </template>
                   <template v-else>
-                    <img :src="'http://localhost/'+ this.dir +'/files/'  + this.fileDir + '/' + itemData['image']" width="35" height="35"/>
+                    <img 
+                      :src="'http://localhost/'+ this.dir +'/files/'  + this.fileDir + '/' + checkImage(itemData['image'])" 
+                      width="35" 
+                      height="35"
+                    />
                   </template>
                 </td>
               </template>
@@ -199,7 +203,7 @@
                       <template v-else>
                         <div :class="imageRequired(colName)">
                           <img 
-                            :src="'http://localhost/'+ this.dir +'/files/' + this.fileDir + '/' + itemData['image']" 
+                            :src="'http://localhost/'+ this.dir +'/files/' + this.fileDir + '/' + checkImage(itemData['image'])" 
                             width="100" 
                             height="100"
                           />
@@ -419,6 +423,13 @@
         }
 
         return returnVal;
+      },
+      checkImage(image) {
+        if (typeof image == "undefined") {
+          return "default.jpg";
+        } else {
+          return image;
+        }
       }
     },
     beforeCreate() {
