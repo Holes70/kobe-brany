@@ -74,7 +74,7 @@
           <input type="hidden" name="tableName" :value="tableName"/>
           <input 
             type="submit" 
-            class="btn btn-primary"
+            class="btn mb-2 mb-md-0 btn-primary btn-block"
             value="Vytvoriť"
           />
         </div>
