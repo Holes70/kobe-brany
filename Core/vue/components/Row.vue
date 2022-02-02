@@ -23,11 +23,15 @@
     <!-- End modal -->
 
     <div class="row m-1">
-      <div class="col-6 text-left">
+      <div class="col-10 text-left">
         <h3 class="dia-row-title">{{ title }}</h3>
       </div>
-      <div class="col-6 text-right">
-        <button data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-primary">Pridať záznam</button>
+      <div class="col-2 text-right float-right">
+        <button data-toggle="modal" data-target="#exampleModalCenter" type="button" class="btn mb-2 mb-md-0 btn-primary btn-block"><span>Pridať záznam</span> 
+          <div class="icon d-flex align-items-center justify-content-center">
+            <i class="fas fa-plus"></i>
+          </div>
+        </button>
       </div>
     </div>
     <div class="clearfix"></div>
