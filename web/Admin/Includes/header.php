@@ -117,19 +117,6 @@
           <div class='collapse navbar-collapse' id='navbarSupportedContent'>
             <ul class='nav navbar-nav ml-auto'>
               <li class='nav-item'>
-                <a href=''>
-                  <i class='fas fa-comments'></i>
-                </a>
-              </li>
-              <li class='nav-item'>
-                <a href=''>
-                  <i class='fas fa-envelope'></i>
-                </a>
-              </li>
-              <li class='nav-item pl-4 pr-2'>
-                <div class='divider-v'></div>
-              </li>
-              <li class='nav-item'>
                 {$profileCard->show()}
               </li>
             </ul>

@@ -1,5 +1,5 @@
 <template>
-  <div class='row'>
+  <div class='row' style='width:200px'>
     <template v-if='Object.keys(data).length > 0'>
       <div class='col-4'>
         <div class='header-icon'>
@@ -14,7 +14,11 @@
       </div>
     </template>
     <template v-else>
-      <a href='login'>Prihlásiť</a>
+      <a href='login' class="btn mb-2 mb-md-0 btn-grey btn-block"><span>Prihlásiť</span> 
+        <div class="icon d-flex align-items-center justify-content-center">
+          <i class="fas fa-sign-in-alt"></i>
+        </div>
+      </a>
     </template>
   </div>
 </template>

@@ -42,6 +42,9 @@
   color: #8f271e!important
 }
 
+.btn-grey {
+  background-color: #e0e0e0 !important;
+}
 .btn-success {
   background-color: #71d18c !important;
 }
@@ -135,8 +138,9 @@ a:focus {
 }
 .nav-item {
 	margin-right: 15px;
-  line-height: 35px;
-  height: 35px;
+  line-height: 45px;
+  height: 45px;
+  width: auto;
 }
 .nav-item i {
   font-size: 30px;
