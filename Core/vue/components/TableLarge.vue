@@ -106,13 +106,23 @@
                 {{ button['name'] }}
               </a>
             </div>
-            <div class="col-md-3 col-sm-4 col-lg-2">
-              <button @click="save(itemData)" class='btn btn-success'>
-                <i class="far fa-save color-success"></i>
-              </button>
-              <button @click="deleteItem(itemData['id'])" class='btn btn-danger ml-3'>
-                <i class="fas fa-trash-alt color-red-dark"></i>
-              </button>
+            <div class="col-md-6 col-sm-12 col-lg-4">
+              <div class="row">
+                <div class="col">
+                  <button @click="save(itemData)" type="button" class="btn mb-2 mb-md-0 btn-success btn-block"><span>Uložiť</span> 
+                    <div class="icon d-flex align-items-center justify-content-center">
+                      <i class="far fa-save color-success"></i>
+                    </div>
+                  </button>
+                </div>
+                <div class="col">
+                  <button @click="deleteItem(itemData['id'])" type="button" class="btn mb-2 mb-md-0 btn-danger btn-block"><span>Zmazať</span> 
+                    <div class="icon d-flex align-items-center justify-content-center">
+                      <i class="fas fa-trash-alt color-red-dark"></i>
+                    </div>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </template>

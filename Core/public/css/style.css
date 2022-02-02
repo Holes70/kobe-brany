@@ -8142,7 +8142,7 @@ a {
   -webkit-transition: .3s all ease;
   -o-transition: .3s all ease;
   transition: .3s all ease;
-  color: #ec8f6a; }
+  color: #c3db0d; }
   a:hover, a:focus {
     text-decoration: none !important;
     outline: none !important;
@@ -8223,8 +8223,8 @@ h1, h2, h3, h4, h5,
     .btn .icon.icon-round {
       border-radius: 50%; }
   .btn.btn-primary {
-    background: #ec8f6a;
-    border-color: #ec8f6a;
+    background: #c3db0d;
+    border-color: #c3db0d;
     color: #fff; }
     .btn.btn-primary:hover, .btn.btn-primary:focus {
       border-color: #e66d3d !important;
@@ -8236,13 +8236,13 @@ h1, h2, h3, h4, h5,
       -webkit-box-shadow: none;
       box-shadow: none; }
     .btn.btn-primary .icon i {
-      color: #ec8f6a; }
+      color: #c3db0d; }
   .btn.btn-outline-primary {
-    color: #ec8f6a;
-    border-color: #ec8f6a; }
+    color: #c3db0d;
+    border-color: #c3db0d; }
     .btn.btn-outline-primary:hover, .btn.btn-outline-primary:focus {
       color: #fff;
-      background: #ec8f6a; }
+      background: #c3db0d; }
   .btn.btn-secondary {
     color: #fff;
     border-color: #8bbabb;
@@ -8359,7 +8359,7 @@ h1, h2, h3, h4, h5,
       color: #000; }
 
 .checkbox-wrap .checkbox-primary input[type="checkbox"]:checked:after {
-  color: #ec8f6a; }
+  color: #c3db0d; }
 
 .checkbox-wrap .checkbox-secondary input[type="checkbox"]:checked:after {
   color: #8bbabb; }
@@ -8374,7 +8374,7 @@ h1, h2, h3, h4, h5,
   color: #343a40; }
 
 .checkbox-wrap .checkbox-primary {
-  color: #ec8f6a; }
+  color: #c3db0d; }
 
 .checkbox-wrap .checkbox-secondary {
   color: #8bbabb; }
@@ -8477,7 +8477,7 @@ input[type="radio"]:checked + label:after {
   transform: scale(1); }
 
 .radio-primary {
-  color: #ec8f6a; }
+  color: #c3db0d; }
 
 .radio-secondary {
   color: #8bbabb; }
@@ -8492,8 +8492,8 @@ input[type="radio"]:checked + label:after {
   color: #343a40; }
 
 .radio-primary input[type="radio"]:checked + label:after {
-  background: #ec8f6a;
-  border-color: #ec8f6a; }
+  background: #c3db0d;
+  border-color: #c3db0d; }
 
 .radio-secondary input[type="radio"]:checked + label:after {
   background: #8bbabb;
@@ -8512,7 +8512,7 @@ input[type="radio"]:checked + label:after {
   border-color: #343a40; }
 
 .radio-primary input[type="radio"]:checked + label:before {
-  border-color: #ec8f6a; }
+  border-color: #c3db0d; }
 
 .radio-secondary input[type="radio"]:checked + label:before {
   border-color: #8bbabb; }
