@@ -76,14 +76,26 @@ namespace Core\Controllers {
       return isset($_GET[$param]) ? $_GET[$param] : "";
     }
 
+    /**
+     * get all POST params
+     * @return array
+     */
     public function getPostParams() {
-      return $_POST;
+      return isset($_POST) ? $_POST : [];
     }
 
+    /**
+     * get specific POST param
+     * @return string
+     */
     public function getPostParam(string $param) {
       return isset($_POST[$param]) ? $_POST[$param] : "";
     }
 
+    /**
+     * Redirect to URL
+     * @return void
+     */
     public function redirect(string $redirectUrl) {
       if ($redirectUrl == "") throw new \Exception("Empty redirectUrl");
 

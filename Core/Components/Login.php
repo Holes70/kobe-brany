@@ -4,6 +4,8 @@ namespace Components {
 
   class Login extends \Core\Component {
 
+    public bool $error = false;
+
     public function __construct(public String $tableName) {
       parent::__construct($this);
     }
@@ -20,11 +22,17 @@ namespace Components {
       return $this;
     }
 
+    public function error(bool $error) {
+      $this->error = $error;
+      return $this;
+    }
+
     public function show() {
       return "
         <dia-login :params='{
           tableName: \"{$this->tableName}\",
-          data: ".json_encode($this->data)."
+          data: ".json_encode($this->data).",
+          error: \"{$this->error}\"
         }'></dia-login>
       ";
     }

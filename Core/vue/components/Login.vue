@@ -12,6 +12,9 @@
                     action="index.php?action=dia_login" 
                     method="POST"
                   > 
+                    <div class="text-center">
+                      <h5 v-if="loginError && passwordError" class="color-primary">Prihlasovacie údaje su nesprávne</h5>
+                    </div>
                     <div class='form-group row'>
                       <label for='email_address' class='col-md-4 col-form-label text-md-right'>E-mailová adresa</label>
                       <div class='col-md-6'>
@@ -74,12 +77,12 @@
 </template>
 
 <script>
-  var diaRow = Object();
+  var diaLogin = Object();
 
   export default {
     props: ['params'],
     data() {
-      return Object.assign(diaRow, {
+      return Object.assign(diaLogin, {
         componentName: "row",
         loginError: false,
         passwordError: false
@@ -110,12 +113,18 @@
       }
     },
     beforeCreate() {
-      diaRow = new Dia();
+      diaLogin = new Dia();
     },
     beforeMount() {
-      diaRow.setComponentParams(this);
+      diaLogin.setComponentParams(this);
 
       this.data = this.params['data'];
+
+      if (this.params['error'] == true) {
+        this.loginError = true;
+        this.passwordError = true;
+        diaLogin.deleteFromUrl("error");
+      }
     }
   }
 </script>
