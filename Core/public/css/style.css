@@ -8477,7 +8477,7 @@ input[type="radio"]:checked + label:after {
   transform: scale(1); }
 
 .radio-primary {
-  color: #5bccf6; }
+  color: #e66d3d ; }
 
 .radio-secondary {
   color: #8bbabb; }
@@ -8492,8 +8492,8 @@ input[type="radio"]:checked + label:after {
   color: #343a40; }
 
 .radio-primary input[type="radio"]:checked + label:after {
-  background: #5bccf6;
-  border-color: #5bccf6; }
+  background: #e66d3d;
+  border-color: #0a6c91; }
 
 .radio-secondary input[type="radio"]:checked + label:after {
   background: #8bbabb;
