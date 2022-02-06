@@ -1,6 +1,6 @@
 <?php
 
-global $db, $userController;
+global $db, $userController, $webController;
 
 $data = $db->request_data();
 

@@ -9,7 +9,7 @@ namespace Core\Controllers {
     }
 
     public function destroyLogged() {
-      unset($_SESSION['logged']);
+      unset($_SESSION['user']);
     }
 
     public function getLogged() {
