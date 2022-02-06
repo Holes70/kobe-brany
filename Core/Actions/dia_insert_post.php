@@ -9,7 +9,7 @@
     $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
   }
 
-  if (!empty($_FILES)) {
+  if (!empty($_FILES) && $_FILES['size'] > 0) {
     $colNameFile = array_key_first($_FILES);
     $uploadToDir = $tableName;
     $data[$colNameFile] = $_FILES[$colNameFile]['name'];
