@@ -85,6 +85,8 @@ namespace Core\Controllers {
     }
 
     public function redirect(string $redirectUrl) {
+      if ($redirectUrl == "") throw new \Exception("Empty redirectUrl");
+
       header("Location: {$redirectUrl}");
     }
 

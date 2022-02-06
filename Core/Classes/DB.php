@@ -371,7 +371,7 @@ namespace Core\Classes {
             return $data;
           }
         } else {
-          throw new \Exception("No records");
+          throw new \Exception("empty");
         }
       } else {
         throw new \Exception($this->con->error);

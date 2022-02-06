@@ -30,10 +30,7 @@
 
     $webController->redirect("profile");
   } catch(\Exception $e) {
-    echo json_encode([
-      "status" => "fail",
-      "message" => $e->getMessage()
-    ]);
+    $webController->redirect("login?error=" . urlencode($e->getMessage()));
   }
 
 ?>
