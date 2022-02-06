@@ -144,6 +144,7 @@
                         </div>
                       </div>
                       <template v-if="getStructureValue(colName, 'type', '') == 'checkbox'">
+                        {{ item == 1}}
                         <input 
                           type="checkbox" 
                           class="form-checkbox" 
