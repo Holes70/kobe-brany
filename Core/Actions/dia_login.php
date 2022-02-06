@@ -26,7 +26,6 @@
     }
 
     $userController->setUser($selectUserIfExists);
-    $userController->setLogged();
 
     $webController->redirect("profile");
   } catch(\Exception $e) {

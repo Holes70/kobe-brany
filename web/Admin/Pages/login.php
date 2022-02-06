@@ -6,4 +6,9 @@ $login = new Components\Login("users");
 $login->loginInput("email");
 $login->passwordInput("password");
 $login->error($checkError);
-$login->render();
+
+$dia->template("
+  <div style='width:100%'>
+    {$login->show()}
+  </div>
+")->render();

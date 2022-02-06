@@ -24,16 +24,18 @@
   $vue = new \Core\Vue();
   $userController = new \Core\Controllers\UserController;
   $webController = new \Core\Controllers\WebController;
-
+  
   if (!isset($_GET['action']) && !isset($_POST['action'])) {
-
+    
     // HEAD
     $dia->daj_zahlavie();
 
-    if ($dia->installed) {
-      echo "<div id='app'>";
+    echo "<div id='app'>";
+
+    if (!empty($userController->getLogged())) {
+      
       // HLAVICKA 
-      if ($dia->installed) $dia->getPageHeader();
+      $dia->getPageHeader();
       // OBSAH
       $page = (isset($_GET['webPage']) && $_GET['webPage'] != '') ? $_GET['webPage'] : $dia->web_home();
 
@@ -46,7 +48,7 @@
       // Get page
       include($webController->getPage());
     } else {
-      include "Core/public/web/pages/install.php";
+      include "Pages/login.php";
     }
 
     // VUE LOADER START

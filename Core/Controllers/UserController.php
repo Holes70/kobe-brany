@@ -4,10 +4,6 @@ namespace Core\Controllers {
 
   class UserController extends \Core\Classes\DB {
 
-    public function setLogged() {
-      $_SESSION['logged'] = true;
-    }
-
     public function setUser(array $data) {
       $_SESSION['user'] = $data;
     }
@@ -17,11 +13,11 @@ namespace Core\Controllers {
     }
 
     public function getLogged() {
-      return isset($_SESSION['logged']) ? $this->getLoggedUser() : [];
+      return isset($_SESSION['user']) ? $this->getLoggedUser() : [];
     }
 
     public function getLoggedUser() {
-      return isset($_SESSION['user']) ? reset($_SESSION['user']) : [];
+      return isset($_SESSION['user']) ? $_SESSION['user'] : [];
     }
 
     public function checkIfUserLogged(&$page) {
