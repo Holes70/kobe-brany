@@ -1,7 +1,7 @@
 <?php
   global $db, $dia;
 
-  $memory = new Components\Memory();
+  $memory = new Component\Memory;
 
   $elasticSearch = new Components\Elasticsearch("test_index_1");
   $elasticSearch->searchFields(['title', 'content']);

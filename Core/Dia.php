@@ -265,14 +265,14 @@ namespace Core {
 
     public function autoload() {
       spl_autoload_register(function ($className) {
-
-        $parts = explode('\\', $className);
         $className = str_replace("\\", "/", $className);
+
+        if (strpos($className, "/")) $parts = explode("/", $className);
 
         if (file_exists($this->config['dir']['root'] . '/' . $className . '.php')) {
           require_once $this->config['dir']['root'] . '/' . $className . '.php';
-        } else if (file_exists($this->config['dir']['root']. '/Core//' . $className . '.php')) {
-          require_once $this->config['dir']['root'] . '/Core/' . $className . '.php';
+        } else if (file_exists($this->config['dir']['root']. "/Core/Components/PHP/{$parts[1]}.php")) {
+          require_once $this->config['dir']['root'] . "/Core/Components/PHP/{$parts[1]}.php";
         }
 
       });
