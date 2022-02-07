@@ -17,12 +17,12 @@ $idGallery = $db->insert_array([
 $db->insert_array([
   'table' => 'products_gallery',
   'table_data' => [
-    'id_product' => $webController->getPostParam('id'),
+    'id_product' => \Core\Controllers\WebController::getPostParam('id'),
     'id_gallery' => $idGallery
   ]
 ]);
 
-$redirect = $webController->getPostParam("redirect");
+$redirect = \Core\Controllers\WebController::getPostParam("redirect");
 
 header ("Location: {$redirect}");
 exit();

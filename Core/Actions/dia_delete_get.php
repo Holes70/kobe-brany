@@ -2,10 +2,10 @@
 
   global $db, $webController;
 
-  $tableName = $webController->getParam("table_name");
+  $tableName = \Core\Controllers\WebController::getParam("table_name");
 
   // If is $id defined in custom action
-  $id = isset($id) ? $id : $webController->getParam("id");
+  $id = isset($id) ? $id : \Core\Controllers\WebController::getParam("id");
 
   /** 
    * DELETE request 

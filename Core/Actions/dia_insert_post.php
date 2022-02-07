@@ -2,7 +2,7 @@
 
   global $db, $webController, $dia;
 
-  $data = $webController->getPostParams();
+  $data = \Core\Controllers\WebController::getPostParams();
   $tableName = array_pop($data);
 
   if (array_key_exists("password", $data)) {
@@ -27,7 +27,7 @@
     'table_data' => $data
   ]);
 
-  $webController->redirect(
+  \Core\Controllers\WebController::redirect(
     $dia->convertTableNameToUrl($tableName) 
     . "?id_form=". 
     $db->getLastItemId($tableName)['id']

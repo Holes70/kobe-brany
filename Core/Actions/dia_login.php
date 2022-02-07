@@ -2,7 +2,7 @@
 
   global $db, $webController;
 
-  $data = $webController->getPostParams();
+  $data = \Core\Controllers\WebController::getPostParams();
 
   try {
     $selectUserIfExists = [];
@@ -27,9 +27,9 @@
 
     \Core\Controllers\UserController::setUser($selectUserIfExists);
 
-    $webController->redirect("profile");
+    \Core\Controllers\WebController::redirect("profile");
   } catch(\Exception $e) {
-    $webController->redirect("login?error=" . urlencode($e->getMessage()));
+    \Core\Controllers\WebController::redirect("login?error=" . urlencode($e->getMessage()));
   }
 
 ?>

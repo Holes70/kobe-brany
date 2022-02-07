@@ -10,7 +10,7 @@
       (array)$data->params->conditions
     );
 
-    $webController->getJson($return['data']);
+    \Core\Controllers\WebController::getJson($return['data']);
   } catch(\Exception $e) {
     echo json_encode([
       "status" => "fail",

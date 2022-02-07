@@ -39,7 +39,7 @@
     );
     $return['pages'] = $pagination['pages'];
 
-    $webController->getJson($return);
+    \Core\Controllers\WebController::getJson($return);
   } catch(\Exception $e) {
     echo json_encode([
       "status" => "fail",

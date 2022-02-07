@@ -81,7 +81,7 @@
     \Core\Controllers\UserController::checkIfUserLogged($page);
 
     // Nastav memory
-    $webController->setUrlForMemory($page);
+    \Core\Controllers\WebController::setUrlForMemory($page);
 
     // Get page
     include "Pages/{$page}.php";

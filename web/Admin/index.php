@@ -42,10 +42,10 @@
       \Core\Controllers\UserController::checkIfUserLogged($page);
 
       // Nastav memory
-      $webController->setUrlForMemory($page);
+      \Core\Controllers\WebController::setUrlForMemory($page);
 
       // Get page
-      include($webController->getPage());
+      include(\Core\Controllers\WebController::getPage());
     } else {
       include "Pages/login.php";
     }
