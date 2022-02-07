@@ -3,7 +3,7 @@
 use Components\TableLarge;
 use Components\Row;
 
-$idForm = $webController->getParam('id_form');
+$idForm = \Core\Controllers\WebController::getParam('id_form');
 
 $objednavky = new TableLarge("orders");
 

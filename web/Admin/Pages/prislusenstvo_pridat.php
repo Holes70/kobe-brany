@@ -8,7 +8,7 @@ $prislusenstvoProduktu = $db->dbSelect(
   "products_accessories",
   [
     "where" => [
-      "id_product" => $webController->getParam('id')
+      "id_product" => \Core\Controllers\WebController::getParam('id')
     ]
   ]
 );

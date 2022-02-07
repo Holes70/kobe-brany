@@ -1,6 +1,6 @@
 <?php
 
-$checkError = (bool)$webController->getParam("error");
+$checkError = (bool)\Core\Controllers\WebController::getParam("error");
 
 $login = new Components\Login("users");
 $login->loginInput("email");

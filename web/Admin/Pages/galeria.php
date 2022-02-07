@@ -1,6 +1,6 @@
 <?php
 
-$productId = $webController->getParam('previous_page_id_form');
+$productId = \Core\Controllers\WebController::getParam('previous_page_id_form');
 
 $galeria = new \Components\Gallery("products_gallery");
 $galeria->conditions([

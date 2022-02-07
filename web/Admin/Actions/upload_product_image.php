@@ -9,11 +9,11 @@ require ("{$this->rootDir}/Core/Actions/dia_upload_image.php");
 
 $db->update(
   tableName: "products",
-  rowId: (int)$webController->getPostParam("id"),
+  rowId: (int)\Core\Controllers\WebController::getPostParam("id"),
   data: ['image' => $_FILES[$colNameFile]['name']]
 );
 
-$redirect = $webController->getPostParam("redirect");
+$redirect = \Core\Controllers\WebController::getPostParam("redirect");
 
 header ("Location: {$redirect}");
 exit();
