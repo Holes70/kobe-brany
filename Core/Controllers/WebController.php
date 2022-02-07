@@ -92,21 +92,25 @@ namespace Core\Controllers {
      * @return string
      */
     public static function getJson(array $data) {
-      $dataToArray = $data;
+      $returnData = $data;
 
       if (self::checkParamIfExists('reset')) {
-        $dataToArray = reset($data);
+        $returnData['data'] = reset($returnData['data']);
       }
 
       if (self::checkParamIfExists('unset')) {
-        $dataToArray = $dataToArray[self::getParam('unset')];
+        $returnData['data'] = $returnData['data'][self::getParam('unset')];
       }
 
       if (self::checkParamIfExists('json')) {
-        $dataToArray = json_decode($dataToArray);
+        $returnData['data'] = json_decode($returnData['data']);
       }
 
-      echo json_encode($dataToArray);
+      if (self::checkParamIfExists('return-only-data')) {
+        $returnData = $returnData['data'];
+      }
+
+      echo json_encode($returnData);
     }
 
     /**
