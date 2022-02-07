@@ -22,7 +22,6 @@
 
   $db = new \Core\Classes\DB();
   $vue = new \Core\Vue();
-  $userController = new \Core\Controllers\UserController;
   $webController = new \Core\Controllers\WebController;
 
   echo "
@@ -79,7 +78,7 @@
     $page = (isset($_GET['webPage']) && $_GET['webPage'] != '') ? $_GET['webPage'] : "domov";
 
     // Ked je prihlaseny redirect na profile nie login
-    $userController->checkIfUserLogged($page);
+    \Core\Controllers\UserController::checkIfUserLogged($page);
 
     // Nastav memory
     $webController->setUrlForMemory($page);

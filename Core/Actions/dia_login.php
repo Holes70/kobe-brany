@@ -1,6 +1,6 @@
 <?php
 
-  global $db, $userController, $webController;
+  global $db, $webController;
 
   $data = $webController->getPostParams();
 
@@ -25,7 +25,7 @@
       throw new \Exception("Password not valid");
     }
 
-    $userController->setUser($selectUserIfExists);
+    \Core\Controllers\UserController::setUser($selectUserIfExists);
 
     $webController->redirect("profile");
   } catch(\Exception $e) {

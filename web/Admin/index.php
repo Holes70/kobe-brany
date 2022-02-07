@@ -22,7 +22,6 @@
 
   $db = new \Core\Classes\DB();
   $vue = new \Core\Vue();
-  $userController = new \Core\Controllers\UserController;
   $webController = new \Core\Controllers\WebController;
   
   if (!isset($_GET['action']) && !isset($_POST['action'])) {
@@ -32,7 +31,7 @@
 
     echo "<div id='app'>";
 
-    if (!empty($userController->getLogged())) {
+    if (!empty(\Core\Controllers\UserController::getLogged())) {
       
       // HLAVICKA 
       $dia->getPageHeader();
@@ -40,7 +39,7 @@
       $page = (isset($_GET['webPage']) && $_GET['webPage'] != '') ? $_GET['webPage'] : $dia->web_home();
 
       // Ked je prihlaseny redirect na profile nie login
-      $userController->checkIfUserLogged($page);
+      \Core\Controllers\UserController::checkIfUserLogged($page);
 
       // Nastav memory
       $webController->setUrlForMemory($page);

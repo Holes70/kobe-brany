@@ -1,11 +1,11 @@
 <?php
 
-global $db, $userController, $webController;
+global $db, $webController;
 
 $data = $db->request_data();
 
 if ($data->params->logout === true) {
-  $userController->destroyLogged();
+  \Core\Controllers\UserController::destroyLogged();
 }
 
 echo "home";

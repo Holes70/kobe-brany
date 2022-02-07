@@ -4,25 +4,25 @@ namespace Core\Controllers {
 
   class UserController extends \Core\Classes\DB {
 
-    public function setUser(array $data) {
+    public static function setUser(array $data) {
       $_SESSION['user'] = $data;
     }
 
-    public function destroyLogged() {
+    public static function destroyLogged() {
       unset($_SESSION['user']);
     }
 
-    public function getLogged() {
-      return isset($_SESSION['user']) ? $this->getLoggedUser() : [];
+    public static function getLogged() {
+      return isset($_SESSION['user']) ? self::getLoggedUser() : [];
     }
 
-    public function getLoggedUser() {
+    public static function getLoggedUser() {
       return isset($_SESSION['user']) ? $_SESSION['user'] : [];
     }
 
-    public function checkIfUserLogged(&$page) {
+    public static function checkIfUserLogged(&$page) {
       if ($page == "login") {
-        if (!empty($this->getLogged())) {
+        if (!empty(self::getLogged())) {
           $page = "profile";
         }
       }
