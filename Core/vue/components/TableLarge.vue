@@ -27,8 +27,8 @@
           </thead>
           <tbody>
             <tr v-for='itemData in data' :key='itemData.id' @click="edit(itemData['id'])" style='cursor:pointer'>
-              <template v-for='(item, colName) in itemData'>
-                <td :key='colName' v-show="getStructureValue(colName, 'show_in_table')">
+              <template v-for='(item, colName) in itemData' :key='colName'>
+                <td v-show="getStructureValue(colName, 'show_in_table')">
                   <template v-if="getStructureValue(colName, 'type') == 'checkbox'">
                     <template v-if="item == '1'" >
                       <i class="fas fa-check"></i>
@@ -129,8 +129,8 @@
         <div class="card-body">
           <template v-for='itemData in data'>
             <div v-if="itemData['id'] == showEditId" :key='itemData.id'>
-              <template v-for='(item, colName) in itemData'>
-                <div :key='colName' v-show="getStructureValue(colName, 'show_in_form')" class="form-group row">
+              <template v-for='(item, colName) in itemData' :key='colName'>
+                <div v-show="getStructureValue(colName, 'show_in_form')" class="form-group row">
                   <label 
                     :for="colName" 
                     v-html="getStructureValue(colName, 'name_in_table', '', true)" 
