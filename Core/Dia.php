@@ -182,33 +182,33 @@ namespace Core {
       }
 
       if ($this->config['web']['bootstrap']) {
-        $bootstrap = "<link rel='stylesheet' href='../../Core/public/css/bootstrap.min.css'>";
-        $bootstrap .= "<link rel='stylesheet' href='../../Core/public/css/style.css'>";
+        $bootstrap = "<link rel='stylesheet' href='../../Core/Assets/css/bootstrap.min.css'>";
+        $bootstrap .= "<link rel='stylesheet' href='../../Core/Assets/css/style.css'>";
       }
 
       if ($this->config['web']['dropzone']) {
         $dropzone = "
-          <link rel='stylesheet' type='text/css' href='../../Core/public/css/basic.min.css'>
-          <link rel='stylesheet' type='text/css' href='../../Core/public/css/dropzone.min.css'>
-          <script src='../../Core/public/js/dropzone.js'></script>
+          <link rel='stylesheet' type='text/css' href='../../Core/Assets/css/basic.min.css'>
+          <link rel='stylesheet' type='text/css' href='../../Core/Assets/css/dropzone.min.css'>
+          <script src='../../Core/Assets/js/dropzone.js'></script>
         ";
       }
 
       if ($this->config['web']['vue']) {
         $vue = "
-          <script src='../../Core/public/js/popper.js'></script>
+          <script src='../../Core/Assets/js/popper.js'></script>
           <script src='../../node_modules/vue/dist/vue.global.prod.js'></script>
           <script src='../../node_modules/axios/dist/axios.min.js'></script>
           <script src='../../node_modules/chart.js/dist/chart.min.js'></script>
           <script src='../../node_modules/jquery/dist/jquery.min.js'></script>
-          <script src='../../Core/public/js/bootstrap.js'></script>
+          <script src='../../Core/Assets/js/bootstrap.js'></script>
           <script src='../../node_modules/vue3-sfc-loader/dist/vue3-sfc-loader.js'></script>
           <script src='../../node_modules/mitt/dist/mitt.umd.js'></script>
-          <script src='../../Core/public/js/CustomFunctions.js'></script>
-          <script src='../../Core/public/js/dia.js'></script>
-          <script src='../../Core/public/js/diaTables.js'></script>
-          <script src='../../Core/public/js/fontawesome.js'></script>
-          <script src='../../Core/public/js/fancybox.js'></script>
+          <script src='../../Core/Assets/js/CustomFunctions.js'></script>
+          <script src='../../Core/Assets/js/dia.js'></script>
+          <script src='../../Core/Assets/js/diaTables.js'></script>
+          <script src='../../Core/Assets/js/fontawesome.js'></script>
+          <script src='../../Core/Assets/js/fancybox.js'></script>
         ";
       }
 
@@ -240,7 +240,7 @@ namespace Core {
     }
 
     public function daj_zapaticku() {
-      //echo "<script src='Core/public/js/dia.js'></script>";
+      //echo "<script src='Core/Assets/js/dia.js'></script>";
     }
 
     public function action($action) {
