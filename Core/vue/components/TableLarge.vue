@@ -166,7 +166,6 @@
                               :checked="item == index"
                             />
                             <label :for="index" class="ml-1"><span>{{ radioItem }}</span></label>
-                          	<div class="radio radio-primary">
                           </div>                   
                         </div>
                       </template>

@@ -34,16 +34,18 @@
                 </template>
                 <template v-else-if="getStructureValue(colName, 'type') == 'radio'">
                   <div class="mr-3" v-for="(radioItem, index) in getStructureValue(colName, 'radio', '')" :key="radioItem">
-                    <input 
-                      type="radio" 
-                      :id="'form_' + this.tableName + colName" 
-                      :name="colName" 
-                      :value="index"
-                      :class="validateInput(colName)"
-                      v-model="formValues[colName]" 
-                      :checked="getStructureValue(colName, 'default_value') == index"
-                    />
-                    <label :for="index" class="ml-1">{{ radioItem }}</label>
+                    <div class="radio radio-primary">
+                      <input 
+                        type="radio" 
+                        :id="'form_' + this.tableName + colName" 
+                        :name="colName" 
+                        :value="index" 
+                        :class="validateInput(colName)"
+                        v-model="formValues[colName]" 
+                        :checked="getStructureValue(colName, 'default_value') == index"
+                      />
+                      <label :for="index" class="ml-1"><span>{{ radioItem }}</span></label>
+                    </div>  
                   </div>
                 </template>
                 <template v-else-if="getStructureValue(colName, 'type') == 'image'">
