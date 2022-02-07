@@ -1,7 +1,7 @@
 <?php
 
 namespace Core {
-  class DB extends \Core\Dia{
+  class DB extends \Core\Dia {
 
     public $con;
 
@@ -9,7 +9,6 @@ namespace Core {
       parent::__construct();
       global $con;
       $this->con = $con;
-
     }
 
     public function select($table = "", $conditions = array(), $items = array(), $showTableName = NULL) {
