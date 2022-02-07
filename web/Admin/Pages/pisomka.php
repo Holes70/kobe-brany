@@ -6,7 +6,7 @@
     </div>
   ");
 
-  $tests = new Components\TableList("tests");
+  $tests = new Component\TableList("tests");
   $tests->actionButton([
     "name" => "Otvor",
     "class" => "btn btn-success",
@@ -31,7 +31,7 @@
 
   $renderId = 3;
 
-  $list = new Components\TableList("users");
+  $list = new Component\TableList("users");
 
   $list->actionButton([
     "name" => "ActionButton",
@@ -48,7 +48,7 @@
     "close" => "<button onclick=\"alert()\" class=\"btn btn-warning\">EDIT</button>"
   ]);*/
 
-  $list_user_test = new Components\TableList("user_tests");
+  $list_user_test = new Component\TableList("user_tests");
   $list_user_test->hide("
     <div style=\"text-align:center;margin-top:25px\">
       <h1 style=\"color:grey\">Vyberte uzivatela</h1>
@@ -69,7 +69,7 @@
     ]
   ]);
 
-  $dropzone = new Components\Dropzone("user_tests");
+  $dropzone = new Component\Dropzone("user_tests");
   $dropzone->conditions([
     "where" => [
       'user_id' => 1,

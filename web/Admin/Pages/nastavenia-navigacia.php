@@ -1,7 +1,7 @@
 <?php
 
-use Components\Row;
-use Components\Table;
+use Component\Row;
+use Component\Table;
 
 $tabulkaNavigacia = new Table("dia_navbar");
 $tabulkaNavigacia->buttons(['edit', 'delete']);

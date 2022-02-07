@@ -7,7 +7,7 @@ $idProduct = \Core\Controllers\WebController::getParam('id');
 // V tomto pripade sa dosadi cez JS code pomocou {%%}
 $idProductAccessory = "{%id_form%}";
 
-$prislusenstvo = new Components\TableLarge("products_accessories");
+$prislusenstvo = new Component\TableLarge("products_accessories");
 $prislusenstvo->emptyDataMessage("Žiadne príšlušenstvo pre produkt");
 $prislusenstvo->conditions([
   "select" => "products.*",

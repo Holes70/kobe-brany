@@ -1,6 +1,6 @@
 <?php
 
-namespace Components {
+namespace Component {
 
   class Form extends \Core\Component {
     public $con;

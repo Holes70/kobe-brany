@@ -65,7 +65,7 @@ namespace Core {
      * from HTML in .php file
      */
     public function html(string $html) {
-      $htmlComponent = new \Components\Custom("html");
+      $htmlComponent = new \Component\Custom("html");
       $htmlComponent->setHtml($html);
 
       return $htmlComponent;
@@ -76,7 +76,7 @@ namespace Core {
      * from HTML in .php file
      */
     public function createVue(string $html) {
-      $htmlComponent = new \Components\Custom($html);
+      $htmlComponent = new \Component\Custom($html);
 
       return $htmlComponent;
     }

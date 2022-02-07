@@ -1,7 +1,7 @@
 <?php
 
-use Components\TableLarge;
-use Components\Row;
+use Component\TableLarge;
+use Component\Row;
 
 $idForm = \Core\Controllers\WebController::getParam('id_form');
 

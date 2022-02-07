@@ -1,6 +1,6 @@
 <?php
 
-$social = new Components\Social("users_socials");
+$social = new Component\Social("users_socials");
 /*$social->data([
   [
     "name" => "xxx"

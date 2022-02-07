@@ -23,11 +23,11 @@ foreach ($orders as $value) {
   array_push($orders_count, $value['pocet']);
 }
 
-$chart = new Components\Chart("bar");
+$chart = new Component\Chart("bar");
 $chart->labels($orders_names);
 $chart->data($orders_count);
 
-$table_orders = new Components\Table("orders");
+$table_orders = new Component\Table("orders");
 $table_orders->columns([
   "id" => "id",
   'serial_number' => "Seriové číslo", 
@@ -64,14 +64,14 @@ $orders_types = $db->dbSelect(
   ]
 );
 
-$typ_objednavky_listgroup = new Components\ListGroup($orders_types);
+$typ_objednavky_listgroup = new Component\ListGroup($orders_types);
 $typ_objednavky_listgroup->title("name");
 $typ_objednavky_listgroup->bubble("pocet");
 $typ_objednavky_listgroup->url("typ_url");
 
 $includeListgroup = $dia->createVue(include("Objednavky/Vsetky/listgroup.php"));
 
-$grafTrzby = new Components\Chart("pie");
+$grafTrzby = new Component\Chart("pie");
 $grafTrzby->labels([1,2,3]);
 $grafTrzby->data([1,2,3]);
 $grafTrzby->width(100);

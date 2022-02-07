@@ -2,7 +2,7 @@
 
 $productId = \Core\Controllers\WebController::getParam('previous_page_id_form');
 
-$galeria = new \Components\Gallery("products_gallery");
+$galeria = new \Component\Gallery("products_gallery");
 $galeria->conditions([
   "select" => "gallery.image as image, products_gallery.id as id",
   "where" => [

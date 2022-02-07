@@ -4,7 +4,7 @@
  * Create table products
  * and add collumns with buttons
  */
-$table_products = new Components\Table("products");
+$table_products = new Component\Table("products");
 $table_products->columns([
   'id' => 'ID', 
   'name' => 'Meno', 
@@ -53,7 +53,7 @@ $template = $dia->template("
 
 $template->render();
 
-$user_table = new Components\Table("users");
+$user_table = new Component\Table("users");
 $user_table->columns(['id' => 'id', 'first_name' => 'first_name']);
 
 $template2 = $dia->template("

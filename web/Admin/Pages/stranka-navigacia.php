@@ -1,6 +1,6 @@
 <?php
 
-$navigacia = new \Components\Table("web_navbar");
+$navigacia = new \Component\Table("web_navbar");
 
 $dia->template(
   $dia->cardBook(

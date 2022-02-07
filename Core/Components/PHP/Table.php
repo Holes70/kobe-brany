@@ -1,6 +1,6 @@
 <?php
 
-namespace Components {
+namespace Component {
 
   class Table extends \Core\Component {
     public $con;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Components {
+namespace Component {
 
   class Jumbotron extends \Core\Component {
     public $con;

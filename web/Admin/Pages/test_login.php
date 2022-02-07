@@ -1,5 +1,5 @@
 <?php
 
-$login = new \Components\Login("users");
+$login = new \Component\Login("users");
 
 $login->render();

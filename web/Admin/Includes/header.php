@@ -3,10 +3,10 @@
 
   $memory = new Component\Memory;
 
-  $elasticSearch = new Components\Elasticsearch("test_index_1");
+  $elasticSearch = new Component\Elasticsearch("test_index_1");
   $elasticSearch->searchFields(['title', 'content']);
 
-  $profileCard = new Components\ProfileCard("users");
+  $profileCard = new Component\ProfileCard("users");
 
   // Nacitaj Navbar
   $navbarList = $db->dbSelect(
@@ -146,7 +146,7 @@
       <div class='page-content' style='display:none'>
   ")->render();
 
-  //$elasticSearch = new Components\Elasticsearch("logstash_test");
+  //$elasticSearch = new Component\Elasticsearch("logstash_test");
 
   // SET field which will use for search
   //$elasticSearch->searchFields(['title', 'content']);

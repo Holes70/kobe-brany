@@ -17,7 +17,7 @@ foreach($prislusenstvoProduktu as $produkt) {
   array_push($except, (int)$produkt['id_product_accessory']);
 }
 
-$prislusenstvo = new Components\TableLarge("products");
+$prislusenstvo = new Component\TableLarge("products");
 
 $prislusenstvo->emptyDataMessage("Žiadne príšlušenstvo pre produkt");
 $prislusenstvo->conditions([

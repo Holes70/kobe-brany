@@ -1,15 +1,15 @@
 <?php
 
-$chart = new Components\Chart("pie");
+$chart = new Component\Chart("pie");
 $chart->labels(['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange']);
 $chart->data([12, 19, 3, 5, 2, 3]);
 
-$table_products = new Components\Table("products");
+$table_products = new Component\Table("products");
 $table_products->columns(['id' => 'ID', 'name' => 'Meno', 'price|$' => 'Cena'])->buttons(['edit', 'delete']);
 
-$timer = new Components\Timer();
+$timer = new Component\Timer();
 
-$test_tiket = new Components\Tiket();
+$test_tiket = new Component\Tiket();
 
 $dia->template("
   <div class='row'>

@@ -1,6 +1,6 @@
 <?php
 
-namespace Components {
+namespace Component {
 
   class Navigation extends \Core\Component {
 

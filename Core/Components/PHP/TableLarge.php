@@ -1,6 +1,6 @@
 <?php
 
-namespace Components {
+namespace Component {
 
   class TableLarge extends \Core\Component {
 

@@ -1,6 +1,6 @@
 <?php
 
-  $chart = new Components\Chart("pie");
+  $chart = new Component\Chart("pie");
   $chart->labels(['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange']);
   $chart->data([12, 19, 3, 5, 2, 3]);
   $chart->table("users");

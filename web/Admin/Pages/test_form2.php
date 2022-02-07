@@ -1,7 +1,7 @@
 <?php
 
-$form2 = new \Components\Form2("users");
+$form2 = new \Component\Form2("users");
 $form2->render();
 
-$form = new \Components\Form2("products");
+$form = new \Component\Form2("products");
 $form->render();

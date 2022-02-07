@@ -1,6 +1,6 @@
 <?php
 
-  $alert = new Components\Alert("Totto je test alert");
+  $alert = new Component\Alert("Totto je test alert");
   $alert
     ->title("Test title")
     ->footer("Footer text")
@@ -9,10 +9,10 @@
     ->render()
   ;
 
-  $loader = new Components\AlertLoader();
+  $loader = new Component\AlertLoader();
 
   foreach ($loader->getAlerts() as $item) {
-    $alert = new Components\Alert($item['body']);
+    $alert = new Component\Alert($item['body']);
 
     $alert
       ->title($item['title'])
@@ -24,7 +24,7 @@
   }
 
  
-  $form_products = new Components\Form("dia_alerts");
+  $form_products = new Component\Form("dia_alerts");
   $form_products->render();
 
 ?>

@@ -12,11 +12,11 @@
     ->formInputs(['id', 'first_name'])
   ;
   */
-  $table_products = new Components\Table("products");
+  $table_products = new Component\Table("products");
   $table_products->columns(['id' => 'ID', 'name' => 'Meno', 'price|$' => 'Cena'])->buttons(['edit', 'delete']);
   $table_products->render();
 
-  $table_users = new Components\Table("users");
+  $table_users = new Component\Table("users");
   $table_users
     ->columns(['id' => 'ID', 'first_name' => 'Meno', 'email' => 'Email'])
     ->columnStyle(['id' => 'color:red;font-size:33px'])
@@ -26,9 +26,9 @@
   ;
   $table_users->render();
 
-  $alert = (new \Components\Alert("Totto je test alert"))->render();
+  $alert = (new \Component\Alert("Totto je test alert"))->render();
 
-  $table_products = new Components\Table("products");
+  $table_products = new Component\Table("products");
   $table_products->columns(['id' => 'ID', 'name' => 'Meno', 'price|$' => 'Cena'])->render();
 
 

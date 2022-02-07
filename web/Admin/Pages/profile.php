@@ -2,7 +2,7 @@
 
 $idUser = 4; // TODO
 
-$profileView = new Components\ProfileView("users");
+$profileView = new Component\ProfileView("users");
 $profileView->conditions([
   'select' => 'CONCAT(first_name, \" \", last_name) as name, email as description, phone_number as description2',
   'where' => [
@@ -11,7 +11,7 @@ $profileView->conditions([
 ]);
 
 // Social
-$socialProfile = new Components\Social("users_socials");
+$socialProfile = new Component\Social("users_socials");
 $socialProfile->conditions([
   'where' => [
     'id_user' => $idUser

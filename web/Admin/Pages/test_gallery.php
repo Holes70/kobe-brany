@@ -1,4 +1,4 @@
 <?php
 
-$galeria = new \Components\Gallery("products_gallery");
+$galeria = new \Component\Gallery("products_gallery");
 $galeria->render();

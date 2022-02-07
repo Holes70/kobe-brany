@@ -2,7 +2,7 @@
 
 $checkError = (bool)\Core\Controllers\WebController::getParam("error");
 
-$login = new Components\Login("users");
+$login = new Component\Login("users");
 $login->loginInput("email");
 $login->passwordInput("password");
 $login->error($checkError);

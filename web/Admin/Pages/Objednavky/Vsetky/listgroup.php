@@ -1,8 +1,8 @@
 <?php
   $uid = \Core\Bice::getUID();
 
-  ${$uid. '_timer'} = new Components\Timer();
-  $tableCard = new Components\TableCard();
+  ${$uid. '_timer'} = new Component\Timer();
+  $tableCard = new Component\TableCard();
   $orderHtml = "";
 
   foreach($orders_types as $order) {

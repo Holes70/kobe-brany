@@ -1,6 +1,6 @@
 <?php
 
-use Components\TableLarge;
+use Component\TableLarge;
 
 $idCart = $_GET['idcart'];
 

@@ -1,6 +1,6 @@
 <?php
 
-$tiket = new Components\Tiket();
+$tiket = new Component\Tiket();
 $tiket->data([
   [
     'name' => 'Item 1',

@@ -1,4 +1,4 @@
 <?php
 
-  $dropzone = new Components\Dropzone("user_tests");
+  $dropzone = new Component\Dropzone("user_tests");
   $dropzone->render();

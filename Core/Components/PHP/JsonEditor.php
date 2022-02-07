@@ -1,6 +1,6 @@
 <?php
 
-namespace Components {
+namespace Component {
 
   class JsonEditor extends \Core\Component {
 

@@ -1,6 +1,6 @@
 <?php
 
-$profileCard = new Components\ProfileCard("users");
+$profileCard = new Component\ProfileCard("users");
 /*$profileCard->name("Patrik Holes");
 $profileCard->nameOnClick([
   'type' => 'href', // Type of 

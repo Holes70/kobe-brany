@@ -1,4 +1,4 @@
 <?php
 
-$tableLarge = new Components\TableLarge("users");
+$tableLarge = new Component\TableLarge("users");
 $tableLarge->render();

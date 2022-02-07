@@ -1,4 +1,4 @@
 <?php
 
-$tableCard = new Components\TableCard();
+$tableCard = new Component\TableCard();
 $tableCard->render();

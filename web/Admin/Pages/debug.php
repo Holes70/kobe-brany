@@ -1,4 +1,4 @@
 <?php
 
-$x = new \Components\FileUploader("products");
+$x = new \Component\FileUploader("products");
 $x->render();
