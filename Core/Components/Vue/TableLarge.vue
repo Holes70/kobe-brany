@@ -362,17 +362,13 @@
         }
       },
       getLookupColumns(itemData, colName) {
-        var lookupTable = this.getStructureValue(colName, 'lookup_table');
+       /* var lookupTable = this.getStructureValue(colName, 'lookup_table');
         var lookupTableCol = this.getStructureValue(colName, 'lookup_table_col');
         var lookupColumns = this.getStructureValue(colName, 'lookup_columns');
 
         var obj = {};
         obj[lookupTableCol] = itemData[colName];
 
-        //var conditions = Object.assign(this.conditions, obj)
-        //var conditions = JSON.parse(JSON.stringify(Object.assign(this.conditions, {"where": obj})));
-
-        //console.log(obj);
         axios.post('index.php?action=dia_select', {
           params: {
             tableName: lookupTable,
@@ -384,11 +380,12 @@
           if (res.data.status != "fail") {
             var data = res.data['data'][0];
 
-            Object.values(lookupColumns).forEach((item) => {
-              itemData[colName] = data[item] + " ";
-            })
+            itemData[colName] = data[lookupColumns[1]];
+            itemData[colName] += " " + data[lookupColumns[2]];
+          } else {
+            console.log(res);
           }
-        })
+        })*/
         
         return itemData[colName];
       },
