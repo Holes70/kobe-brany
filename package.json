@@ -24,6 +24,7 @@
     "fancybox": "^3.0.1",
     "jquery": "^3.6.0",
     "mitt": "^3.0.0",
+    "sweetalert2": "^11.4.0",
     "vue": "^3.2.20",
     "vue-chartjs": "^3.5.1",
     "vue-router": "^4.0.12",

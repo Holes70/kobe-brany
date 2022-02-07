@@ -187,9 +187,9 @@ namespace Core {
 
       if ($this->config['web']['dropzone']) {
         $dropzone = "
-          <link rel='stylesheet' type='text/css' href='../../node_modules/dropzone/basic.css'>
-          <link rel='stylesheet' type='text/css' href='../../Core/Assets/css/dropzone.min.css'>
-          <script src='../../Core/Assets/js/dropzone.js'></script>
+          <link rel='stylesheet' type='text/css' href='../../node_modules/dropzone/dist/basic.css'>
+          <link rel='stylesheet' type='text/css' href='../../node_modules/dropzone/dist/dropzone.css'>
+          <script src='../../node_modules/dropzone/dist/dropzone-min.js'></script>
         ";
       }
 
