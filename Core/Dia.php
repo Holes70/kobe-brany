@@ -182,13 +182,12 @@ namespace Core {
       }
 
       if ($this->config['web']['bootstrap']) {
-        $bootstrap = "<link rel='stylesheet' href='../../Core/Assets/css/bootstrap.min.css'>";
         $bootstrap .= "<link rel='stylesheet' href='../../Core/Assets/css/style.css'>";
       }
 
       if ($this->config['web']['dropzone']) {
         $dropzone = "
-          <link rel='stylesheet' type='text/css' href='../../Core/Assets/css/basic.min.css'>
+          <link rel='stylesheet' type='text/css' href='../../node_modules/dropzone/basic.css'>
           <link rel='stylesheet' type='text/css' href='../../Core/Assets/css/dropzone.min.css'>
           <script src='../../Core/Assets/js/dropzone.js'></script>
         ";
@@ -196,7 +195,6 @@ namespace Core {
 
       if ($this->config['web']['vue']) {
         $vue = "
-          <script src='../../Core/Assets/js/popper.js'></script>
           <script src='../../node_modules/vue/dist/vue.global.prod.js'></script>
           <script src='../../node_modules/axios/dist/axios.min.js'></script>
           <script src='../../node_modules/chart.js/dist/chart.min.js'></script>
@@ -208,7 +206,6 @@ namespace Core {
           <script src='../../Core/Assets/js/dia.js'></script>
           <script src='../../Core/Assets/js/diaTables.js'></script>
           <script src='../../Core/Assets/js/fontawesome.js'></script>
-          <script src='../../Core/Assets/js/fancybox.js'></script>
         ";
       }
 
