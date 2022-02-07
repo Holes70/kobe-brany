@@ -171,8 +171,6 @@
                       </template>
                       <template v-else-if="getStructureValue(colName, 'type') == 'lookup'">
                         <template v-if="parseInt(itemData[getStructureValue(colName, 'lookup_table_col')]) > 0">
-                          {{ getLookupColumns(itemData, colName) }} 
-                          &nbsp;
                           <a 
                             onclick="window.event.cancelBubble = true" 
                             :href="getStructureValue(colName, 'lookup_url', '') + '?' 
@@ -180,9 +178,9 @@
                               '=' 
                               + itemData[getStructureValue(colName, 'lookup_table_col')]
                             "
-                            class="lookup-icon"
+                             class="btn mb-2 mb-md-0 btn-round btn-outline"
                           >
-                            <i style='font-size:20px' :class="'fas fa-' + getStructureValue(colName, 'lookup_icon', 'clipboard-list')"></i>
+                            {{ getLookupColumns(itemData, colName) }} 
                           </a>
                         </template>
                         <template v-else>
@@ -384,7 +382,7 @@
           }
         }).then((res) => {
           if (res.data.status != "fail") {
-            var data = res.data[0];
+            var data = res.data['data'][0];
 
             Object.values(lookupColumns).forEach((item) => {
               itemData[colName] = data[item] + " ";
