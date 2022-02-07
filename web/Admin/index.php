@@ -6,23 +6,14 @@
 
   session_start();
   ob_start();
-  require_once(__DIR__ . '/../../Core/boot.php');
 
-  // Elasticsearch
-  if ($dia->config['web']['elasticsearch']) {
-    require "{$dia->config['dir']['root']}/vendor/autoload.php";
-
-    $client = Elasticsearch\ClientBuilder::create()
-      ->setHosts(['localhost:9200'])
-      ->build()
-    ;
-  }
+  require_once __DIR__ . '/../../Core/boot.php';
+  require_once $dia->config['dir']['root'] ."/vendor/autoload.php";
   
   $dia->autoload();
 
   $db = new \Core\DB();
   $vue = new \Core\Vue();
-  $webController = new \Core\Controllers\WebController;
   
   if (!isset($_GET['action']) && !isset($_POST['action'])) {
     
