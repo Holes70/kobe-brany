@@ -4,75 +4,77 @@ namespace Core\Controllers {
 
   class WebController extends \Core\Dia {
 
-    public function setMemory(string $url) {
+    public static function setMemory(string $url) {
       $_SESSION['memory'][$url] = $url;
     }
 
-    public function getAllMemory() {
+    public static function getAllMemory() {
       return isset($_SESSION['memory']) ? $_SESSION['memory'] : [];
     }
 
-    public function setUrlForMemory(string $url) {
+    public static function setUrlForMemory(string $url) {
       if (!isset($_SESSION['memory'][$url])) {
-        $this->setMemory($url);
+        self::setMemory($url);
       }
 
-      $this->setCurrentPage();
+      self::setCurrentPage();
     }
 
-    public function setCurrentPage() {
+    public static function setCurrentPage() {
       $_SESSION['currentPage'] = isset($_GET['webPage']) ? $_GET['webPage'] : "home";
     }
 
-    public function getCurrentPageSession() {
+    public static function getCurrentPageSession() {
       return isset($_SESSION['currentPage']) ? $_SESSION['currentPage'] : "";
     }
 
-    public function getCurrentPage() {
-      return isset($_GET['webPage']) ? $_GET['webPage'] : $this->getCurrentPageSession();
+    public static function getCurrentPage() {
+      return isset($_GET['webPage']) ? $_GET['webPage'] : self::getCurrentPageSession();
     }
 
-    public function destroyMemory() {
+    public static function destroyMemory() {
       unset($_SESSION['memory']);
       
-      $this->setUrlForMemory($this->getCurrentPage());
+      self::setUrlForMemory(self::getCurrentPage());
 
-      return $this->getAllMemory();
+      return self::getAllMemory();
     }
 
-    public function getPage() {
-      $pageToInclude = $this->getWebDir() . '/' . $this->getWebPages() . '/' . $this->getCurrentPage() . '.php';
+    public static function getPage() {
+      global $config;
+
+      $pageToInclude = $config['dir']['web'] . '/' . $config['web']['pages'] . '/' . self::getCurrentPage() . '.php';
 
       if (!is_file($pageToInclude)) {
-        $pageToInclude = $this->getWebDir() . '/' . $this->getWebIncludes() . '/' . $this->getNotFound() . '.php';
+        $pageToInclude = $config['dir']['web'] . '/' . $config['web']['includes'] . '/' . $config['web']['notfound'] . '.php';
       }
 
       return $pageToInclude;
     }
 
-    public function getJson(array $data) {
+    public static function getJson(array $data) {
       $dataToArray = $data;
 
-      if ($this->checkParamIfExists('reset')) {
+      if (self::checkParamIfExists('reset')) {
         $dataToArray = reset($data);
       }
 
-      if ($this->checkParamIfExists('unset')) {
-        $dataToArray = $dataToArray[$this->getParam('unset')];
+      if (self::checkParamIfExists('unset')) {
+        $dataToArray = $dataToArray[self::getParam('unset')];
       }
 
-      if ($this->checkParamIfExists('json')) {
+      if (self::checkParamIfExists('json')) {
         $dataToArray = json_decode($dataToArray);
       }
 
       echo json_encode($dataToArray);
     }
 
-    public function checkParamIfExists(string $param) {
+    public static function checkParamIfExists(string $param) {
       return isset($_GET[$param]) ? true : false;
     }
 
-    public function getParam(string $param) {
+    public static function getParam(string $param) {
       return isset($_GET[$param]) ? $_GET[$param] : "";
     }
 
@@ -80,7 +82,7 @@ namespace Core\Controllers {
      * get all POST params
      * @return array
      */
-    public function getPostParams() {
+    public static function getPostParams() {
       return isset($_POST) ? $_POST : [];
     }
 
@@ -88,7 +90,7 @@ namespace Core\Controllers {
      * get specific POST param
      * @return string
      */
-    public function getPostParam(string $param) {
+    public static function getPostParam(string $param) {
       return isset($_POST[$param]) ? $_POST[$param] : "";
     }
 
@@ -96,7 +98,7 @@ namespace Core\Controllers {
      * Redirect to URL
      * @return void
      */
-    public function redirect(string $redirectUrl) {
+    public static function redirect(string $redirectUrl) {
       if ($redirectUrl == "") throw new \Exception("Empty redirectUrl");
 
       header("Location: {$redirectUrl}");
