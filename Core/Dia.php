@@ -173,11 +173,11 @@ namespace Core {
     public function daj_zahlavie() {
       $css_files = ""; $script_files = "";  $bootstrap = ""; $vue = "";
 
-      foreach ($this->config['head']['css'] as $value) {
+      foreach ((array)$this->config['head']['css'] as $value) {
         $css_files .= "<link rel='stylesheet' href='Assets/css/$value'>"; 
       }
 
-      foreach ($this->config['head']['script'] as $value) {
+      foreach ((array)$this->config['head']['script'] as $value) {
         $script_files .= "<script src='Assets/js/$value'></script>"; 
       }
 
