@@ -144,13 +144,14 @@
                         </div>
                       </div>
                       <template v-if="getStructureValue(colName, 'type', '') == 'checkbox'">
-                        {{ item == 1}}
                         <input 
                           type="checkbox" 
                           class="form-checkbox" 
                           :id="colName" 
-                          v-model="itemData[colName]" 
-                          :checked="item == 1"
+                          :name="colName"  
+                          true-value="1"
+                          false-value="0"
+                          v-model="itemData[colName]"
                         />
                       </template>
                       <template v-else-if="getStructureValue(colName, 'type', '') == 'radio'">
@@ -272,7 +273,7 @@
         customColumns: []
       })
     },
-    methods: {    
+    methods: {   
       getStructureValue(colName, structureParam, defaultReturnParam, addItallic = false) {
         return diaTables.getStructureValue(
           colName, 

@@ -38,4 +38,16 @@ class DiaTables {
       'required': _this.emptyRequiredInputs.includes(item)
     }
   }
+
+  retype(item, retypeTo) {
+    var returnVal;
+
+    switch(retypeTo) {
+      case "bool":
+        returnVal = Boolean(item);
+      break;
+    }
+
+    return returnVal;
+  }
 }
