@@ -2,7 +2,7 @@
 
 namespace Core {
 
-  class Component extends \Core\Classes\DB {
+  class Component extends \Core\DB {
 
     public $uid = NULL;
 

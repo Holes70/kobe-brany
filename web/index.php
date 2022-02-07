@@ -20,7 +20,7 @@
   
   $dia->autoload();
 
-  $db = new \Core\Classes\DB();
+  $db = new \Core\DB();
   $vue = new \Core\Vue();
   $webController = new \Core\Controllers\WebController;
 

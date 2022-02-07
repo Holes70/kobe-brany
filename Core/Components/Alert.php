@@ -66,7 +66,7 @@ namespace Components {
 
   }
 
-  class AlertLoader extends \Core\Classes\DB {
+  class AlertLoader extends \Core\DB {
     public $con;
 
     public function __construct() {

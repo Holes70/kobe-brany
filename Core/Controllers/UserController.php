@@ -2,7 +2,7 @@
 
 namespace Core\Controllers {
 
-  class UserController extends \Core\Classes\DB {
+  class UserController extends \Core\DB {
 
     /**
      * SET user SESSION
