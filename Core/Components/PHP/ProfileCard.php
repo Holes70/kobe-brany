@@ -6,7 +6,7 @@ namespace Component {
 
     public int $idUser = 0;
 
-    public function __construct(public String $tableName) {
+    public function __construct() {
       parent::__construct($this);
     }
 

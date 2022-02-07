@@ -1,15 +1,29 @@
 <template>
-  <div class='row' style='width:200px'>
+  <div class='row'>
     <template v-if='Object.keys(data).length > 0'>
-      <div class='col-4'>
+      <div class="col">
+        <button type="button" class="btn mb-2 mb-md-0 btn-warning btn-block"><span>Oznámenia</span> 
+          <div class="icon d-flex align-items-center justify-content-center">
+            <i class="fas fa-plus"></i>
+          </div>
+        </button>
+      </div>
+      <div class="col">
+        <button type="button" class="btn mb-2 mb-md-0 btn-danger btn-block"><span>Správy</span> 
+          <div class="icon d-flex align-items-center justify-content-center">
+            <i class="fas fa-plus"></i>
+          </div>
+        </button>
+      </div>
+      <div class='col'>
         <div class='header-icon'>
           <img src='profile.jpg' alt='profile' style='width:100%'>
         </div>
       </div>
-      <div class='col-6'>
+      <div class='col'>
         <p>{{ data.first_name }}</p>
       </div>
-      <div class='col-2 logout'>
+      <div class='col logout'>
         <i @click="logout()" class="fas fa-sign-out-alt"></i>
       </div>
     </template>
