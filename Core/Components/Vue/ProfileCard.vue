@@ -1,30 +1,28 @@
 <template>
-  <div class='row'>
+  <div class='d-flex justify-content-end' style="width:100%">
     <template v-if='Object.keys(data).length > 0'>
-      <div class="col">
-        <button type="button" class="btn mb-2 mb-md-0 btn-warning btn-block"><span>Oznámenia</span> 
+      <div class="">
+        <button type="button" class="btn mb-2 mb-md-0 btn-primary btn-block mr-5" style="width:200px"><span>Oznámenia</span> 
           <div class="icon d-flex align-items-center justify-content-center">
-            <i class="fas fa-plus"></i>
+            <i class="far fa-bell"></i>
           </div>
         </button>
       </div>
-      <div class="col">
-        <button type="button" class="btn mb-2 mb-md-0 btn-danger btn-block"><span>Správy</span> 
+      <div class="">
+        <button type="button" class="btn mb-2 mb-md-0 btn-secondary btn-block mr-5" style="width:200px"><span>Správy</span> 
           <div class="icon d-flex align-items-center justify-content-center">
-            <i class="fas fa-plus"></i>
+            <i class="far fa-envelope"></i>
           </div>
         </button>
       </div>
-      <div class='col'>
+      <div class="row ml-5 pl-5" style="width:200px">
         <div class='header-icon'>
           <img src='profile.jpg' alt='profile' style='width:100%'>
         </div>
-      </div>
-      <div class='col'>
-        <p>{{ data.first_name }}</p>
-      </div>
-      <div class='col logout'>
-        <i @click="logout()" class="fas fa-sign-out-alt"></i>
+        <p class="profile-name">{{ data.first_name }}</p>
+        <div class='profile-logout'>
+          <i @click="logout()" class="fas fa-sign-out-alt"></i>
+        </div>
       </div>
     </template>
     <template v-else>

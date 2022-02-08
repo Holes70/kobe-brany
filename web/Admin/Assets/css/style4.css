@@ -696,3 +696,15 @@ var {
   color: #0a6c91;
   font-weight: 500;
 }
+.profile-name {
+  font-size: 18px;
+  margin: auto;
+}
+.profile-logout {
+  font-size: 25px;
+  margin: auto;
+  cursor: pointer;
+}
+.profile-logout i:hover {
+  color: #e66d3d;
+}

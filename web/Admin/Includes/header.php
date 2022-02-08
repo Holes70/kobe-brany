@@ -115,11 +115,7 @@
             {$elasticSearch->show()}
           </div>
           <div class='collapse navbar-collapse' id='navbarSupportedContent'>
-            <ul class='nav navbar-nav ml-auto'>
-              <li class='nav-item'>
-                {$profileCard->show()}
-              </li>
-            </ul>
+            {$profileCard->show()} 
           </div>
         </div>
       </nav>
