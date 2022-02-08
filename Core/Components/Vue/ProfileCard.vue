@@ -2,18 +2,16 @@
   <div class='d-flex justify-content-end' style="width:100%">
     <template v-if='Object.keys(data).length > 0'>
       <div class="">
-        <button type="button" class="btn mb-2 mb-md-0 btn-primary btn-block mr-5" style="width:200px"><span>Oznámenia</span> 
-          <div class="icon d-flex align-items-center justify-content-center">
-            <i class="far fa-bell"></i>
-          </div>
-        </button>
+        <dia-button :params="{
+          button: 'primary',
+          title: 'Oznámenia',
+        }"></dia-button>
       </div>
       <div class="">
-        <button type="button" class="btn mb-2 mb-md-0 btn-secondary btn-block mr-5" style="width:200px"><span>Správy</span> 
-          <div class="icon d-flex align-items-center justify-content-center">
-            <i class="far fa-envelope"></i>
-          </div>
-        </button>
+        <dia-button :params="{
+          button: 'secondary',
+          title: 'Správy',
+        }"></dia-button>
       </div>
       <div class="row ml-5 pl-5" style="width:200px">
         <div class='header-icon'>
@@ -36,49 +34,50 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      params: {
-        type: Object
-      }
-    },
-    data() {
-      return {
-        data: [],
-        tableName: "",
-        conditions: []
-      }
-    },
-    methods: {
-      loadData() {
-        axios.post('index.php?action=dia_user_logged', {
-          tableName: this.tableName,
-          conditions: this.conditions
-        }).then((res) => {
-          if (res.data.status != 'fail') {
-            this.data = res.data;
-          }
-        })
-      },
-      logout() {
-        axios.post('index.php?action=dia_user_logout', {
-          params: {
-            logout: true
-          }
-        }).then((res) => {
-          window.location.href = res.data;
-        })
-      }
-    },
-    mounted() {
-      this.tableName = this.params['tableName'];
-      this.conditions = this.params['conditions'];
+import diaButton from './Button.vue';
 
-      if (this.params['data'].length > 0) {
-        this.data = this.params['data'];
-      } else {
-        this.loadData();
-      }
+export default {
+  components: {
+    'dia-button': diaButton
+  },
+  props: ['params'],
+  data() {
+    return {
+      data: [],
+      tableName: "",
+      conditions: []
+    }
+  },
+  methods: {
+    loadData() {
+      axios.post('index.php?action=dia_user_logged', {
+        tableName: this.tableName,
+        conditions: this.conditions
+      }).then((res) => {
+        if (res.data.status != 'fail') {
+          this.data = res.data;
+        }
+      })
+    },
+    logout() {
+      axios.post('index.php?action=dia_user_logout', {
+        params: {
+          logout: true
+        }
+      }).then((res) => {
+        window.location.href = res.data;
+      })
+    }
+  },
+  mounted() {
+    this.tableName = this.params['tableName'];
+    this.conditions = this.params['conditions'];
+
+    if (this.params['data'].length > 0) {
+      this.data = this.params['data'];
+    } else {
+      this.loadData();
     }
   }
+}
 </script>

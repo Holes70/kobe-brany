@@ -11,6 +11,9 @@ class Dia extends CustomFunctions {
     this.conditions = [];
     this.tableStructure = [];
     this.error = "";
+    this.componentUid = ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+      (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+    );
 
     this.tableColumns = {};
     this.tableColumnsKeys = [];
@@ -44,8 +47,8 @@ class Dia extends CustomFunctions {
     var params = {};
     var prmarr = prmstr.split("&");
     for ( var i = 0; i < prmarr.length; i++) {
-        var tmparr = prmarr[i].split("=");
-        params[tmparr[0]] = tmparr[1];
+      var tmparr = prmarr[i].split("=");
+      params[tmparr[0]] = tmparr[1];
     }
     return params;
   }
@@ -202,7 +205,7 @@ class Dia extends CustomFunctions {
     _this.tableColumns = _this.params['tableColumns'];
     _this.formColumns = _this.params['formColumns'];
 
-    _this.componentName = _this.componentName + "_" +_this.tableName;
+    _this.componentName = _this.componentName + "_" + _this.tableName;
 
     if (_this.params['fileDir'] == "") {
       _this.fileDir = _this.params['tableName'];
