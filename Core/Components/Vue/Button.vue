@@ -54,7 +54,10 @@ export default {
     this.title = this.params['title'];
     this.button = this.params['button'];
 
-    diaTableLarge.setComponentParams(this);
+    diaButton.setComponentParams(this);
+
+    this.componentUid += '-' + this._.uid;
+    console.log(this._.uid);
   }
 }
 
