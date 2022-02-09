@@ -19,7 +19,7 @@
         <a :href="url">
           <div class='header-icon'>
             <img 
-              :src="'http://localhost/'+ this.dir +'/files/'  + this.fileDir + '/' + data['avatar']" 
+              :src="'http://localhost/'+ this.dir +'/files/'  + this.fileDir + '/' + checkImage(data['avatar'])" 
               alt='profile' 
             >
           </div>
@@ -65,6 +65,9 @@ export default {
       }).then((res) => {
         window.location.href = res.data;
       })
+    },
+    checkImage(image) {
+      return diaTables.checkImage(image);
     }
   },
   beforeCreate() {

@@ -1,7 +1,7 @@
 <template>
   
   <!-- Modal -->
-    <div class="modal fade bd-example-modal-lg" id="test" tabindex="-1" role="dialog" aria-labelledby="testTitle" aria-hidden="true">
+    <div class="modal fade bd-example-modal-lg" :id="componentUid" tabindex="-1" role="dialog" aria-labelledby="testTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -25,7 +25,7 @@
     <button 
       type="button" 
       data-toggle="modal" 
-      data-target="#test" 
+      :data-target="'#' + componentUid" 
       :class="'btn mb-2 mb-md-0 btn-block mr-5 btn-' + button" 
       style="width:200px"
     >
@@ -56,9 +56,6 @@ export default {
     this.icon = this.params['icon'];
 
     diaButton.setComponentParams(this);
-
-    this.componentUid += '-' + this._.uid;
-    console.log(this._.uid);
   }
 }
 

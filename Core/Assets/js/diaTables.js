@@ -50,4 +50,12 @@ class DiaTables {
 
     return returnVal;
   }
+
+  checkImage(image) {
+    if (typeof image == "undefined") {
+      return "default.jpg";
+    } else {
+      return image;
+    }
+  }
 }
