@@ -12,7 +12,7 @@
         <dia-button :params="{
           button: 'secondary',
           title: 'Správy',
-          icon: 'fa-solid fa-message'
+          icon: 'far fa-envelope'
         }"></dia-button>
       </div>
       <div class="row ml-5 pl-5" style="width:200px">
@@ -21,7 +21,6 @@
             <img 
               :src="'http://localhost/'+ this.dir +'/files/'  + this.fileDir + '/' + data['avatar']" 
               alt='profile' 
-              style='width:100%'
             >
           </div>
         </a>
