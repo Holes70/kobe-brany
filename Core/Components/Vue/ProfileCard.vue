@@ -18,7 +18,11 @@
       <div class="row ml-5 pl-5" style="width:200px">
         <a :href="url">
           <div class='header-icon'>
-            <img src='profile.jpg' alt='profile' style='width:100%'>
+            <img 
+              :src="'http://localhost/'+ this.dir +'/files/'  + this.fileDir + '/' + data['avatar']" 
+              alt='profile' 
+              style='width:100%'
+            >
           </div>
         </a>
         <a :href="url" class="profile-name">
@@ -42,49 +46,25 @@
 <script>
 import diaButton from './Button.vue';
 
+var diaProfileCard = Object();
+
 export default {
   components: {
     'dia-button': diaButton
   },
   props: ['params'],
   data() {
-    return {
-      data: [],
-      tableName: "",
-      conditions: []
-    }
+    return Object.assign(diaProfileCard, {
+    })
   },
-  methods: {
-    loadData() {
-      axios.post('index.php?action=dia_user_logged', {
-        tableName: this.tableName,
-        conditions: this.conditions
-      }).then((res) => {
-        if (res.data.status != 'fail') {
-          this.data = res.data;
-        }
-      })
-    },
-    logout() {
-      axios.post('index.php?action=dia_user_logout', {
-        params: {
-          logout: true
-        }
-      }).then((res) => {
-        window.location.href = res.data;
-      })
-    }
+  beforeCreate() {
+    diaProfileCard = new Dia();
   },
-  mounted() {
-    this.tableName = this.params['tableName'];
-    this.conditions = this.params['conditions'];
-    this.url = this.params['url'];
+  beforeMount() {
+    diaProfileCard.setComponentParams(this);
+    diaProfileCard.setComponentData(this, 'dia_logged_user');
 
-    if (this.params['data'].length > 0) {
-      this.data = this.params['data'];
-    } else {
-      this.loadData();
-    }
-  }
+    this.url = this.params['url'];
+  },
 }
 </script>

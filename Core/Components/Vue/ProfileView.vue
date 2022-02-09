@@ -2,7 +2,6 @@
   <div class='card'>
     <div class='card-body'>
       <div class='d-flex flex-column align-items-center text-center'>
-        {{ 'http://localhost/'+ this.dir +'/files/'  + this.fileDir + '/' + data['avatar'] }}
         <img 
           :src="'http://localhost/'+ this.dir +'/files/'  + this.fileDir + '/' + data['avatar']" 
           class='rounded-circle' width='150'

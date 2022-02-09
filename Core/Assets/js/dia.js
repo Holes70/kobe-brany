@@ -134,7 +134,6 @@ class Dia extends CustomFunctions {
         conditions: _this.conditions
       }
     }).then((res) => {
-      console.log(res);
       if (res.data.status != 'fail') {
         _this.data = res.data['data'];
         dataToSet.forEach((item) => {
@@ -209,7 +208,9 @@ class Dia extends CustomFunctions {
 
     _this.componentName = _this.componentName + "_" + _this.tableName; 
 
+
     if (typeof _this.params['fileDir'] == "undefined") {
+      console.log(_this.params['tableName']);
       _this.fileDir = _this.params['tableName'];
     } else {
       _this.fileDir = _this.params['fileDir'];
