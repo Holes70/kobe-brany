@@ -4,10 +4,8 @@ namespace Component {
 
   class ProfileView extends \Core\Component {
 
-    public function __construct(string $tableName) {
+    public function __construct(public string $tableName) {
       parent::__construct($this);
-
-      $this->tableName = $tableName;
     }
 
     public function show() {
