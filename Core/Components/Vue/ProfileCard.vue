@@ -16,10 +16,14 @@
         }"></dia-button>
       </div>
       <div class="row ml-5 pl-5" style="width:200px">
-        <div class='header-icon'>
-          <img src='profile.jpg' alt='profile' style='width:100%'>
-        </div>
-        <p class="profile-name">{{ data.first_name }}</p>
+        <a :href="url">
+          <div class='header-icon'>
+            <img src='profile.jpg' alt='profile' style='width:100%'>
+          </div>
+        </a>
+        <a :href="url" class="profile-name">
+          <p class="profile-name">{{ data.first_name }}</p>
+        </a>
         <div class='profile-logout'>
           <i @click="logout()" class="fas fa-sign-out-alt"></i>
         </div>
@@ -74,6 +78,7 @@ export default {
   mounted() {
     this.tableName = this.params['tableName'];
     this.conditions = this.params['conditions'];
+    this.url = this.params['url'];
 
     if (this.params['data'].length > 0) {
       this.data = this.params['data'];

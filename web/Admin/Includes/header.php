@@ -7,6 +7,7 @@
   $elasticSearch->searchFields(['title', 'content']);
 
   $profileCard = new Component\ProfileCard("users");
+  $profileCard->url("moj-ucet");
 
   // Nacitaj Navbar
   $navbarList = $db->dbSelect(

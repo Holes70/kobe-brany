@@ -27,7 +27,7 @@
 
     \Core\Controllers\UserController::setUser($selectUserIfExists);
 
-    \Core\Controllers\WebController::redirect("profile");
+    \Core\Controllers\WebController::redirect("moj-ucet");
   } catch(\Exception $e) {
     \Core\Controllers\WebController::redirect("login?error=" . urlencode($e->getMessage()));
   }
