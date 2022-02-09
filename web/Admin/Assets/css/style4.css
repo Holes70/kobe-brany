@@ -700,6 +700,9 @@ var {
   font-size: 18px;
   margin: auto;
 }
+.profile-name:hover {
+  color: #e66d3d;
+}
 .profile-logout {
   font-size: 25px;
   margin: auto;
