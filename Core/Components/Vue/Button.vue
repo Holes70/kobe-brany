@@ -31,7 +31,7 @@
     >
       <span>{{ title }}</span> 
       <div class="icon d-flex align-items-center justify-content-center">
-        <i class="far fa-bell"></i>
+        <i :class="icon"></i>
       </div>
     </button>
 
@@ -53,6 +53,7 @@ export default {
   beforeMount() {
     this.title = this.params['title'];
     this.button = this.params['button'];
+    this.icon = this.params['icon'];
 
     diaButton.setComponentParams(this);
 

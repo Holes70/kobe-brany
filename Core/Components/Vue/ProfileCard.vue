@@ -5,12 +5,14 @@
         <dia-button :params="{
           button: 'primary',
           title: 'Oznámenia',
+          icon: 'far fa-bell'
         }"></dia-button>
       </div>
       <div class="">
         <dia-button :params="{
           button: 'secondary',
           title: 'Správy',
+          icon: 'fa-solid fa-message'
         }"></dia-button>
       </div>
       <div class="row ml-5 pl-5" style="width:200px">
