@@ -209,8 +209,7 @@ class Dia extends CustomFunctions {
     _this.componentName = _this.componentName + "_" + _this.tableName; 
 
 
-    if (typeof _this.params['fileDir'] == "undefined") {
-      console.log(_this.params['tableName']);
+    if (typeof _this.params['fileDir'] == "undefined" || _this.params['fileDir'] == "") {
       _this.fileDir = _this.params['tableName'];
     } else {
       _this.fileDir = _this.params['fileDir'];
