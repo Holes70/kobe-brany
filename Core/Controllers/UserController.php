@@ -22,7 +22,7 @@ namespace Core\Controllers {
 
     /**
      * GET logged user data
-     * @return void
+     * @return array
      */
     public static function getLogged() {
       return isset($_SESSION['user']) ? $_SESSION['user'] : [];

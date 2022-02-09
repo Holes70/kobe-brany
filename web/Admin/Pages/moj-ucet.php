@@ -1,22 +1,8 @@
 <?php
 
-$idUser = 4; // TODO
+$idUser = 2; // TODO
 
 $profileView = new Component\ProfileView("users");
-$profileView->conditions([
-  'select' => 'CONCAT(first_name, \" \", last_name) as name, email as description, phone_number as description2',
-  'where' => [
-    'id' => $idUser
-  ]
-]);
-
-// Social
-$socialProfile = new Component\Social("users_socials");
-$socialProfile->conditions([
-  'where' => [
-    'id_user' => $idUser
-  ]
-]);
 
 $dia->template("
 <div class='container'>
@@ -25,7 +11,6 @@ $dia->template("
             <div class='col-md-4 mb-3'>
               {$profileView->show()}
               <div class='card mt-3'>
-                {$socialProfile->show()}
               </div>
             </div>
             <div class='col-md-8'>
