@@ -11,6 +11,13 @@
                   class='rounded-circle' width='150'
                 />
                 <div class='mt-3'>
+                  <dia-file-uploader :params='{
+                    tableName: this.tableName,
+                    uploadAction: this.uploadAction,
+                    uploadText: "Zmeniť profilový obrázok"
+                  }'></dia-file-uploader>
+                </div>
+                <div class='mt-3'>
                   <h4>{{ data.first_name }} {{ data.last_name }}</h4>
                 </div>
               </div>
@@ -121,7 +128,12 @@
 
 var diaProfileView = Object();
 
+import FileUploader5 from './FileUploader5.vue';
+
 export default {
+  components: {
+    'dia-file-uploader': FileUploader5
+  },
   props: ['params'],
   data() {
     return Object.assign(diaProfileView, {
