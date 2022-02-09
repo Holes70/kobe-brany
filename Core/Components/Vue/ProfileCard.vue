@@ -57,6 +57,17 @@ export default {
     return Object.assign(diaProfileCard, {
     })
   },
+  methods: {
+    logout() {
+      axios.post('index.php?action=dia_user_logout', {
+        params: {
+          logout: true
+        }
+      }).then((res) => {
+        window.location.href = res.data;
+      })
+    }
+  },
   beforeCreate() {
     diaProfileCard = new Dia();
   },
