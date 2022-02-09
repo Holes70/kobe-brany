@@ -9,11 +9,10 @@
 					</button>
 				</div>
 				<div class="model-img modal-body text-center">
-					<dia-form2 :params='{
-						tableName: this.tableName,
-						conditions: this.conditions,
-						data: this.data
-					}'></dia-form2>
+				
+				<!--<component :is="params['render']">-->
+					{{ render }}
+				
 				</div>
 			</div>
 		</div>
@@ -24,17 +23,32 @@
 
 var diaModal = Object();
 
+import Timer from './Timer.vue';
+
 export default {
   props: ['params'],
+	components: {
+		'dia-timer': Timer
+	},
   data() {
     return Object.assign(diaModal, {
     })
+  },
+	computed: {
+  	dynamicComponent() {
+    	return {
+        template: this.params['render']
+      }
+    }
   },
   beforeCreate() {
     diaModal = new Dia();
   },
   beforeMount() {
     diaModal.setComponentParams(this);
+
+		this.render = this.params['render'];
+		this.componentUid = this.params['componentUid'];
   }
 }
 
