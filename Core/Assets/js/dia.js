@@ -5,6 +5,7 @@ class Dia extends CustomFunctions {
     this.currentWebPage = this.getCurrentWebPage();
     this.previousWebPage = this.getPreviousWebPage();
     this.dir = "holes/dia"
+    this.fileDir = "";
 
     this.tableName = "";
     this.data = [];
@@ -133,6 +134,7 @@ class Dia extends CustomFunctions {
         conditions: _this.conditions
       }
     }).then((res) => {
+      console.log(res);
       if (res.data.status != 'fail') {
         _this.data = res.data['data'];
         dataToSet.forEach((item) => {
@@ -207,7 +209,7 @@ class Dia extends CustomFunctions {
 
     _this.componentName = _this.componentName + "_" + _this.tableName; 
 
-    if (_this.params['fileDir'] == "") {
+    if (typeof _this.params['fileDir'] == "undefined") {
       _this.fileDir = _this.params['tableName'];
     } else {
       _this.fileDir = _this.params['fileDir'];
