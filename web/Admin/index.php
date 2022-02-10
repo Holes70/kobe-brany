@@ -105,6 +105,8 @@
           'dia-file-uploader': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/FileUploader4.vue', options)),
           'dia-form-new': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/Form2.vue', options)),
           'dia-row': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/Row.vue', options)),
+          'dia-messages': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/Messages.vue', options)),
+          'dia-button': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/Button.vue', options)),
           <?php
             foreach (\Core\Dia::$loadedWebComponents as $com) {
               echo "'$com': Vue.defineAsyncComponent( () => loadModule('./../Components/Admin/$com.vue', options)),";

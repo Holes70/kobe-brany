@@ -2,7 +2,7 @@
 
 namespace Component {
 
-  class Cardlist extends \Core\Component {
+  class Messages extends \Core\Component {
     
     public function __construct(public string $tableName) {
       parent::__construct($this);
@@ -10,11 +10,11 @@ namespace Component {
 
     public function show() {
       return "
-        <dia-card-list :params='{
+        <dia-messages :params='{
           tableName: \"{$this->tableName}\",
           conditions: ".json_encode($this->conditions).",
           data: ".json_encode($this->data)."
-        }'></dia-card-list>
+        }'></dia-messages>
       ";
     }
   
