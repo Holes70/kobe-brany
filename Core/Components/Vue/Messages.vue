@@ -1,22 +1,42 @@
 <template>
-  <div class="card messages-header p-1 m-1">
-    <div class="row">
-      <div v-for="col in tableColumns" :key="col" class="col text-left">
-        {{ col }}
+  <div v-if="editData.length == 0" :id="componentUid + '_cards'">
+    <div class="card messages-header p-1 m-1">
+      <div class="row">
+        <div v-for="col in tableColumns" :key="col" class="col text-left">
+          {{ col }}
+        </div>
+        <div class="col">
+        </div>
       </div>
-      <div class="col">
+    </div>
+    <div v-for="itemData in data" :key="itemData" class="card message-card p-1 m-1">
+      <div @click="openMessage(itemData)" class="row">
+        <template v-for='(item, colName) in itemData' :key='colName'>
+          <div v-if="getStructureValue(colName, 'show_in_table')" class="col text-left">
+            {{ item }}
+          </div>
+        </template>
+        <div class="col">
+          <i class="far fa-trash-alt icon-danger"></i>
+        </div>
       </div>
     </div>
   </div>
-  <div v-for="itemData in data" :key="itemData" class="card message-card p-1 m-1">
-    <div class="row">
-      <template v-for='(item, colName) in itemData' :key='colName'>
-        <div v-if="getStructureValue(colName, 'show_in_table')" class="col text-left">
-          {{ item }}
+  <div v-else :id="componentUid + '_opened'">
+    <div class="card">
+      <div class="card-header row p-1" style="margin:0px">
+        <div class="col-1">
+          <button @click="editData = []" class='btn btn-primary'>
+            <i class="fas fa-arrow-left color-secondary" aria-hidden="true"></i>
+          </button>
         </div>
-      </template>
-      <div class="col">
-        <i class="far fa-trash-alt icon-danger"></i>
+        <div class="col">
+          <h4>{{ editData.subject }}</h4>
+        </div>
+      </div>
+      <div class="card-body">
+        <p class="card-text">{{ editData.body }}</p>
+        <a href="#" class="btn btn-primary">Odpovedať</a>
       </div>
     </div>
   </div>
@@ -30,6 +50,7 @@ export default {
   props: ['params'],
   data() {
     return Object.assign(diaMessages, {
+      editData: []
     })
   },
   methods: {
@@ -42,6 +63,9 @@ export default {
         addItallic
       );
     },
+    openMessage(itemData) {
+      this.editData = itemData;
+    }
   },
   beforeCreate() {
     diaMessages = new Dia();

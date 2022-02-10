@@ -728,3 +728,7 @@ var {
 .message-card:hover {
   background: #f8f9fa;
 }
+.dia-secret {
+  color: rgba(0, 0, 0, 0.1) !important;
+  font-size: 10px;
+}
