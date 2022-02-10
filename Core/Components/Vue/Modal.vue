@@ -21,11 +21,13 @@
 var diaModal = Object();
 
 import Timer from './Timer.vue';
+import Form from './Form2.vue';
 
 export default {
   props: ['params'],
 	components: {
-		'dia-timer': Timer
+		'dia-timer': Timer,
+		'dia-form': Form
 	},
   data() {
     return Object.assign(diaModal, {
