@@ -711,3 +711,10 @@ var {
 .profile-logout i:hover {
   color: #e66d3d;
 }
+.icon-danger {
+  color: #bf5656;
+  cursor: pointer;
+}
+.icon-danger:hover {
+  color: yellow;
+}
