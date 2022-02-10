@@ -726,5 +726,5 @@ var {
   cursor: pointer;;
 }
 .message-card:hover {
-  background-color: grey;
+  background: #f8f9fa;
 }

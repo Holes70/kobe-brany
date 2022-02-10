@@ -1,18 +1,17 @@
 <template>
   <div class="card messages-header p-1 m-1">
     <div class="row">
-      <div v-for="col in tableColumns" :key="col" class="col">
+      <div v-for="col in tableColumns" :key="col" class="col text-left">
         {{ col }}
       </div>
       <div class="col">
-        Vymazať
       </div>
     </div>
   </div>
   <div v-for="itemData in data" :key="itemData" class="card message-card p-1 m-1">
     <div class="row">
       <template v-for='(item, colName) in itemData' :key='colName'>
-        <div v-if="getStructureValue(colName, 'show_in_table')" class="col">
+        <div v-if="getStructureValue(colName, 'show_in_table')" class="col text-left">
           {{ item }}
         </div>
       </template>
@@ -49,7 +48,7 @@ export default {
   },
   beforeMount() {
     diaMessages.setComponentParams(this);
-    diaMessages.setComponentData(this);
+    diaMessages.setComponentData(this, "dia_get_messages");
     diaMessages.loadTableStructure(this);
   }
 }

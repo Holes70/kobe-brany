@@ -14,7 +14,7 @@
 
   $db = new \Core\DB();
   $vue = new \Core\Vue();
-  
+
   if (!isset($_GET['action']) && !isset($_POST['action'])) {
     
     // HEAD
@@ -40,7 +40,7 @@
     } else {
       include "Pages/login.php";
     }
-
+    
     // VUE LOADER START
   ?>
     <script>
