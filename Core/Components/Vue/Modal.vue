@@ -9,7 +9,7 @@
 					</button>
 				</div>
 				<div class="model-img modal-body text-center">
-					<component :is="modalComponentToRender" :bind="{params:{modalComponentToRenderParams}}"></component>
+					<component :is="modalComponentToRender" :params="modalComponentToRenderParams"></component>
 				</div>
 			</div>
 		</div>

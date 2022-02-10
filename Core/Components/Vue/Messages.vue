@@ -51,9 +51,6 @@ export default {
     diaMessages.setComponentParams(this);
     diaMessages.setComponentData(this);
     diaMessages.loadTableStructure(this);
-  },
-  mounted() {
-    console.log(this.tableName);
   }
 }
 
