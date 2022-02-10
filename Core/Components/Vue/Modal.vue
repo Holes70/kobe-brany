@@ -9,7 +9,7 @@
 					</button>
 				</div>
 				<div class="model-img modal-body text-center">
-					<component :is="modalComponentToRender"></component>
+					<component :is="modalComponentToRender" :bind="{params:{modalComponentToRenderParams}}"></component>
 				</div>
 			</div>
 		</div>
@@ -22,12 +22,14 @@ var diaModal = Object();
 
 import Timer from './Timer.vue';
 import Form from './Form2.vue';
+import Messages from './Messages.vue';
 
 export default {
   props: ['params'],
 	components: {
 		'dia-timer': Timer,
-		'dia-form': Form
+		'dia-form': Form,
+		'dia-messages': Messages
 	},
   data() {
     return Object.assign(diaModal, {
@@ -40,6 +42,7 @@ export default {
     diaModal.setComponentParams(this);
 
 		this.modalComponentToRender = this.params['modalComponentToRender'];
+		this.modalComponentToRenderParams = this.params['modalComponentToRenderParams'];
 		this.componentUid = this.params['componentUid'];
   }
 }

@@ -1,9 +1,21 @@
 <template>
-  <div v-for="itemData in data" :key="itemData" class="card p-1 m-1">
+  <div class="card messages-header p-1 m-1">
     <div class="row">
-      <div v-for="item in itemData" :key="item.id" class="col">
-        {{ item }}
+      <div v-for="col in tableColumns" :key="col" class="col">
+        {{ col }}
       </div>
+      <div class="col">
+        Vymazať
+      </div>
+    </div>
+  </div>
+  <div v-for="itemData in data" :key="itemData" class="card message-card p-1 m-1">
+    <div class="row">
+      <template v-for='(item, colName) in itemData' :key='colName'>
+        <div v-if="getStructureValue(colName, 'show_in_table')" class="col">
+          {{ item }}
+        </div>
+      </template>
       <div class="col">
         <i class="far fa-trash-alt icon-danger"></i>
       </div>
@@ -13,21 +25,35 @@
 
 <script>
 
-var diaCardlist = Object();
+var diaMessages = Object();
 
 export default {
   props: ['params'],
   data() {
-    return Object.assign(diaCardlist, {
+    return Object.assign(diaMessages, {
     })
   },
+  methods: {
+    getStructureValue(colName, structureParam, defaultReturnParam, addItallic = false) {
+      return diaTables.getStructureValue(
+        colName, 
+        structureParam, 
+        defaultReturnParam, 
+        this.tableStructure, 
+        addItallic
+      );
+    },
+  },
   beforeCreate() {
-    diaCardlist = new Dia();
+    diaMessages = new Dia();
   },
   beforeMount() {
-    diaCardlist.setComponentParams(this);
-    diaCardlist.setComponentData(this);
-    diaCardlist.loadTableStructure(this);
+    diaMessages.setComponentParams(this);
+    diaMessages.setComponentData(this);
+    diaMessages.loadTableStructure(this);
+  },
+  mounted() {
+    console.log(this.tableName);
   }
 }
 

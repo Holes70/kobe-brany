@@ -2,7 +2,8 @@
   
     <dia-modal :params='{
       componentUid: this.componentUid,
-      modalComponentToRender: this.params.modalComponentToRender
+      modalComponentToRender: this.params.modalComponentToRender,
+      modalComponentToRenderParams: this.params.modalComponentToRenderParams
     }'></dia-modal>
 
     <button 

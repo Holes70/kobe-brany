@@ -14,7 +14,12 @@
           button: 'secondary',
           title: 'Správy',
           icon: 'far fa-envelope',
-          modalComponentToRender: 'dia-timer'
+          modalComponentToRender: 'dia-messages',
+          modalComponentToRenderParams: {
+            tableName: 'dia_messages',
+            data: [],
+            conditions: []
+          }
         }"></dia-button>
       </div>
       <div class="row ml-5 pl-5" style="width:200px">

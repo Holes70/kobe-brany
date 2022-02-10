@@ -718,3 +718,13 @@ var {
 .icon-danger:hover {
   color: yellow;
 }
+.messages-header {
+  font-size: 1.1em;
+  color: #0a6c91;
+}
+.message-card:hover {
+  cursor: pointer;;
+}
+.message-card:hover {
+  background-color: grey;
+}
