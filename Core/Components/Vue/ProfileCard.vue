@@ -5,14 +5,16 @@
         <dia-button :params="{
           button: 'primary',
           title: 'Oznámenia',
-          icon: 'far fa-bell'
+          icon: 'far fa-bell',
+          modalComponentToRender: 'dia-timer'
         }"></dia-button>
       </div>
       <div class="">
         <dia-button :params="{
           button: 'secondary',
           title: 'Správy',
-          icon: 'far fa-envelope'
+          icon: 'far fa-envelope',
+          modalComponentToRender: 'dia-timer'
         }"></dia-button>
       </div>
       <div class="row ml-5 pl-5" style="width:200px">

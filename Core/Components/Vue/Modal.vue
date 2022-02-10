@@ -9,10 +9,7 @@
 					</button>
 				</div>
 				<div class="model-img modal-body text-center">
-				
-				<!--<component :is="params['render']">-->
-					{{ render }}
-				
+					<component :is="modalComponentToRender"></component>
 				</div>
 			</div>
 		</div>
@@ -34,20 +31,13 @@ export default {
     return Object.assign(diaModal, {
     })
   },
-	computed: {
-  	dynamicComponent() {
-    	return {
-        template: this.params['render']
-      }
-    }
-  },
   beforeCreate() {
     diaModal = new Dia();
   },
   beforeMount() {
     diaModal.setComponentParams(this);
 
-		this.render = this.params['render'];
+		this.modalComponentToRender = this.params['modalComponentToRender'];
 		this.componentUid = this.params['componentUid'];
   }
 }

@@ -2,7 +2,7 @@
   
     <dia-modal :params='{
       componentUid: this.componentUid,
-      render: "<div><dia-timer></dia-timer></div>"
+      modalComponentToRender: this.params.modalComponentToRender
     }'></dia-modal>
 
     <button 
