@@ -13,7 +13,17 @@
       <div @click="openMessage(itemData)" class="row">
         <template v-for='(item, colName) in itemData' :key='colName'>
           <div v-if="getStructureValue(colName, 'show_in_table')" class="col text-left">
-            {{ item }}
+            <template v-if="getStructureValue(colName, 'type') == 'checkbox'">
+              <template v-if="item == '1'" >
+                <i class="far fa-eye"></i>
+              </template>
+              <template v-else>
+                <i class="far fa-eye-slash"></i>
+              </template>
+            </template>
+            <template v-else>
+              {{ item }}
+            </template>
           </div>
         </template>
         <div class="col">
@@ -37,7 +47,7 @@
       <div class="card-body">
         <p class="card-text">{{ editData.body }}</p>
         <template v-if="sendAnswer">
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          <textarea class="form-control" rows="3"></textarea>
           <button class="btn btn-primary mt-3">Poslať odpovedať</button>
         </template>
         <button v-else @click="sendAnswer = true" class="btn btn-primary">Odpovedať</button>
