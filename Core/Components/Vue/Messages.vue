@@ -26,7 +26,7 @@
     <div class="card">
       <div class="card-header row p-1" style="margin:0px">
         <div class="col-1">
-          <button @click="editData = []" class='btn btn-primary'>
+          <button @click="editData = [];sendAnswer = false" class='btn btn-primary'>
             <i class="fas fa-arrow-left color-secondary" aria-hidden="true"></i>
           </button>
         </div>
@@ -36,7 +36,11 @@
       </div>
       <div class="card-body">
         <p class="card-text">{{ editData.body }}</p>
-        <a href="#" class="btn btn-primary">Odpovedať</a>
+        <template v-if="sendAnswer">
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          <button class="btn btn-primary mt-3">Poslať odpovedať</button>
+        </template>
+        <button v-else @click="sendAnswer = true" class="btn btn-primary">Odpovedať</button>
       </div>
     </div>
   </div>
@@ -50,7 +54,8 @@ export default {
   props: ['params'],
   data() {
     return Object.assign(diaMessages, {
-      editData: []
+      editData: [],
+      sendAnswer: false
     })
   },
   methods: {
