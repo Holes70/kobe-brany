@@ -15,10 +15,10 @@
           <div v-if="getStructureValue(colName, 'show_in_table')" class="col text-left">
             <template v-if="getStructureValue(colName, 'type') == 'checkbox'">
               <template v-if="item == '1'" >
-                <i class="far fa-eye"></i>
+                <i class="far fa-eye color-grey"></i>
               </template>
               <template v-else>
-                <i class="far fa-eye-slash"></i>
+                <i class="far fa-eye-slash color-grey"></i>
               </template>
             </template>
             <template v-else>
