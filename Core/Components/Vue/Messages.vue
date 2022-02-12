@@ -13,11 +13,21 @@
       <div @click="openMessage(itemData)" class="row">
         <template v-for='(item, colName) in itemData' :key='colName'>
           <div v-if="getStructureValue(colName, 'show_in_table')" class="col text-left">
-            {{ item }}
+            <template v-if="getStructureValue(colName, 'type') == 'checkbox'">
+              <template v-if="item == '1'" >
+                <i class="far fa-eye color-grey"></i>
+              </template>
+              <template v-else>
+                <i class="far fa-eye-slash color-grey"></i>
+              </template>
+            </template>
+            <template v-else>
+              {{ item }}
+            </template>
           </div>
         </template>
         <div class="col">
-          <i class="far fa-trash-alt icon-danger"></i>
+          <i @click="deleteItem(itemData.id)" class="far fa-trash-alt icon-danger"></i>
         </div>
       </div>
     </div>
@@ -26,7 +36,7 @@
     <div class="card">
       <div class="card-header row p-1" style="margin:0px">
         <div class="col-1">
-          <button @click="editData = []" class='btn btn-primary'>
+          <button @click="editData = [];sendAnswer = false" class='btn btn-primary'>
             <i class="fas fa-arrow-left color-secondary" aria-hidden="true"></i>
           </button>
         </div>
@@ -36,7 +46,11 @@
       </div>
       <div class="card-body">
         <p class="card-text">{{ editData.body }}</p>
-        <a href="#" class="btn btn-primary">Odpovedať</a>
+        <template v-if="sendAnswer">
+          <textarea class="form-control" rows="3"></textarea>
+          <button class="btn btn-primary mt-3">Poslať odpovedať</button>
+        </template>
+        <button v-else @click="sendAnswer = true" class="btn btn-primary">Odpovedať</button>
       </div>
     </div>
   </div>
@@ -50,7 +64,8 @@ export default {
   props: ['params'],
   data() {
     return Object.assign(diaMessages, {
-      editData: []
+      editData: [],
+      sendAnswer: false
     })
   },
   methods: {
@@ -65,7 +80,18 @@ export default {
     },
     openMessage(itemData) {
       this.editData = itemData;
-    }
+    },
+    deleteItem(rowId) {
+      window.event.cancelBubble = true;
+
+      diaMessages.itemDelete(
+        this.tableName,
+        rowId,
+        () => {
+          diaMessages.loadData(this, "dia_get_messages");
+        }
+      );
+    },
   },
   beforeCreate() {
     diaMessages = new Dia();

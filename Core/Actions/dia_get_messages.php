@@ -10,7 +10,8 @@
       [
         "where" => [
           "recipient" => (\Core\Controllers\UserController::getLogged())['email']
-        ]
+        ],
+        "order_by" => "viewed ASC"
       ]
     );
 

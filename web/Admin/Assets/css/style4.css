@@ -39,7 +39,10 @@
   color: #1b7531 !important;
 }
 .color-red-dark {
-  color: #8f271e!important
+  color: #8f271e !important;
+}
+.color-grey { 
+  color: grey !important;
 }
 
 .btn-grey {
@@ -716,7 +719,7 @@ var {
   cursor: pointer;
 }
 .icon-danger:hover {
-  color: yellow;
+  color: #0a6c91;
 }
 .messages-header {
   font-size: 1.1em;
