@@ -27,7 +27,7 @@
           </div>
         </template>
         <div class="col">
-          <i class="far fa-trash-alt icon-danger"></i>
+          <i @click="deleteItem(itemData.id)" class="far fa-trash-alt icon-danger"></i>
         </div>
       </div>
     </div>
@@ -80,7 +80,18 @@ export default {
     },
     openMessage(itemData) {
       this.editData = itemData;
-    }
+    },
+    deleteItem(rowId) {
+      window.event.cancelBubble = true;
+
+      diaMessages.itemDelete(
+        this.tableName,
+        rowId,
+        () => {
+          diaMessages.loadData(this, "dia_get_messages");
+        }
+      );
+    },
   },
   beforeCreate() {
     diaMessages = new Dia();
