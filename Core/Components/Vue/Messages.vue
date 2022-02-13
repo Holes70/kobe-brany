@@ -45,9 +45,29 @@
         </div>
       </div>
       <div class="card-body">
-        <p class="card-text">{{ editData.body }}</p>
+        <template v-if="editData.id_answer != 0">
+          <div class="row">
+            <div class="col-4 text-left">
+              <b>Vy</b> ste odpovedal:
+            </div>
+            <div class="col-8 text-right color-grey">
+              {{ editData.timestamp }}
+            </div>
+          </div>
+          <p class="card-text text-left">{{ editData.body }}</p>
+          <hr/>
+        </template>
+        <div class="row">
+          <div class="col-4 text-left">
+            <b>{{ editData.sender }}</b> napísal:
+          </div>
+          <div class="col-8 text-right color-grey">
+            {{ editData.timestamp }}
+          </div>
+        </div>
+        <p class="card-text text-left">{{ editData.body }}</p>
         <template v-if="sendAnswer">
-          <textarea class="form-control" rows="3"></textarea>
+          <textarea v-model="answer" class="form-control" rows="3"></textarea>
           <button class="btn btn-primary mt-3">Poslať odpovedať</button>
         </template>
         <button v-else @click="sendAnswer = true" class="btn btn-primary">Odpovedať</button>
@@ -65,7 +85,8 @@ export default {
   data() {
     return Object.assign(diaMessages, {
       editData: [],
-      sendAnswer: false
+      sendAnswer: false,
+      answer: ""
     })
   },
   methods: {
@@ -92,6 +113,15 @@ export default {
         }
       );
     },
+    sendAnswer(itemId, answer) {
+      axios.post('index.php?action=dia_post_message_answer', {
+        tableName: this.tableName,
+        rowId: itemId,
+        answer: answer
+      }).then((res) => {
+        console.log(res);
+      })
+    }
   },
   beforeCreate() {
     diaMessages = new Dia();
