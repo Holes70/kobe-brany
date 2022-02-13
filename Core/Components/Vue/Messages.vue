@@ -115,9 +115,11 @@ export default {
     },
     sendAnswer(itemId, answer) {
       axios.post('index.php?action=dia_post_message_answer', {
-        tableName: this.tableName,
-        rowId: itemId,
-        answer: answer
+        params: {
+          tableName: this.tableName,
+          rowId: itemId,
+          answer: answer
+        }
       }).then((res) => {
         console.log(res);
       })
