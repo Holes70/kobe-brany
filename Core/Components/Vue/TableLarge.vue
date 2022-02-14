@@ -37,6 +37,9 @@
                       <i style='color:red' class="fas fa-times"></i>
                     </template>
                   </template>
+                  <template v-else-if="getStructureValue(colName, 'type') == 'radio'">
+                    <button :class="'btn btn-' + getStructureValue(colName, 'radio_colors')[item]">{{ getStructureValue(colName, 'radio')[item] }}</button>
+                  </template>
                   <template v-else-if="getStructureValue(colName, 'type', '') == 'lookup'">
                     <template v-if="parseInt(itemData[getStructureValue(colName, 'lookup_table_col')]) > 0">
                       <a 
