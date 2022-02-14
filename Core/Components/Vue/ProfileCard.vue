@@ -6,7 +6,13 @@
           button: 'primary',
           title: 'Oznámenia',
           icon: 'far fa-bell',
-          modalComponentToRender: 'dia-timer'
+          modalComponentToRender: 'dia-notifications',
+          modalComponentToRenderParams: {
+            tableName: 'dia-notifications',
+            data: [],
+            conditions: [],
+            customAction: 'x'
+          }
         }"></dia-button>
       </div>
       <div class="">
@@ -18,7 +24,10 @@
           modalComponentToRenderParams: {
             tableName: 'dia_messages',
             data: [],
-            conditions: []
+            conditions: [],
+            customActions: {
+              loadData: 'dia_get_messages'
+            }
           }
         }"></dia-button>
       </div>
