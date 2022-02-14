@@ -8,4 +8,12 @@ class Functions {
     }
   }
 
+  getRadioColor(color, item) {
+    if (color) {
+      return color[item];
+    } else {
+      return 'light';
+    }
+  }
+
 }

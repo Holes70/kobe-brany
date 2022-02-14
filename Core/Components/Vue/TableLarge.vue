@@ -38,7 +38,7 @@
                     </template>
                   </template>
                   <template v-else-if="getStructureValue(colName, 'type') == 'radio'">
-                    <button :class="'btn btn-' + getStructureValue(colName, 'radio_colors')[item]">{{ getStructureValue(colName, 'radio')[item] }}</button>
+                    <div :class="'radio-box radio-box-' + getRadioColor(colName, item)">{{ getStructureValue(colName, 'radio')[item] }}</div>
                   </template>
                   <template v-else-if="getStructureValue(colName, 'type', '') == 'lookup'">
                     <template v-if="parseInt(itemData[getStructureValue(colName, 'lookup_table_col')]) > 0">
@@ -282,6 +282,10 @@
           this.tableStructure, 
           addItallic
         );
+      },
+      getRadioColor(colName, item) {
+        var color =  this.getStructureValue(colName, 'radio_colors');
+        return f.getRadioColor(color, item);
       },
       edit(showEditId) {
         this.showEdit = true;

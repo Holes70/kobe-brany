@@ -56,7 +56,17 @@
               <hr>
               <div class='row'>
                 <div class='col-sm-12'>
-                  <a class='btn btn-info ' target='__blank' href='https://www.bootdey.com/snippets/view/profile-edit-data-and-skills'>Edit</a>
+                  <dia-button :params="{
+                    button: 'primary',
+                    title: 'Upraviť',
+                    icon: 'far fa-bell',
+                    modalComponentToRender: 'dia-form',
+                    modalComponentToRenderParams: {
+                      tableName: 'users',
+                      data: [],
+                      conditions: []
+                    }
+                  }"></dia-button>
                 </div>
               </div>
             </div>
@@ -129,10 +139,12 @@
 var diaProfileView = Object();
 
 import FileUploader5 from './FileUploader5.vue';
+import Button from './Button.vue';
 
 export default {
   components: {
-    'dia-file-uploader': FileUploader5
+    'dia-file-uploader': FileUploader5,
+    'dia-button': Button
   },
   props: ['params'],
   data() {

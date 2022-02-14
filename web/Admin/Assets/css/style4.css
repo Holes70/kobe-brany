@@ -735,3 +735,23 @@ var {
   color: #c2c2c2 !important;
   font-size: 18px;
 }
+.radio-box {
+  border-radius: 5px !important;
+  padding: 5px !important;
+  text-align: center;
+  font-weight: 600;
+}
+.radio-box-success {
+  background-color: #d0ff8a !important;
+  color: #609116
+}
+.radio-box-primary {
+  color: #e66d3d;
+}
+.radio-box-secondary {
+  background-color: #5bccf6 !important;
+}
+.radio-box-danger {
+  background-color: #ff9c99 !important;
+  color: #a8140f;
+}
