@@ -24,4 +24,6 @@
     data: $updateData
   );
 
+  echo $updateData['id_answer'];
+
 ?>

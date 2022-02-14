@@ -133,6 +133,8 @@ export default {
         rowId: data.id,
         data: data
       }).then((res) => {
+        this.sendAnswer = false;
+        editData['id_answer'] = res.data;
         this.openMessage(editData);
       })
     }
