@@ -28,7 +28,9 @@
             data: [],
             conditions: [],
             customActions: {
-              loadData: 'dia_get_messages'
+              loadData: 'dia_get_messages',
+              insertData: 'dia_post_message_answer',
+              editData: 'dia_get_message_answer'
             }
           }
         }"></dia-button>

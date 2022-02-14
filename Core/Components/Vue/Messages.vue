@@ -109,7 +109,7 @@ export default {
       this.editData = itemData;
       this.answerData = {};
 
-      axios.post('index.php?action=dia_get_message_answer', {
+      axios.post('index.php?action=' + this.params['customActions']['editData'], {
         tableName: this.tableName,
         data: itemData
       }).then((res) => {
@@ -133,7 +133,7 @@ export default {
       var data = editData;
       data['answer'] = this.answer;
 
-      axios.post('index.php?action=dia_post_message_answer', {
+      axios.post('index.php?action=' + this.params['customActions']['insertData'], {
         tableName: this.tableName,
         rowId: data.id,
         data: data
