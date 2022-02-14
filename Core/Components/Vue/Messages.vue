@@ -109,14 +109,16 @@ export default {
       this.editData = itemData;
       this.answerData = {};
 
-      axios.post('index.php?action=' + this.params['customActions']['editData'], {
-        tableName: this.tableName,
-        data: itemData
-      }).then((res) => {
-        if (res.data.status != "fail") {
-          this.answerData = res.data['data'];
-        }
-      })
+      if (this.params['customActions']['editData']) {
+        axios.post('index.php?action=' + this.params['customActions']['editData'], {
+          tableName: this.tableName,
+          data: itemData
+        }).then((res) => {
+          if (res.data.status != "fail") {
+            this.answerData = res.data['data'];
+          }
+        })
+      }
     },
     deleteItem(rowId) {
       window.event.cancelBubble = true;
