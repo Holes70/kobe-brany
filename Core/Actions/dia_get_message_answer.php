@@ -5,6 +5,12 @@
   $data = $db->request_data();
 
   try {
+    $db->update(
+      tableName: $data->tableName,
+      rowId: $data->data->id,
+      data: ["viewed" => 1]
+    );
+
     $return['data'] = $db->dbSelect(
       $data->tableName,
       [
