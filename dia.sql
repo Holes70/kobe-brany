@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hostiteľ: 127.0.0.1
--- Čas generovania: Út 08.Feb 2022, 13:22
+-- Čas generovania: Po 14.Feb 2022, 19:39
 -- Verzia serveru: 10.4.22-MariaDB
 -- Verzia PHP: 8.0.14
 
@@ -87,8 +87,8 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `first_name`, `last_name`, `email`, `phone_number`, `state`, `password`) VALUES
-(1, 'Meno_1', 'Priezvisko_1', 'zakaznik_1@gmail.com', 13102523, 1, '123455'),
-(2, 'Meno_2', 'Priezvisko_2', 'zakaznik_2@gmail.com', 26527492, 3, '123455'),
+(1, 'Meno_1', 'Priezvisko_1', 'zakaznik_1@gmail.com', 13102523, 2, '123455'),
+(2, 'Meno_2', 'Priezvisko_2', 'zakaznik_2@gmail.com', 26527492, 2, '123455'),
 (3, 'Meno_3', 'Priezvisko_3', 'zakaznik_3@gmail.com', 59002038, 3, '123455'),
 (4, 'Meno_4', 'Priezvisko_4', 'zakaznik_4@gmail.com', 30765647, 3, '123455'),
 (5, 'Meno_5', 'Priezvisko_5', 'zakaznik_5@gmail.com', 26107023, 2, '123455'),
@@ -141,28 +141,38 @@ INSERT INTO `customers_uids` (`id`, `uid`, `id_customer`) VALUES
 -- --------------------------------------------------------
 
 --
--- Štruktúra tabuľky pre tabuľku `dia_alerts`
+-- Štruktúra tabuľky pre tabuľku `dia_messages`
 --
 
-CREATE TABLE `dia_alerts` (
+CREATE TABLE `dia_messages` (
   `id` int(11) NOT NULL,
-  `type` int(1) DEFAULT NULL,
-  `title` varchar(55) DEFAULT NULL,
-  `body` varchar(255) DEFAULT NULL,
-  `footer` varchar(55) DEFAULT NULL
+  `recipient` varchar(100) NOT NULL,
+  `sender` varchar(100) NOT NULL,
+  `subject` varchar(100) NOT NULL,
+  `body` text NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `viewed` tinyint(1) NOT NULL DEFAULT 0,
+  `id_answer` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
 --
--- Štruktúra tabuľky pre tabuľku `dia_alerts_users`
+-- Sťahujem dáta pre tabuľku `dia_messages`
 --
 
-CREATE TABLE `dia_alerts_users` (
-  `id` int(11) NOT NULL,
-  `id_user` int(11) DEFAULT NULL,
-  `id_alert` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `dia_messages` (`id`, `recipient`, `sender`, `subject`, `body`, `timestamp`, `viewed`, `id_answer`) VALUES
+(2, 'dsadsa', 'dsadsadsa', 'dsadsadsadsa', 'dsadsadsa', '2022-02-10 17:46:25', 0, 0),
+(9, 'dsadsadasdsa', 'admin@dia.sk', 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', 'Aohjd asdasdasdasdas', '2022-02-14 12:37:07', 0, 0),
+(10, 'admin@dia.sk', 'test@email.sk', 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', 'dsadsadsadas', '2022-02-14 12:37:22', 1, 12),
+(12, 'test@email.sk', 'admin@dia.sk', 'Ahoj', 'xxx', '2022-02-14 09:55:02', 0, 0),
+(13, 'test@email.sk', 'admin@dia.sk', 'Ahoj', 'xxx', '2022-02-14 09:58:40', 0, 0),
+(14, 'admin@dia.sk', 'test2@gmail.com', 'Test2', 'Test2', '2022-02-14 10:14:35', 1, 15),
+(15, 'test2@gmail.com', 'admin@dia.sk', 'Test2', 'xxx', '2022-02-14 10:00:33', 0, 0),
+(16, 'admin@dia.sk', 'XXX', 'XXX', 'XXX', '2022-02-14 10:14:07', 1, 17),
+(17, 'XXX', 'admin@dia.sk', 'XXX', 'jjj', '2022-02-14 10:01:39', 0, 0),
+(18, 'admin@dia.sk', 'XXX', 'XXX', 'XXX', '2022-02-14 10:13:37', 1, 19),
+(19, 'XXX', 'admin@dia.sk', 'XXX', 'Ahojtewadasd dasdsadas', '2022-02-14 10:03:13', 0, 0),
+(20, 'admin@dia.sk', 'xxx', 'xxx', 'xx', '2022-02-14 10:38:56', 1, 21),
+(21, 'xxx', 'admin@dia.sk', 'xxx', 'Ano', '2022-02-14 10:38:56', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -190,7 +200,6 @@ INSERT INTO `dia_navbar` (`id`, `id_parent`, `name`, `link`, `description`, `ico
 (3, 2, 'Všetky', 'objednavky-vsetky', 'Všetky objednávky', '', 41, 1),
 (4, 2, 'Nové', 'objednavky-nove', 'Nové objednávky', '', 42, 1),
 (5, 2, 'Schválené', 'objednavky-schvalene', 'Schválené', '', 43, 1),
-(6, 0, 'Konfigurátor', 'konfigurator', 'Konfigurátor', 'ruler', 7, 1),
 (7, 0, 'Reklamácie', 'reklamacie', 'Reklamácie', 'sync', 6, 1),
 (8, 0, 'Faktúry', 'faktury', 'Faktúry', 'file-alt', 5, 1),
 (9, 0, 'Výroba', 'vyroba', 'Výroba', 'tools', 10, 1),
@@ -206,6 +215,26 @@ INSERT INTO `dia_navbar` (`id`, `id_parent`, `name`, `link`, `description`, `ico
 (215, 8, 'Vystavené', 'faktury-vystavene', '', '', 51, 1),
 (216, 8, 'Zaplatené', 'faktury-zaplatene', '', '', 52, 1),
 (217, 0, 'Príslušenstvo', 'male-produkty', '', 'th-large', 2, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Štruktúra tabuľky pre tabuľku `dia_notifications`
+--
+
+CREATE TABLE `dia_notifications` (
+  `id` int(11) NOT NULL,
+  `message` text NOT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Sťahujem dáta pre tabuľku `dia_notifications`
+--
+
+INSERT INTO `dia_notifications` (`id`, `message`, `id_user`, `timestamp`) VALUES
+(1, 'xxx', 1, '2022-02-14 12:11:23');
 
 -- --------------------------------------------------------
 
@@ -227,14 +256,16 @@ INSERT INTO `dia_tables` (`id`, `table_name`, `structure`) VALUES
 (1, 'users', '{\"id\":{\"type\":\"number\",\"show_in_table\":false,\"show_in_form\":false},\"avatar\":{\"show_in_table\":true,\"show_in_form\":true,\"type\":\"image\"},\"first_name\":{\"required\":true,\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Meno\"},\"last_name\":{\"required\":true,\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Priezvisko\"},\"email\":{\"type\":\"email\",\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"E-mail\",\"required\":true},\"password\":{\"type\":\"password\",\"required\":true,\"show_in_form\":false,\"show_in_table\":false,\"name_in_table\":\"Heslo\"}}'),
 (2, 'products', '{\"id\":{\"type\":\"number\",\"show_in_table\":false,\"show_in_form\":false},\"image\":{\"type\":\"image\",\"show_in_table\":true,\"show_in_form\":true,\"upload_action\":\"upload_product_image\",\"required\":true},\"name\":{\"show_in_table\":true,\"name_in_table\":\"Produkt\",\"show_in_form\":true,\"required\":true},\"price\":{\"type\":\"number\",\"show_in_table\":true,\"name_in_table\":\"Cena\",\"show_in_form\":true,\"required\":true,\"unit\":\"€\"},\"available\":{\"type\":\"checkbox\",\"default_value\":true,\"show_in_table\":true,\"name_in_table\":\"Dostupný\",\"show_in_form\":true},\"count\":{\"type\":\"number\",\"show_in_table\":true,\"name_in_table\":\"Skladom\",\"show_in_form\":true},\"description\":{\"type\":\"text\",\"show_in_table\":false,\"name_in_table\":\"Popis\",\"show_in_form\":true},\"type\":{\"type\":\"radio\",\"default_value\":1,\"radio\":{\"1\":\"Na mieru\",\"2\":\"Príslušenstvo\"},\"show_in_table\":false,\"name_in_table\":\"Typ\",\"show_in_form\":true}}'),
 (3, 'accessories', '{\"id\":{\"type\":\"number\",\"show_in_table\":false,\"show_in_form\":false},\"image\":{\"type\":\"image\",\"show_in_table\":true,\"show_in_form\":true},\"name\":{\"show_in_table\":true,\"name_in_table\":\"Produkt\",\"show_in_form\":true,\"required\":true},\"price\":{\"type\":\"number\",\"show_in_table\":true,\"name_in_table\":\"Cena\",\"show_in_form\":true,\"required\":true,\"unit\":\"€\"},\"available\":{\"type\":\"checkbox\",\"show_in_table\":true,\"name_in_table\":\"Dostupný\",\"show_in_form\":true},\"description\":{\"type\":\"text\",\"show_in_table\":false,\"name_in_table\":\"Popis\",\"show_in_form\":true},\"count\":{\"type\":\"number\",\"show_in_table\":true,\"name_in_table\":\"Počet\",\"show_in_form\":true}}'),
-(4, 'customers', '{\"first_name\":{\"disabled\":true,\"required\":true,\"show_in_table\":true,\"name_in_table\":\"Meno\",\"show_in_form\":true},\"last_name\":{\"required\":true,\"show_in_table\":true,\"name_in_table\":\"Priezvisko\",\"show_in_form\":true},\"email\":{\"required\":false,\"show_in_table\":true,\"name_in_table\":\"E-mail\",\"show_in_form\":true},\"phone_number\":{\"required\":true,\"show_in_table\":true,\"name_in_table\":\"Mobil\",\"show_in_form\":true},\"state\":{\"type\":\"radio\",\"name_in_table\":\" \",\"default_value\":\"1\",\"radio\":{\"1\":\"Nový\",\"2\":\"Overený\",\"3\":\"Dlžný\"},\"show_in_table\":true,\"show_in_form\":true}}'),
+(4, 'customers', '{\"first_name\":{\"disabled\":true,\"required\":true,\"show_in_table\":true,\"name_in_table\":\"Meno\",\"show_in_form\":true},\"last_name\":{\"required\":true,\"show_in_table\":true,\"name_in_table\":\"Priezvisko\",\"show_in_form\":true},\"email\":{\"required\":false,\"show_in_table\":true,\"name_in_table\":\"E-mail\",\"show_in_form\":true},\"phone_number\":{\"required\":true,\"show_in_table\":true,\"name_in_table\":\"Mobil\",\"show_in_form\":true},\"state\":{\"type\":\"radio\",\"name_in_table\":\" \",\"default_value\":\"1\",\"radio\":{\"1\":\"Nový\",\"2\":\"Overený\",\"3\":\"Dlžný\"},\"radio_colors\":{\"1\":\"success\",\"2\":\"primary\",\"3\":\"danger\"},\"show_in_table\":true,\"show_in_form\":true}}'),
 (5, 'orders', '{\"serial_number\":{\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Číslo\"},\"type\":{\"type\":\"radio\",\"default_value\":1,\"radio\":{\"1\":\"Nová\",\"2\":\"Schválená\",\"3\":\"Zaplatená\",\"4\":\"Odovzdaná\"},\"show_in_table\":false,\"show_in_form\":true,\"name_in_table\":\"Typ\"},\"id_customer\":{\"type\":\"lookup\",\"lookup_icon\":\"user\",\"lookup_table\":\"customers\",\"lookup_table_col\":\"id\",\"lookup_url\":\"zakaznici\",\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Zákazník\",\"lookup_columns\":{\"1\":\"first_name\", \"2\":\"last_name\"}},\"id_cart\":{\"type\":\"lookup\",\"lookup_url_type\":\"idcart\",\"lookup_table\":\"carts\",\"lookup_icon\":\"shopping-cart\",\"lookup_table_col\":\"id\",\"lookup_url\":\"kosik\",\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Košík\"},\"id_invoice\":{\"type\":\"lookup\",\"lookup_table\":\"invoices\",\"lookup_icon\":\"file-alt\",\"lookup_columns\":{\"1\":\"number\", \"2\":\"price\"},\"lookup_table_col\":\"id\",\"lookup_table_empty\":\"Nie je vystavená\",\"lookup_url\":\"faktury\",\"lookup_table_empty_action\":\"vystavit_fakturu?id_order=%id%\",\"lookup_table_empty_text\":\"Vystaviť faktúru\",\"lookup_url_type\":\"id_form\",\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Faktúra\"}}'),
 (6, 'products_accessories', '{\"id\":{\"type\":\"number\",\"show_in_table\":false,\"show_in_form\":false},\"image\":{\"type\":\"image\",\"show_in_table\":true,\"show_in_form\":true},\"name\":{\"show_in_table\":true,\"name_in_table\":\"Produkt\",\"show_in_form\":true,\"required\":true},\"price\":{\"type\":\"number\",\"show_in_table\":true,\"name_in_table\":\"Cena\",\"show_in_form\":true,\"required\":true,\"unit\":\"€\"},\"available\":{\"type\":\"checkbox\",\"show_in_table\":true,\"name_in_table\":\"Dostupný\",\"show_in_form\":true},\"count\":{\"type\":\"number\",\"show_in_table\":true,\"name_in_table\":\"Skladom\",\"show_in_form\":true},\"description\":{\"type\":\"text\",\"show_in_table\":false,\"name_in_table\":\"Popis\",\"show_in_form\":true},\"type\":{\"type\":\"radio\",\"default_value\":1,\"radio\":{\"1\":\"Na mieru\",\"2\":\"Príslušenstvo\"},\"show_in_table\":false,\"name_in_table\":\"Typ\",\"show_in_form\":true}}'),
 (7, 'invoices', '{\"number\":{\"type\":\"number\",\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Číslo\"},\"price\":{\"type\":\"number\",\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Cena\",\"unit\":\"€\"},\"id_order\":{\"type\":\"lookup\",\"lookup_table\":\"orders\",\"lookup_table_col\":\"id\",\"lookup_columns\":{\"1\":\"serial_number\"},\"lookup_url\":\"objednavky\",\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Objednávka\"},\"state\":{\"type\":\"radio\",\"default_value\":1,\"radio\":{\"1\":\"Vystavená\",\"2\":\"Zaplatená\"},\"show_in_table\":false,\"show_in_form\":true,\"name_in_table\":\"Stav\"}}\n'),
 (8, 'carts_products', '{\"id\":{\"type\":\"number\",\"show_in_table\":false,\"show_in_form\":false},\"image\":{\"type\":\"image\",\"show_in_table\":true,\"show_in_form\":true},\"name\":{\"show_in_table\":true,\"name_in_table\":\"Produkt\",\"show_in_form\":true,\"required\":true},\"price\":{\"type\":\"number\",\"show_in_table\":true,\"name_in_table\":\"Cena\",\"show_in_form\":true,\"required\":true,\"unit\":\"€\"},\"available\":{\"type\":\"checkbox\",\"default_value\":true,\"show_in_table\":true,\"name_in_table\":\"Dostupný\",\"show_in_form\":true},\"count\":{\"type\":\"number\",\"show_in_table\":true,\"name_in_table\":\"Skladom\",\"show_in_form\":true},\"description\":{\"type\":\"text\",\"show_in_table\":false,\"name_in_table\":\"Popis\",\"show_in_form\":true},\"type\":{\"type\":\"number\",\"show_in_table\":false,\"name_in_table\":\"Typ\",\"show_in_form\":true}}'),
 (9, 'dia_navbar', '{\"id\":{\"type\":\"number\",\"show_in_table\":false,\"show_in_form\":true},\"id_parent\":{\"type\":\"number\",\"show_in_table\":true,\"show_in_form\":true},\"name\":{\"show_in_table\":true,\"show_in_form\":true,\"type\":\"text\"},\"link\":{\"show_in_table\":true,\"show_in_form\":true,\"type\":\"text\"},\"description\":{\"show_in_table\":true,\"show_in_form\":true,\"type\":\"text\"},\"icon\":{\"show_in_table\":true,\"show_in_form\":true,\"type\":\"text\"},\"order_index\":{\"type\":\"number\",\"show_in_table\":false,\"show_in_form\":true},\"is_enabled\":{\"type\":\"checkbox\",\"show_in_table\":false,\"show_in_form\":true,\"default_value\":true}}'),
 (10, 'menu', '{\"id\":{\"type\":\"number\",\"show_in_table\":false,\"show_in_form\":true},\"title\":{\"show_in_table\":true,\"show_in_form\":true,\"type\":\"text\"},\"link\":{\"show_in_table\":true,\"show_in_form\":true,\"type\":\"text\"}}'),
-(11, 'complaints', '');
+(11, 'complaints', ''),
+(12, 'dia_messages', '{\"recipient\":{\"type\":\"text\",\"show_in_table\":false,\"name_in_table\":\"Príjemca\"},\"sender\":{\"type\":\"text\",\"show_in_table\":true,\"name_in_table\":\"Odosielateľ\"},\"subject\":{\"type\":\"text\",\"show_in_table\":true,\"name_in_table\":\"Predmet\",\"limit_string\":10},\"body\":{\"type\":\"text\",\"show_in_table\":false,\"name_in_table\":\"Správa\"},\"timestamp\":{\"type\":\"text\",\"show_in_table\":true,\"name_in_table\":\"Dátum\"},\"viewed\":{\"type\":\"checkbox\",\"checkbox_false\":\"<i class=\'far fa-eye-slash color-grey\'></i>\",\"checkbox_true\":\"<i class=\'far fa-eye color-grey\'></i>\",\"show_in_table\":true},\"id_answer\":{\"type\":\"checkbox\",\"show_in_table\":true,\"name_in_table\":\"Odpoveď\"}}'),
+(13, 'dia_notifications', '{\"message\":{\"type\":\"text\",\"show_in_table\":true},\"timestamp\":{\"type\":\"text\",\"show_in_table\":true}}');
 
 -- --------------------------------------------------------
 
@@ -355,7 +386,9 @@ INSERT INTO `gallery` (`id`, `image`) VALUES
 (101, 'wallpaper.jpeg'),
 (102, 'basic-measuring-of-resistance-voltage-and-current-using'),
 (103, 'wallpaper.jpeg'),
-(104, 'wallpaper.jpeg');
+(104, 'wallpaper.jpeg'),
+(105, 'wallpaper.jpeg'),
+(106, '2009-12-30_030828_4.jpg');
 
 -- --------------------------------------------------------
 
@@ -567,7 +600,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `image`, `name`, `price`, `available`, `count`, `description`, `type`) VALUES
-(1, 'product_3.png', 'Product_1', 107.00, 1, 7, 'Popis', 1),
+(1, 'product_3.png', 'Product_1', 107.00, 0, 7, 'Popis', 1),
 (2, 'product_1.png', 'dsadsa', 858.00, 1, 0, 'Popis', 2),
 (3, 'product_1.png', 'Product_3', 102.00, 1, 14, 'Popis', 2),
 (4, 'product_3.png', 'Product_4', 375.00, 0, 8, 'Popis', 2),
@@ -855,7 +888,6 @@ INSERT INTO `products_gallery` (`id`, `id_product`, `id_gallery`) VALUES
 (30, 23, 88),
 (31, 26, 36),
 (32, 1, 23),
-(33, 24, 96),
 (34, 1, 94),
 (35, 38, 50),
 (36, 21, 44),
@@ -924,7 +956,9 @@ INSERT INTO `products_gallery` (`id`, `id_product`, `id_gallery`) VALUES
 (99, 44, 33),
 (100, 9, 100),
 (101, 9, 101),
-(102, 2, 102);
+(102, 2, 102),
+(105, 24, 105),
+(106, 1, 106);
 
 -- --------------------------------------------------------
 
@@ -1021,8 +1055,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `avatar`, `first_name`, `last_name`, `email`, `password`) VALUES
-(1, 'Facebook_icon_2013.png', 'Patrik', 'Holes', 'holes@email.sk', '$2y$10$ptxuBxy0o2283rhrkPq/7epbgE6lke4RRQWY3BEHX5bdWtl6Mp9Hq'),
-(2, 'avatar.png', 'Admin', 'Admin', 'admin@dia.sk', '$2y$10$.tSU76T5uTw40vRifEB1z.bmFCJkQuoNEUOch8O0zSHqUYeIsB3WO');
+(1, 'admin.jpg', 'Admin', 'Admin', 'admin@dia.sk', '$2y$10$.tSU76T5uTw40vRifEB1z.bmFCJkQuoNEUOch8O0zSHqUYeIsB3WO');
 
 -- --------------------------------------------------------
 
@@ -1089,23 +1122,21 @@ ALTER TABLE `customers_uids`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexy pre tabuľku `dia_alerts`
+-- Indexy pre tabuľku `dia_messages`
 --
-ALTER TABLE `dia_alerts`
+ALTER TABLE `dia_messages`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexy pre tabuľku `dia_alerts_users`
---
-ALTER TABLE `dia_alerts_users`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_user` (`id_user`),
-  ADD KEY `id_alert` (`id_alert`) USING BTREE;
 
 --
 -- Indexy pre tabuľku `dia_navbar`
 --
 ALTER TABLE `dia_navbar`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexy pre tabuľku `dia_notifications`
+--
+ALTER TABLE `dia_notifications`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1227,16 +1258,10 @@ ALTER TABLE `customers_uids`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT pre tabuľku `dia_alerts`
+-- AUTO_INCREMENT pre tabuľku `dia_messages`
 --
-ALTER TABLE `dia_alerts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT pre tabuľku `dia_alerts_users`
---
-ALTER TABLE `dia_alerts_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `dia_messages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT pre tabuľku `dia_navbar`
@@ -1245,16 +1270,22 @@ ALTER TABLE `dia_navbar`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=218;
 
 --
+-- AUTO_INCREMENT pre tabuľku `dia_notifications`
+--
+ALTER TABLE `dia_notifications`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT pre tabuľku `dia_tables`
 --
 ALTER TABLE `dia_tables`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT pre tabuľku `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 
 --
 -- AUTO_INCREMENT pre tabuľku `invoices`
@@ -1302,7 +1333,7 @@ ALTER TABLE `products_discounts`
 -- AUTO_INCREMENT pre tabuľku `products_gallery`
 --
 ALTER TABLE `products_gallery`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 
 --
 -- AUTO_INCREMENT pre tabuľku `tests`
