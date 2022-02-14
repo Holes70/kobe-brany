@@ -47,6 +47,7 @@
       const emitter = mitt();
       const dia = new Dia();
       const diaTables = new DiaTables();
+      const f = new Functions();
 
       //console.log(emitter);
       // GET vue data z aktualnej stranky

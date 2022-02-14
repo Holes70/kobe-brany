@@ -22,7 +22,7 @@
               </template>
             </template>
             <template v-else>
-              {{ item }}
+              {{ limitString(item, colName) }}
             </template>
           </div>
         </template>
@@ -91,6 +91,10 @@ export default {
     })
   },
   methods: {
+    limitString(item, colName) {
+      var limit = this.getStructureValue(colName, 'limit_string');
+      return f.limitString(item, limit);
+    },
     getStructureValue(colName, structureParam, defaultReturnParam, addItallic = false) {
       return diaTables.getStructureValue(
         colName, 

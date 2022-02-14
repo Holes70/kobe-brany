@@ -203,6 +203,7 @@ namespace Core {
           <script src='../../node_modules/vue3-sfc-loader/dist/vue3-sfc-loader.js'></script>
           <script src='../../node_modules/mitt/dist/mitt.umd.js'></script>
           <script src='../../Core/Assets/js/CustomFunctions.js'></script>
+          <script src='../../Core/Assets/js/Functions.js'></script>
           <script src='../../Core/Assets/js/dia.js'></script>
           <script src='../../Core/Assets/js/diaTables.js'></script>
           <script src='../../Core/Assets/js/fontawesome.js'></script>
