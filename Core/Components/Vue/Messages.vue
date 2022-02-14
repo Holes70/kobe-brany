@@ -45,16 +45,16 @@
         </div>
       </div>
       <div class="card-body">
-        <template v-if="editData.id_answer != 0">
+        <template v-if="Object.keys(answerData).length > 0">
           <div class="row">
             <div class="col-4 text-left">
               <b>Vy</b> ste odpovedal:
             </div>
             <div class="col-8 text-right color-grey">
-              {{ editData.timestamp }}
+              {{ answerData.timestamp }}
             </div>
           </div>
-          <p class="card-text text-left">{{ editData.body }}</p>
+          <p class="card-text text-left">{{ answerData.body }}</p>
           <hr/>
         </template>
         <div class="row">
@@ -70,7 +70,7 @@
           <textarea v-model="answer" class="form-control" rows="3"></textarea>
           <button @click="sendAnswerFunc(editData)" class="btn btn-primary mt-3">Poslať odpovedať</button>
         </template>
-        <button v-else @click="sendAnswer = true" class="btn btn-primary">Odpovedať</button>
+        <button v-if="!sendAnswer && Object.keys(answerData).length == 0" @click="sendAnswer = true" class="btn btn-primary">Odpovedať</button>
       </div>
     </div>
   </div>
@@ -86,7 +86,8 @@ export default {
     return Object.assign(diaMessages, {
       editData: [],
       sendAnswer: false,
-      answer: ""
+      answer: "",
+      answerData: {}
     })
   },
   methods: {
@@ -101,6 +102,16 @@ export default {
     },
     openMessage(itemData) {
       this.editData = itemData;
+      this.answerData = {};
+
+      axios.post('index.php?action=dia_get_message_answer', {
+        tableName: this.tableName,
+        data: itemData
+      }).then((res) => {
+        if (res.data.status != "fail") {
+          this.answerData = res.data['data'];
+        }
+      })
     },
     deleteItem(rowId) {
       window.event.cancelBubble = true;
@@ -122,7 +133,7 @@ export default {
         rowId: data.id,
         data: data
       }).then((res) => {
-        console.log(res);
+        this.openMessage(editData);
       })
     }
   },
