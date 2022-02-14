@@ -68,7 +68,7 @@
         <p class="card-text text-left">{{ editData.body }}</p>
         <template v-if="sendAnswer">
           <textarea v-model="answer" class="form-control" rows="3"></textarea>
-          <button class="btn btn-primary mt-3">Poslať odpovedať</button>
+          <button @click="sendAnswerFunc(editData)" class="btn btn-primary mt-3">Poslať odpovedať</button>
         </template>
         <button v-else @click="sendAnswer = true" class="btn btn-primary">Odpovedať</button>
       </div>
@@ -113,13 +113,14 @@ export default {
         }
       );
     },
-    sendAnswer(itemId, answer) {
+    sendAnswerFunc(editData) {
+      var data = editData;
+      data['answer'] = this.answer;
+
       axios.post('index.php?action=dia_post_message_answer', {
-        params: {
-          tableName: this.tableName,
-          rowId: itemId,
-          answer: answer
-        }
+        tableName: this.tableName,
+        rowId: data.id,
+        data: data
       }).then((res) => {
         console.log(res);
       })
