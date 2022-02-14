@@ -103,7 +103,7 @@ export default {
     closeDetail() {
       this.editData = [];
       this.sendAnswer = false;
-      diaMessages.loadData(this, "dia_get_messages");
+      diaMessages.loadData(this, this.params['customActions']['loadData']);
     },
     openMessage(itemData) {
       this.editData = itemData;
@@ -125,7 +125,7 @@ export default {
         this.tableName,
         rowId,
         () => {
-          diaMessages.loadData(this, "dia_get_messages");
+          diaMessages.loadData(this, this.params['customActions']['loadData']);
         }
       );
     },
@@ -155,7 +155,7 @@ export default {
   },
   beforeMount() {
     diaMessages.setComponentParams(this);
-    diaMessages.setComponentData(this, "dia_get_messages");
+    diaMessages.setComponentData(this, this.params['customActions']['loadData']);
     diaMessages.loadTableStructure(this);
   }
 }
