@@ -14,11 +14,11 @@
         <template v-for='(item, colName) in itemData' :key='colName'>
           <div v-if="getStructureValue(colName, 'show_in_table')" class="col text-left">
             <template v-if="getStructureValue(colName, 'type') == 'checkbox'">
-              <template v-if="item == '1'" >
-                <i class="far fa-eye color-grey"></i>
+              <template v-if="item == '0'" >
+                <div v-html="getStructureValue(colName, 'checkbox_false', '<i style=\'color:red\' class=\'fas fa-times\'></i>')"></div>
               </template>
               <template v-else>
-                <i class="far fa-eye-slash color-grey"></i>
+                <div v-html="getStructureValue(colName, 'checkbox_true', '<i class=\'fas fa-check\'></i>')"></div>
               </template>
             </template>
             <template v-else>
