@@ -6,12 +6,14 @@
           button: 'primary',
           title: 'Oznámenia',
           icon: 'far fa-bell',
-          modalComponentToRender: 'dia-notifications',
+          modalComponentToRender: 'dia-messages',
           modalComponentToRenderParams: {
-            tableName: 'dia-notifications',
+            tableName: 'dia_notifications',
             data: [],
             conditions: [],
-            customAction: 'x'
+            customActions: {
+              loadData: 'dia_get_notifications'
+            }
           }
         }"></dia-button>
       </div>
