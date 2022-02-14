@@ -8,17 +8,6 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="row pl-4 pr-4">
-					<div class="col">
-					</div>
-					<div class="col">
-					</div>
-					<div class="col">
-					</div>
-					<div class="col">
-						<button class="btn mb-2 mt-2 mb-md-0 btn-primary btn-block">Poslať novú správu</button>
-					</div>
-				</div>
 				<div class="model-img modal-body text-center">
 					<component :is="modalComponentToRender" :params="modalComponentToRenderParams"></component>
 				</div>
