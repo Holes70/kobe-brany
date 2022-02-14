@@ -10,7 +10,7 @@
       </div>
     </div>
     <div v-for="itemData in data" :key="itemData" class="card message-card p-1 m-1">
-      <div @click="openMessage(itemData)" class="row">
+      <div @click="openMessage(itemData)" :class="isAnsweredClass(itemData)">
         <template v-for='(item, colName) in itemData' :key='colName'>
           <div v-if="getStructureValue(colName, 'show_in_table')" class="col text-left">
             <template v-if="getStructureValue(colName, 'type') == 'checkbox'">
@@ -36,7 +36,7 @@
     <div class="card">
       <div class="card-header row p-1" style="margin:0px">
         <div class="col-1">
-          <button @click="editData = [];sendAnswer = false" class='btn btn-primary'>
+          <button @click="closeDetail()" class='btn btn-primary'>
             <i class="fas fa-arrow-left color-secondary" aria-hidden="true"></i>
           </button>
         </div>
@@ -100,6 +100,11 @@ export default {
         addItallic
       );
     },
+    closeDetail() {
+      this.editData = [];
+      this.sendAnswer = false;
+      diaMessages.loadData(this, "dia_get_messages");
+    },
     openMessage(itemData) {
       this.editData = itemData;
       this.answerData = {};
@@ -137,6 +142,12 @@ export default {
         editData['id_answer'] = res.data;
         this.openMessage(editData);
       })
+    },
+     isAnsweredClass(itemData) {
+      return {
+        'row': true,
+        'color-red': itemData.viewed == 0
+      }
     }
   },
   beforeCreate() {
