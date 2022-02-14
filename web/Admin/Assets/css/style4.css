@@ -732,6 +732,6 @@ var {
   background: #f8f9fa;
 }
 .dia-secret {
-  color: rgba(0, 0, 0, 0.1) !important;
-  font-size: 10px;
+  color: #c2c2c2 !important;
+  font-size: 18px;
 }
