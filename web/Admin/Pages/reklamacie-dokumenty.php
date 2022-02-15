@@ -1,9 +1,11 @@
 <?php
 
+$idComplaint = \Core\Controllers\WebController::getParam("id");
+
 $dropzone = new Component\Dropzone("complaints_documents");
 $dropzone->conditions([
 	"where" => [
-		'id_complaint' => 1
+		'id_complaint' => $idComplaint
 	]
 ]);
 
