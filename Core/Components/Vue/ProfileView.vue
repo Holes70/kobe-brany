@@ -59,7 +59,7 @@
                   <dia-button :params="{
                     button: 'primary',
                     title: 'Upraviť',
-                    icon: 'far fa-bell',
+                    icon: 'far fa-pencil',
                     modalComponentToRender: 'dia-form',
                     modalComponentToRenderParams: {
                       tableName: 'users',
@@ -72,7 +72,7 @@
             </div>
           </div>
 
-          <div class='row gutters-sm'>
+          <!--<div class='row gutters-sm'>
             <div class='col-sm-6 mb-3'>
               <div class='card h-100'>
                 <div class='card-body'>
@@ -127,7 +127,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div>-->
         </div>
       </div>
     </div>

@@ -5,5 +5,7 @@ $idUser = 2; // TODO
 $profileView = new Component\ProfileView("users");
 
 $dia->template("
-  {$profileView->show()}
+  <div class='mt-5'>
+    {$profileView->show()}
+  </div>
 ")->render();
