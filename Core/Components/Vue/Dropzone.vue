@@ -114,7 +114,7 @@
 
               thisDropzone.options.addedfile.call(thisDropzone, file);
               if (name.includes('.jpg') || name.includes('.png') || name.includes('.jpeg') || name.includes('.gif')) {
-                thisDropzone.options.thumbnail.call(thisDropzone, file, 'Files/dropzone/' + value.filename);
+                thisDropzone.options.thumbnail.call(thisDropzone, file, 'Files/' + _this.tableName + '/' + value.filename);
               }
               thisDropzone.options.complete.call(thisDropzone, file);
               thisDropzone.options.processing.call(thisDropzone, file);
