@@ -48,6 +48,7 @@
               var thisDropzone = this.dropzone;
 
               setTimeout(() => {
+                console.log(this.fileDir);
                 $.each(res.data, function(key, value){
                   _this.uploadedFiles.push(value.id);
 
@@ -105,7 +106,7 @@
               conditions: _this.conditions
             }
           }).then((res) => {
-            $.each(res.data, function(key, value){
+            $.each(res.data['data'], function(key, value){
               _this.uploadedFiles.push(value.id);
 
               var file = { name: value.filename, size: value.size };
