@@ -111,7 +111,14 @@ export default {
     },
     edit(itemData) {
       if (typeof this.params['customActions']['editUrl'] != "undefined") {
-        window.location.href = itemData[this.params['customActions']['editUrl']];
+        axios.post('index.php?action=' + this.params['customActions']['afterEdit'], {
+          tableName: this.tableName,
+          data: itemData
+        }).then((res) => {
+          if (res.data.status != "fail") {
+            window.location.href = itemData[this.params['customActions']['editUrl']];
+          }
+        })
       } else {
         this.editData = itemData;
         this.answerData = {};
