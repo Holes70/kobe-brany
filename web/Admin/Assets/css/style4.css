@@ -274,7 +274,7 @@ span {
 
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
-
+  
 }
 
 a[data-toggle="collapse"] {
