@@ -146,12 +146,18 @@
           $('.page-content').show();
           $('#loader').hide();
         }, 700)
+
+        if (sessionStorage.getItem("navbarCollapsed") == "true") {
+          $('#sidebar span').toggle();
+          $('#sidebarCollapse i').removeClass("fa-arrow-left").addClass("fa-arrow-right");
+          $('#sidebar').addClass("active");
+        }
       });
 
       $('#sidebarCollapse').click(() => {
         $('#sidebar span').toggle();
 
-        if ($('#sidebar').hasClass("active")) {
+        if (sessionStorage.getItem("navbarCollapsed") == "true") {
           sessionStorage.removeItem("navbarCollapsed");
           sessionStorage.setItem("navbarCollapsed", false);
           console.log(sessionStorage.getItem("navbarCollapsed"));
