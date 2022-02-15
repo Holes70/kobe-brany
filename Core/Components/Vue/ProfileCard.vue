@@ -12,7 +12,8 @@
             data: [],
             conditions: [],
             customActions: {
-              loadData: 'dia_get_notifications'
+              loadData: 'dia_get_notifications',
+              editUrl: 'url'
             }
           }
         }"></dia-button>

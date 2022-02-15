@@ -10,7 +10,7 @@
       </div>
     </div>
     <div v-for="itemData in data" :key="itemData" class="card message-card p-1 m-1">
-      <div @click="openMessage(itemData)" :class="isAnsweredClass(itemData)">
+      <div @click="edit(itemData)" :class="isAnsweredClass(itemData)">
         <template v-for='(item, colName) in itemData' :key='colName'>
           <div v-if="getStructureValue(colName, 'show_in_table')" class="col text-left">
             <template v-if="getStructureValue(colName, 'type') == 'checkbox'">
@@ -109,19 +109,23 @@ export default {
       this.sendAnswer = false;
       diaMessages.loadData(this, this.params['customActions']['loadData']);
     },
-    openMessage(itemData) {
-      this.editData = itemData;
-      this.answerData = {};
+    edit(itemData) {
+      if (typeof this.params['customActions']['editUrl'] != "undefined") {
+        window.location.href = itemData[this.params['customActions']['editUrl']];
+      } else {
+        this.editData = itemData;
+        this.answerData = {};
 
-      if (this.params['customActions']['editData']) {
-        axios.post('index.php?action=' + this.params['customActions']['editData'], {
-          tableName: this.tableName,
-          data: itemData
-        }).then((res) => {
-          if (res.data.status != "fail") {
-            this.answerData = res.data['data'];
-          }
-        })
+        if (this.params['customActions']['editData']) {
+          axios.post('index.php?action=' + this.params['customActions']['editData'], {
+            tableName: this.tableName,
+            data: itemData
+          }).then((res) => {
+            if (res.data.status != "fail") {
+              this.answerData = res.data['data'];
+            }
+          })
+        }
       }
     },
     deleteItem(rowId) {
@@ -146,7 +150,7 @@ export default {
       }).then((res) => {
         this.sendAnswer = false;
         editData['id_answer'] = res.data;
-        this.openMessage(editData);
+        this.edit(editData);
       })
     },
      isAnsweredClass(itemData) {
