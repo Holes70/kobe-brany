@@ -755,3 +755,6 @@ var {
   background-color: #ff9c99 !important;
   color: #a8140f;
 }
+.radio-box-warning {
+  background-color: #fcde67 !important;
+}

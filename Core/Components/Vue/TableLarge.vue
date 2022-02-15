@@ -199,7 +199,7 @@
                         <textarea 
                           class="form-control" 
                           v-model="itemData[colName]"
-                          rows="4"
+                          rows="6"
                         />
                       </template>
                       <template v-else-if="getStructureValue(colName, 'type', '') != 'image'">
