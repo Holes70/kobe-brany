@@ -7,6 +7,9 @@ $reklamacie = new TableLarge("complaints");
 $reklamacie->buttons([
   ["name" => "Dokumenty reklamácie", "link" => "reklamacie-dokumenty", "class" => "btn btn-secondary"],
 ]);
+$reklamacie->conditions([
+  "order_by" => "type, id DESC"
+]);
 
 $pridat = new Row("complaints");
 $pridat->title("Reklamácie");
