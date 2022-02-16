@@ -57,6 +57,13 @@
                     class="pl-2 pt-1"
                   />
                 </template>
+                <template v-else-if="getStructureValue(colName, 'type') == 'text'">
+                  <textarea 
+                    class="form-control" 
+                    v-model="formValues[colName]"
+                    rows="6"
+                  />
+                </template>
                 <template v-else>
                   <input 
                     :placeholder="getStructureValue(colName, 'name_in_table', colName)"
