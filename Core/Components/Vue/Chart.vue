@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  props: ['params', 'id', 'width', 'height'],
+  props: ['params'],
   data() {
     return {
       //params
