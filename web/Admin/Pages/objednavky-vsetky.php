@@ -11,7 +11,8 @@ $orders = $db->dbSelect(
         "id"
       ]
     ],
-    "group_by" => "products.name"
+    "group_by" => "products.name",
+    "order_by" => "products.id DESC"
   ]
 );
 
