@@ -1,6 +1,6 @@
 <template>
   <canvas 
-    :id="id" 
+    :id="params['id']" 
     width="auto" 
     height="auto">
   </canvas>
@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  props: ['params', 'id', 'width', 'height'],
+  props: ['params'],
   data() {
     return {
       //params
@@ -35,7 +35,7 @@ export default {
     this.initParams();
 
     //var ctx = document.getElementById(this.id).getContext('2d');
-    var ctx = $('#' + this.id);
+    var ctx = $('#' + this.params['id']);
 
     new Chart(ctx, {
       type: this.type,

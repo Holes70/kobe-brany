@@ -71,11 +71,10 @@ namespace Component {
 
     public function show() {
       return "
-        <chart 
-          id=\"{$this->uid}\"
-          height={$this->height}
-          width={$this->width}
-          :params='{
+        <chart :params='{
+            id: \"{$this->uid}\",
+            height: {$this->height},
+            width: {$this->width},
             type: \"{$this->type}\",
             labels: ".json_encode($this->labels).",
             data: ".json_encode($this->data).",
