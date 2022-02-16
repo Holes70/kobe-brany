@@ -200,6 +200,7 @@
                           class="form-control" 
                           v-model="itemData[colName]"
                           rows="6"
+                          :readonly="getStructureValue(colName, 'readonly') "
                         />
                       </template>
                       <template v-else-if="getStructureValue(colName, 'type', '') != 'image'">
@@ -210,6 +211,7 @@
                           :id="colName" 
                           v-model="itemData[colName]"
                           step="0.01"
+                          :readonly="getStructureValue(colName, 'readonly') "
                         />
                         <div v-if="getStructureValue(colName, 'unit')" class="input-group-append">
                           <span class="input-group-text">{{ getStructureValue(colName, 'unit') }}</span>
