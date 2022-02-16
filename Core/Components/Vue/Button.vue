@@ -10,8 +10,7 @@
       type="button" 
       data-toggle="modal" 
       :data-target="'#' + componentUid" 
-      :class="'btn mb-2 mb-md-0 btn-block mr-5 btn-' + button" 
-      style="width:200px"
+      :class="'btn mb-2 mb-md-0 btn-block mr-5 btn-' + button"
     >
       <span>{{ title }}</span> 
       <div class="icon d-flex align-items-center justify-content-center">

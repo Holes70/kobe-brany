@@ -60,6 +60,9 @@
 .btn-danger {
   background-color: #ff988f !important;
 }
+.btn-danger i {
+  color: #8f271e !important;
+}
 .btn-warning {
   background-color: #fcde67 !important;
 }
@@ -74,7 +77,7 @@
   background-color: #e0f6ff!important;
 }
 .requiredColor {
-  color: #8f271e!important;
+  color: #8f271e !important;
 }
 
 .hover-primary {
