@@ -282,12 +282,16 @@ namespace Core {
       if (array_key_exists("where", $conditions)) {
         $i = 0;
         foreach ($conditions['where'] as $column => $value) {
-          $value = is_string($value) ? "'$value'" : $value;
+          $value = 
+            is_string($value) ? "'".$this->con->real_escape_string(addslashes($value))."'" 
+            : $value
+          ;
+
           if ($i == 0) {
-            $query = $query . " WHERE {$column} = {$value}";
+            $query .= " WHERE ".$this->con->real_escape_string(addslashes($column))." = {$value}";
             $i++;
           } else {
-            $query = $query . " AND {$column} = {$value}";
+            $query .= " AND ".$this->con->real_escape_string(addslashes($column))." = {$value}";
           }
         }
       }
@@ -303,9 +307,15 @@ namespace Core {
           if (is_array($whereCondition[2])) {
             foreach ($whereCondition[2] as $val) {
               if ($val != end($whereCondition[2])) {
-                $fullValues .= is_string($val) ? "'$val'" : $val .",";
+                $fullValues .= is_string($val) ? 
+                  "'".$this->con->real_escape_string(addslashes($val))."'" 
+                  : $val .","
+                ;
               } else {
-                $fullValues .= is_string($val) ? "'$val'" : $val;
+                $fullValues .= is_string($val) ? 
+                  "'".$this->con->real_escape_string(addslashes($val))."'" 
+                  : $val
+                ;
               }
             }
             $value = $fullValues;
@@ -376,32 +386,6 @@ namespace Core {
         throw new \Exception($this->con->error);
       }
     }
-
-    /*public function dbUpdate(string $tableName = '', int $tableId = 0, $data = []) {
-      $update = "";
-
-      if ($tableId < 1) {
-        throw new \Exception("TableId is incorrect or empty");
-      }
-
-      foreach ($data as $key => $value) {
-        if (is_numeric($value)) {
-          $value = (int) $value;
-          $update .= "$key=$value, ";
-        } else {
-          $update .= "$key='$value', ";
-        }
-      }
-  
-      $update = substr($update, 0, -2);
-    
-      $query = "UPDATE {$tableName} SET {$update} WHERE id = $id";
-
-      if (!$this->con->query($query)) { 
-        echo $this->con->error;
-        $this->error_function($this->con->errorr);
-      }
-    }*/
 
     public function dbUpdateRow(string $tableName, int $rowId, string $column, $data) {
       if (!$tableName) throw new \Exception("TableName is empty or incorrect");
