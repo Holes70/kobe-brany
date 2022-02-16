@@ -146,7 +146,29 @@
           $('.page-content').show();
           $('#loader').hide();
         }, 700)
+
+        if (sessionStorage.getItem("navbarCollapsed") == "true") {
+          $('#sidebar span').toggle();
+          $('#sidebarCollapse i').removeClass("fa-arrow-left").addClass("fa-arrow-right");
+          $('#sidebar').addClass("active");
+        }
       });
+
+      $('#sidebarCollapse').click(() => {
+        $('#sidebar span').toggle();
+
+        if (sessionStorage.getItem("navbarCollapsed") == "true") {
+          sessionStorage.removeItem("navbarCollapsed");
+          sessionStorage.setItem("navbarCollapsed", false);
+          console.log(sessionStorage.getItem("navbarCollapsed"));
+          $('#sidebarCollapse i').removeClass("fa-arrow-right").addClass("fa-arrow-left");
+        } else {
+          sessionStorage.removeItem("navbarCollapsed");
+          sessionStorage.setItem("navbarCollapsed", true);
+          console.log(sessionStorage.getItem("navbarCollapsed"));
+          $('#sidebarCollapse i').removeClass("fa-arrow-left").addClass("fa-arrow-right");
+        }
+      })
 
       function getFile() {
         $('#file').click();

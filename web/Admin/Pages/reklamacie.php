@@ -4,6 +4,9 @@ use Component\TableLarge;
 use Component\Row;
 
 $reklamacie = new TableLarge("complaints");
+$reklamacie->buttons([
+  ["name" => "Dokumenty reklamácie", "link" => "reklamacie-dokumenty", "class" => "btn btn-secondary"],
+]);
 
 $pridat = new Row("complaints");
 $pridat->title("Reklamácie");

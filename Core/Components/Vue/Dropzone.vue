@@ -48,6 +48,7 @@
               var thisDropzone = this.dropzone;
 
               setTimeout(() => {
+                console.log(this.fileDir);
                 $.each(res.data, function(key, value){
                   _this.uploadedFiles.push(value.id);
 
@@ -105,7 +106,7 @@
               conditions: _this.conditions
             }
           }).then((res) => {
-            $.each(res.data, function(key, value){
+            $.each(res.data['data'], function(key, value){
               _this.uploadedFiles.push(value.id);
 
               var file = { name: value.filename, size: value.size };
@@ -113,7 +114,7 @@
 
               thisDropzone.options.addedfile.call(thisDropzone, file);
               if (name.includes('.jpg') || name.includes('.png') || name.includes('.jpeg') || name.includes('.gif')) {
-                thisDropzone.options.thumbnail.call(thisDropzone, file, 'Files/dropzone/' + value.filename);
+                thisDropzone.options.thumbnail.call(thisDropzone, file, 'Files/' + _this.tableName + '/' + value.filename);
               }
               thisDropzone.options.complete.call(thisDropzone, file);
               thisDropzone.options.processing.call(thisDropzone, file);

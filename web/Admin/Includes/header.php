@@ -59,7 +59,7 @@
         <li class='active'>
           <a href='#menu_{$menuItem['link']}' data-toggle='collapse' aria-expanded='false' class='dropdown-toggle'>
             <i class='fas fa-{$menuItem['icon']}'></i>
-            {$menuItem['name']}
+            <span>{$menuItem['name']}</span>
           </a>
           <ul class='collapse list-unstyled' id='menu_{$menuItem['link']}'>
             {$childrensHTML}
@@ -74,7 +74,7 @@
             ".($menuItem['is_enabled'] == 0 ? 'class=\'disabled-nav\'' : '')."
           >
             <i class='fas fa-{$menuItem['icon']}'></i>
-            {$menuItem['name']}
+            <span>{$menuItem['name']}</span>
           </a>
         </li>
       ";
