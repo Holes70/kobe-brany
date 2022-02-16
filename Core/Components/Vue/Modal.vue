@@ -23,13 +23,15 @@ var diaModal = Object();
 import Timer from './Timer.vue';
 import Form from './Form2.vue';
 import Messages from './Messages.vue';
+import Chart from './Chart.vue';
 
 export default {
   props: ['params'],
 	components: {
 		'dia-timer': Timer,
 		'dia-form': Form,
-		'dia-messages': Messages
+		'dia-messages': Messages,
+		'chart': Chart
 	},
   data() {
     return Object.assign(diaModal, {
@@ -41,9 +43,9 @@ export default {
   beforeMount() {
     diaModal.setComponentParams(this);
 
-		this.modalComponentToRender = this.params['modalComponentToRender'];
-		this.modalComponentToRenderParams = this.params['modalComponentToRenderParams'];
-		this.componentUid = this.params['componentUid'];
+	this.modalComponentToRender = this.params['modalComponentToRender'];
+	this.modalComponentToRenderParams = this.params['modalComponentToRenderParams'];
+	this.componentUid = this.params['componentUid'];
   }
 }
 

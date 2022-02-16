@@ -39,6 +39,14 @@ foreach ($produktyQuery as $produkt) {
   }
 }
 
+$produktyLabels = [];
+$produktyCount = [];
+
+foreach ($produktyQuery as $value) {
+  array_push($produktyLabels, $value['name']);
+  array_push($produktyCount, $value['count']);
+}
+
 $dia->template("
   {$pridat->show()}
   <div class='row'>
@@ -76,6 +84,19 @@ $dia->template("
               editUrl: \"url\",
               afterEdit: \"dia_update_notifications_viewed\"
             }
+          }
+        }'></dia-button>
+      </div>
+      <div class='mt-2'>
+        <dia-button :params='{
+          button: \"danger\",
+          title: \"Zobraziť graf\",
+          icon: \"fas fa-file-csv\",
+          modalComponentToRender: \"chart\",
+          modalComponentToRenderParams: {
+            labels: ".json_encode($produktyLabels).",
+            data: ".json_encode($produktyCount).",
+            id: \"produkty-graf\"
           }
         }'></dia-button>
       </div>
