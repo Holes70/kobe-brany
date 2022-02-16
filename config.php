@@ -38,7 +38,8 @@
   $config['urls'] = [
     "customers" => "zakaznici",
     "products" => "produkty",
-    "users" => "uzivatelia"
+    "users" => "uzivatelia",
+    "complaints" => "reklamacie"
   ];
 
 ?>
