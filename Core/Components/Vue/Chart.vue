@@ -25,7 +25,7 @@ export default {
       this.labels = this.params['labels'];
       this.data = this.params['data'];
       this.label = this.params['label'];
-      //this.id = this._uid;
+
       this.borderWidth = this.params['borderWidth'];
       this.backgroundColor = this.params['backgroundColor'];
       this.borderColor = this.params['borderColor'];

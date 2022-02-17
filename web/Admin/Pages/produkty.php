@@ -94,6 +94,7 @@ $dia->template("
           icon: \"fas fa-file-csv\",
           modalComponentToRender: \"chart\",
           modalComponentToRenderParams: {
+            type: \"bar\",
             labels: ".json_encode($produktyLabels).",
             data: ".json_encode($produktyCount).",
             id: \"produkty-graf\"
