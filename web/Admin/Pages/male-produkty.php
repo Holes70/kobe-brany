@@ -67,8 +67,8 @@ $dia->template("
       <div class='mt-5'>
         <dia-export-csv :params='{
           tableName: \"products\",
-          data: [],
-          conditions: [],
+          data: {},
+          conditions: {\"where\":{\"type\":1}},
           button: \"success\",
           title: \"Exportovať do CSV\",
           icon: \"fas fa-file-csv\",
