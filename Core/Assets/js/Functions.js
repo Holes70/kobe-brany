@@ -54,4 +54,16 @@ class Functions {
       this.setComponentParam(componentObject, param);
     })
   }
+
+  axiosGet(action = "", params = {}, success) {
+    if(action == "") throw new Error("Unknown axiosGet action");
+
+    axios.get('index.php?action=' + action, {
+      params
+    }).then((res) => {
+      if (typeof success == "function") {
+        success(res);
+      }
+    })
+  }
 }
