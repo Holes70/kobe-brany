@@ -12,6 +12,7 @@ export default {
   data() {
     return {
       backgroundColor: [],
+      borderColor: [],
       type: '',
       label: '',
       labels: [],
@@ -24,12 +25,18 @@ export default {
       var r = Math.floor(Math.random() * 255);
       var g = Math.floor(Math.random() * 255);
       var b = Math.floor(Math.random() * 255);
-      return "rgba(" + r + "," + g + "," + b + ", 0.5)";
+
+      return {
+        background: "rgba(" + r + "," + g + "," + b + ", 0.5)",
+        border:  "rgba(" + r + "," + g + "," + b + ", 1)",
+      }
     }
   },
   beforeMount() {
     this.params['data'].forEach(() => {
-      this.backgroundColor.push(this.dynamicColor());
+      var colors = this.dynamicColor();
+      this.backgroundColor.push(colors.background);
+      this.borderColor.push(colors.border);
     })
   },
   mounted() {
