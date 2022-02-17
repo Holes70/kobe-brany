@@ -8,4 +8,5 @@ $dataToCsv = $db->dbSelect(
 );
 
 \Core\Bice::download("data_export_" . date("Y-m-d") . ".csv");
-\Core\Bice::csv($dataToCsv);
+echo \Core\Bice::csv($dataToCsv);
+die();
