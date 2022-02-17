@@ -238,8 +238,6 @@ class Dia extends CustomFunctions {
         }
       })
     }
-
-    console.log(_this.params['buttons']);
   }
 
 }

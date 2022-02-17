@@ -23,7 +23,10 @@ export default {
   },
   methods: {
     exportToCsv() {
-      f.axiosGet("dia_export_to_csv", {data: this.data});
+      f.axiosGet("dia_export_to_csv", {
+        tableName: this.tableName,
+        conditions: this.conditions
+      });
     }
   },
   beforeCreate() {
