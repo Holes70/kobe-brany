@@ -108,6 +108,7 @@
           'dia-row': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/Row.vue', options)),
           'dia-messages': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/Messages.vue', options)),
           'dia-button': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/Button.vue', options)),
+          'dia-export-csv': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/ExportCSV.vue', options)),
           <?php
             foreach (\Core\Dia::$loadedWebComponents as $com) {
               echo "'$com': Vue.defineAsyncComponent( () => loadModule('./../Components/Admin/$com.vue', options)),";

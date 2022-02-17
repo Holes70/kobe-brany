@@ -39,9 +39,7 @@ export default {
     diaButton = new Dia();
   },
   beforeMount() {
-    this.title = this.params['title'];
-    this.button = this.params['button'];
-    this.icon = this.params['icon'];
+    f.setComponentParams(this);
 
     diaButton.setComponentParams(this);
   }

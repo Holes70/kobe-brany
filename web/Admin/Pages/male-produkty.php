@@ -65,22 +65,11 @@ $dia->template("
         </div>
       </div>
       <div class='mt-5'>
-        <dia-button :params='{
-          button: \"danger\",
+        <dia-export-csv :params='{
+          button: \"success\",
           title: \"Exportovať do CSV\",
           icon: \"fas fa-file-csv\",
-          modalComponentToRender: \"dia-messages\",
-          modalComponentToRenderParams: {
-            tableName: \"dia_notifications\",
-            data: [],
-            conditions: [],
-            customActions: {
-              loadData: \"dia_get_notifications\",
-              editUrl: \"url\",
-              afterEdit: \"dia_update_notifications_viewed\"
-            }
-          }
-        }'></dia-button>
+        }'></dia-export-csv>
       </div>
       <div class='mt-2'>
         <dia-button :params='{
