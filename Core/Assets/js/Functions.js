@@ -66,4 +66,20 @@ class Functions {
       }
     })
   }
+
+  windowOpen(action, params = {}) {
+    if(action == "") throw new Error("Unknown windowOpen action");
+
+    var paramsQuery = "";
+
+    if (Object.keys(params).length > 0) {
+      Object.keys(params).forEach((param) => {
+        paramsQuery += "&" + param + "=" + params[param];
+      })
+
+      action += paramsQuery;
+    }
+
+    window.open("index.php?action=" + action);
+  }
 }
