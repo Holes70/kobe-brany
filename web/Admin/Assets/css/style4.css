@@ -57,6 +57,9 @@
 .btn-success {
   background-color: #71d18c !important;
 }
+.btn-success i {
+  color: #71d18c !important;
+}
 .btn-danger {
   background-color: #ff988f !important;
 }
