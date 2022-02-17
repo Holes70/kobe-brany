@@ -11,7 +11,7 @@ export default {
   props: ['params'],
   data() {
     return {
-      //params
+      backgroundColor: [],
       type: '',
       label: '',
       labels: [],
@@ -20,21 +20,21 @@ export default {
     }
   },
   methods: {
-    initParams() {
-      this.type = this.params['type'];
-      this.labels = this.params['labels'];
-      this.data = this.params['data'];
-      this.label = this.params['label'];
-
-      this.borderWidth = this.params['borderWidth'];
-      this.backgroundColor = this.params['backgroundColor'];
-      this.borderColor = this.params['borderColor'];
+    dynamicColor() {
+      var r = Math.floor(Math.random() * 255);
+      var g = Math.floor(Math.random() * 255);
+      var b = Math.floor(Math.random() * 255);
+      return "rgba(" + r + "," + g + "," + b + ", 0.5)";
     }
   },
+  beforeMount() {
+    this.params['data'].forEach(() => {
+      this.backgroundColor.push(this.dynamicColor());
+    })
+  },
   mounted() {
-    this.initParams();
+    f.setComponentParams(this);
 
-    //var ctx = document.getElementById(this.id).getContext('2d');
     var ctx = $('#' + this.params['id']);
 
     new Chart(ctx, {

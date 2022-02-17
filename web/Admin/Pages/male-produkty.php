@@ -12,9 +12,91 @@ $produkty->conditions([
   ]
 ]);
 
+$produktyQuery = $db->dbSelect(
+  tableName: "products",
+  conditions: [
+    "where" => [
+      "type" => 2
+    ]
+  ]
+);
+
+$pocetProduktov = count($produktyQuery);
+
+$pocetProduktovNedostupnych = 0;
+
+foreach ($produktyQuery as $produkt) {
+  if (!$produkt['available']) {
+    $pocetProduktovNedostupnych++;
+  }
+}
+
+$produktyLabels = [];
+$produktyCount = [];
+
+foreach ($produktyQuery as $value) {
+  array_push($produktyLabels, $value['name']);
+  array_push($produktyCount, $value['count']);
+}
+
 $pridat = new Row("products");
+$pridat->title("Príslušenstvo");
 
 $dia->template("
   {$pridat->show()}
-  ".$dia->card($produkty->show())."
+  <div class='row'>
+    <div class='col-9'>
+      ".$dia->card($produkty->show())."
+    </div>
+    <div class='col-3'>
+      <div class='card'>
+        <div class='card-body bg-primary text-center'>
+          <h5 class='color-white'>Prehľad produktov</h5>
+        </div>
+      </div>
+      <div class='card mt-2'>
+        <div class='card-body'>
+          <i class='fas fa-archive'></i> Spolu produktov: <span class='badge badge-primary bg-secondary badge-pill'>{$pocetProduktov}</span>
+        </div>
+      </div>
+      <div class='card mt-2'>
+        <div class='card-body'>
+          <i class='fas fa-archive'></i> Počet nedostupných: <span class='badge badge-primary bg-danger badge-pill'>{$pocetProduktovNedostupnych}</span>
+        </div>
+      </div>
+      <div class='mt-5'>
+        <dia-button :params='{
+          button: \"danger\",
+          title: \"Exportovať do CSV\",
+          icon: \"fas fa-file-csv\",
+          modalComponentToRender: \"dia-messages\",
+          modalComponentToRenderParams: {
+            tableName: \"dia_notifications\",
+            data: [],
+            conditions: [],
+            customActions: {
+              loadData: \"dia_get_notifications\",
+              editUrl: \"url\",
+              afterEdit: \"dia_update_notifications_viewed\"
+            }
+          }
+        }'></dia-button>
+      </div>
+      <div class='mt-2'>
+        <dia-button :params='{
+          button: \"danger\",
+          title: \"Zobraziť graf\",
+          icon: \"fas fa-file-csv\",
+          modalComponentToRender: \"chart\",
+          modalComponentToRenderParams: {
+            type: \"bar\",
+            labels: ".json_encode($produktyLabels).",
+            data: ".json_encode($produktyCount).",
+            id: \"produkty-graf\",
+            label: \"Počet príslušenstva skladom\"
+          }
+        }'></dia-button>
+      </div>
+    </div>
+  </div>
 ")->render();
