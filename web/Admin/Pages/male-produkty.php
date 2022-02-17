@@ -51,17 +51,17 @@ $dia->template("
     <div class='col-3'>
       <div class='card'>
         <div class='card-body bg-primary text-center'>
-          <h5 class='color-white'>Prehľad produktov</h5>
+          <h5 class='color-white'>Prehľad príslušenstva</h5>
         </div>
       </div>
       <div class='card mt-2'>
         <div class='card-body'>
-          <i class='fas fa-archive'></i> Spolu produktov: <span class='badge badge-primary bg-secondary badge-pill'>{$pocetProduktov}</span>
+          <i class='fas fa-th-large'></i> Spolu príslušenstva: <span class='badge badge-primary bg-secondary badge-pill'>{$pocetProduktov}</span>
         </div>
       </div>
       <div class='card mt-2'>
         <div class='card-body'>
-          <i class='fas fa-archive'></i> Počet nedostupných: <span class='badge badge-primary bg-danger badge-pill'>{$pocetProduktovNedostupnych}</span>
+          <i class='fas fa-th-large'></i> Počet nedostupných: <span class='badge badge-primary bg-danger badge-pill'>{$pocetProduktovNedostupnych}</span>
         </div>
       </div>
       <div class='mt-5'>
@@ -84,15 +84,30 @@ $dia->template("
       </div>
       <div class='mt-2'>
         <dia-button :params='{
-          button: \"danger\",
-          title: \"Zobraziť graf\",
-          icon: \"fas fa-file-csv\",
+          button: \"limet\",
+          title: \"Počet skladom\",
+          icon: \"fas fa-chart-bar\",
           modalComponentToRender: \"chart\",
           modalComponentToRenderParams: {
             type: \"bar\",
             labels: ".json_encode($produktyLabels).",
             data: ".json_encode($produktyCount).",
             id: \"produkty-graf\",
+            label: \"Počet príslušenstva skladom\"
+          }
+        }'></dia-button>
+      </div>
+      <div class='mt-2'>
+        <dia-button :params='{
+          button: \"purple\",
+          title: \"Predaj\",
+          icon: \"fas fa-money-bill-wave\",
+          modalComponentToRender: \"chart\",
+          modalComponentToRenderParams: {
+            type: \"line\",
+            labels: ".json_encode($produktyLabels).",
+            data: ".json_encode($produktyCount).",
+            id: \"produkty-predaj\",
             label: \"Počet príslušenstva skladom\"
           }
         }'></dia-button>

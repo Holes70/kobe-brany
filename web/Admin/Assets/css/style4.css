@@ -72,6 +72,20 @@
 .btn-secondary {
   background-color: #5bccf6 !important;
 }
+.btn-limet {
+  background-color: rgba(84, 57, 23, 0.3) !important;
+  border: 1px solid rgba(84, 57, 23, 1);
+}
+.btn-limet i {
+  color: rgba(84, 57, 23, 0.3) !important;
+}
+.btn-purple {
+  background-color: rgba(25, 23, 84, 0.3) !important;
+  border: 1px solid rgba(25, 23, 84, 1);
+}
+.btn-purple i {
+  color: rgba(25, 23, 84, 0.3) !important;
+}
 
 .required {
   background-color: #e0f6ff!important;
