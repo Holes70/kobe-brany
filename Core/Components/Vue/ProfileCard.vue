@@ -1,7 +1,7 @@
 <template>
   <div class='d-flex justify-content-end' style="width:100%">
     <template v-if='Object.keys(data).length > 0'>
-      <div class="">
+      <div style="width:200px;">
         <dia-button :params="{
           button: 'primary',
           title: 'Oznámenia',
@@ -19,7 +19,7 @@
           }
         }"></dia-button>
       </div>
-      <div class="">
+      <div class="ml-5" style="width:200px;">
         <dia-button :params="{
           button: 'secondary',
           title: 'Správy',

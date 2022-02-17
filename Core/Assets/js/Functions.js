@@ -53,8 +53,19 @@ class Functions {
     Object.keys(componentObject['params']).forEach((param) => {
       this.setComponentParam(componentObject, param);
     })
+    
+    // If fileDir is unset set as table name
+    if (componentObject['fileDir'] == "") {
+      componentObject['fileDir'] = componentObject.params['tableName'];
+    }
   }
 
+  /**
+   * Axios get request
+   * @param {string} action 
+   * @param {object} params 
+   * @param {function} success 
+   */
   axiosGet(action = "", params = {}, success) {
     if(action == "") throw new Error("Unknown axiosGet action");
 
@@ -67,7 +78,12 @@ class Functions {
     })
   }
 
-  windowOpen(action, params = {}) {
+  /**
+   * window.open action
+   * @param {string} action 
+   * @param {object} params 
+   */
+  windowOpen(action = "", params = {}) {
     if(action == "") throw new Error("Unknown windowOpen action");
 
     var paramsQuery = "";

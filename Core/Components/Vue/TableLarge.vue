@@ -454,7 +454,7 @@
       diaTableLarge = new Dia();
     },
     beforeMount() {
-      diaTableLarge.setComponentParams(this);
+      f.setComponentParams(this);
       diaTableLarge.setComponentData(this, "dia_select_with_pagination", this.dataToSet);
       diaTableLarge.loadTableStructure(this);
 
