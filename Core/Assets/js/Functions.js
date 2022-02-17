@@ -28,4 +28,30 @@ class Functions {
     }
   }
 
+  /**
+   * Set component param(data)
+   * @param {Object} componentObject 
+   * @param {string} param 
+   */
+  setComponentParam(componentObject, param) {
+    if (
+      typeof componentObject.params[param] != "undefined" 
+      && componentObject.params[param] != "" 
+    ) {
+      componentObject[param] = componentObject.params[param];
+    } else {
+      componentObject[param] = "";
+    }
+    
+  }
+
+  /**
+   * Set all this.params data into vue variables
+   * @param {Object} componentObject 
+   */
+  setComponentParams(componentObject) {
+    Object.keys(componentObject['params']).forEach((param) => {
+      this.setComponentParam(componentObject, param);
+    })
+  }
 }
