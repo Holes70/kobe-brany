@@ -1,5 +1,6 @@
 <template>
   <button 
+    @click="exportToCsv()"
     type="button" 
     :class="'btn mb-2 mb-md-0 btn-block mr-5 btn-' + button"
   >
@@ -20,6 +21,11 @@ export default {
     return Object.assign(diaExportCsv, {
     })
   },
+  methods: {
+    exportToCsv() {
+      f.axiosGet("dia_export_to_csv", {data: this.data});
+    }
+  },
   beforeCreate() {
     diaExportCsv = new Dia();
   },
@@ -27,6 +33,7 @@ export default {
     f.setComponentParams(this);
 
     diaExportCsv.setComponentParams(this);
+    diaExportCsv.setComponentData(this);
   }
 }
 
