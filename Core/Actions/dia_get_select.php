@@ -1,5 +1,4 @@
 <?php
-
   global $db;
 
   try {
