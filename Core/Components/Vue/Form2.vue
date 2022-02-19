@@ -134,7 +134,7 @@ export default {
       f.axiosGet("dia_get_select", {
         tableName: lookupTable
       }, (res) => {
-        console.log(res);
+        this.formValues[colName] = {"id": 1, "id": 2};
       });
     }
   },
