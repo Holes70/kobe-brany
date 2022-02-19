@@ -67,10 +67,10 @@
                 <template v-else-if="getStructureValue(colName, 'type') == 'lookup'">
                   <select :id="colName" v-model="formValues[colName]">
                     <option 
-                      v-for="col in getFormLookups(colName)" 
+                      v-for="col in formLookupsValues[colName]" 
                       :key="col" 
                       :value="col.id"
-                    >{{ col.id }}</option>
+                    >{{ col }}</option>
                   </select>
                 </template>
                 <template v-else>
@@ -128,15 +128,6 @@ export default {
     validateInput(item) {
       return diaTables.validateInput(this, item);
     },
-    getFormLookups(colName) {
-      var lookupTable = this.getStructureValue(colName, 'lookup_table');
-      
-      f.axiosGet("dia_get_select", {
-        tableName: lookupTable
-      }, (res) => {
-        this.formValues[colName] = {"id": 1, "id": 2};
-      });
-    }
   },
   beforeCreate() {
     diaForm = new Dia();

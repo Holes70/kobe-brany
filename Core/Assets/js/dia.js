@@ -24,6 +24,7 @@ class Dia extends CustomFunctions {
 
     // Array for new form of table
     this.formValues = [];
+    this.formLookupsValues = [];
     this.emptyRequiredInputs = [];
   }
 
@@ -187,6 +188,13 @@ class Dia extends CustomFunctions {
               } else {
                 _this.formValues[item] = false;
               }
+            } else if(_this.tableStructure[item]['type'] == "lookup") {
+              _this.formValues[item] = "";
+              f.axiosGet("dia_get_select", {
+                tableName: _this.tableStructure[item]['lookup_table']
+              }, (res) => {
+                _this.formLookupsValues[item] = res.data['data'];
+              })
             } else {
               _this.formValues[item] = "";
             }
