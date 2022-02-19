@@ -70,7 +70,7 @@
                       v-for="col in formLookupsValues[colName]" 
                       :key="col" 
                       :value="col.id"
-                    >{{ col }}</option>
+                    >{{ getLookupColumns(colName, col) }}</option>
                   </select>
                 </template>
                 <template v-else>
@@ -128,6 +128,16 @@ export default {
     validateInput(item) {
       return diaTables.validateInput(this, item);
     },
+    getLookupColumns(colName, col) {
+      var lookupColumns = this.getStructureValue(colName, 'lookup_columns');
+      var returnValue = "";
+
+      Object.keys(lookupColumns).forEach((key) => {
+        returnValue += col[lookupColumns[key]] + " ";
+      })
+
+      return returnValue;
+    }
   },
   beforeCreate() {
     diaForm = new Dia();
