@@ -39,7 +39,8 @@
     "customers" => "zakaznici",
     "products" => "produkty",
     "users" => "uzivatelia",
-    "complaints" => "reklamacie"
+    "complaints" => "reklamacie",
+    "carts" => "kosiky"
   ];
 
 ?>
