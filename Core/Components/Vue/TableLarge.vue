@@ -55,7 +55,7 @@
                       </a>
                     </template>
                     <template v-else>
-                      {{ getStructureValue(colName, 'lookup_table_empty', 'Record doesnt exists') }}
+                      <div v-html="getStructureValue(colName, 'lookup_empty_table', '')"/>
                     </template>
                   </template>
                   <template v-else-if="getStructureValue(colName, 'type', 'text') != 'image'">
