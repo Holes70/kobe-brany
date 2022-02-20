@@ -98,4 +98,5 @@ class Functions {
 
     window.open("index.php?action=" + action);
   }
+
 }

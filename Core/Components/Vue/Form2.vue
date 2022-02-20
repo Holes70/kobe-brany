@@ -67,7 +67,7 @@
                 </template>
                 <template v-else-if="getStructureValue(colName, 'type') == 'lookup'">
                   <select 
-                    class="form-select form-select-sm" 
+                    class="form-select form-select-sm custom-select" 
                     :name="colName"
                     :id="'form_' + this.tableName + colName"
                     v-model="formValues[colName]"
@@ -77,7 +77,7 @@
                       v-for="col in formLookupsValues[colName]"
                       :key="col.id" 
                       :value="col.id"
-                    >{{ getLookupColumns(colName, col) }}</option>
+                    >{{ getLookupValues(colName, col) }}</option>
                   </select>
                 </template>
                 <template v-else>
@@ -135,15 +135,8 @@ export default {
     validateInput(item) {
       return diaTables.validateInput(this, item);
     },
-    getLookupColumns(colName, col) {
-      var lookupColumns = this.getStructureValue(colName, 'lookup_columns');
-      var returnValue = "";
-
-      Object.keys(lookupColumns).forEach((key) => {
-        returnValue += col[lookupColumns[key]] + " ";
-      })
-
-      return returnValue;
+    getLookupValues(colName, col) {
+      return diaForm.getLookupValues(colName, col);
     }
   },
   beforeCreate() {

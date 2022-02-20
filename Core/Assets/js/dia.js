@@ -248,4 +248,15 @@ class Dia extends CustomFunctions {
     }
   }
 
+  getLookupValues(colName, col) {
+    var lookupColumns = this.tableStructure[colName]['lookup_columns'];
+    var returnValue = "";
+
+    Object.keys(lookupColumns).forEach((key) => {
+      returnValue += col[lookupColumns[key]] + " ";
+    })
+
+    return returnValue;
+  }
+
 }
