@@ -1,8 +1,9 @@
 <?php
 
-  global $db, $webController, $dia;
+  global $db, $dia;
 
   $data = \Core\Controllers\WebController::getPostParams();
+
   $tableName = array_pop($data);
 
   if (array_key_exists("password", $data)) {

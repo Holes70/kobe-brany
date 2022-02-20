@@ -58,17 +58,24 @@
                   />
                 </template>
                 <template v-else-if="getStructureValue(colName, 'type') == 'text'">
-                  <textarea 
+                  <textarea
+                    :name="colName"
                     class="form-control" 
                     v-model="formValues[colName]"
                     rows="6"
                   />
                 </template>
                 <template v-else-if="getStructureValue(colName, 'type') == 'lookup'">
-                  <select :id="colName" v-model="formValues[colName]">
+                  <select 
+                    class="form-select form-select-sm" 
+                    :name="colName"
+                    :id="'form_' + this.tableName + colName"
+                    v-model="formValues[colName]"
+                  >
+                    <option disabled value="">Vyberte</option>
                     <option 
-                      v-for="col in formLookupsValues[colName]" 
-                      :key="col" 
+                      v-for="col in formLookupsValues[colName]"
+                      :key="col.id" 
                       :value="col.id"
                     >{{ getLookupColumns(colName, col) }}</option>
                   </select>
