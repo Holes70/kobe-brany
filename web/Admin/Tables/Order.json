@@ -1,0 +1,93 @@
+{
+  "serial_number":  {
+		"show_in_table":  true,
+		"show_in_form": true, 
+		"name_in_table": "Číslo"
+	},
+	"first_name":  {
+		"show_in_table": true,
+		"show_in_form": true,
+		"name_in_table": "Meno",
+		"required": true 
+	},
+	"last_name":  {
+		"show_in_table":  true,
+		"show_in_form": true,
+		"name_in_table": "Priezvisko",
+		"required": true
+	},
+	"phone":  {
+		"type": "number",
+		"step": 1,
+		"show_in_table": true,
+		"show_in_form": true,
+		"name_in_table": "Telefón",
+		"required": true
+	},
+	"email":  {
+		"type": "email",
+		"show_in_table": true,
+		"show_in_form": true,
+		"name_in_table": "E-mail", 
+		"required": true
+	},
+	"type":  {
+		"type": "radio",
+		"default_value": 1,
+		"radio":  {
+			"1": "Nová",
+			"2": "Schválená",
+			"3": "Zaplatená",
+			"4": "Odovzdaná"
+		},
+		"show_in_table": false,
+		"show_in_form": true,
+		"name_in_table": "Typ"
+	},
+	"id_customer":  {
+		"type":  "lookup",
+		"lookup_icon": "user",
+		"lookup_table": "customers",
+		"lookup_table_col": "id_customer",
+		"lookup_url": "zakaznici",
+		"show_in_table": true,
+		"show_in_form": true,
+		"name_in_table": "Zákazník",
+		"lookup_columns":  
+			{
+				"1": "first_name", 
+				"2": "last_name"
+			},
+		"lookup_empty_table": "<strong style='color:#dbdbdb'>Neregistrovaný</strong>",
+		"readonly_in_edit": true
+	},
+	"id_cart": {
+		"type": "lookup",
+		"lookup_url_type": "idcart",
+		"lookup_table": "carts",
+		"lookup_icon": "shopping-cart",
+		"lookup_table_col": "id_cart",
+		"lookup_url": "kosik",
+		"show_in_table": true,
+		"show_in_form": true,
+		"name_in_table": "Košík",
+		"lookup_empty_table": "<strong style='color:#dbdbdb'>Prázdny</strong>"
+	},
+	"id_invoice":  {
+		"type": "lookup",
+		"lookup_table": "invoices",
+		"lookup_icon": "file-alt",
+		"lookup_columns": {"1": "number", "2": "price"},
+		"lookup_table_col": "id_invoice",
+		"lookup_table_empty": "Nie je vystavená",
+		"lookup_url": "faktury",
+		"lookup_table_empty_action": "vystavit_fakturu?id_order=%id%",
+		"lookup_table_empty_text": "Vystaviť faktúru",
+		"lookup_empty_action": true,
+		"lookup_url_type": "id_form",
+		"show_in_table": true,"show_in_form": true,
+		"name_in_table": "Faktúra",
+		"lookup_empty_table":  "<strong style='color:#dbdbdb'>x</strong>",
+		"hide_in_new_form":  true
+	}
+}
