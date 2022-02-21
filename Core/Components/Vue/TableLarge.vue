@@ -187,12 +187,17 @@
                           </a>
                         </template>
                         <template v-else>
-                          <a
-                            :href="'index.php?action=' + getLookupAction(colName, itemData['id'])"
-                            class="btn btn-warning"
-                          >
-                            {{ getStructureValue(colName, 'lookup_table_empty_text', 'Akcia') }}
-                          </a>
+                          <template v-if="getStructureValue(colName, 'readonly_in_edit')">
+                            <div v-html="getStructureValue(colName, 'lookup_empty_table', '')"/>
+                          </template>
+                          <template v-else-if="getStructureValue(colName, 'lookup_empty_action')">
+                            <a
+                              :href="'index.php?action=' + getLookupAction(colName, itemData['id'])"
+                              class="btn btn-warning"
+                            >
+                              {{ getStructureValue(colName, 'lookup_table_empty_text', 'Akcia') }}
+                            </a>
+                          </template>
                         </template> 
                       </template>
                       <template v-else-if="getStructureValue(colName, 'type') == 'text'">
