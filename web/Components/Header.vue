@@ -17,8 +17,10 @@
                 :key="menuItem.id"
                 class="scroll-to-section"
               >
-                <!--<a :href="'#' + menuItem.link">{{ menuItem.title }}</a>-->
-                <router-link to="/holes/dia/web/">{{ menuItem.title }}</router-link>
+                <a :href="'#' + menuItem.link">{{ menuItem.title }}</a>
+                <!--<router-link :to="'/holes/dia/web/#' + menuItem.link">
+                  {{ menuItem.title }}
+                </router-link>-->
               </li>
               <li>
                 <div class="gradient-button-gold">

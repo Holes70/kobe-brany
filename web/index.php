@@ -124,7 +124,9 @@
         history: createWebHistory(),
         routes: [
           { path: diaWeb.rootUrl, component: Vue.defineAsyncComponent( () => loadModule('./Components/Website.vue', options)) },
+          { path: diaWeb.rootUrl + '/kontakt', component: Vue.defineAsyncComponent( () => loadModule('./Components/Website.vue', options)) },
           { path: diaWeb.rootUrl + '/produkty', component: Vue.defineAsyncComponent( () => loadModule('./Components/Produkty.vue', options)) },
+          { path: diaWeb.rootUrl + '/detail', component: Vue.defineAsyncComponent( () => loadModule('./Components/Detail.vue', options)) },
         ],
       })
 
