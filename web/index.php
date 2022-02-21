@@ -40,20 +40,18 @@
   
       <!-- Bootstrap core CSS -->
       <link href='vendor/bootstrap/css/bootstrap.min.css' rel='stylesheet'>
-  
-      <script src='../Core/public/js/popper.js'></script>
       <script src='../node_modules/vue/dist/vue.global.prod.js'></script>
       <script src='../node_modules/axios/dist/axios.min.js'></script>
       <script src='../node_modules/chart.js/dist/chart.min.js'></script>
       <script src='../node_modules/jquery/dist/jquery.min.js'></script>
-      <script src='../Core/public/js/bootstrap.js'></script>
+      <script src='../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'></script>
       <script src='../node_modules/vue3-sfc-loader/dist/vue3-sfc-loader.js'></script>
       <script src='../node_modules/mitt/dist/mitt.umd.js'></script>
-      <script src='../Core/public/js/CustomFunctions.js'></script>
-      <script src='../Core/public/js/dia.js'></script>
-      <script src='../Core/public/js/diaTables.js'></script>
-      <script src='../Core/public/js/fontawesome.js'></script>
-      <script src='../Core/public/js/fancybox.js'></script>
+      <script src='../Core/Assets/js/CustomFunctions.js'></script>
+      <script src='../Core/Assets/js/Functions.js'></script>
+      <script src='../Core/Assets/js/dia.js'></script>
+      <script src='../Core/Assets/js/diaTables.js'></script>
+      <script src='../Core/Assets/js/fontawesome.js'></script>
       <script src='https://unpkg.com/vue-router@4'></script>
       <script src='./assets/js/diaWeb.js'></script>
   
