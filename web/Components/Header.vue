@@ -61,7 +61,7 @@ export default {
         conditions: {}
       }
     }).then((res) => {
-      this.menuItems = res.data;
+      this.menuItems = res.data['data'];
     })
 
     console.log(this.$parent);

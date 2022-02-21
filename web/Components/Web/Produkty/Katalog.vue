@@ -31,8 +31,7 @@ export default {
         }
       }
     }).then((res) => {
-      this.katalogItems = res.data;
-      console.log(res.data);
+      this.katalogItems = res.data['data'];
     })
   }
 }
