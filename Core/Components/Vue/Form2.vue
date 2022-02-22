@@ -146,7 +146,7 @@ export default {
   },
   mounted() {
     diaForm.setComponentParams(this);
-    diaForm.loadTableStructure(this, true);
+    f.getTableStructure(this, true);
   }
 }
 </script>

@@ -173,7 +173,7 @@ export default {
   beforeMount() {
     diaMessages.setComponentParams(this);
     diaMessages.setComponentData(this, this.params['customActions']['loadData']);
-    diaMessages.loadTableStructure(this);
+    f.getTableStructure(this);
   }
 }
 

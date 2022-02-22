@@ -183,7 +183,8 @@
                             "
                              class="btn mb-2 mb-md-0 btn-round btn-outline"
                           >
-                            {{ getLookupColumns(itemData, colName) }} 
+                          {{ itemData }}
+                            {{ getLookupValues(colName, itemData) }} 
                           </a>
                         </template>
                         <template v-else>
@@ -375,33 +376,8 @@
           ;
         }
       },
-      getLookupColumns(itemData, colName) {
-       /* var lookupTable = this.getStructureValue(colName, 'lookup_table');
-        var lookupTableCol = this.getStructureValue(colName, 'lookup_table_col');
-        var lookupColumns = this.getStructureValue(colName, 'lookup_columns');
-
-        var obj = {};
-        obj[lookupTableCol] = itemData[colName];
-
-        axios.post('index.php?action=dia_select', {
-          params: {
-            tableName: lookupTable,
-            conditions: {
-              "where": obj
-            }
-          }
-        }).then((res) => {
-          if (res.data.status != "fail") {
-            var data = res.data['data'][0];
-
-            itemData[colName] = data[lookupColumns[1]];
-            itemData[colName] += " " + data[lookupColumns[2]];
-          } else {
-            console.log(res);
-          }
-        })*/
-        
-        return itemData[colName];
+      getLookupValues(colName, col) {
+        return diaTableLarge.getLookupValues(colName, col);
       },
       getLookupAction(colName, id) {
         var action = this.getStructureValue(colName, 'lookup_table_empty_action', 'action');

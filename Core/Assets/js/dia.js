@@ -147,66 +147,6 @@ class Dia extends CustomFunctions {
     })
   }
 
-  loadTableStructure(_this, initAddForm = false) {
-    axios.post('index.php?action=dia_select&reset=true&unset=structure&json=true&return-only-data=true', {
-      params: {
-        tableName: "dia_tables",
-        conditions: {
-          "where": {
-            "table_name": _this.tableName
-          }
-        }
-      }
-    }).then((res) => {
-      if (res.data.status != 'fail') {
-        _this.tableStructure = res.data;
-        
-        // Vytvara mena stlpcov podla dia_table
-        // show_in_table == true tak vypise
-        // name_in_table - nazov pre zobrazenie
-        // TODO: Data to neajko pekne von
-        var cols = {};
-        var formCols = {};
-        var colsAll = {};
-        _this.tableColumnsKeys = Object.keys(_this.tableStructure);
-        _this.tableColumnsKeys.forEach((item) => {
-          if (_this.tableStructure[item]['show_in_table']) {
-            cols[item] = _this.tableStructure[item]['name_in_table'];
-          }
-          if (_this.tableStructure[item]['show_in_form']) {
-            formCols[item] = _this.tableStructure[item]['name_in_table'];
-          }
-
-          if (item != "id") {
-            colsAll[item] = (typeof _this.tableStructure[item]['name_in_table'] != "undefined" ? _this.tableStructure[item]['name_in_table'] : item);
-          }
-
-          if (initAddForm == true) {
-            if (_this.tableStructure[item]['type'] == "checkbox") {
-              if (_this.tableStructure[item]['default_value'] == true) {
-                _this.formValues[item] = true;
-              } else {
-                _this.formValues[item] = false;
-              }
-            } else if(_this.tableStructure[item]['type'] == "lookup") {
-              _this.formValues[item] = "";
-              f.axiosGet("dia_get_select", {
-                tableName: _this.tableStructure[item]['lookup_table']
-              }, (res) => {
-                _this.formLookupsValues[item] = res.data['data'];
-              })
-            } else {
-              _this.formValues[item] = "";
-            }
-          }
-        });
-        _this.tableColumns = cols;
-        _this.formColumns = formCols;
-        _this.allTableColumns = colsAll;
-      }
-    })
-  }
-
   setComponentParams(_this) {
     _this.tableName = _this.params['tableName'];
     _this.conditions = _this.params['conditions'];
