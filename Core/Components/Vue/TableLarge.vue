@@ -216,7 +216,7 @@
                           :class="classObject(colName)" 
                           :id="colName" 
                           v-model="itemData[colName]"
-                          step="0.01"
+                          :step="getStructureValue(colName, 'step', 0.01)"
                           :readonly="getStructureValue(colName, 'readonly') "
                         />
                         <div v-if="getStructureValue(colName, 'unit')" class="input-group-append">
