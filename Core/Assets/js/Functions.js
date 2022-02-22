@@ -99,4 +99,13 @@ class Functions {
     window.open("index.php?action=" + action);
   }
 
+  getTableStructure(tableName) {
+    this.axiosGet("dia_get_structure", {
+      tableName: tableName
+    },
+    (res) => {
+      console.log(res);
+    })
+  }
+
 }
