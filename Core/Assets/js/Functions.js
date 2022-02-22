@@ -107,10 +107,6 @@ class Functions {
       if (res.data.status != 'fail') {
         _this.tableStructure = res.data;
         
-        // Vytvara mena stlpcov podla dia_table
-        // show_in_table == true tak vypise
-        // name_in_table - nazov pre zobrazenie
-        // TODO: Data to neajko pekne von
         var cols = {};
         var formCols = {};
         var colsAll = {};
