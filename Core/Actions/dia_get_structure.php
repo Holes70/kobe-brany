@@ -1,10 +1,16 @@
 <?php
 
 $tableName = \Core\Controllers\WebController::getParam("tableName");
-
-$stringJson = file_get_contents(
-	\Core\Controllers\WebController::getConfig()['dir']['web']
+$filePath = \Core\Controllers\WebController::getConfig()['dir']['web']
 	. "/Tables/".ucfirst($tableName).".json"
-);
+;
 
-echo $stringJson;
+if (is_file($filePath)) {
+	$stringJson = file_get_contents($filePath);
+	echo $stringJson;
+	exit();
+} else {
+	echo json_encode([
+		"status" => "fail"
+	]);
+}
