@@ -1,0 +1,1 @@
+{"id":{"show_in_table":true,"name_in_table":"ID"},"id_customer_uid":{"show_in_table":false,"show_in_form":false,"hide_in_new_form":true},"is_order":{"type":"checkbox","default_value":true,"show_in_table":true,"show_in_form":true,"name_in_table":"Objednané"}}

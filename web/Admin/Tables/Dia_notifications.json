@@ -1,0 +1,1 @@
+{"message":{"type":"text","show_in_table":true,"name_in_table":"Popis"},"timestamp":{"type":"text","show_in_table":true},"viewed":{"type":"checkbox","checkbox_false":"<i class='far fa-eye-slash color-grey'></i>","checkbox_true":"<i class='far fa-eye color-grey'></i>","show_in_table":true}}
