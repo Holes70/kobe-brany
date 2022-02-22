@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 15, 2022 at 08:27 PM
+-- Generation Time: Feb 22, 2022 at 08:33 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.15
 
@@ -29,9 +29,16 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `carts` (
   `id` int(11) NOT NULL,
-  `id_customer_uid` int(11) NOT NULL,
+  `id_customer_uid` int(11) DEFAULT NULL,
   `is_order` int(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `carts`
+--
+
+INSERT INTO `carts` (`id`, `id_customer_uid`, `is_order`) VALUES
+(1, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -63,16 +70,20 @@ CREATE TABLE `complaints` (
   `id` int(11) NOT NULL,
   `id_order` int(11) NOT NULL,
   `type` int(11) NOT NULL,
-  `description` text NOT NULL
+  `description` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `complaints`
 --
 
-INSERT INTO `complaints` (`id`, `id_order`, `type`, `description`) VALUES
-(1, 1, 2, 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.'),
-(2, 2, 3, 'jjj');
+INSERT INTO `complaints` (`id`, `id_order`, `type`, `description`, `created_at`) VALUES
+(1, 1, 2, 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.', '2022-02-16 08:43:50'),
+(2, 2, 1, 'jjj', '2022-02-16 08:43:50'),
+(3, 21312321, 1, '', '2022-02-11 11:00:00'),
+(7, 96, 2, '', '2022-02-03 20:03:00'),
+(8, 95, 1, 'ffacxzda', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -137,7 +148,7 @@ INSERT INTO `customers` (`id`, `first_name`, `last_name`, `email`, `phone_number
 (27, 'Meno_27', 'Priezvisko_27', 'zakaznik_27@gmail.com', 88398601, 2, '123455'),
 (28, 'Meno_28', 'Priezvisko_28', 'zakaznik_28@gmail.com', 68542758, 1, '123455'),
 (29, 'Meno_29', 'Priezvisko_29', 'zakaznik_29@gmail.com', 67587990, 1, '123455'),
-(30, 'Meno_30', 'Priezvisko_30', 'zakaznik_30@gmail.com', 80214353, 1, '123455');
+(30, 'Meno_30', 'Priezvisko_30', 'zakaznik_30@gmail.com', 80214353, 3, '123455');
 
 -- --------------------------------------------------------
 
@@ -217,7 +228,7 @@ CREATE TABLE `dia_navbar` (
 --
 
 INSERT INTO `dia_navbar` (`id`, `id_parent`, `name`, `link`, `description`, `icon`, `order_index`, `is_enabled`) VALUES
-(2, 0, 'Objednávky', 'objednavky', 'Objednávky', 'donate', 4, 1),
+(2, 0, 'Objednávky', 'objednavky', 'Objednávky', 'donate', 5, 1),
 (3, 2, 'Všetky', 'objednavky-vsetky', 'Všetky objednávky', '', 41, 1),
 (4, 2, 'Nové', 'objednavky-nove', 'Nové objednávky', '', 42, 1),
 (5, 2, 'Schválené', 'objednavky-schvalene', 'Schválené', '', 43, 1),
@@ -235,7 +246,8 @@ INSERT INTO `dia_navbar` (`id`, `id_parent`, `name`, `link`, `description`, `ico
 (214, 2, 'Odovzdané', 'objednavky-odovzdane', NULL, NULL, 45, 1),
 (215, 8, 'Vystavené', 'faktury-vystavene', '', '', 51, 1),
 (216, 8, 'Zaplatené', 'faktury-zaplatene', '', '', 52, 1),
-(217, 0, 'Príslušenstvo', 'male-produkty', '', 'th-large', 2, 1);
+(217, 0, 'Príslušenstvo', 'male-produkty', '', 'th-large', 2, 1),
+(218, 0, 'Košíky', 'kosiky', '', 'shopping-cart', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -281,15 +293,16 @@ INSERT INTO `dia_tables` (`id`, `table_name`, `structure`) VALUES
 (2, 'products', '{\"id\":{\"type\":\"number\",\"show_in_table\":false,\"show_in_form\":false},\"image\":{\"type\":\"image\",\"show_in_table\":true,\"show_in_form\":true,\"upload_action\":\"upload_product_image\",\"required\":true},\"name\":{\"show_in_table\":true,\"name_in_table\":\"Produkt\",\"show_in_form\":true,\"required\":true},\"price\":{\"type\":\"number\",\"show_in_table\":true,\"name_in_table\":\"Cena\",\"show_in_form\":true,\"required\":true,\"unit\":\"€\"},\"available\":{\"type\":\"checkbox\",\"default_value\":true,\"show_in_table\":true,\"name_in_table\":\"Dostupný\",\"show_in_form\":true},\"count\":{\"type\":\"number\",\"show_in_table\":true,\"name_in_table\":\"Skladom\",\"show_in_form\":true},\"description\":{\"type\":\"text\",\"show_in_table\":false,\"name_in_table\":\"Popis\",\"show_in_form\":true},\"type\":{\"type\":\"radio\",\"default_value\":1,\"radio\":{\"1\":\"Na mieru\",\"2\":\"Príslušenstvo\"},\"show_in_table\":false,\"name_in_table\":\"Typ\",\"show_in_form\":true}}'),
 (3, 'accessories', '{\"id\":{\"type\":\"number\",\"show_in_table\":false,\"show_in_form\":false},\"image\":{\"type\":\"image\",\"show_in_table\":true,\"show_in_form\":true},\"name\":{\"show_in_table\":true,\"name_in_table\":\"Produkt\",\"show_in_form\":true,\"required\":true},\"price\":{\"type\":\"number\",\"show_in_table\":true,\"name_in_table\":\"Cena\",\"show_in_form\":true,\"required\":true,\"unit\":\"€\"},\"available\":{\"type\":\"checkbox\",\"show_in_table\":true,\"name_in_table\":\"Dostupný\",\"show_in_form\":true},\"description\":{\"type\":\"text\",\"show_in_table\":false,\"name_in_table\":\"Popis\",\"show_in_form\":true},\"count\":{\"type\":\"number\",\"show_in_table\":true,\"name_in_table\":\"Počet\",\"show_in_form\":true}}'),
 (4, 'customers', '{\"first_name\":{\"disabled\":true,\"required\":true,\"show_in_table\":true,\"name_in_table\":\"Meno\",\"show_in_form\":true},\"last_name\":{\"required\":true,\"show_in_table\":true,\"name_in_table\":\"Priezvisko\",\"show_in_form\":true},\"email\":{\"required\":false,\"show_in_table\":true,\"name_in_table\":\"E-mail\",\"show_in_form\":true},\"phone_number\":{\"required\":true,\"show_in_table\":true,\"name_in_table\":\"Mobil\",\"show_in_form\":true},\"state\":{\"type\":\"radio\",\"name_in_table\":\" \",\"default_value\":\"1\",\"radio\":{\"1\":\"Nový\",\"2\":\"Overený\",\"3\":\"Dlžný\"},\"radio_colors\":{\"1\":\"success\",\"2\":\"primary\",\"3\":\"danger\"},\"show_in_table\":true,\"show_in_form\":true}}'),
-(5, 'orders', '{\"serial_number\":{\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Číslo\"},\"type\":{\"type\":\"radio\",\"default_value\":1,\"radio\":{\"1\":\"Nová\",\"2\":\"Schválená\",\"3\":\"Zaplatená\",\"4\":\"Odovzdaná\"},\"show_in_table\":false,\"show_in_form\":true,\"name_in_table\":\"Typ\"},\"id_customer\":{\"type\":\"lookup\",\"lookup_icon\":\"user\",\"lookup_table\":\"customers\",\"lookup_table_col\":\"id\",\"lookup_url\":\"zakaznici\",\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Zákazník\",\"lookup_columns\":{\"1\":\"first_name\", \"2\":\"last_name\"}},\"id_cart\":{\"type\":\"lookup\",\"lookup_url_type\":\"idcart\",\"lookup_table\":\"carts\",\"lookup_icon\":\"shopping-cart\",\"lookup_table_col\":\"id\",\"lookup_url\":\"kosik\",\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Košík\"},\"id_invoice\":{\"type\":\"lookup\",\"lookup_table\":\"invoices\",\"lookup_icon\":\"file-alt\",\"lookup_columns\":{\"1\":\"number\", \"2\":\"price\"},\"lookup_table_col\":\"id\",\"lookup_table_empty\":\"Nie je vystavená\",\"lookup_url\":\"faktury\",\"lookup_table_empty_action\":\"vystavit_fakturu?id_order=%id%\",\"lookup_table_empty_text\":\"Vystaviť faktúru\",\"lookup_url_type\":\"id_form\",\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Faktúra\"}}'),
+(5, 'orders', '{\"serial_number\":{\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Číslo\"},\"first_name\":{\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Meno\",\"required\":true},\"last_name\":{\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Priezvisko\",\"required\":true},\"phone\":{\"type\":\"number\",\"step\":1,\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Telefón\",\"required\":true},\"email\":{\"type\":\"email\",\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"E-mail\",\"required\":true},\"type\":{\"type\":\"radio\",\"default_value\":1,\"radio\":{\"1\":\"Nová\",\"2\":\"Schválená\",\"3\":\"Zaplatená\",\"4\":\"Odovzdaná\"},\"show_in_table\":false,\"show_in_form\":true,\"name_in_table\":\"Typ\"},\"id_customer\":{\"type\":\"lookup\",\"lookup_icon\":\"user\",\"lookup_table\":\"customers\",\"lookup_table_col\":\"id_customer\",\"lookup_url\":\"zakaznici\",\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Zákazník\",\"lookup_columns\":{\"1\":\"first_name\", \"2\":\"last_name\"},\"lookup_empty_table\":\"<strong style=\'color:#dbdbdb\'>Neregistrovaný</strong>\",\"readonly_in_edit\":true},\"id_cart\":{\"type\":\"lookup\",\"lookup_url_type\":\"idcart\",\"lookup_table\":\"carts\",\"lookup_icon\":\"shopping-cart\",\"lookup_table_col\":\"id_cart\",\"lookup_url\":\"kosik\",\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Košík\",\"lookup_empty_table\":\"<strong style=\'color:#dbdbdb\'>Prázdny</strong>\"},\"id_invoice\":{\"type\":\"lookup\",\"lookup_table\":\"invoices\",\"lookup_icon\":\"file-alt\",\"lookup_columns\":{\"1\":\"number\", \"2\":\"price\"},\"lookup_table_col\":\"id_invoice\",\"lookup_table_empty\":\"Nie je vystavená\",\"lookup_url\":\"faktury\",\"lookup_table_empty_action\":\"vystavit_fakturu?id_order=%id%\",\"lookup_table_empty_text\":\"Vystaviť faktúru\",\"lookup_empty_action\":true,\"lookup_url_type\":\"id_form\",\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Faktúra\",\"lookup_empty_table\":\"<strong style=\'color:#dbdbdb\'>x</strong>\",\"hide_in_new_form\":true}}'),
 (6, 'products_accessories', '{\"id\":{\"type\":\"number\",\"show_in_table\":false,\"show_in_form\":false},\"image\":{\"type\":\"image\",\"show_in_table\":true,\"show_in_form\":true},\"name\":{\"show_in_table\":true,\"name_in_table\":\"Produkt\",\"show_in_form\":true,\"required\":true},\"price\":{\"type\":\"number\",\"show_in_table\":true,\"name_in_table\":\"Cena\",\"show_in_form\":true,\"required\":true,\"unit\":\"€\"},\"available\":{\"type\":\"checkbox\",\"show_in_table\":true,\"name_in_table\":\"Dostupný\",\"show_in_form\":true},\"count\":{\"type\":\"number\",\"show_in_table\":true,\"name_in_table\":\"Skladom\",\"show_in_form\":true},\"description\":{\"type\":\"text\",\"show_in_table\":false,\"name_in_table\":\"Popis\",\"show_in_form\":true},\"type\":{\"type\":\"radio\",\"default_value\":1,\"radio\":{\"1\":\"Na mieru\",\"2\":\"Príslušenstvo\"},\"show_in_table\":false,\"name_in_table\":\"Typ\",\"show_in_form\":true}}'),
 (7, 'invoices', '{\"number\":{\"type\":\"number\",\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Číslo\"},\"price\":{\"type\":\"number\",\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Cena\",\"unit\":\"€\"},\"id_order\":{\"type\":\"lookup\",\"lookup_table\":\"orders\",\"lookup_table_col\":\"id\",\"lookup_columns\":{\"1\":\"serial_number\"},\"lookup_url\":\"objednavky\",\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Objednávka\"},\"state\":{\"type\":\"radio\",\"default_value\":1,\"radio\":{\"1\":\"Vystavená\",\"2\":\"Zaplatená\"},\"show_in_table\":false,\"show_in_form\":true,\"name_in_table\":\"Stav\"}}\n'),
 (8, 'carts_products', '{\"id\":{\"type\":\"number\",\"show_in_table\":false,\"show_in_form\":false},\"image\":{\"type\":\"image\",\"show_in_table\":true,\"show_in_form\":true},\"name\":{\"show_in_table\":true,\"name_in_table\":\"Produkt\",\"show_in_form\":true,\"required\":true},\"price\":{\"type\":\"number\",\"show_in_table\":true,\"name_in_table\":\"Cena\",\"show_in_form\":true,\"required\":true,\"unit\":\"€\"},\"available\":{\"type\":\"checkbox\",\"default_value\":true,\"show_in_table\":true,\"name_in_table\":\"Dostupný\",\"show_in_form\":true},\"count\":{\"type\":\"number\",\"show_in_table\":true,\"name_in_table\":\"Skladom\",\"show_in_form\":true},\"description\":{\"type\":\"text\",\"show_in_table\":false,\"name_in_table\":\"Popis\",\"show_in_form\":true},\"type\":{\"type\":\"number\",\"show_in_table\":false,\"name_in_table\":\"Typ\",\"show_in_form\":true}}'),
 (9, 'dia_navbar', '{\"id\":{\"type\":\"number\",\"show_in_table\":false,\"show_in_form\":true},\"id_parent\":{\"type\":\"number\",\"show_in_table\":true,\"show_in_form\":true},\"name\":{\"show_in_table\":true,\"show_in_form\":true,\"type\":\"text\"},\"link\":{\"show_in_table\":true,\"show_in_form\":true,\"type\":\"text\"},\"description\":{\"show_in_table\":true,\"show_in_form\":true,\"type\":\"text\"},\"icon\":{\"show_in_table\":true,\"show_in_form\":true,\"type\":\"text\"},\"order_index\":{\"type\":\"number\",\"show_in_table\":false,\"show_in_form\":true},\"is_enabled\":{\"type\":\"checkbox\",\"show_in_table\":false,\"show_in_form\":true,\"default_value\":true}}'),
 (10, 'menu', '{\"id\":{\"type\":\"number\",\"show_in_table\":false,\"show_in_form\":true},\"title\":{\"show_in_table\":true,\"show_in_form\":true,\"type\":\"text\"},\"link\":{\"show_in_table\":true,\"show_in_form\":true,\"type\":\"text\"}}'),
-(11, 'complaints', '{\"id_order\":{\"type\":\"lookup\",\"lookup_table\":\"orders\",\"lookup_table_col\":\"id\",\"lookup_columns\":{\"1\":\"serial_number\"},\"lookup_url\":\"objednavky\",\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Objednávka\"},\"type\":{\"type\":\"radio\",\"show_in_table\":true,\"default_value\":1,\"radio\":{\"1\":\"Nová\",\"2\":\"Schválená\",\"3\":\"Hotová\"},\"show_in_form\":true,\"radio_colors\":{\"1\":\"danger\",\"2\":\"warning\",\"3\":\"success\"}},\"description\":{\"type\":\"text\",\"show_in_table\":false,\"name_in_table\":\"Popis\",\"show_in_form\":true}}'),
+(11, 'complaints', '{\"id_order\":{\"type\":\"lookup\",\"lookup_table\":\"orders\",\"lookup_table_col\":\"id\",\"lookup_columns\":{\"1\":\"serial_number\",\"2\":\"first_name\",\"3\":\"last_name\"},\"lookup_url\":\"objednavky\",\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Objednávka\"},\"type\":{\"type\":\"radio\",\"show_in_table\":true,\"default_value\":1,\"radio\":{\"1\":\"Nová\",\"2\":\"Schválená\",\"3\":\"Hotová\"},\"show_in_form\":true,\"radio_colors\":{\"1\":\"danger\",\"2\":\"warning\",\"3\":\"success\"}},\"description\":{\"type\":\"text\",\"show_in_table\":false,\"name_in_table\":\"Popis\",\"show_in_form\":true},\"created_at\":{\"type\":\"datetime-local\",\"show_in_table\":true,\"name_in_table\":\"Vytvorená\",\"show_in_form\":true,\"readonly\":true}}'),
 (12, 'dia_messages', '{\"recipient\":{\"type\":\"text\",\"show_in_table\":false,\"name_in_table\":\"Príjemca\"},\"sender\":{\"type\":\"text\",\"show_in_table\":true,\"name_in_table\":\"Odosielateľ\"},\"subject\":{\"type\":\"text\",\"show_in_table\":true,\"name_in_table\":\"Predmet\",\"limit_string\":10},\"body\":{\"type\":\"text\",\"show_in_table\":false,\"name_in_table\":\"Správa\"},\"timestamp\":{\"type\":\"text\",\"show_in_table\":true,\"name_in_table\":\"Dátum\"},\"viewed\":{\"type\":\"checkbox\",\"checkbox_false\":\"<i class=\'far fa-eye-slash color-grey\'></i>\",\"checkbox_true\":\"<i class=\'far fa-eye color-grey\'></i>\",\"show_in_table\":true},\"id_answer\":{\"type\":\"checkbox\",\"show_in_table\":true,\"name_in_table\":\"Odpoveď\"}}'),
-(13, 'dia_notifications', '{\"message\":{\"type\":\"text\",\"show_in_table\":true,\"name_in_table\":\"Popis\"},\"timestamp\":{\"type\":\"text\",\"show_in_table\":true},\"viewed\":{\"type\":\"checkbox\",\"checkbox_false\":\"<i class=\'far fa-eye-slash color-grey\'></i>\",\"checkbox_true\":\"<i class=\'far fa-eye color-grey\'></i>\",\"show_in_table\":true}}');
+(13, 'dia_notifications', '{\"message\":{\"type\":\"text\",\"show_in_table\":true,\"name_in_table\":\"Popis\"},\"timestamp\":{\"type\":\"text\",\"show_in_table\":true},\"viewed\":{\"type\":\"checkbox\",\"checkbox_false\":\"<i class=\'far fa-eye-slash color-grey\'></i>\",\"checkbox_true\":\"<i class=\'far fa-eye color-grey\'></i>\",\"show_in_table\":true}}'),
+(14, 'carts', '{\"id\":{\"show_in_table\":true,\"name_in_table\":\"ID\"},\"id_customer_uid\":{\"show_in_table\":false,\"show_in_form\":false,\"hide_in_new_form\":true},\"is_order\":{\"type\":\"checkbox\",\"default_value\":true,\"show_in_table\":true,\"show_in_form\":true,\"name_in_table\":\"Objednané\"}}\n');
 
 -- --------------------------------------------------------
 
@@ -469,8 +482,12 @@ INSERT INTO `menu` (`id`, `title`, `link`, `order_index`) VALUES
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `serial_number` int(8) DEFAULT NULL,
+  `first_name` varchar(55) NOT NULL,
+  `last_name` varchar(55) NOT NULL,
+  `phone` int(10) NOT NULL,
+  `email` varchar(100) DEFAULT NULL,
   `type` int(1) NOT NULL,
-  `id_customer` int(11) NOT NULL,
+  `id_customer` int(11) DEFAULT NULL,
   `id_cart` int(11) NOT NULL,
   `id_invoice` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -479,106 +496,107 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `serial_number`, `type`, `id_customer`, `id_cart`, `id_invoice`) VALUES
-(1, 1001, 4, 5, 3, 1),
-(2, 1002, 1, 5, 2, 0),
-(3, 1003, 3, 5, 5, 2),
-(4, 1004, 1, 1, 3, 0),
-(5, 1005, 1, 5, 3, 3),
-(6, 1006, 1, 2, 5, 0),
-(7, 1007, 2, 4, 1, 0),
-(8, 1008, 3, 1, 1, 0),
-(9, 1009, 3, 5, 4, 0),
-(10, 1010, 2, 5, 5, 0),
-(11, 1011, 3, 5, 2, 0),
-(12, 1012, 2, 4, 5, 0),
-(13, 1013, 2, 1, 5, 0),
-(14, 1014, 3, 1, 3, 0),
-(15, 1015, 3, 4, 4, 0),
-(16, 1016, 2, 1, 2, 0),
-(17, 1017, 3, 2, 5, 0),
-(18, 1018, 2, 5, 1, 0),
-(19, 1019, 1, 1, 1, 0),
-(20, 1020, 3, 4, 1, 0),
-(21, 1021, 2, 4, 1, 0),
-(22, 1022, 1, 1, 5, 0),
-(23, 1023, 1, 5, 5, 0),
-(24, 1024, 1, 3, 1, 0),
-(25, 1025, 1, 4, 5, 0),
-(26, 1026, 2, 5, 1, 0),
-(27, 1027, 3, 2, 5, 0),
-(28, 1028, 2, 5, 4, 0),
-(29, 1029, 3, 3, 5, 0),
-(30, 1030, 1, 5, 1, 0),
-(31, 1031, 2, 1, 3, 0),
-(32, 1032, 2, 2, 1, 0),
-(33, 1033, 3, 1, 5, 0),
-(34, 1034, 1, 1, 5, 0),
-(35, 1035, 1, 4, 3, 0),
-(36, 1036, 1, 5, 4, 0),
-(37, 1037, 2, 4, 1, 0),
-(38, 1038, 2, 2, 2, 0),
-(39, 1039, 2, 2, 1, 0),
-(40, 1040, 3, 2, 1, 0),
-(41, 1041, 2, 1, 3, 0),
-(42, 1042, 3, 3, 3, 0),
-(43, 1043, 1, 5, 1, 0),
-(44, 1044, 3, 1, 2, 0),
-(45, 1045, 3, 1, 5, 0),
-(46, 1046, 3, 1, 4, 0),
-(47, 1047, 1, 5, 3, 0),
-(48, 1048, 1, 4, 3, 0),
-(49, 1049, 3, 5, 3, 0),
-(50, 1050, 1, 5, 2, 0),
-(51, 1051, 2, 3, 5, 0),
-(52, 1052, 1, 1, 4, 0),
-(53, 1053, 1, 3, 3, 0),
-(54, 1054, 1, 2, 1, 0),
-(55, 1055, 3, 5, 1, 0),
-(56, 1056, 1, 4, 4, 0),
-(57, 1057, 3, 2, 1, 0),
-(58, 1058, 2, 3, 3, 0),
-(59, 1059, 2, 1, 2, 0),
-(60, 1060, 3, 3, 5, 0),
-(61, 1061, 2, 3, 2, 0),
-(62, 1062, 2, 2, 1, 0),
-(63, 1063, 3, 2, 2, 0),
-(64, 1064, 2, 5, 4, 0),
-(65, 1065, 3, 3, 5, 0),
-(66, 1066, 1, 1, 3, 0),
-(67, 1067, 1, 2, 2, 0),
-(68, 1068, 3, 5, 4, 0),
-(69, 1069, 3, 3, 5, 0),
-(70, 1070, 3, 1, 5, 0),
-(71, 1071, 2, 4, 4, 0),
-(72, 1072, 1, 5, 1, 0),
-(73, 1073, 1, 5, 1, 0),
-(74, 1074, 2, 4, 1, 0),
-(75, 1075, 3, 1, 2, 0),
-(76, 1076, 3, 5, 5, 0),
-(77, 1077, 2, 5, 5, 0),
-(78, 1078, 2, 4, 1, 0),
-(79, 1079, 3, 1, 5, 0),
-(80, 1080, 1, 2, 1, 0),
-(81, 1081, 2, 2, 1, 0),
-(82, 1082, 1, 3, 5, 0),
-(83, 1083, 3, 3, 5, 0),
-(84, 1084, 2, 2, 2, 0),
-(85, 1085, 2, 5, 2, 0),
-(86, 1086, 1, 3, 5, 0),
-(87, 1087, 1, 3, 1, 0),
-(88, 1088, 1, 2, 3, 0),
-(89, 1089, 2, 1, 1, 0),
-(90, 1090, 3, 1, 3, 0),
-(91, 1091, 1, 3, 5, 0),
-(92, 1092, 2, 1, 5, 0),
-(93, 1093, 1, 1, 2, 0),
-(94, 1094, 2, 3, 5, 0),
-(95, 1095, 1, 3, 5, 0),
-(96, 1096, 1, 2, 3, 0),
-(97, 1097, 3, 2, 5, 0),
-(98, 1098, 1, 4, 4, 0),
-(99, 1099, 1, 4, 5, 0);
+INSERT INTO `orders` (`id`, `serial_number`, `first_name`, `last_name`, `phone`, `email`, `type`, `id_customer`, `id_cart`, `id_invoice`) VALUES
+(1, 1001, '', '', 0, NULL, 4, 5, 3, 1),
+(2, 1002, '', '', 0, NULL, 1, 5, 2, NULL),
+(3, 1003, '', '', 0, NULL, 3, 5, 5, 2),
+(4, 1004, '', '', 0, NULL, 1, 1, 3, 0),
+(5, 1005, '', '', 0, NULL, 1, 5, 3, 3),
+(6, 1006, '', '', 0, NULL, 1, 2, 5, 0),
+(7, 1007, '', '', 0, NULL, 2, 4, 1, 0),
+(8, 1008, '', '', 0, NULL, 3, 1, 1, 0),
+(9, 1009, '', '', 0, NULL, 3, 5, 4, 0),
+(10, 1010, '', '', 0, NULL, 2, 5, 5, 0),
+(11, 1011, '', '', 0, NULL, 3, 5, 2, 0),
+(12, 1012, '', '', 0, NULL, 2, 4, 5, 0),
+(13, 1013, '', '', 0, NULL, 2, 1, 5, 0),
+(14, 1014, '', '', 0, NULL, 3, 1, 3, 0),
+(15, 1015, '', '', 0, NULL, 3, 4, 4, 0),
+(16, 1016, '', '', 0, NULL, 2, 1, 2, 0),
+(17, 1017, '', '', 0, NULL, 3, 2, 5, 0),
+(18, 1018, '', '', 0, NULL, 2, 5, 1, 0),
+(19, 1019, '', '', 0, NULL, 1, 1, 1, 0),
+(20, 1020, '', '', 0, NULL, 3, 4, 1, 0),
+(21, 1021, '', '', 0, NULL, 2, 4, 1, 0),
+(22, 1022, '', '', 0, NULL, 1, 1, 5, 0),
+(23, 1023, '', '', 0, NULL, 1, 5, 5, 0),
+(24, 1024, '', '', 0, NULL, 1, 3, 1, 0),
+(25, 1025, '', '', 0, NULL, 1, 4, 5, 0),
+(26, 1026, '', '', 0, NULL, 2, 5, 1, 0),
+(27, 1027, '', '', 0, NULL, 3, 2, 5, 0),
+(28, 1028, '', '', 0, NULL, 2, 5, 4, 0),
+(29, 1029, '', '', 0, NULL, 3, 3, 5, 0),
+(30, 1030, '', '', 0, NULL, 1, 5, 1, 0),
+(31, 1031, '', '', 0, NULL, 2, 1, 3, 0),
+(32, 1032, '', '', 0, NULL, 2, 2, 1, 0),
+(33, 1033, '', '', 0, NULL, 3, 1, 5, 0),
+(34, 1034, '', '', 0, NULL, 1, 1, 5, 0),
+(35, 1035, '', '', 0, NULL, 1, 4, 3, 0),
+(36, 1036, '', '', 0, NULL, 1, 5, 4, 0),
+(37, 1037, '', '', 0, NULL, 2, 4, 1, 0),
+(38, 1038, '', '', 0, NULL, 2, 2, 2, 0),
+(39, 1039, '', '', 0, NULL, 2, 2, 1, 0),
+(40, 1040, '', '', 0, NULL, 3, 2, 1, 0),
+(41, 1041, '', '', 0, NULL, 2, 1, 3, 0),
+(42, 1042, '', '', 0, NULL, 3, 3, 3, 0),
+(43, 1043, '', '', 0, NULL, 1, 5, 1, 0),
+(44, 1044, '', '', 0, NULL, 3, 1, 2, 0),
+(45, 1045, '', '', 0, NULL, 3, 1, 5, 0),
+(46, 1046, '', '', 0, NULL, 3, 1, 4, 0),
+(47, 1047, '', '', 0, NULL, 1, 5, 3, 0),
+(48, 1048, '', '', 0, NULL, 1, 4, 3, 0),
+(49, 1049, '', '', 0, NULL, 3, 5, 3, 0),
+(50, 1050, '', '', 0, NULL, 1, 5, 2, 0),
+(51, 1051, '', '', 0, NULL, 2, 3, 5, 0),
+(52, 1052, '', '', 0, NULL, 1, 1, 4, 0),
+(53, 1053, '', '', 0, NULL, 1, 3, 3, 0),
+(54, 1054, '', '', 0, NULL, 1, 2, 1, 0),
+(55, 1055, '', '', 0, NULL, 3, 5, 1, 0),
+(56, 1056, '', '', 0, NULL, 1, 4, 4, 0),
+(57, 1057, '', '', 0, NULL, 3, 2, 1, 0),
+(58, 1058, '', '', 0, NULL, 2, 3, 3, 0),
+(59, 1059, '', '', 0, NULL, 2, 1, 2, 0),
+(60, 1060, '', '', 0, NULL, 3, 3, 5, 0),
+(61, 1061, '', '', 0, NULL, 2, 3, 2, 0),
+(62, 1062, '', '', 0, NULL, 2, 2, 1, 0),
+(63, 1063, '', '', 0, NULL, 3, 2, 2, 0),
+(64, 1064, '', '', 0, NULL, 2, 5, 4, 0),
+(65, 1065, '', '', 0, NULL, 3, 3, 5, 0),
+(66, 1066, '', '', 0, NULL, 1, 1, 3, 0),
+(67, 1067, '', '', 0, NULL, 1, 2, 2, 0),
+(68, 1068, '', '', 0, NULL, 3, 5, 4, 0),
+(69, 1069, '', '', 0, NULL, 3, 3, 5, 0),
+(70, 1070, '', '', 0, NULL, 3, 1, 5, 0),
+(71, 1071, '', '', 0, NULL, 2, 4, 4, 0),
+(72, 1072, '', '', 0, NULL, 1, 5, 1, 0),
+(73, 1073, '', '', 0, NULL, 1, 5, 1, 0),
+(74, 1074, '', '', 0, NULL, 2, 4, 1, 0),
+(75, 1075, '', '', 0, NULL, 3, 1, 2, 0),
+(76, 1076, '', '', 0, NULL, 3, 5, 5, 0),
+(77, 1077, '', '', 0, NULL, 2, 5, 5, 0),
+(78, 1078, '', '', 0, NULL, 2, 4, 1, 0),
+(79, 1079, '', '', 0, NULL, 3, 1, 5, 0),
+(80, 1080, '', '', 0, NULL, 1, 2, 1, 0),
+(81, 1081, '', '', 0, NULL, 2, 2, 1, 0),
+(82, 1082, '', '', 0, NULL, 1, 3, 5, 0),
+(83, 1083, '', '', 0, NULL, 3, 3, 5, 0),
+(84, 1084, '', '', 0, NULL, 2, 2, 2, 0),
+(85, 1085, '', '', 0, NULL, 2, 5, 2, 0),
+(86, 1086, '', '', 0, NULL, 1, 3, 5, 0),
+(87, 1087, '', '', 0, NULL, 1, 3, 1, 0),
+(88, 1088, '', '', 0, NULL, 1, 2, 3, 0),
+(89, 1089, '', '', 0, NULL, 2, 1, 1, 0),
+(90, 1090, '', '', 0, NULL, 3, 1, 3, 0),
+(91, 1091, '', '', 0, NULL, 1, 3, 5, 0),
+(92, 1092, '', '', 0, NULL, 2, 1, 5, 0),
+(93, 1093, '', '', 0, NULL, 1, 1, 2, 0),
+(94, 1094, '', '', 0, NULL, 2, 3, 5, 0),
+(95, 1095, '', '', 0, NULL, 1, 3, 5, 0),
+(96, 1096, '', '', 0, NULL, 1, 2, 3, 0),
+(97, 1097, '', '', 0, NULL, 3, 2, 5, 0),
+(98, 1098, '', '', 0, NULL, 1, 4, 4, 0),
+(99, 1099, '', '', 0, NULL, 1, 4, 5, 0),
+(100, 9999, 'xxxx', 'dasdsadsa', 515154, 'xxx@email.sk', 1, 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -706,7 +724,7 @@ INSERT INTO `products` (`id`, `image`, `name`, `price`, `available`, `count`, `d
 (80, 'product_1.png', 'Product_80', 680.00, 1, 1, 'Popis', 2),
 (81, 'product_1.png', 'Product_81', 180.00, 1, 5, 'Popis', 1),
 (82, 'product_3.png', 'Product_82', 869.00, 1, 4, 'Popis', 2),
-(83, 'product_3.png', 'Product_83', 281.00, 0, 9, 'Popis', 2),
+(83, 'product_3.png', 'Product_83', 281.00, 1, 9, 'Popis', 2),
 (84, 'product_3.png', 'Product_84', 859.00, 1, 2, 'Popis', 1),
 (85, 'product_1.png', 'Product_85', 293.00, 0, 7, 'Popis', 1),
 (86, 'product_1.png', 'Product_86', 860.00, 0, 14, 'Popis', 2),
@@ -1261,7 +1279,7 @@ ALTER TABLE `user_tests`
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `carts_products`
@@ -1273,7 +1291,7 @@ ALTER TABLE `carts_products`
 -- AUTO_INCREMENT for table `complaints`
 --
 ALTER TABLE `complaints`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `complaints_documents`
@@ -1303,7 +1321,7 @@ ALTER TABLE `dia_messages`
 -- AUTO_INCREMENT for table `dia_navbar`
 --
 ALTER TABLE `dia_navbar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=218;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=219;
 
 --
 -- AUTO_INCREMENT for table `dia_notifications`
@@ -1315,7 +1333,7 @@ ALTER TABLE `dia_notifications`
 -- AUTO_INCREMENT for table `dia_tables`
 --
 ALTER TABLE `dia_tables`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `gallery`
@@ -1339,7 +1357,7 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `order_type`
