@@ -155,6 +155,12 @@ namespace Core\Controllers {
       header("Location: {$redirectUrl}");
     }
 
+    public static function getConfig() {
+      global $config;
+
+      return $config;
+    }
+
   }
 
 }

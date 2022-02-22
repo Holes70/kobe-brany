@@ -1,22 +1,22 @@
 {
-  "serial_number":  {
+  "serial_number": {
 		"show_in_table":  true,
 		"show_in_form": true, 
 		"name_in_table": "Číslo"
 	},
-	"first_name":  {
+	"first_name": {
 		"show_in_table": true,
 		"show_in_form": true,
 		"name_in_table": "Meno",
 		"required": true 
 	},
-	"last_name":  {
+	"last_name": {
 		"show_in_table":  true,
 		"show_in_form": true,
 		"name_in_table": "Priezvisko",
 		"required": true
 	},
-	"phone":  {
+	"phone": {
 		"type": "number",
 		"step": 1,
 		"show_in_table": true,
@@ -24,14 +24,14 @@
 		"name_in_table": "Telefón",
 		"required": true
 	},
-	"email":  {
+	"email": {
 		"type": "email",
 		"show_in_table": true,
 		"show_in_form": true,
 		"name_in_table": "E-mail", 
 		"required": true
 	},
-	"type":  {
+	"type": {
 		"type": "radio",
 		"default_value": 1,
 		"radio":  {
@@ -44,7 +44,7 @@
 		"show_in_form": true,
 		"name_in_table": "Typ"
 	},
-	"id_customer":  {
+	"id_customer": {
 		"type":  "lookup",
 		"lookup_icon": "user",
 		"lookup_table": "customers",
@@ -73,7 +73,7 @@
 		"name_in_table": "Košík",
 		"lookup_empty_table": "<strong style='color:#dbdbdb'>Prázdny</strong>"
 	},
-	"id_invoice":  {
+	"id_invoice": {
 		"type": "lookup",
 		"lookup_table": "invoices",
 		"lookup_icon": "file-alt",
@@ -85,7 +85,8 @@
 		"lookup_table_empty_text": "Vystaviť faktúru",
 		"lookup_empty_action": true,
 		"lookup_url_type": "id_form",
-		"show_in_table": true,"show_in_form": true,
+		"show_in_table": true,
+		"show_in_form": true,
 		"name_in_table": "Faktúra",
 		"lookup_empty_table":  "<strong style='color:#dbdbdb'>x</strong>",
 		"hide_in_new_form":  true
