@@ -8,6 +8,8 @@
 
   $config['dia_tables']         = "dia_tables";
 
+  $config['dia']['core']        = "{$_SERVER['HTTP_HOST']}/holes/Dia-core";
+
   $config['hostweb']            = "web/Admin";
   $config['host']               = $_SERVER['HTTP_HOST'] . '/holes/Dia';
 
