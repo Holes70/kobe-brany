@@ -8,6 +8,9 @@
 
   $config['dia_tables']         = "dia_tables";
 
+  $config['hostweb']            = "web/Admin";
+  $config['host']               = $_SERVER['HTTP_HOST'] . '/holes/Dia';
+
   // SUBOROVE NASTAVENIA
   $config['dir']['root']        = dirname(__FILE__);
   $config['dir']['web']         = dirname(__FILE__) . "/web/Admin";
