@@ -41,11 +41,11 @@ export default {
     diaModal = new Dia();
   },
   beforeMount() {
-    diaModal.setComponentParams(this);
+    f.setComponentParams(this);
 
-	this.modalComponentToRender = this.params['modalComponentToRender'];
-	this.modalComponentToRenderParams = this.params['modalComponentToRenderParams'];
-	this.componentUid = this.params['componentUid'];
+		this.modalComponentToRender = this.params['modalComponentToRender'];
+		this.modalComponentToRenderParams = this.params['modalComponentToRenderParams'];
+		this.componentUid = this.params['componentUid'];
   }
 }
 

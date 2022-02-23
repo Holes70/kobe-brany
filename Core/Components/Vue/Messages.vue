@@ -171,9 +171,8 @@ export default {
     diaMessages = new Dia();
   },
   beforeMount() {
-    diaMessages.setComponentParams(this);
-    diaMessages.setComponentData(this, this.params['customActions']['loadData']);
-    f.getTableStructure(this);
+    f.setComponentParams(this);
+    f.initComponent(this, false, this.params['customActions']['loadData']);
   }
 }
 

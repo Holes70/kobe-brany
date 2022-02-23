@@ -155,7 +155,7 @@ export default {
     diaProfileView = new Dia();
   },
   beforeMount() {
-    diaProfileView.setComponentParams(this);
+    f.setComponentParams(this);
     diaProfileView.setComponentData(this, 'dia_logged_user');
   }
 }

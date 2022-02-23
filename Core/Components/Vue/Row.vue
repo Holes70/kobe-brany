@@ -57,7 +57,7 @@ export default {
     diaRow = new Dia();
   },
   beforeMount() {
-    diaRow.setComponentParams(this);
+    f.setComponentParams(this);
 
     this.title = this.params['title'];
   }

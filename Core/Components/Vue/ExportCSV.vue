@@ -34,8 +34,6 @@ export default {
   },
   beforeMount() {
     f.setComponentParams(this);
-
-    diaExportCsv.setComponentParams(this);
     diaExportCsv.setComponentData(this);
   }
 }

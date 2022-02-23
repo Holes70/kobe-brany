@@ -80,7 +80,7 @@ export default {
     }
   },
   mounted() {
-    dia.setComponentParams(this);
+    f.setComponentParams(this);
     dia.setComponentData(this);
 
     //this.uploadAction = this.params['uploadAction'];

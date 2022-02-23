@@ -96,8 +96,8 @@ export default {
     diaProfileCard = new Dia();
   },
   beforeMount() {
-    diaProfileCard.setComponentParams(this);
-    diaProfileCard.setComponentData(this, 'dia_logged_user');
+    f.setComponentParams(this);
+    f.initComponent(this, false, 'dia_logged_user');
 
     this.url = this.params['url'];
   },

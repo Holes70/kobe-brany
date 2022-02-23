@@ -99,7 +99,7 @@ class Functions {
     window.open("index.php?action=" + action);
   }
 
-  getTableStructure(_this, initAddForm = false) {
+  initComponent(_this, initAddForm = false, loadDataAction = "", dataToSet = []) {
     this.axiosGet("dia_get_structure", {
       tableName: _this.tableName
     },
@@ -145,6 +145,30 @@ class Functions {
         _this.tableColumns = cols;
         _this.formColumns = formCols;
         _this.allTableColumns = colsAll;
+
+        this.loadData(_this, loadDataAction, dataToSet);
+      }
+    })
+  }
+
+  async loadData(_this, customAction = "", dataToSet = []) {
+    this.emptyRequiredInputs = [];
+    customAction = customAction != "" ? customAction : "dia_select";
+
+    await axios.post('index.php?action=' + customAction, {
+      params: {
+        tableName: _this.tableName,
+        conditions: _this.conditions
+      }
+    }).then((res) => {
+      if (res.data.status != 'fail') {
+        _this.data = res.data['data'];
+        dataToSet.forEach((item) => {
+          _this[item] = res.data[item];
+        })
+      } else {
+        _this.error = true;
+        console.log(res);
       }
     })
   }

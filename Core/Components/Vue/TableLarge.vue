@@ -436,8 +436,7 @@
     },
     beforeMount() {
       f.setComponentParams(this);
-      diaTableLarge.setComponentData(this, "dia_select_with_pagination", this.dataToSet);
-      f.getTableStructure(this);
+      f.initComponent(this, false, "dia_select_with_pagination", this.dataToSet);
 
       // Custom Component functions
       if (diaTableLarge.getUrlParam('id_form') > 0) {

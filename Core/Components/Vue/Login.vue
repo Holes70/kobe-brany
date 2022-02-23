@@ -112,7 +112,7 @@
       diaLogin = new Dia();
     },
     beforeMount() {
-      diaLogin.setComponentParams(this);
+      f.setComponentParams(this);
 
       this.data = this.params['data'];
 

@@ -72,7 +72,7 @@ export default {
     diaPagination = new Dia();
   },
   beforeMount(){
-    diaPagination.setComponentParams(this);
+    f.setComponentParams(this);
 
     setTimeout(() => { 
       this.pages = this.params['pages'];

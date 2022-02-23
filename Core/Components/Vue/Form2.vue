@@ -145,8 +145,8 @@ export default {
     diaForm = new Dia();
   },
   mounted() {
-    diaForm.setComponentParams(this);
-    f.getTableStructure(this, true);
+    f.setComponentParams(this);
+    f.initComponent(this, true);
   }
 }
 </script>
