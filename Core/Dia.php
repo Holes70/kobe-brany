@@ -53,11 +53,11 @@ namespace Core {
      * @return void
      */
     public function vue($name) {
-      $component = new \Core\Component($name);
+     //$component = new \Core\Component($name);
 
       array_push(self::$loadedWebComponents, $name);
 
-      return $component;
+      //return $component;
     }
 
     /**
