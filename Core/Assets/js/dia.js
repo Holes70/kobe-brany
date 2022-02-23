@@ -172,10 +172,6 @@ class Dia extends CustomFunctions {
     }
   }
 
-  loadDataAgain(_this, customAction = "", dataToSet = []) {
-    this.loadData(_this, customAction, dataToSet);
-  }
-
   refactorCustomLinks(_this) {
     if (_this.params['buttons'].length > 0) {
       _this.params['buttons'].forEach((button) => {

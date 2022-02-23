@@ -66,10 +66,28 @@ class Functions {
    * @param {object} params 
    * @param {function} success 
    */
-  axiosGet(action = "", params = {}, success) {
+  async axiosGet(action = "", params = {}, success) {
     if(action == "") throw new Error("Unknown axiosGet action");
 
-    axios.get('index.php?action=' + action, {
+    await axios.get('index.php?action=' + action, {
+      params
+    }).then((res) => {
+      if (typeof success == "function") {
+        success(res);
+      }
+    })
+  }
+
+  /**
+   * Axios post request
+   * @param {string} action 
+   * @param {object} params 
+   * @param {function} success 
+   */
+   async axiosPost(action = "", params = {}, success) {
+    if(action == "") throw new Error("Unknown axiosPost action");
+
+    await axios.post('index.php?action=' + action, {
       params
     }).then((res) => {
       if (typeof success == "function") {
@@ -151,16 +169,15 @@ class Functions {
     })
   }
 
-  async loadData(_this, customAction = "", dataToSet = []) {
+  loadData(_this, customAction = "", dataToSet = []) {
     this.emptyRequiredInputs = [];
     customAction = customAction != "" ? customAction : "dia_select";
 
-    await axios.post('index.php?action=' + customAction, {
-      params: {
-        tableName: _this.tableName,
-        conditions: _this.conditions
-      }
-    }).then((res) => {
+    this.axiosPost(customAction, {
+      tableName: _this.tableName,
+      conditions: _this.conditions
+    },
+    (res) => {
       if (res.data.status != 'fail') {
         _this.data = res.data['data'];
         dataToSet.forEach((item) => {

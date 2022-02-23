@@ -305,7 +305,10 @@
       hideEdit() {
         this.showEdit = false;
         diaTableLarge.deleteFromUrl('id_form');
-        diaTableLarge.loadDataAgain(this, "dia_select_with_pagination", this.dataToSet);
+        f.loadData(this, "dia_select_with_pagination", this.dataToSet);
+      },
+      loadData() {
+        f.loadData(this, "dia_select_with_pagination", this.dataToSet);
       },
       save(itemData) {
         // Prever prazdne povinne polia
@@ -321,7 +324,7 @@
           }).then(() => {
             this.showEdit = false;
             diaTableLarge.deleteFromUrl('id_form');
-            diaTableLarge.loadDataAgain(this, "dia_select_with_pagination", this.dataToSet);
+            f.loadData(this, "dia_select_with_pagination", this.dataToSet);
             swal({
               title: "Uložené",
               type: "success",

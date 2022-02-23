@@ -40,11 +40,11 @@ export default {
   },
   methods: {
     loadPage(page) {
-      this.conditions['currentPage'] = page;
+      this.$parent.conditions['currentPage'] = page;
       diaPagination.addToUrl('page', page);
 
       // hideEdit obsahuje funckiu na novo nacitane data
-      this.$parent.hideEdit();
+      this.$parent.loadData();
     },
     loadPreviousPage() {
       var currentPage = diaPagination.getUrlParam('page');
@@ -81,7 +81,7 @@ export default {
     // Init page 1
     if (typeof diaPagination.getUrlParam('page') == "undefined") {
       diaPagination.addToUrl('page', 1);
-      this.conditions['currentPage'] = 1;
+      this.$parent.conditions['currentPage'] = 1;
     }
    
   }
