@@ -2,7 +2,7 @@
   "id_order": {
     "type": "lookup",
     "lookup_table": "orders",
-    "lookup_table_col": "id",
+    "lookup_table_col": "id_order",
     "lookup_columns": {"1": "serial_number","2": "first_name","3": "last_name"},
     "lookup_url": "objednavky",
     "show_in_table": true,
