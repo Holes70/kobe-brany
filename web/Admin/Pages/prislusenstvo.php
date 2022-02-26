@@ -19,7 +19,8 @@ $prislusenstvo->conditions([
       "id_product_accessory",
       "id"
     ]
-  ]
+    ],
+    "order_by" => "products_accessories.id"
 ]);
 $prislusenstvo->fileDir("products");
 
