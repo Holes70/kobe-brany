@@ -2,7 +2,7 @@
 
   // DATABAZOVE NASTAVENIA
   $config['db']['host']         = "localhost";
-  $config['db']['db']           = "dia";
+  $config['db']['db']           = "kobe_brany";
   $config['db']['user']         = "root";
   $config['db']['password']     = "";
 
@@ -11,7 +11,7 @@
   $config['dia']['core']        = "{$_SERVER['HTTP_HOST']}/holes/Dia-core";
 
   $config['hostweb']            = "web/Admin";
-  $config['host']               = $_SERVER['HTTP_HOST'] . '/holes/Dia';
+  $config['host']               = $_SERVER['HTTP_HOST'] . '/holes/kobe-brany';
 
   // SUBOROVE NASTAVENIA
   $config['dir']['root']        = dirname(__FILE__);
