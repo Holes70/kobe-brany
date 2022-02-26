@@ -1,1 +1,28 @@
-{"id":{"type":"number","show_in_table":false,"show_in_form":false},"image":{"type":"image","show_in_table":true,"show_in_form":true},"name":{"show_in_table":true,"name_in_table":"Produkt","show_in_form":true,"required":true},"price":{"type":"number","show_in_table":true,"name_in_table":"Cena","show_in_form":true,"required":true,"unit":"€"},"available":{"type":"checkbox","default_value":true,"show_in_table":true,"name_in_table":"Dostupný","show_in_form":true},"count":{"type":"number","show_in_table":true,"name_in_table":"Skladom","show_in_form":true},"description":{"type":"text","show_in_table":false,"name_in_table":"Popis","show_in_form":true},"type":{"type":"number","show_in_table":false,"name_in_table":"Typ","show_in_form":true}}
+{
+  "id_cart": {
+		"type":  "lookup",
+		"lookup_icon": "shopping-cart",
+		"lookup_table": "carts",
+		"lookup_table_col": "id_cart",
+		"lookup_url": "",
+		"show_in_table": false,
+		"show_in_form": false,
+		"name_in_table": "Košík",
+		"lookup_columns": {"1": "id"},
+		"lookup_empty_table": "<strong style='color:#dbdbdb'>Neregistrovaný</strong>",
+		"readonly_in_edit": true
+	},
+  "id_product": {
+		"type":  "lookup",
+		"lookup_icon": "product",
+		"lookup_table": "products",
+		"lookup_table_col": "id_product",
+		"lookup_url": "produkty",
+		"show_in_table": true,
+		"show_in_form": true,
+		"name_in_table": "Produkty",
+		"lookup_columns": {"1": "name", "2": "price"},
+		"lookup_empty_table": "<strong style='color:#dbdbdb'>Neregistrovaný</strong>",
+		"readonly_in_edit": true
+	}
+}
