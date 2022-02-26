@@ -46,7 +46,6 @@
 	},
 	"id_customer": {
 		"type":  "lookup",
-		"lookup_icon": "user",
 		"lookup_table": "customers",
 		"lookup_table_col": "id_customer",
 		"lookup_url": "zakaznici",
