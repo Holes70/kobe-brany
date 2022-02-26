@@ -5,5 +5,10 @@ $pridaj = new \Component\Row("carts_products");
 
 $dia->template("
   {$pridaj->show()}
-  {$kosiky->show()}
+  ".$dia->cardBook(
+      $dia->card(
+        $kosiky->show()
+      )
+    )
+  ."
 ")->render();
