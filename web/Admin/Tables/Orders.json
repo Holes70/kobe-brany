@@ -90,7 +90,6 @@
 		"show_in_table": true,
 		"show_in_form": true,
 		"name_in_table": "Faktúra",
-		"lookup_empty_table":  "<strong style='color:#dbdbdb'>x</strong>",
 		"hide_in_new_form":  true
 	}
 }
