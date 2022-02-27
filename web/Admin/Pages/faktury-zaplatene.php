@@ -14,7 +14,8 @@ $fakturyVystavene->conditions([
       "id",
       "id_invoice"
     ]
-  ]
+  ],
+  "order_by" => "invoices.id"
 ]);
 $fakturyVystavene->emptyDataMessage("Žiadne zaplatené faktúry");
 
