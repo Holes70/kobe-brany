@@ -15,7 +15,8 @@
     "default_value": 1,
     "radio": {"1": "Nová","2": "Schválená","3": "Hotová"},
     "show_in_form": true,
-    "radio_colors": {"1": "danger","2": "warning","3": "success"}
+    "radio_colors": {"1": "danger","2": "warning","3": "success"},
+    "name_in_table": "Typ"
   },
   "description": {
     "type": "text",
