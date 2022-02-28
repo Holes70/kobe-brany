@@ -123,7 +123,7 @@
       const router = createRouter({
         history: createWebHistory(),
         routes: [
-          { path: diaWeb.rootUrl, name: 'Domov', component: Vue.defineAsyncComponent( () => loadModule('./Components/Website.vue', options)) },
+          { path: diaWeb.rootUrl + '/', name: 'Domov', component: Vue.defineAsyncComponent( () => loadModule('./Components/Website.vue', options)) },
           { path: diaWeb.rootUrl + '/produkty', name: 'Produkty', component: Vue.defineAsyncComponent( () => loadModule('./Components/Produkty.vue', options)) },
           { path: diaWeb.rootUrl + '/detail', name: 'Detail', component: Vue.defineAsyncComponent( () => loadModule('./Components/Detail.vue', options)) },
           { path: diaWeb.rootUrl + '#cennik', component: Vue.defineAsyncComponent( () => loadModule('./Components/Website.vue', options)) },
