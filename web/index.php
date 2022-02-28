@@ -123,10 +123,17 @@
       const router = createRouter({
         history: createWebHistory(),
         routes: [
-          { path: diaWeb.rootUrl, component: Vue.defineAsyncComponent( () => loadModule('./Components/Website.vue', options)) },
-          { path: diaWeb.rootUrl + '/kontakt', component: Vue.defineAsyncComponent( () => loadModule('./Components/Website.vue', options)) },
-          { path: diaWeb.rootUrl + '/produkty', component: Vue.defineAsyncComponent( () => loadModule('./Components/Produkty.vue', options)) },
-          { path: diaWeb.rootUrl + '/detail', component: Vue.defineAsyncComponent( () => loadModule('./Components/Detail.vue', options)) },
+          { path: diaWeb.rootUrl, name: 'Domov', component: Vue.defineAsyncComponent( () => loadModule('./Components/Website.vue', options)) },
+          { path: diaWeb.rootUrl + '/produkty', name: 'Produkty', component: Vue.defineAsyncComponent( () => loadModule('./Components/Produkty.vue', options)) },
+          { path: diaWeb.rootUrl + '/detail', name: 'Detail', component: Vue.defineAsyncComponent( () => loadModule('./Components/Detail.vue', options)) },
+          { path: diaWeb.rootUrl + '#cennik', component: Vue.defineAsyncComponent( () => loadModule('./Components/Website.vue', options)) },
+          { path: diaWeb.rootUrl + '#o-nas', component: Vue.defineAsyncComponent( () => loadModule('./Components/Website.vue', options)) },
+          { path: diaWeb.rootUrl + '#kontakt', component: Vue.defineAsyncComponent( () => loadModule('./Components/Website.vue', options)) },
+          { path: diaWeb.rootUrl + '#sluzby', component: Vue.defineAsyncComponent( () => loadModule('./Components/Website.vue', options)) },
+          { path: diaWeb.rootUrl + '/produkty#cennik', component: Vue.defineAsyncComponent( () => loadModule('./Components/Website.vue', options)) },
+          { path: diaWeb.rootUrl + '/produkty#o-nas', component: Vue.defineAsyncComponent( () => loadModule('./Components/Website.vue', options)) },
+          { path: diaWeb.rootUrl + '/produkty#kontakt', component: Vue.defineAsyncComponent( () => loadModule('./Components/Website.vue', options)) },
+          { path: diaWeb.rootUrl + '/produkty#sluzby', component: Vue.defineAsyncComponent( () => loadModule('./Components/Website.vue', options)) }
         ],
       })
 
