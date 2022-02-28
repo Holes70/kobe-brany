@@ -1,7 +1,6 @@
 {
   "id_cart": {
 		"type":  "lookup",
-		"lookup_icon": "shopping-cart",
 		"lookup_table": "carts",
 		"lookup_table_col": "id_cart",
 		"lookup_url": "",
@@ -14,7 +13,6 @@
 	},
   "id_product": {
 		"type":  "lookup",
-		"lookup_icon": "product",
 		"lookup_table": "products",
 		"lookup_table_col": "id_product",
 		"lookup_url": "produkty",
