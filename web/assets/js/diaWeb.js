@@ -1,8 +1,8 @@
 class DiaWeb {
 
   constructor() {
-    this.rootUrl = "/holes/dia/web"; //TODO: TOTO DYNAMICKY
-    this.rootUrlAdmin = "holes/dia"
+    this.rootUrl = "/holes/kobe-brany/web"; //TODO: TOTO DYNAMICKY
+    this.rootUrlAdmin = "holes/kobe-brany"
   }
   
 }

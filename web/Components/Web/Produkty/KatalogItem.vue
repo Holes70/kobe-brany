@@ -1,9 +1,9 @@
 <template>
   <div :id="'katalog-item-' + item.id" class="item-hover col-lg-3 mb-4">
-    <router-link :to="'/holes/dia/web/detail'">
+    <router-link :to="'/holes/kobe-brany/web/detail'">
       <div class="service-item first-service">
         <div class="katalog-item-img">
-          <img :src="'http://localhost/holes/dia/files/products/' + item.image"/>
+          <img :src="'http://localhost/holes/kobe-brany/files/products/' + item.image"/>
         </div>
         <h4>{{ item.name }}</h4>
         <h5>{{ item.price }}€</h3>

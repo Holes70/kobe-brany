@@ -24,7 +24,7 @@
               </li>
               <li>
                 <div class="gradient-button-gold">
-                  <router-link to="/holes/dia/web/produkty">Katalóg produktov</router-link>
+                  <router-link to="/holes/kobe-brany/web/produkty">Katalóg produktov</router-link>
                 </div>
               </li> 
               <li>
