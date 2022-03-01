@@ -60,7 +60,9 @@ export default {
     axios.post('Admin/index.php?action=dia_select', {
       params: {
         tableName: "menu",
-        conditions: {}
+        conditions: {
+          order_by: "order_index"
+        }
       }
     }).then((res) => {
       this.menuItems = res.data['data'];

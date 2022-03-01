@@ -6,8 +6,11 @@
 
 <script>
 export default {
-  mounted() {
-    console.log(this.$route.params.item );
+  beforeMount() {
+    axios.get('index.php?action=get_detail')
+    .then((res) => {
+      console.log(res);
+    })
   }
 }
 </script>
