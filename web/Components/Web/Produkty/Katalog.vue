@@ -5,45 +5,47 @@
         <katalog-item-com :item="katalogItem"></katalog-item-com>
       </template>
     </div>
-    <dia-pagination :params="{
+    <pagination :params="{
       tableName: 'products',
       pages: this.pages,
       conditions:  {'where':{
             'type': 1
           }}
-    }"></dia-pagination>
+    }"></pagination>
   </div>
 </template>
 
 <script>
 import katalogItem from './KatalogItem.vue';
-import pagination from './../../../../Core/Components/Vue/Pagination4.vue'
+import pagination from './Pagination.vue'
 
 export default {
   data() {
     return {
       katalogItems: [],
-      pages: 0
+      pages: 0,
+      conditions: {"where":{"type":1}}
     }
   },
   components: {
     'katalog-item-com': katalogItem,
-    'dia-pagination': pagination
+    'pagination': pagination
+  },
+  methods: {
+    loadData() {
+      axios.post('Admin/index.php?action=dia_select_with_pagination', {
+        params: {
+          tableName: "products",
+          conditions: this.conditions
+        }
+      }).then((res) => {
+        this.katalogItems = res.data['data'];
+        this.pages = res.data['pages'];
+      })
+    }
   },
   beforeMount() {
-    axios.post('Admin/index.php?action=dia_select_with_pagination', {
-      params: {
-        tableName: "products",
-        conditions: {
-          "where": {
-            "type": 1
-          }
-        }
-      }
-    }).then((res) => {
-      this.katalogItems = res.data['data'];
-      this.pages = res.data['pages'];
-    })
+    this.loadData();
   }
 }
 </script>
