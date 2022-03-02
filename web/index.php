@@ -51,7 +51,6 @@
       <script src='../Core/Assets/js/Functions.js'></script>
       <script src='../Core/Assets/js/dia.js'></script>
       <script src='../Core/Assets/js/diaTables.js'></script>
-      <script src='../Core/Assets/js/Functions.js'></script>
       <script src='../Core/Assets/js/fontawesome.js'></script>
       <script src='https://unpkg.com/vue-router@4'></script>
       <script src='./assets/js/diaWeb.js'></script>
