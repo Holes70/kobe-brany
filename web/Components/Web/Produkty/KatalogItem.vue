@@ -8,9 +8,6 @@
         <h4>{{ item.name }}</h4>
         <h5>{{ item.price }} €</h5>
         <p>{{ item.description }}</p>
-        <div class="text-button">
-          <a href="#">Do košíka<i class="fa fa-arrow-right"></i></a>
-        </div>
       </div>
     </router-link>
   </div>
