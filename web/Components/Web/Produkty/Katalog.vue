@@ -1,17 +1,19 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <template v-for="katalogItem in katalogItems" :key="katalogItem">
-        <katalog-item-com :item="katalogItem"></katalog-item-com>
-      </template>
+  <div id="produkty" class="services section">
+    <div class="container">
+      <div class="row">
+        <template v-for="katalogItem in katalogItems" :key="katalogItem">
+          <katalog-item-com :item="katalogItem"></katalog-item-com>
+        </template>
+      </div>
+      <pagination :params="{
+        tableName: 'products',
+        pages: this.pages,
+        conditions:  {'where':{
+              'type': 1
+            }}
+      }"></pagination>
     </div>
-    <pagination :params="{
-      tableName: 'products',
-      pages: this.pages,
-      conditions:  {'where':{
-            'type': 1
-          }}
-    }"></pagination>
   </div>
 </template>
 
