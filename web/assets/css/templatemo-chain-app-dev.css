@@ -217,6 +217,32 @@ body {
   transition: all .5s;
 }
 
+.gold-button a {
+  display: inline-block !important;
+  padding: 10px 20px !important;
+  color: #fff !important;
+  text-transform: capitalize;
+  font-size: 15px;
+  background: linear-gradient(105deg, #deab4e 0%, #d47e15 100%);
+  border-radius: 23px;
+  font-weight: 500 !important;
+  letter-spacing: 0.3px !important;
+  transition: all .5s;
+}
+
+.light-button a {
+  display: inline-block !important;
+  padding: 10px 20px !important;
+  color: #deab4e  !important;
+  text-transform: capitalize;
+  font-size: 15px;
+  background: linear-gradient(105deg, #fff 0%, #bfbfbf 100%);
+  border-radius: 23px;
+  font-weight: 500 !important;
+  letter-spacing: 0.3px !important;
+  transition: all .5s;
+}
+
 .white-button a {
   display: inline-block !important;
   padding: 10px 20px !important;
@@ -375,6 +401,7 @@ header
 .header-area .main-nav {
   min-height: 80px;
   background: transparent;
+  margin-bottom: 50px;
 }
 
 .header-area .main-nav .logo {
@@ -925,7 +952,7 @@ Banner Style
   background-position: center center;
   background-size: cover;
   padding: 250px 120px 150px 120px;
-  position: relative;
+  position: absolute;
   overflow: hidden;
 }
 
