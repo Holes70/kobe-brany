@@ -1066,6 +1066,10 @@ Services Style
   margin: 0 auto;
 }
 
+.service-item .top {
+  box-shadow: 0px 0px 15px red;
+}
+
 .service-item {
   position: relative;
   z-index: 1;
@@ -1139,7 +1143,7 @@ Services Style
 }
 
 .service-item:hover {
-  background-image: url(../images/service-bg.jpg);
+  background-image: url(../images/service-bg2.jpg);
   background-position: right top;
   background-repeat: no-repeat;
   background-size: cover;

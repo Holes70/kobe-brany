@@ -8,13 +8,14 @@ for ($i=1;$i<=100;$i++) {
     'table' => 'products',
     'table_data' => [
       'id' => $i,
-      'image' => "product_" . rand(1, 3) . ".png",
+      'image' => "product_" . rand(1, 3) . ".jpg",
       'name' => $name . '-' . $i,	
       'description' => 'Popis', 	
       'price' => rand(0,1000),
       'available' => rand(0,1),
       'count' => rand(0,15),
-      'type' => $type
+      'type' => $type,
+      'state' => rand(1, 3)
     ]
   ]);
 }
