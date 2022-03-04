@@ -46,6 +46,10 @@ export default {
 
       // hideEdit obsahuje funckiu na novo nacitane data
       this.$parent.loadData();
+
+      $('html, body').animate({
+        scrollTop: $("#produkty").offset().top
+      }, 500);
     },
     loadPreviousPage() {
       var currentPage = diaPagination.getUrlParam('page');
