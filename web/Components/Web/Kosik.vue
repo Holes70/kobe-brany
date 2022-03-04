@@ -49,22 +49,3 @@
       </div>
     </div>
 </template>
-
-<script>
-export default {
-  data() {
-    return {
-      data: {}
-    }
-  },
-  beforeMount() {
-    axios.get('Admin/index.php?action=web_get_detail', {
-      params: {
-        id: 1
-      }
-    }).then((res) => {
-      this.data = res.data['data'];
-    })
-  }
-}
-</script>

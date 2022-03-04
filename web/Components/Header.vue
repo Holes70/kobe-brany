@@ -35,6 +35,11 @@
                   </a>
                 </div>
               </li> 
+              <li>
+                <router-link :to="{name: 'Kosik'}">
+                  <i class="fas fa-shopping-cart"></i>
+                </router-link>
+              </li>
             </ul>        
             <a class='menu-trigger'>
                 <span>Menu</span>
