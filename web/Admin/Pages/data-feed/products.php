@@ -9,7 +9,7 @@ for ($i=1;$i<=100;$i++) {
     'table' => 'products',
     'table_data' => [
       'id' => $i,
-      'image' => "product_" . rand(1, 3) . ".jpg",
+      'image' => ($type == 1 ? "product_" : "prislusenstvo_") . rand(1, 3) . ".jpg",
       'name' => $name . '-' . $i,	
       'description' => 'Popis', 	
       'price' => $price,
