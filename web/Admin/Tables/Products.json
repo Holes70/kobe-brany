@@ -6,6 +6,7 @@
   },
   "image": {
     "type": "image",
+    "name_in_table": "Obrázok",
     "show_in_table": true,
     "show_in_form": true,
     "upload_action": "upload_product_image",
