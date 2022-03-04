@@ -25,6 +25,14 @@
     "required": true,
     "unit": "€"
   },
+  "vat": {
+    "type": "number",
+    "show_in_table": false,
+    "name_in_table": "DPH",
+    "show_in_form": true,
+    "required": true,
+    "step": 1
+  },
   "available": {
     "type": "checkbox",
     "default_value": true,
@@ -60,5 +68,14 @@
     "show_in_table": false,
     "name_in_table": "Označenie",
     "show_in_form": true
+  },
+  "discount": {
+    "type": "number",
+    "show_in_table": false,
+    "name_in_table": "Zľava",
+    "show_in_form": true,
+    "required": false,
+    "step": 1,
+    "unit": "%"
   }
 }
