@@ -29,10 +29,15 @@
               </li> 
               <li>
                 <div class="gradient-button">
-                  <a id="modal_trigger" href="#modal">
-                    <i class="fa fa-sign-in-alt"></i> 
+                  <button 
+                    type="button" 
+                    data-toggle="modal" 
+                    :data-target="'#' + componentUid" 
+                    class="btn"
+                  >
+                   <i class="fa fa-sign-in-alt"></i> 
                     Zaregistrovať
-                  </a>
+                  </button>
                 </div>
               </li> 
               <li>
@@ -50,6 +55,7 @@
       </div>
     </div>
   </header>
+  
   <!-- ***** Header Area End ***** -->
   <router-view />
 </template>
