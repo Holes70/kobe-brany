@@ -34,7 +34,8 @@
     "show_in_form": true,
     "required": true,
     "step": 1,
-    "unit": "%"
+    "unit": "%",
+    "onchange": "{%price_without_vat%}|=|{%price%}|/|1.{%vat%}"
   },
   "price_without_vat": {
     "type": "number",
