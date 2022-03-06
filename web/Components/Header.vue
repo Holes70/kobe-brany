@@ -32,7 +32,7 @@
                   <button 
                     type="button" 
                     data-toggle="modal" 
-                    :data-target="'#' + componentUid" 
+                    data-target="#modal-registracia" 
                     class="btn"
                   >
                    <i class="fa fa-sign-in-alt"></i> 
