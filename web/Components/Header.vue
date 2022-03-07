@@ -28,7 +28,7 @@
                 </div>
               </li> 
               <li>
-                <div class="gradient-button">
+                <div v-if="!Object.keys(customer)" class="gradient-button">
                   <button 
                     type="button" 
                     data-toggle="modal" 
@@ -38,6 +38,9 @@
                    <i class="fa fa-sign-in-alt"></i> 
                     Zaregistrovať
                   </button>
+                </div>
+                <div v-else>
+                  {{ customer.email }}
                 </div>
               </li> 
               <li>
@@ -64,7 +67,8 @@
 export default {
   data() {
     return {
-      menuItems: []
+      menuItems: [],
+      customer: {}
     }
   },
   beforeMount() {
@@ -79,7 +83,13 @@ export default {
       this.menuItems = res.data['data'];
     })
 
-    console.log(this.$parent);
+    axios.get('Admin/index.php?action=prihlaseny_zakaznik')
+    .then((res) => {
+      this.customer = res.data;
+    })
+
+
+    
   }
 }
 </script>

@@ -17,7 +17,7 @@
       ->build()
     ;
   }
-  
+
   $dia->autoload();
 
   $db = new \Core\DB();
