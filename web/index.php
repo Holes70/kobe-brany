@@ -61,6 +61,7 @@
       <link rel='stylesheet' href='assets/css/animated.css'>
       <link rel='stylesheet' href='assets/css/owl.css'>
       <link rel='stylesheet' href='assets/css/web.css'>
+      <link rel='stylesheet' href='../node_modules/bootstrap/dist/css/bootstrap.css'/>
     </head>
   ";
 
