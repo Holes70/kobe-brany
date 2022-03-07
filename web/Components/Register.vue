@@ -30,7 +30,39 @@
               </div>
             </div>
             <div v-if="type == 'login'">
-              logi
+              <div v-if="loginError == 'notExists'">
+                <p>Tento účet neexistuje</p>
+              </div>
+              <div v-else>
+                <p>Heslo je nesprávne</p>
+              </div>
+              <form @submit="prihlasit">
+                <div class="form-group">
+                  <label for="email">E-mailová adresa</label>
+                  <input 
+                    v-model="email"
+                    type="email" 
+                    :class="errorLoginClass('email')" 
+                    id="email" 
+                    placeholder="Zadajte e-mail"
+                  >
+                </div>
+                <div class="form-group">
+                  <label for="password">Heslo</label>
+                  <input
+                    v-model="password"
+                    type="password" 
+                    :class="errorLoginClass('password')"
+                    id="password" 
+                    placeholder="Heslo"
+                  >
+                </div>
+                <input
+                  type="submit" 
+                  class="btn btn-primary"
+                  value="Prihlásiť"
+                />
+              </form>
             </div>
             <div v-else>
               <div v-if="!registrationSuccess">
@@ -91,7 +123,8 @@ export default {
       password2: '',
       emailExists: false,
       registrationSuccess: false,
-      type: 'login'
+      type: 'login',
+      loginError: ''
     }
   },
   methods: {
@@ -112,8 +145,45 @@ export default {
         }
       })
     },
+    prihlasit(e) {
+      e.preventDefault();
+
+      this.loginError = '';
+
+      axios.post('Admin/index.php?action=prihlasit', {
+        email: this.email,
+        password: this.password
+      }).then((res) => {
+        console.log(res);
+        if (res.data.status != 'fail') {
+          
+        } else {
+          this.loginError = res.data.message;
+        }
+      })
+    },
     errorClass() {
       if (this.emailExists) {
+        return {
+          'form-control': true,
+          'error': true
+        }
+      } else {
+        return {
+          'form-control': true
+        }
+      }
+    },
+    errorLoginClass(input) {
+      if (this.loginError == 'notExists') {
+        return {
+          'form-control': true,
+          'error': true
+        }
+      } else if (
+          this.loginError == 'passwordNotValid'
+          && input == 'password'
+        ) {
         return {
           'form-control': true,
           'error': true
