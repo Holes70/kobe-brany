@@ -7,44 +7,75 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
+          <div v-if="emailExists">
+            Tento účet už existuje
+          </div>
           <div class="model-img modal-body text-center">
-            <form @submit="vytvoritUcet">
-              <div class="form-group">
-                <label for="email">E-mailová adresa</label>
-                <input 
-                  v-model="email"
-                  type="email" 
-                  class="form-control" 
-                  id="email" 
-                  placeholder="Zadajte e-mail"
+            <div class="row">
+              <div class="col-6">
+                <button 
+                  @click="changeType('login')"
+                  :class="typeClass('login')"
                 >
+                  Prihlásenie
+                </button>
               </div>
-              <div class="form-group">
-                <label for="password">Heslo</label>
-                <input
-                  v-model="password"
-                  type="password" 
-                  class="form-control" 
-                  id="password" 
-                  placeholder="Heslo"
+              <div class="col-6">
+                <button 
+                  @click="changeType('registration')"
+                  :class="typeClass('registration')"
                 >
+                  Registrácia
+                </button>
               </div>
-              <div class="form-group">
-                <label for="password">Zopakujte heslo</label>
-                <input 
-                  v-model="password2"
-                  type="password" 
-                  class="form-control" 
-                  id="password2" 
-                  placeholder="Zopakujte heslo"
-                >
+            </div>
+            <div v-if="type == 'login'">
+              logi
+            </div>
+            <div v-else>
+              <div v-if="!registrationSuccess">
+                <form @submit="vytvoritUcet">
+                  <div class="form-group">
+                    <label for="email">E-mailová adresa</label>
+                    <input 
+                      v-model="email"
+                      type="email" 
+                      :class="errorClass()" 
+                      id="email" 
+                      placeholder="Zadajte e-mail"
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Heslo</label>
+                    <input
+                      v-model="password"
+                      type="password" 
+                      class="form-control" 
+                      id="password" 
+                      placeholder="Heslo"
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Zopakujte heslo</label>
+                    <input 
+                      v-model="password2"
+                      type="password" 
+                      class="form-control" 
+                      id="password2" 
+                      placeholder="Zopakujte heslo"
+                    >
+                  </div>
+                  <input
+                    type="submit" 
+                    class="btn btn-primary"
+                    value="Vytvoriť zákaznícky účet"
+                  />
+                </form>
               </div>
-              <input
-                type="submit" 
-                class="btn btn-primary"
-                value="Vytvoriť zákaznícky účet"
-              />
-            </form>
+              <div v-else>
+                Poslali sme Vám verifikačný e-mail
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -57,20 +88,51 @@ export default {
     return {
       email: '',
       password: '',
-      password2: ''
+      password2: '',
+      emailExists: false,
+      registrationSuccess: false,
+      type: 'login'
     }
   },
   methods: {
     vytvoritUcet(e) {
       e.preventDefault();
-      
+      this.registrationSuccess = false;
+      this.emailExists = false;
+
       axios.post('Admin/index.php?action=dia_insert_post', {
         email: this.email,
         password: this.password,
         tableName: 'customers'
       }).then((res) => {
-        console.log(res);
+        if (res.data.status != 'fail') {
+          this.registrationSuccess = true;
+        } else {
+          this.emailExists = true;
+        }
       })
+    },
+    errorClass() {
+      if (this.emailExists) {
+        return {
+          'form-control': true,
+          'error': true
+        }
+      } else {
+        return {
+          'form-control': true
+        }
+      }
+    },
+    typeClass(type) {
+      if (this.type == type) {
+        return {'btn btn-primary': true}
+      } else {
+        return {'btn btn-secondary': true}
+      }
+    },
+    changeType(type) {
+      this.type = type;
     }
   }
 }
