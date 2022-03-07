@@ -8,20 +8,21 @@
             </button>
           </div>
           <div class="model-img modal-body text-center">
-            <form>
+            <form @submit="vytvoritUcet">
               <div class="form-group">
                 <label for="email">E-mailová adresa</label>
                 <input 
+                  v-model="email"
                   type="email" 
                   class="form-control" 
                   id="email" 
-                  aria-describedby="emailHelp"
                   placeholder="Zadajte e-mail"
                 >
               </div>
               <div class="form-group">
                 <label for="password">Heslo</label>
-                <input 
+                <input
+                  v-model="password"
                   type="password" 
                   class="form-control" 
                   id="password" 
@@ -31,6 +32,7 @@
               <div class="form-group">
                 <label for="password">Zopakujte heslo</label>
                 <input 
+                  v-model="password2"
                   type="password" 
                   class="form-control" 
                   id="password2" 
@@ -48,3 +50,28 @@
       </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      email: '',
+      password: '',
+      password2: ''
+    }
+  },
+  methods: {
+    vytvoritUcet(e) {
+      e.preventDefault();
+      
+      axios.post('Admin/index.php?action=dia_insert_post', {
+        email: this.email,
+        password: this.password,
+        tableName: 'customers'
+      }).then((res) => {
+        console.log(res);
+      })
+    }
+  }
+}
+</script>
