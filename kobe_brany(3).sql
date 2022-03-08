@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hostiteľ: 127.0.0.1
--- Čas generovania: So 26.Feb 2022, 15:17
+-- Čas generovania: Út 08.Mar 2022, 09:20
 -- Verzia serveru: 10.4.22-MariaDB
 -- Verzia PHP: 8.0.14
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Databáza: `dia`
+-- Databáza: `kobe_brany`
 --
 
 -- --------------------------------------------------------
@@ -38,7 +38,7 @@ CREATE TABLE `carts` (
 --
 
 INSERT INTO `carts` (`id`, `id_customer_uid`, `is_order`) VALUES
-(1, 0, 1);
+(1, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -57,8 +57,7 @@ CREATE TABLE `carts_products` (
 --
 
 INSERT INTO `carts_products` (`id`, `id_cart`, `id_product`) VALUES
-(1, 1, 1),
-(2, 1, 3);
+(1, 1, 100);
 
 -- --------------------------------------------------------
 
@@ -73,17 +72,6 @@ CREATE TABLE `complaints` (
   `description` text NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Sťahujem dáta pre tabuľku `complaints`
---
-
-INSERT INTO `complaints` (`id`, `id_order`, `type`, `description`, `created_at`) VALUES
-(1, 1, 2, 'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.', '2022-02-16 08:43:50'),
-(2, 2, 1, 'jjj', '2022-02-16 08:43:50'),
-(3, 21312321, 1, '', '2022-02-11 11:00:00'),
-(7, 96, 2, '', '2022-02-03 20:03:00'),
-(8, 95, 1, 'ffacxzda', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -106,8 +94,8 @@ CREATE TABLE `complaints_documents` (
 
 CREATE TABLE `customers` (
   `id` int(11) NOT NULL,
-  `first_name` varchar(55) NOT NULL,
-  `last_name` varchar(55) NOT NULL,
+  `first_name` varchar(55) DEFAULT NULL,
+  `last_name` varchar(55) DEFAULT NULL,
   `email` varchar(55) DEFAULT NULL,
   `phone_number` int(10) DEFAULT NULL,
   `state` tinyint(1) DEFAULT NULL,
@@ -119,36 +107,16 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `first_name`, `last_name`, `email`, `phone_number`, `state`, `password`) VALUES
-(1, 'Meno_1', 'Priezvisko_1', 'zakaznik_1@gmail.com', 13102523, 2, '123455'),
-(2, 'Meno_2', 'Priezvisko_2', 'zakaznik_2@gmail.com', 26527492, 2, '123455'),
-(3, 'Meno_3', 'Priezvisko_3', 'zakaznik_3@gmail.com', 59002038, 3, '123455'),
-(4, 'Meno_4', 'Priezvisko_4', 'zakaznik_4@gmail.com', 30765647, 3, '123455'),
-(5, 'Meno_5', 'Priezvisko_5', 'zakaznik_5@gmail.com', 26107023, 2, '123455'),
-(6, 'Meno_6', 'Priezvisko_6', 'zakaznik_6@gmail.com', 55617027, 2, '123455'),
-(7, 'Meno_7', 'Priezvisko_7', 'zakaznik_7@gmail.com', 73821795, 2, '123455'),
-(8, 'Meno_8', 'Priezvisko_8', 'zakaznik_8@gmail.com', 28961312, 2, '123455'),
-(9, 'Meno_9', 'Priezvisko_9', 'zakaznik_9@gmail.com', 44170284, 1, '123455'),
-(10, 'Meno_10', 'Priezvisko_10', 'zakaznik_10@gmail.com', 99530803, 2, '123455'),
-(11, 'Meno_11', 'Priezvisko_11', 'zakaznik_11@gmail.com', 39444407, 3, '123455'),
-(12, 'Meno_12', 'Priezvisko_12', 'zakaznik_12@gmail.com', 71518588, 1, '123455'),
-(13, 'Meno_13', 'Priezvisko_13', 'zakaznik_13@gmail.com', 81691151, 1, '123455'),
-(14, 'Meno_14', 'Priezvisko_14', 'zakaznik_14@gmail.com', 33728685, 2, '123455'),
-(15, 'Meno_15', 'Priezvisko_15', 'zakaznik_15@gmail.com', 12466616, 1, '123455'),
-(16, 'Meno_16', 'Priezvisko_16', 'zakaznik_16@gmail.com', 81052978, 1, '123455'),
-(17, 'Meno_17', 'Priezvisko_17', 'zakaznik_17@gmail.com', 11903633, 2, '123455'),
-(18, 'Meno_18', 'Priezvisko_18', 'zakaznik_18@gmail.com', 43991703, 1, '123455'),
-(19, 'Meno_19', 'Priezvisko_19', 'zakaznik_19@gmail.com', 99733331, 2, '123455'),
-(20, 'Meno_20', 'Priezvisko_20', 'zakaznik_20@gmail.com', 36481741, 1, '123455'),
-(21, 'Meno_21', 'Priezvisko_21', 'zakaznik_21@gmail.com', 96048753, 3, '123455'),
-(22, 'Meno_22', 'Priezvisko_22', 'zakaznik_22@gmail.com', 78271635, 3, '123455'),
-(23, 'Meno_23', 'Priezvisko_23', 'zakaznik_23@gmail.com', 33061821, 2, '123455'),
-(24, 'Meno_24', 'Priezvisko_24', 'zakaznik_24@gmail.com', 91521589, 3, '123455'),
-(25, 'Meno_25', 'Priezvisko_25', 'zakaznik_25@gmail.com', 98992246, 3, '123455'),
-(26, 'Meno_26', 'Priezvisko_26', 'zakaznik_26@gmail.com', 89801622, 1, '123455'),
-(27, 'Meno_27', 'Priezvisko_27', 'zakaznik_27@gmail.com', 88398601, 2, '123455'),
-(28, 'Meno_28', 'Priezvisko_28', 'zakaznik_28@gmail.com', 68542758, 1, '123455'),
-(29, 'Meno_29', 'Priezvisko_29', 'zakaznik_29@gmail.com', 67587990, 1, '123455'),
-(30, 'Meno_30', 'Priezvisko_30', 'zakaznik_30@gmail.com', 80214353, 2, '123455');
+(1, 'Meno_1', 'Priezvisko_1', 'zakaznik_1@email.com', 38578330, 1, '$2y$10$s1tAB/5onyVNFK..JU.9NuQevnL6OLHSMZ0.5uW0Pn9HK8oTmgUki'),
+(2, 'Meno_2', 'Priezvisko_2', 'zakaznik_2@email.com', 36620544, 3, '$2y$10$PvE9oM7h11valPKb4EsIWeHEk.V9iJxzqTzlIFeB37iYktbeTmkW.'),
+(3, 'Meno_3', 'Priezvisko_3', 'zakaznik_3@email.com', 99524807, 2, '$2y$10$2.YglEAji08AdPohXIoaDerhgDkW0UyMgdC5IuJAwmQKczn5EA5B6'),
+(4, 'Meno_4', 'Priezvisko_4', 'zakaznik_4@email.com', 73539637, 2, '$2y$10$bczMFkOQ4rRUfd6Iz7JehOa5r.2qjlZtBw00nCydANiJhZ0H7sbDi'),
+(5, 'Meno_5', 'Priezvisko_5', 'zakaznik_5@email.com', 37432026, 3, '$2y$10$WToXH.EMUD6ot.HhZtRAr.wZ6oDfe2gp23cmihosvIuxlH8800n7q'),
+(6, 'Meno_6', 'Priezvisko_6', 'zakaznik_6@email.com', 62593570, 3, '$2y$10$VH8mA2GT4T.IkgiU0oQX6OlAbTFkEyT5Hb7M8hA6eT4BcfCFB63bG'),
+(7, 'Meno_7', 'Priezvisko_7', 'zakaznik_7@email.com', 20014658, 2, '$2y$10$KXOHIDPKqdZCT.H5b0aK7.KeizOwVepbnnoYCVJ7cITTbmLucJ7h2'),
+(8, 'Meno_8', 'Priezvisko_8', 'zakaznik_8@email.com', 54549656, 3, '$2y$10$rm81j4FBwZxVkydrFtzlseZOEVL4NcY4LUYv4NCNt1jq6n3vW415K'),
+(9, 'Meno_9', 'Priezvisko_9', 'zakaznik_9@email.com', 29444851, 1, '$2y$10$qkeCFFMm6yoO4fTPcpIQSumftInyBGAvBiRksg6bLHlgoJxnyscwK'),
+(10, 'Meno_10', 'Priezvisko_10', 'zakaznik_10@email.com', 43559678, 3, '$2y$10$6YJqyY3xtoEor0ul9Nugbe2Cb5HKp2rqK3XdkSJQLzO5Y87IFy9Yu');
 
 -- --------------------------------------------------------
 
@@ -192,19 +160,7 @@ CREATE TABLE `dia_messages` (
 --
 
 INSERT INTO `dia_messages` (`id`, `recipient`, `sender`, `subject`, `body`, `timestamp`, `viewed`, `id_answer`) VALUES
-(2, 'dsadsa', 'dsadsadsa', 'dsadsadsadsa', 'dsadsadsa', '2022-02-10 17:46:25', 0, 0),
-(9, 'dsadsadasdsa', 'admin@dia.sk', 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', 'Aohjd asdasdasdasdas', '2022-02-14 12:37:07', 0, 0),
-(10, 'admin@dia.sk', 'test@email.sk', 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', 'dsadsadsadas', '2022-02-14 12:37:22', 1, 12),
-(12, 'test@email.sk', 'admin@dia.sk', 'Ahoj', 'xxx', '2022-02-14 09:55:02', 0, 0),
-(13, 'test@email.sk', 'admin@dia.sk', 'Ahoj', 'xxx', '2022-02-14 09:58:40', 0, 0),
-(14, 'admin@dia.sk', 'test2@gmail.com', 'Test2', 'Test2', '2022-02-14 10:14:35', 1, 15),
-(15, 'test2@gmail.com', 'admin@dia.sk', 'Test2', 'xxx', '2022-02-14 10:00:33', 0, 0),
-(16, 'admin@dia.sk', 'XXX', 'XXX', 'XXX', '2022-02-14 10:14:07', 1, 17),
-(17, 'XXX', 'admin@dia.sk', 'XXX', 'jjj', '2022-02-14 10:01:39', 0, 0),
-(18, 'admin@dia.sk', 'XXX', 'XXX', 'XXX', '2022-02-14 10:13:37', 1, 19),
-(19, 'XXX', 'admin@dia.sk', 'XXX', 'Ahojtewadasd dasdsadas', '2022-02-14 10:03:13', 0, 0),
-(20, 'admin@dia.sk', 'xxx', 'xxx', 'xx', '2022-02-14 10:38:56', 1, 21),
-(21, 'xxx', 'admin@dia.sk', 'xxx', 'Ano', '2022-02-14 10:38:56', 0, 0);
+(1, 'admin@dia.sk', 'Jozef17@email.sk', 'Produkt-17 k dispozícii?', 'Dobrý deň,\r\nKedy bude produkt-17 k dispozícii?\r\nĎakujem, \r\nJozef L.', '2022-02-28 12:02:53', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -228,21 +184,21 @@ CREATE TABLE `dia_navbar` (
 --
 
 INSERT INTO `dia_navbar` (`id`, `id_parent`, `name`, `link`, `description`, `icon`, `order_index`, `is_enabled`) VALUES
-(2, 0, 'Objednávky', 'objednavky', 'Objednávky', 'donate', 5, 1),
+(2, 0, 'Objednávky', 'objednavky', 'Objednávky', 'donate', 500, 1),
 (3, 2, 'Všetky', 'objednavky-vsetky', 'Všetky objednávky', '', 41, 1),
 (4, 2, 'Nové', 'objednavky-nove', 'Nové objednávky', '', 42, 1),
 (5, 2, 'Schválené', 'objednavky-schvalene', 'Schválené', '', 43, 1),
-(7, 0, 'Reklamácie', 'reklamacie', 'Reklamácie', 'sync', 6, 1),
-(8, 0, 'Faktúry', 'faktury', 'Faktúry', 'file-alt', 5, 1),
-(209, 0, 'Produkty', 'produkty', '', 'archive', 2, 1),
-(211, 0, 'Zákazníci', 'zakaznici', '', 'users', 3, 1),
-(212, 0, 'Domov', 'home', NULL, 'home', 1, 1),
+(7, 0, 'Reklamácie', 'reklamacie', 'Reklamácie', 'sync', 800, 1),
+(8, 0, 'Faktúry', 'faktury', 'Faktúry', 'file-alt', 700, 1),
+(209, 0, 'Produkty', 'produkty', '', 'archive', 200, 1),
+(211, 0, 'Zákazníci', 'zakaznici', '', 'users', 400, 1),
+(212, 0, 'Domov', 'home', '', 'home', 100, 1),
 (213, 2, 'Zaplatené', 'objednavky-zaplatene', NULL, NULL, 44, 1),
 (214, 2, 'Odovzdané', 'objednavky-odovzdane', NULL, NULL, 45, 1),
 (215, 8, 'Vystavené', 'faktury-vystavene', '', '', 51, 1),
 (216, 8, 'Zaplatené', 'faktury-zaplatene', '', '', 52, 1),
-(217, 0, 'Príslušenstvo', 'male-produkty', '', 'th-large', 2, 1),
-(218, 0, 'Košíky', 'kosiky', '', 'shopping-cart', 4, 1);
+(217, 0, 'Príslušenstvo', 'male-produkty', '', 'th-large', 300, 1),
+(218, 0, 'Košíky', 'kosiky', '', 'shopping-cart', 600, 1);
 
 -- --------------------------------------------------------
 
@@ -492,106 +448,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `serial_number`, `first_name`, `last_name`, `phone`, `email`, `type`, `id_customer`, `id_cart`, `id_invoice`) VALUES
-(1, 1001, '', '', 0, NULL, 4, 5, 3, 1),
-(2, 1002, '', '', 0, NULL, 1, 5, 2, NULL),
-(3, 1003, '', '', 0, NULL, 3, 5, 5, 2),
-(4, 1004, '', '', 0, NULL, 1, 1, 3, 0),
-(5, 1005, '', '', 0, NULL, 1, 5, 3, 3),
-(6, 1006, '', '', 0, NULL, 1, 2, 5, 0),
-(7, 1007, '', '', 0, NULL, 2, 4, 1, 0),
-(8, 1008, '', '', 0, NULL, 3, 1, 1, 0),
-(9, 1009, '', '', 0, NULL, 3, 5, 4, 0),
-(10, 1010, '', '', 0, NULL, 2, 5, 5, 0),
-(11, 1011, '', '', 0, NULL, 3, 5, 2, 0),
-(12, 1012, '', '', 0, NULL, 2, 4, 5, 0),
-(13, 1013, '', '', 0, NULL, 2, 1, 5, 0),
-(14, 1014, '', '', 0, NULL, 3, 1, 3, 0),
-(15, 1015, '', '', 0, NULL, 3, 4, 4, 0),
-(16, 1016, '', '', 0, NULL, 2, 1, 2, 0),
-(17, 1017, '', '', 0, NULL, 3, 2, 5, 0),
-(18, 1018, '', '', 0, NULL, 2, 5, 1, 0),
-(19, 1019, '', '', 0, NULL, 1, 1, 1, 0),
-(20, 1020, '', '', 0, NULL, 3, 4, 1, 0),
-(21, 1021, '', '', 0, NULL, 2, 4, 1, 0),
-(22, 1022, '', '', 0, NULL, 1, 1, 5, 0),
-(23, 1023, '', '', 0, NULL, 1, 5, 5, 0),
-(24, 1024, '', '', 0, NULL, 1, 3, 1, 0),
-(25, 1025, '', '', 0, NULL, 1, 4, 5, 0),
-(26, 1026, '', '', 0, NULL, 2, 5, 1, 0),
-(27, 1027, '', '', 0, NULL, 3, 2, 5, 0),
-(28, 1028, '', '', 0, NULL, 2, 5, 4, 0),
-(29, 1029, '', '', 0, NULL, 3, 3, 5, 0),
-(30, 1030, '', '', 0, NULL, 1, 5, 1, 0),
-(31, 1031, '', '', 0, NULL, 2, 1, 3, 0),
-(32, 1032, '', '', 0, NULL, 2, 2, 1, 0),
-(33, 1033, '', '', 0, NULL, 3, 1, 5, 0),
-(34, 1034, '', '', 0, NULL, 1, 1, 5, 0),
-(35, 1035, '', '', 0, NULL, 1, 4, 3, 0),
-(36, 1036, '', '', 0, NULL, 1, 5, 4, 0),
-(37, 1037, '', '', 0, NULL, 2, 4, 1, 0),
-(38, 1038, '', '', 0, NULL, 2, 2, 2, 0),
-(39, 1039, '', '', 0, NULL, 2, 2, 1, 0),
-(40, 1040, '', '', 0, NULL, 3, 2, 1, 0),
-(41, 1041, '', '', 0, NULL, 2, 1, 3, 0),
-(42, 1042, '', '', 0, NULL, 3, 3, 3, 0),
-(43, 1043, '', '', 0, NULL, 1, 5, 1, 0),
-(44, 1044, '', '', 0, NULL, 3, 1, 2, 0),
-(45, 1045, '', '', 0, NULL, 3, 1, 5, 0),
-(46, 1046, '', '', 0, NULL, 3, 1, 4, 0),
-(47, 1047, '', '', 0, NULL, 1, 5, 3, 0),
-(48, 1048, '', '', 0, NULL, 1, 4, 3, 0),
-(49, 1049, '', '', 0, NULL, 3, 5, 3, 0),
-(50, 1050, '', '', 0, NULL, 1, 5, 2, 0),
-(51, 1051, '', '', 0, NULL, 2, 3, 5, 0),
-(52, 1052, '', '', 0, NULL, 1, 1, 4, 0),
-(53, 1053, '', '', 0, NULL, 1, 3, 3, 0),
-(54, 1054, '', '', 0, NULL, 1, 2, 1, 0),
-(55, 1055, '', '', 0, NULL, 3, 5, 1, 0),
-(56, 1056, '', '', 0, NULL, 1, 4, 4, 0),
-(57, 1057, '', '', 0, NULL, 3, 2, 1, 0),
-(58, 1058, '', '', 0, NULL, 2, 3, 3, 0),
-(59, 1059, '', '', 0, NULL, 2, 1, 2, 0),
-(60, 1060, '', '', 0, NULL, 3, 3, 5, 0),
-(61, 1061, '', '', 0, NULL, 2, 3, 2, 0),
-(62, 1062, '', '', 0, NULL, 2, 2, 1, 0),
-(63, 1063, '', '', 0, NULL, 3, 2, 2, 0),
-(64, 1064, '', '', 0, NULL, 2, 5, 4, 0),
-(65, 1065, '', '', 0, NULL, 3, 3, 5, 0),
-(66, 1066, '', '', 0, NULL, 1, 1, 3, 0),
-(67, 1067, '', '', 0, NULL, 1, 2, 2, 0),
-(68, 1068, '', '', 0, NULL, 3, 5, 4, 0),
-(69, 1069, '', '', 0, NULL, 3, 3, 5, 0),
-(70, 1070, '', '', 0, NULL, 3, 1, 5, 0),
-(71, 1071, '', '', 0, NULL, 2, 4, 4, 0),
-(72, 1072, '', '', 0, NULL, 1, 5, 1, 0),
-(73, 1073, '', '', 0, NULL, 1, 5, 1, 0),
-(74, 1074, '', '', 0, NULL, 2, 4, 1, 0),
-(75, 1075, '', '', 0, NULL, 3, 1, 2, 0),
-(76, 1076, '', '', 0, NULL, 3, 5, 5, 0),
-(77, 1077, '', '', 0, NULL, 2, 5, 5, 0),
-(78, 1078, '', '', 0, NULL, 2, 4, 1, 0),
-(79, 1079, '', '', 0, NULL, 3, 1, 5, 0),
-(80, 1080, '', '', 0, NULL, 1, 2, 1, 0),
-(81, 1081, '', '', 0, NULL, 2, 2, 1, 0),
-(82, 1082, '', '', 0, NULL, 1, 3, 5, 0),
-(83, 1083, '', '', 0, NULL, 3, 3, 5, 0),
-(84, 1084, '', '', 0, NULL, 2, 2, 2, 0),
-(85, 1085, '', '', 0, NULL, 2, 5, 2, 0),
-(86, 1086, '', '', 0, NULL, 1, 3, 5, 0),
-(87, 1087, '', '', 0, NULL, 1, 3, 1, 0),
-(88, 1088, '', '', 0, NULL, 1, 2, 3, 0),
-(89, 1089, '', '', 0, NULL, 2, 1, 1, 0),
-(90, 1090, '', '', 0, NULL, 3, 1, 3, 0),
-(91, 1091, '', '', 0, NULL, 1, 3, 5, 0),
-(92, 1092, '', '', 0, NULL, 2, 1, 5, 0),
-(93, 1093, '', '', 0, NULL, 1, 1, 2, 0),
-(94, 1094, '', '', 0, NULL, 2, 3, 5, 0),
-(95, 1095, '', '', 0, NULL, 1, 3, 5, 0),
-(96, 1096, '', '', 0, NULL, 1, 2, 3, 0),
-(97, 1097, '', '', 0, NULL, 3, 2, 5, 0),
-(98, 1098, '', '', 0, NULL, 1, 4, 4, 0),
-(99, 1099, '', '', 0, NULL, 1, 4, 5, 0),
-(100, 9999, 'xxxx', 'dasdsadsa', 515154, 'xxx@email.sk', 1, 0, 0, NULL);
+(1, 9999, 'Meno_10', 'Priezvisko_10', 43432432, 'zakaznik_10@email.com', 2, 10, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -626,119 +483,121 @@ CREATE TABLE `products` (
   `image` varchar(55) DEFAULT NULL,
   `name` varchar(50) NOT NULL,
   `price` double(14,2) DEFAULT NULL,
+  `vat` int(2) NOT NULL,
+  `price_without_vat` float NOT NULL,
   `available` tinyint(1) DEFAULT 0,
   `count` int(11) NOT NULL DEFAULT 0,
   `description` text DEFAULT NULL,
-  `type` tinyint(4) NOT NULL DEFAULT 1
+  `type` tinyint(4) NOT NULL DEFAULT 1,
+  `state` int(1) NOT NULL DEFAULT 1,
+  `discount` int(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Sťahujem dáta pre tabuľku `products`
 --
 
-INSERT INTO `products` (`id`, `image`, `name`, `price`, `available`, `count`, `description`, `type`) VALUES
-(1, 'product_3.png', 'Product_1', 107.00, 0, 7, 'Popis', 1),
-(2, 'product_1.png', 'dsadsa', 858.00, 1, 0, 'dsadxcx', 2),
-(3, 'product_1.png', 'Product_3', 102.00, 1, 14, 'Popis', 2),
-(4, 'product_3.png', 'Product_4', 375.00, 0, 8, 'Popis', 2),
-(5, 'product_2.png', 'Product_5', 944.00, 0, 4, 'Popis', 2),
-(6, 'product_3.png', 'Product_6', 511.00, 1, 4, 'Popis', 2),
-(7, 'product_1.png', 'Product_7', 523.00, 0, 0, 'Popis', 2),
-(8, 'product_3.png', 'Product_8', 360.00, 1, 15, 'Popis', 1),
-(9, 'product_1.png', 'Product_9', 435.00, 0, 14, 'Popis', 1),
-(10, 'product_2.png', 'Product_10', 434.00, 0, 3, 'Popis', 2),
-(11, 'product_1.png', 'Product_11', 676.00, 1, 13, 'Popis', 2),
-(12, 'product_2.png', 'Product_12', 862.00, 1, 10, 'Popis', 2),
-(13, 'product_2.png', 'Product_13', 537.00, 0, 8, 'Popis', 2),
-(14, 'product_1.png', 'Product_14', 775.00, 1, 2, 'Popis', 2),
-(15, 'product_1.png', 'Product_15', 732.00, 1, 10, 'Popis', 2),
-(16, 'product_2.png', 'Product_16', 58.00, 0, 5, 'Popis', 1),
-(17, 'product_1.png', 'Product_17', 194.00, 1, 13, 'Popis', 1),
-(18, 'product_2.png', 'Product_18', 675.00, 1, 11, 'Popis', 2),
-(19, 'product_2.png', 'Product_19', 439.00, 1, 13, 'Popis', 2),
-(20, 'product_2.png', 'Product_20', 247.00, 1, 7, 'Popis', 1),
-(21, 'product_3.png', 'Product_21', 417.00, 0, 0, 'Popis', 2),
-(22, 'product_2.png', 'Product_22', 214.00, 1, 7, 'Popis', 2),
-(23, 'product_3.png', 'Product_23', 496.00, 1, 9, 'Popis', 2),
-(24, 'product_2.png', 'Product_24', 856.00, 1, 6, 'Popis', 1),
-(25, 'product_1.png', 'Product_25', 940.00, 1, 11, 'Popis', 2),
-(26, 'product_3.png', 'Product_26', 902.00, 1, 8, 'Popis', 2),
-(27, 'product_3.png', 'Product_27', 778.00, 0, 6, 'Popis', 2),
-(28, 'product_2.png', 'Product_28', 648.00, 0, 10, 'Popis', 2),
-(29, 'product_2.png', 'Product_29', 28.00, 1, 11, 'Popis', 1),
-(30, 'product_3.png', 'Product_30', 69.00, 1, 12, 'Popis', 2),
-(31, 'product_1.png', 'Product_31', 23.00, 1, 14, 'Popis', 2),
-(32, 'product_1.png', 'Product_32', 655.00, 0, 10, 'Popis', 2),
-(33, 'product_2.png', 'Product_33', 180.00, 1, 13, 'Popis', 1),
-(34, 'product_2.png', 'Product_34', 349.00, 1, 2, 'Popis', 1),
-(35, 'product_2.png', 'Product_35', 726.00, 1, 7, 'Popis', 2),
-(36, 'product_2.png', 'Product_36', 14.00, 0, 13, 'Popis', 1),
-(37, 'product_3.png', 'Product_37', 827.00, 0, 12, 'Popis', 2),
-(38, 'product_2.png', 'Product_38', 871.00, 0, 2, 'Popis', 2),
-(39, 'product_3.png', 'Product_39', 249.00, 0, 1, 'Popis', 2),
-(40, 'product_2.png', 'Product_40', 993.00, 0, 3, 'Popis', 1),
-(41, 'product_1.png', 'Product_41', 594.00, 0, 7, 'Popis', 1),
-(42, 'product_1.png', 'Product_42', 518.00, 0, 6, 'Popis', 1),
-(43, 'product_1.png', 'Product_43', 823.00, 1, 15, 'Popis', 2),
-(44, 'product_2.png', 'Product_44', 56.00, 1, 0, 'Popis', 2),
-(45, 'product_3.png', 'Product_45', 743.00, 0, 11, 'Popis', 1),
-(46, 'product_1.png', 'Product_46', 655.00, 0, 14, 'Popis', 2),
-(47, 'product_2.png', 'Product_47', 580.00, 0, 3, 'Popis', 1),
-(48, 'product_1.png', 'Product_48', 237.00, 0, 7, 'Popis', 2),
-(49, 'product_3.png', 'Product_49', 942.00, 0, 1, 'Popis', 2),
-(50, 'product_2.png', 'Product_50', 844.00, 1, 0, 'Popis', 1),
-(51, 'product_1.png', 'Product_51', 674.00, 0, 1, 'Popis', 2),
-(52, 'product_1.png', 'Product_52', 920.00, 1, 5, 'Popis', 2),
-(53, 'product_1.png', 'Product_53', 648.00, 1, 2, 'Popis', 1),
-(54, 'product_2.png', 'Product_54', 436.00, 0, 0, 'Popis', 2),
-(55, 'product_1.png', 'Product_55', 56.00, 1, 6, 'Popis', 2),
-(56, 'product_1.png', 'Product_56', 319.00, 0, 2, 'Popis', 1),
-(57, 'product_3.png', 'Product_57', 742.00, 0, 5, 'Popis', 1),
-(58, 'product_2.png', 'Product_58', 317.00, 1, 4, 'Popis', 1),
-(59, 'product_1.png', 'Product_59', 589.00, 0, 12, 'Popis', 1),
-(60, 'product_2.png', 'Product_60', 267.00, 1, 0, 'Popis', 1),
-(61, 'product_1.png', 'Product_61', 98.00, 1, 15, 'Popis', 2),
-(62, 'product_3.png', 'Product_62', 201.00, 1, 14, 'Popis', 2),
-(63, 'product_3.png', 'Product_63', 328.00, 1, 8, 'Popis', 2),
-(64, 'product_2.png', 'Product_64', 642.00, 0, 0, 'Popis', 2),
-(65, 'product_2.png', 'Product_65', 719.00, 0, 3, 'Popis', 1),
-(66, 'product_2.png', 'Product_66', 996.00, 1, 6, 'Popis', 1),
-(67, 'product_1.png', 'Product_67', 859.00, 1, 12, 'Popis', 1),
-(68, 'product_1.png', 'Product_68', 799.00, 1, 0, 'Popis', 1),
-(69, 'product_3.png', 'Product_69', 690.00, 1, 4, 'Popis', 1),
-(70, 'product_1.png', 'Product_70', 828.00, 1, 1, 'Popis', 1),
-(71, 'product_2.png', 'Product_71', 776.00, 0, 1, 'Popis', 1),
-(72, 'product_3.png', 'Product_72', 601.00, 0, 13, 'Popis', 1),
-(73, 'product_1.png', 'Product_73', 907.00, 1, 8, 'Popis', 2),
-(74, 'product_1.png', 'Product_74', 686.00, 1, 6, 'Popis', 2),
-(75, 'product_3.png', 'Product_75', 211.00, 1, 13, 'Popis', 2),
-(76, 'product_2.png', 'Product_76', 451.00, 1, 13, 'Popis', 1),
-(77, 'product_1.png', 'Product_77', 260.00, 0, 12, 'Popis', 2),
-(78, 'product_3.png', 'Product_78', 631.00, 1, 4, 'Popis', 1),
-(79, 'product_2.png', 'Product_79', 522.00, 1, 9, 'Popis', 1),
-(80, 'product_1.png', 'Product_80', 680.00, 1, 1, 'Popis', 2),
-(81, 'product_1.png', 'Product_81', 180.00, 1, 5, 'Popis', 1),
-(82, 'product_3.png', 'Product_82', 869.00, 1, 4, 'Popis', 2),
-(83, 'product_3.png', 'Product_83', 281.00, 1, 9, 'Popis', 2),
-(84, 'product_3.png', 'Product_84', 859.00, 1, 2, 'Popis', 1),
-(85, 'product_1.png', 'Product_85', 293.00, 0, 7, 'Popis', 1),
-(86, 'product_1.png', 'Product_86', 860.00, 0, 14, 'Popis', 2),
-(87, 'product_2.png', 'Product_87', 623.00, 0, 11, 'Popis', 2),
-(88, 'product_3.png', 'Product_88', 223.00, 1, 13, 'Popis', 2),
-(89, 'product_1.png', 'Product_89', 522.00, 0, 5, 'Popis', 1),
-(90, 'product_2.png', 'Product_90', 451.00, 1, 10, 'Popis', 2),
-(91, 'product_3.png', 'Product_91', 369.00, 1, 1, 'Popis', 2),
-(92, 'product_3.png', 'Product_92', 691.00, 0, 14, 'Popis', 2),
-(93, 'product_3.png', 'Product_93', 36.00, 0, 2, 'Popis', 1),
-(94, 'product_1.png', 'Product_94', 181.00, 1, 9, 'Popis', 1),
-(95, 'product_2.png', 'Product_95', 416.00, 0, 3, 'Popis', 2),
-(96, 'product_1.png', 'Product_96', 812.00, 1, 0, 'Popis', 1),
-(97, 'product_1.png', 'Product_97', 643.00, 1, 2, 'Popis', 2),
-(98, 'product_3.png', 'Product_98', 155.00, 1, 6, 'Popis', 1),
-(99, 'product_3.png', 'Product_99', 974.00, 0, 11, 'Popis', 1),
-(100, 'product_1.png', 'Product_100', 839.00, 0, 5, 'Popis', 1),
-(101, 'wallpaper.jpeg', 'zemegula', 5.00, 0, 1, '', 2),
-(105, 'product_1.png', 'xxx', 12.00, 1, 1, '', 1);
+INSERT INTO `products` (`id`, `image`, `name`, `price`, `vat`, `price_without_vat`, `available`, `count`, `description`, `type`, `state`, `discount`) VALUES
+(1, 'product_1.jpg', 'Produkt-1', 822.00, 20, 685, 1, 0, 'Popis', 1, 2, 0),
+(2, 'prislusenstvo_2.jpg', 'Príslušenstvo-2', 169.00, 20, 140.83, 0, 8, 'Popis', 2, 1, 0),
+(3, 'product_1.jpg', 'Produkt-3', 980.00, 20, 816.67, 1, 13, 'Popis', 1, 2, 20),
+(4, 'prislusenstvo_1.jpg', 'Príslušenstvo-4', 515.00, 20, 429.17, 0, 12, 'Popis', 2, 1, 0),
+(5, 'product_2.jpg', 'Produkt-5', 405.00, 20, 337.5, 1, 3, 'Popis', 1, 2, 0),
+(6, 'prislusenstvo_2.jpg', 'Príslušenstvo-6', 896.00, 20, 746.67, 0, 13, 'Popis', 2, 3, 0),
+(7, 'product_3.jpg', 'Produkt-7', 363.00, 20, 302.5, 0, 5, 'Popis', 1, 3, 0),
+(8, 'prislusenstvo_2.jpg', 'Príslušenstvo-8', 227.00, 20, 189.17, 0, 13, 'Popis', 2, 1, 0),
+(9, 'product_2.jpg', 'Produkt-9', 764.00, 20, 636.67, 1, 6, 'Popis', 1, 2, 0),
+(10, 'prislusenstvo_3.jpg', 'Príslušenstvo-10', 721.00, 20, 600.83, 0, 15, 'Popis', 2, 2, 20),
+(11, 'product_1.jpg', 'Produkt-11', 906.00, 20, 755, 1, 3, 'Popis', 1, 1, 0),
+(12, 'product_2.jpg', 'Produkt-12', 408.00, 20, 340, 1, 1, 'Popis', 1, 3, 0),
+(13, 'product_1.jpg', 'Produkt-13', 397.00, 20, 330.83, 1, 0, 'Popis', 1, 2, 0),
+(14, 'prislusenstvo_3.jpg', 'Príslušenstvo-14', 102.00, 20, 85, 1, 1, 'Popis', 2, 2, 20),
+(15, 'product_3.jpg', 'Produkt-15', 527.00, 20, 439.17, 1, 8, 'Popis', 1, 1, 0),
+(16, 'product_3.jpg', 'Produkt-16', 795.00, 20, 662.5, 1, 3, 'Popis', 1, 2, 20),
+(17, 'prislusenstvo_3.jpg', 'Príslušenstvo-17', 658.00, 20, 548.33, 0, 2, 'Popis', 2, 2, 0),
+(18, 'prislusenstvo_3.jpg', 'Príslušenstvo-18', 689.00, 20, 574.17, 0, 7, 'Popis', 2, 2, 0),
+(19, 'product_1.jpg', 'Produkt-19', 140.00, 20, 116.67, 0, 5, 'Popis', 1, 2, 0),
+(20, 'prislusenstvo_3.jpg', 'Príslušenstvo-20', 706.00, 20, 588.33, 1, 13, 'Popis', 2, 2, 20),
+(21, 'prislusenstvo_3.jpg', 'Príslušenstvo-21', 213.00, 20, 177.5, 0, 10, 'Popis', 2, 3, 0),
+(22, 'product_1.jpg', 'Produkt-22', 823.00, 20, 685.83, 0, 1, 'Popis', 1, 2, 0),
+(23, 'prislusenstvo_3.jpg', 'Príslušenstvo-23', 975.00, 20, 812.5, 0, 4, 'Popis', 2, 3, 20),
+(24, 'prislusenstvo_2.jpg', 'Príslušenstvo-24', 72.00, 20, 60, 1, 7, 'Popis', 2, 2, 0),
+(25, 'product_2.jpg', 'Produkt-25', 0.00, 20, 0, 0, 9, 'Popis', 1, 1, 0),
+(26, 'product_1.jpg', 'Produkt-26', 461.00, 20, 384.17, 1, 9, 'Popis', 1, 3, 20),
+(27, 'product_3.jpg', 'Produkt-27', 268.00, 20, 223.33, 0, 4, 'Popis', 1, 3, 0),
+(28, 'prislusenstvo_2.jpg', 'Príslušenstvo-28', 809.00, 20, 674.17, 1, 6, 'Popis', 2, 1, 20),
+(29, 'prislusenstvo_1.jpg', 'Príslušenstvo-29', 753.00, 20, 627.5, 1, 8, 'Popis', 2, 2, 0),
+(30, 'prislusenstvo_2.jpg', 'Príslušenstvo-30', 537.00, 20, 447.5, 1, 9, 'Popis', 2, 1, 0),
+(31, 'prislusenstvo_2.jpg', 'Príslušenstvo-31', 600.00, 20, 500, 1, 8, 'Popis', 2, 2, 20),
+(32, 'product_2.jpg', 'Produkt-32', 952.00, 20, 793.33, 0, 0, 'Popis', 1, 3, 0),
+(33, 'prislusenstvo_3.jpg', 'Príslušenstvo-33', 651.00, 20, 542.5, 1, 1, 'Popis', 2, 3, 0),
+(34, 'product_3.jpg', 'Produkt-34', 30.00, 20, 25, 0, 10, 'Popis', 1, 1, 0),
+(35, 'prislusenstvo_3.jpg', 'Príslušenstvo-35', 537.00, 20, 447.5, 0, 7, 'Popis', 2, 3, 0),
+(36, 'product_1.jpg', 'Produkt-36', 311.00, 20, 259.17, 1, 3, 'Popis', 1, 2, 0),
+(37, 'prislusenstvo_2.jpg', 'Príslušenstvo-37', 140.00, 20, 116.67, 1, 11, 'Popis', 2, 3, 20),
+(38, 'prislusenstvo_3.jpg', 'Príslušenstvo-38', 702.00, 20, 585, 1, 3, 'Popis', 2, 2, 0),
+(39, 'prislusenstvo_1.jpg', 'Príslušenstvo-39', 122.00, 20, 101.67, 1, 6, 'Popis', 2, 1, 20),
+(40, 'product_1.jpg', 'Produkt-40', 833.00, 20, 694.17, 0, 10, 'Popis', 1, 2, 0),
+(41, 'product_3.jpg', 'Produkt-41', 955.00, 20, 795.83, 1, 2, 'Popis', 1, 3, 0),
+(42, 'product_3.jpg', 'Produkt-42', 367.00, 20, 305.83, 1, 5, 'Popis', 1, 3, 20),
+(43, 'prislusenstvo_1.jpg', 'Príslušenstvo-43', 605.00, 20, 504.17, 0, 8, 'Popis', 2, 2, 0),
+(44, 'product_2.jpg', 'Produkt-44', 889.00, 20, 740.83, 1, 10, 'Popis', 1, 2, 20),
+(45, 'product_2.jpg', 'Produkt-45', 314.00, 20, 261.67, 1, 9, 'Popis', 1, 1, 0),
+(46, 'prislusenstvo_1.jpg', 'Príslušenstvo-46', 815.00, 20, 679.17, 0, 9, 'Popis', 2, 3, 0),
+(47, 'prislusenstvo_1.jpg', 'Príslušenstvo-47', 914.00, 20, 761.67, 1, 10, 'Popis', 2, 1, 0),
+(48, 'prislusenstvo_1.jpg', 'Príslušenstvo-48', 525.00, 20, 437.5, 1, 12, 'Popis', 2, 3, 0),
+(49, 'product_3.jpg', 'Produkt-49', 705.00, 20, 587.5, 0, 0, 'Popis', 1, 3, 0),
+(50, 'product_1.jpg', 'Produkt-50', 245.00, 20, 204.17, 1, 2, 'Popis', 1, 3, 0),
+(51, 'product_2.jpg', 'Produkt-51', 62.00, 20, 51.67, 1, 3, 'Popis', 1, 1, 20),
+(52, 'prislusenstvo_1.jpg', 'Príslušenstvo-52', 185.00, 20, 154.17, 0, 4, 'Popis', 2, 3, 0),
+(53, 'prislusenstvo_1.jpg', 'Príslušenstvo-53', 86.00, 20, 71.67, 0, 5, 'Popis', 2, 1, 20),
+(54, 'product_3.jpg', 'Produkt-54', 235.00, 20, 195.83, 1, 11, 'Popis', 1, 2, 0),
+(55, 'prislusenstvo_2.jpg', 'Príslušenstvo-55', 357.00, 20, 297.5, 1, 10, 'Popis', 2, 3, 0),
+(56, 'product_1.jpg', 'Produkt-56', 719.00, 20, 599.17, 1, 2, 'Popis', 1, 2, 0),
+(57, 'product_2.jpg', 'Produkt-57', 75.00, 20, 62.5, 1, 11, 'Popis', 1, 1, 0),
+(58, 'product_2.jpg', 'Produkt-58', 709.00, 20, 590.83, 1, 2, 'Popis', 1, 3, 0),
+(59, 'product_1.jpg', 'Produkt-59', 948.00, 20, 790, 0, 12, 'Popis', 1, 3, 20),
+(60, 'prislusenstvo_2.jpg', 'Príslušenstvo-60', 779.00, 20, 649.17, 1, 8, 'Popis', 2, 3, 0),
+(61, 'product_3.jpg', 'Produkt-61', 49.00, 20, 40.83, 0, 0, 'Popis', 1, 3, 20),
+(62, 'product_2.jpg', 'Produkt-62', 264.00, 20, 220, 1, 12, 'Popis', 1, 1, 0),
+(63, 'prislusenstvo_2.jpg', 'Príslušenstvo-63', 383.00, 20, 319.17, 1, 3, 'Popis', 2, 2, 0),
+(64, 'prislusenstvo_2.jpg', 'Príslušenstvo-64', 375.00, 20, 312.5, 1, 15, 'Popis', 2, 1, 0),
+(65, 'prislusenstvo_1.jpg', 'Príslušenstvo-65', 768.00, 20, 640, 1, 12, 'Popis', 2, 2, 0),
+(66, 'prislusenstvo_1.jpg', 'Príslušenstvo-66', 561.00, 20, 467.5, 1, 5, 'Popis', 2, 3, 0),
+(67, 'prislusenstvo_2.jpg', 'Príslušenstvo-67', 972.00, 20, 810, 0, 11, 'Popis', 2, 3, 0),
+(68, 'prislusenstvo_3.jpg', 'Príslušenstvo-68', 485.00, 20, 404.17, 0, 11, 'Popis', 2, 2, 0),
+(69, 'product_1.jpg', 'Produkt-69', 377.00, 20, 314.17, 0, 3, 'Popis', 1, 1, 0),
+(70, 'product_2.jpg', 'Produkt-70', 590.00, 20, 491.67, 0, 8, 'Popis', 1, 2, 0),
+(71, 'prislusenstvo_2.jpg', 'Príslušenstvo-71', 122.00, 20, 101.67, 0, 2, 'Popis', 2, 2, 0),
+(72, 'prislusenstvo_3.jpg', 'Príslušenstvo-72', 638.00, 20, 531.67, 1, 7, 'Popis', 2, 1, 0),
+(73, 'prislusenstvo_2.jpg', 'Príslušenstvo-73', 579.00, 20, 482.5, 1, 13, 'Popis', 2, 2, 0),
+(74, 'prislusenstvo_1.jpg', 'Príslušenstvo-74', 383.00, 20, 319.17, 1, 8, 'Popis', 2, 2, 0),
+(75, 'prislusenstvo_1.jpg', 'Príslušenstvo-75', 859.00, 20, 715.83, 1, 0, 'Popis', 2, 3, 20),
+(76, 'product_1.jpg', 'Produkt-76', 329.00, 20, 274.17, 0, 4, 'Popis', 1, 1, 0),
+(77, 'prislusenstvo_3.jpg', 'Príslušenstvo-77', 219.00, 20, 182.5, 1, 2, 'Popis', 2, 2, 0),
+(78, 'prislusenstvo_1.jpg', 'Príslušenstvo-78', 152.00, 20, 126.67, 0, 13, 'Popis', 2, 2, 0),
+(79, 'product_2.jpg', 'Produkt-79', 184.00, 20, 153.33, 1, 7, 'Popis', 1, 3, 0),
+(80, 'prislusenstvo_1.jpg', 'Príslušenstvo-80', 241.00, 20, 200.83, 1, 8, 'Popis', 2, 2, 0),
+(81, 'prislusenstvo_2.jpg', 'Príslušenstvo-81', 212.00, 20, 176.67, 1, 9, 'Popis', 2, 1, 0),
+(82, 'product_1.jpg', 'Produkt-82', 449.00, 20, 374.17, 0, 0, 'Popis', 1, 3, 0),
+(83, 'prislusenstvo_3.jpg', 'Príslušenstvo-83', 834.00, 20, 695, 0, 11, 'Popis', 2, 3, 0),
+(84, 'prislusenstvo_2.jpg', 'Príslušenstvo-84', 369.00, 20, 307.5, 1, 4, 'Popis', 2, 1, 0),
+(85, 'product_3.jpg', 'Produkt-85', 763.00, 20, 635.83, 1, 4, 'Popis', 1, 1, 20),
+(86, 'prislusenstvo_2.jpg', 'Príslušenstvo-86', 843.00, 20, 702.5, 1, 4, 'Popis', 2, 3, 0),
+(87, 'product_3.jpg', 'Produkt-87', 976.00, 20, 813.33, 0, 5, 'Popis', 1, 1, 0),
+(88, 'product_2.jpg', 'Produkt-88', 351.00, 20, 292.5, 1, 13, 'Popis', 1, 3, 0),
+(89, 'product_3.jpg', 'Produkt-89', 602.00, 20, 501.67, 1, 10, 'Popis', 1, 3, 20),
+(90, 'product_2.jpg', 'Produkt-90', 180.00, 20, 150, 0, 8, 'Popis', 1, 2, 20),
+(91, 'product_2.jpg', 'Produkt-91', 946.00, 20, 788.33, 1, 6, 'Popis', 1, 3, 20),
+(92, 'product_3.jpg', 'Produkt-92', 615.00, 20, 512.5, 1, 13, 'Popis', 1, 2, 0),
+(93, 'product_1.jpg', 'Produkt-93', 637.00, 20, 530.83, 0, 14, 'Popis', 1, 3, 0),
+(94, 'product_3.jpg', 'Produkt-94', 80.00, 20, 66.67, 1, 10, 'Popis', 1, 1, 0),
+(95, 'prislusenstvo_2.jpg', 'Príslušenstvo-95', 863.00, 20, 719.17, 1, 4, 'Popis', 2, 3, 0),
+(96, 'prislusenstvo_1.jpg', 'Príslušenstvo-96', 224.00, 20, 186.67, 0, 1, 'Popis', 2, 2, 0),
+(97, 'product_3.jpg', 'Produkt-97', 496.00, 20, 413.33, 0, 3, 'Popis', 1, 2, 0),
+(98, 'product_1.jpg', 'Produkt-98', 11.00, 20, 9.17, 0, 6, 'Popis', 1, 1, 0),
+(99, 'product_1.jpg', 'Produkt-99', 84.00, 20, 70, 1, 10, 'Popis', 1, 3, 0),
+(100, 'prislusenstvo_2.jpg', 'Príslušenstvo-100', 132.00, 20, 110, 1, 7, 'Popis', 2, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -751,119 +610,6 @@ CREATE TABLE `products_accessories` (
   `id_product` int(11) NOT NULL,
   `id_product_accessory` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Sťahujem dáta pre tabuľku `products_accessories`
---
-
-INSERT INTO `products_accessories` (`id`, `id_product`, `id_product_accessory`) VALUES
-(1, 100, 73),
-(2, 100, 70),
-(3, 13, 67),
-(4, 21, 21),
-(5, 21, 86),
-(6, 22, 19),
-(7, 30, 6),
-(8, 18, 55),
-(9, 18, 84),
-(10, 6, 35),
-(11, 3, 27),
-(12, 20, 48),
-(13, 3, 43),
-(14, 14, 98),
-(17, 13, 48),
-(18, 12, 14),
-(19, 27, 14),
-(20, 26, 7),
-(21, 16, 31),
-(22, 21, 5),
-(23, 5, 40),
-(24, 14, 61),
-(25, 8, 51),
-(26, 12, 97),
-(28, 19, 13),
-(29, 30, 38),
-(30, 4, 40),
-(31, 3, 31),
-(32, 12, 89),
-(33, 4, 50),
-(34, 14, 5),
-(35, 20, 69),
-(36, 8, 60),
-(37, 14, 59),
-(38, 17, 80),
-(39, 23, 56),
-(40, 13, 89),
-(41, 8, 58),
-(43, 8, 59),
-(44, 6, 26),
-(45, 18, 93),
-(46, 22, 18),
-(47, 10, 78),
-(48, 27, 64),
-(49, 16, 26),
-(50, 29, 99),
-(51, 6, 90),
-(52, 5, 87),
-(53, 17, 67),
-(54, 7, 23),
-(55, 30, 4),
-(56, 25, 13),
-(57, 13, 55),
-(58, 27, 36),
-(59, 12, 26),
-(60, 25, 51),
-(61, 8, 2),
-(62, 11, 17),
-(63, 18, 68),
-(64, 18, 48),
-(66, 14, 91),
-(67, 28, 13),
-(68, 7, 31),
-(69, 24, 5),
-(70, 20, 42),
-(71, 27, 63),
-(72, 8, 37),
-(73, 13, 15),
-(74, 26, 17),
-(75, 30, 76),
-(76, 17, 26),
-(77, 13, 27),
-(78, 25, 66),
-(79, 13, 52),
-(80, 27, 87),
-(81, 24, 93),
-(82, 5, 87),
-(83, 15, 11),
-(84, 13, 32),
-(85, 5, 75),
-(86, 3, 89),
-(87, 25, 86),
-(88, 20, 31),
-(89, 20, 51),
-(90, 24, 10),
-(91, 21, 8),
-(92, 23, 82),
-(93, 11, 86),
-(94, 30, 86),
-(95, 22, 41),
-(96, 3, 27),
-(97, 16, 49),
-(98, 4, 79),
-(99, 30, 40),
-(100, 26, 7),
-(107, 9, 4),
-(108, 9, 1),
-(109, 9, 7),
-(110, 9, 10),
-(111, 9, 11),
-(112, 9, 12),
-(113, 9, 14),
-(114, 9, 13),
-(115, 9, 15),
-(116, 9, 18),
-(117, 9, 28),
-(118, 105, 101);
 
 -- --------------------------------------------------------
 
@@ -888,115 +634,6 @@ CREATE TABLE `products_gallery` (
   `id_product` int(11) DEFAULT NULL,
   `id_gallery` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Sťahujem dáta pre tabuľku `products_gallery`
---
-
-INSERT INTO `products_gallery` (`id`, `id_product`, `id_gallery`) VALUES
-(1, 33, 58),
-(2, 36, 69),
-(3, 32, 94),
-(4, 38, 7),
-(5, 41, 83),
-(6, 19, 52),
-(7, 50, 35),
-(8, 45, 77),
-(9, 12, 71),
-(10, 41, 37),
-(11, 39, 91),
-(12, 44, 20),
-(13, 41, 59),
-(14, 4, 24),
-(15, 7, 37),
-(16, 37, 3),
-(17, 50, 58),
-(18, 47, 95),
-(19, 12, 6),
-(20, 20, 38),
-(21, 30, 92),
-(22, 36, 87),
-(23, 10, 45),
-(24, 41, 26),
-(25, 1, 34),
-(26, 8, 10),
-(27, 40, 69),
-(28, 17, 41),
-(29, 44, 60),
-(30, 23, 88),
-(31, 26, 36),
-(32, 1, 23),
-(34, 1, 94),
-(35, 38, 50),
-(36, 21, 44),
-(37, 17, 61),
-(38, 8, 48),
-(39, 11, 8),
-(40, 25, 86),
-(41, 18, 94),
-(42, 44, 91),
-(43, 12, 34),
-(44, 15, 72),
-(45, 37, 57),
-(46, 15, 60),
-(47, 38, 9),
-(48, 42, 1),
-(49, 36, 10),
-(50, 8, 89),
-(51, 32, 89),
-(52, 20, 85),
-(53, 26, 78),
-(54, 20, 75),
-(55, 29, 30),
-(56, 28, 37),
-(57, 9, 83),
-(58, 43, 30),
-(59, 34, 33),
-(60, 7, 91),
-(61, 42, 1),
-(62, 29, 43),
-(63, 10, 81),
-(64, 20, 28),
-(65, 2, 89),
-(66, 17, 16),
-(67, 4, 5),
-(68, 46, 11),
-(69, 30, 32),
-(70, 8, 61),
-(71, 33, 78),
-(72, 37, 68),
-(73, 4, 48),
-(74, 17, 76),
-(75, 5, 37),
-(76, 3, 6),
-(77, 45, 54),
-(78, 4, 59),
-(79, 27, 86),
-(80, 46, 36),
-(81, 30, 76),
-(82, 10, 80),
-(83, 45, 89),
-(84, 8, 3),
-(85, 38, 67),
-(86, 27, 8),
-(87, 36, 35),
-(88, 9, 45),
-(89, 19, 86),
-(90, 30, 34),
-(91, 19, 2),
-(92, 7, 34),
-(93, 24, 87),
-(94, 24, 77),
-(95, 39, 59),
-(96, 31, 2),
-(97, 11, 4),
-(98, 18, 9),
-(99, 44, 33),
-(100, 9, 100),
-(101, 9, 101),
-(102, 2, 102),
-(105, 24, 105),
-(106, 1, 106);
 
 -- --------------------------------------------------------
 
@@ -1157,7 +794,8 @@ ALTER TABLE `complaints_documents`
 -- Indexy pre tabuľku `customers`
 --
 ALTER TABLE `customers`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email_unique` (`email`);
 
 --
 -- Indexy pre tabuľku `customers_uids`
@@ -1281,7 +919,7 @@ ALTER TABLE `carts`
 -- AUTO_INCREMENT pre tabuľku `carts_products`
 --
 ALTER TABLE `carts_products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pre tabuľku `complaints`
@@ -1299,7 +937,7 @@ ALTER TABLE `complaints_documents`
 -- AUTO_INCREMENT pre tabuľku `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT pre tabuľku `customers_uids`
@@ -1311,7 +949,7 @@ ALTER TABLE `customers_uids`
 -- AUTO_INCREMENT pre tabuľku `dia_messages`
 --
 ALTER TABLE `dia_messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pre tabuľku `dia_navbar`
@@ -1353,7 +991,7 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT pre tabuľku `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pre tabuľku `order_type`
@@ -1365,13 +1003,13 @@ ALTER TABLE `order_type`
 -- AUTO_INCREMENT pre tabuľku `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT pre tabuľku `products_accessories`
 --
 ALTER TABLE `products_accessories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pre tabuľku `products_discounts`
@@ -1383,7 +1021,7 @@ ALTER TABLE `products_discounts`
 -- AUTO_INCREMENT pre tabuľku `products_gallery`
 --
 ALTER TABLE `products_gallery`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pre tabuľku `tests`
