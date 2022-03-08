@@ -28,10 +28,7 @@
       $dia->getPageHeader();
       // OBSAH
       $page = (isset($_GET['webPage']) && $_GET['webPage'] != '') ? $_GET['webPage'] : $dia->web_home();
-
-      // Ked je prihlaseny redirect na profile nie login
-      \Core\Controllers\UserController::checkIfUserLogged($page);
-
+      
       // Nastav memory
       \Core\Controllers\WebController::setUrlForMemory($page);
 
