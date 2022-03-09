@@ -19,6 +19,14 @@
       ]
     );
 
+    $return['spoluBezDph'] = 0;
+    $return['spolu'] = 0;
+
+    foreach ($return['data'] as $item) {
+      $return['spoluBezDph'] += $item['price_without_vat'];
+      $return['spolu'] += $item['price'];
+    }
+
     \Core\Controllers\WebController::getJson($return);
   } catch(\Exception $e) {
     echo json_encode([
