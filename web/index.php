@@ -128,6 +128,7 @@
           { path: diaWeb.rootUrl + '/produkty', name: 'Produkty', component: Vue.defineAsyncComponent( () => loadModule('./Components/Produkty.vue', options)) },
           { path: diaWeb.rootUrl + '/detail', name: 'Detail', component: Vue.defineAsyncComponent( () => loadModule('./Components/Detail.vue', options)) },
           { path: diaWeb.rootUrl + '/kosik', name: 'Kosik', component: Vue.defineAsyncComponent( () => loadModule('./Components/Kosik.vue', options)) },
+          { path: diaWeb.rootUrl + '/objednavka', name: 'Objednavka', component: Vue.defineAsyncComponent( () => loadModule('./Components/Objednavka.vue', options)) },
           { path: diaWeb.rootUrl + '#cennik', component: Vue.defineAsyncComponent( () => loadModule('./Components/Website.vue', options)) },
           { path: diaWeb.rootUrl + '#o-nas', component: Vue.defineAsyncComponent( () => loadModule('./Components/Website.vue', options)) },
           { path: diaWeb.rootUrl + '#kontakt', component: Vue.defineAsyncComponent( () => loadModule('./Components/Website.vue', options)) },

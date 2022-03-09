@@ -15,6 +15,22 @@
             </tr>
           </tbody>
         </table>
+
+        <div class="row">
+          <div class="col-6">
+            <div class="box-item">
+              <h4>
+                <a href="#">400</a>
+              </h4>
+              <p>Spolu</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <router-link :to="{name: 'Objednavka'}">
+              <div class="gradient-button"><a href="#">Prejsť k objednávke</a></div>
+            </router-link>
+          </div>
+        </div>
       </div>
     </div>
 </template>
