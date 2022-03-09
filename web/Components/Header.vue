@@ -28,7 +28,7 @@
                 </div>
               </li> 
               <li>
-                <div v-if="!Object.keys(customer)" class="gradient-button">
+                <div v-if="Object.keys(customer).length == 0" class="gradient-button">
                   <button 
                     type="button" 
                     data-toggle="modal" 
@@ -85,11 +85,13 @@ export default {
 
     axios.get('Admin/index.php?action=prihlaseny_zakaznik')
     .then((res) => {
-      this.customer = res.data;
-    })
-
-
-    
+      if (res.data.status == 'fail') {
+        this.customer = {};
+        console.log(Object.keys(this.customer));
+      } else {
+        this.customer = res.data;
+      }
+    }) 
   }
 }
 </script>
