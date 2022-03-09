@@ -4,23 +4,14 @@
       <div class="container">
         <table class="table table-striped">
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
+            <tr v-for="item in data" :key="item.id">
+              <td>{{ item.name }}</td>
+              <td>{{ item.price_without_vat }}€</td>
+              <td>{{ item.vat }}%</td>
+              <td>{{ item.price }}€</td>
+              <td>
+                <button class="btn btn-danger">Odstrániť</button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -30,30 +21,23 @@
 
 <script>
 export default {
+  data() {
+    return {
+      data: {}
+    }
+  },
   methods: {
     loadData() {
-      axios.post('Admin/index.php?action=dia_select', {
-        params: {
-          tableName: "carts",
-          conditions: {
-            where: {
-              "carts.id": 1
-            },
-            join: {
-              carts_products: {
-                1: "id",
-                2: "id_cart"
-              }
-            }
-          }
+      axios.get('Admin/index.php?action=web_kosik')
+      .then((res) => {
+        if (res.data.status != 'fail') {
+          this.data = res.data['data'];
         }
-      }).then((res) => {
-        console.log(res);
       })
     },
-    beforeMount() {
-      this.loadData();
-    }
+  },
+  beforeMount() {
+    this.loadData();
   }
 }
 </script>

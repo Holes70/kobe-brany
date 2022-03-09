@@ -33,7 +33,7 @@
               <div v-if="loginError == 'notExists'">
                 <p>Tento účet neexistuje</p>
               </div>
-              <div v-else>
+              <div v-else-if="loginError == 'passwordNotValid'">
                 <p>Heslo je nesprávne</p>
               </div>
               <form @submit="prihlasit">
