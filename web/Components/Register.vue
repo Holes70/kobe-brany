@@ -137,6 +137,7 @@ export default {
       axios.post('Admin/index.php?action=dia_insert_post', {
         email: this.email,
         password: this.password,
+        state: 1,
         tableName: 'customers'
       }).then((res) => {
         if (res.data.status != 'fail') {
