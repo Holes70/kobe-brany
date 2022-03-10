@@ -87,9 +87,7 @@ export default {
       //this.emailExists = false;
 
       axios.post('Admin/index.php?action=web_vytvor_objednavku', {
-        email: this.email,
-        password: this.password,
-        tableName: 'orders'
+        customer: this.customer 
       }).then((res) => {
         if (res.data.status != 'fail') {
           this.registrationSuccess = true;

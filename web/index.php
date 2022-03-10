@@ -81,6 +81,8 @@
     // Ked je prihlaseny redirect na profile nie login
     \Core\Controllers\UserController::checkIfUserLogged($page);
 
+    \Core\Controllers\UserController::createCustomerUid();
+
     // Nastav memory
     \Core\Controllers\WebController::setUrlForMemory($page);
 

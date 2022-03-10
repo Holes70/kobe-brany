@@ -10,7 +10,7 @@
     $return['data'] = $db->insert_array([
       'table' => "carts_products",
       'table_data' => [
-        "id_cart" => 1,
+        "id_cart" => \Core\Controllers\UserController::getCustomerIdCart(),
         "id_product" => $idProduct
       ]
     ]);

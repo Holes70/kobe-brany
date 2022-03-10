@@ -14,7 +14,7 @@
           ]
         ],
         "where" => [
-          "carts_products.id_cart" => 1
+          "carts_products.id_cart" => \Core\Controllers\UserController::getCustomerIdCart()
         ]
       ]
     );
