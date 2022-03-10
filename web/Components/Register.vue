@@ -105,7 +105,8 @@
                 </form>
               </div>
               <div v-else>
-                Poslali sme Vám verifikačný e-mail
+                <h2>Ďakujeme za registráciu. Bol Vám zaslaný verifikačný e-mail.</h2>
+                <h3>Pre dokončenie registrácie otvorte e-mail ktorý sme Vám zaslali.</h3>
               </div>
             </div>
           </div>
