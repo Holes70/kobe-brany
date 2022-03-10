@@ -90,9 +90,7 @@ export default {
         customer: this.customer 
       }).then((res) => {
         if (res.data.status != 'fail') {
-          this.registrationSuccess = true;
-        } else {
-          this.emailExists = true;
+          alert("Objednane");
         }
       })
     },
