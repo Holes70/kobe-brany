@@ -19,6 +19,9 @@ $carts->conditions([
   "order_by" => "products.id desc"
 ]);
 $carts->fileDir("products");
+$carts->useStructure("products");
+$carts->showDeleteButton(false);
+$carts->showSaveButton(false);
 
 $dia->template("
   ".$dia->card(
