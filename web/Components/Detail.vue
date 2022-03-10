@@ -52,6 +52,8 @@
 </template>
 
 <script>
+var f = Object();
+
 export default {
   data() {
     return {
@@ -88,9 +90,18 @@ export default {
     }
   },
   beforeMount() {
+    f = new Functions();
+
+    var idDetail = f.getUrlParam('id');
+
+    if (idDetail != "undefined") {
+      idDetail = this.$route.params.itemId;
+      f.addToUrl('id', idDetail);
+    }
+
     axios.get('Admin/index.php?action=web_get_detail', {
       params: {
-        id: 1
+        id: idDetail
       }
     }).then((res) => {
       this.data = res.data['data'];

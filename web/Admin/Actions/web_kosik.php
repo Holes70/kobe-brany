@@ -27,6 +27,9 @@
       $return['spolu'] += $item['price'];
     }
 
+    $return['spoluBezDph'] = round($return['spoluBezDph'], 2);
+    $return['spolu'] = round($return['spolu'], 2);
+
     \Core\Controllers\WebController::getJson($return);
   } catch(\Exception $e) {
     echo json_encode([
