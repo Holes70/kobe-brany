@@ -15,7 +15,8 @@ $carts->conditions([
   ],
   "where" => [
     "carts_products.id_cart" => $idCart 
-  ]
+  ],
+  "order_by" => "products.id desc"
 ]);
 $carts->fileDir("products");
 

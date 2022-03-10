@@ -69,7 +69,7 @@
 		"lookup_table": "carts",
 		"lookup_icon": "shopping-cart",
 		"lookup_table_col": "id_cart",
-		"lookup_url": "kosiky",
+		"lookup_url": "kosik",
 		"show_in_table": true,
 		"show_in_form": true,
 		"name_in_table": "Košík",
