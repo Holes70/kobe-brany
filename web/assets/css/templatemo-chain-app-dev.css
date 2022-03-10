@@ -1057,6 +1057,14 @@ Services Style
   z-index: 0;
 }
 
+.services {
+  z-index: 2 !important;
+}
+
+.services .section {
+  z-index: 99 !important;
+}
+
 .services .section-heading {
   text-align: center;
   margin-bottom: 80px;
