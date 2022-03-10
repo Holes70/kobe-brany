@@ -6,7 +6,7 @@
     $return['data'] = $db->dbSelect(
       "carts_products",
       [
-        "select" => "products.*",
+        "select" => "products.*, carts_products.id as idCartProduct",
         "join" => [
           "products" => [
             "id_product",

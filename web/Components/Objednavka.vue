@@ -2,7 +2,7 @@
   <div class="main-banner wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s"></div>
     <div id="objednavka" class="services section">
       <div class="container">
-        <form>
+        <form @submit="placeOrder"> 
           <div class="card">
             <div class="card-body">
               <div class="row">
@@ -58,7 +58,7 @@
                   <h4>Spolu bez DPH: {{ spoluBezDph }}€</h4>
                   <h4>Spolu: {{ spolu }}€</h4>
                   <div class="gradient-button">
-                    <a href="#">Záväzne objednať</a>
+                    <input type="submit" class="btn" value="Záväzne objednať"/>
                   </div>
                 </div>
               </div>
@@ -80,6 +80,24 @@ export default {
     }
   },
   methods: {
+    placeOrder(e) {
+      e.preventDefault();
+
+      //this.registrationSuccess = false;
+      //this.emailExists = false;
+
+      axios.post('Admin/index.php?action=web_vytvor_objednavku', {
+        email: this.email,
+        password: this.password,
+        tableName: 'orders'
+      }).then((res) => {
+        if (res.data.status != 'fail') {
+          this.registrationSuccess = true;
+        } else {
+          this.emailExists = true;
+        }
+      })
+    },
     loadData() {
       axios.get('Admin/index.php?action=web_kosik')
       .then((res) => {

@@ -2,7 +2,7 @@
   <div class="main-banner wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s"></div>
     <div id="kosik" class="services section">
       <div class="container">
-        <table class="table table-striped">
+        <table class="table">
           <tbody>
             <tr v-for="item in data" :key="item.id">
               <td>{{ item.name }}</td>
@@ -10,7 +10,12 @@
               <td>{{ item.vat }}%</td>
               <td>{{ item.price }}€</td>
               <td>
-                <button class="btn btn-danger">Odstrániť</button>
+                <button 
+                  @click="deleteItem(item.idCartProduct)"
+                  class="btn btn-danger"
+                >
+                  <i class="fas fa-times"></i>
+                </button>
               </td>
             </tr>
           </tbody>
@@ -43,6 +48,14 @@ export default {
     }
   },
   methods: {
+    deleteItem(idCartProduct) {
+      axios.post('Admin/index.php?action=dia_delete', {
+        tableName: "carts_products",
+        id: idCartProduct
+      }).then(() => {
+        this.loadData();
+      })
+    },  
     loadData() {
       axios.get('Admin/index.php?action=web_kosik')
       .then((res) => {
