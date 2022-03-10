@@ -39,9 +39,10 @@
                 <h3 class="mt-3">{{ data.price }} €</h3>
                 <p>{{ data.description }}</p>
                 {{ this.$route.params.itemId }}
-                <div class="gold-button">
-                  <button>Pridať do košíka</button>
-                </div>
+                <button 
+                  @click="addToCart(data.id)"
+                  class="btn btn-priamry"
+                >Pridať do košíka</button>
               </div>
             </div>
           </div>
@@ -55,6 +56,35 @@ export default {
   data() {
     return {
       data: {}
+    }
+  },
+  methods: {
+    addToCart(productId) {
+      axios.post('Admin/index.php?action=web_pridaj_produkt_do_kosika', {
+        idProduct: productId
+      }).then((res) => {
+          if (res.data.status != 'fail') {
+            swal({
+              title: "Produkt bol pridaný do košíka",
+              type: "success",
+              showCancelButton: true,
+              cancelButtonClass: "btn btn-priamry",
+              confirmButtonClass: "btn btn-secondary",
+              confirmButtonText: "Do košíka",
+              cancelButtonText: "Prokačovať v nákupe",
+              closeOnConfirm: false,
+              closeOnCancel: false,
+            },
+            function(isConfirm) {
+              if (isConfirm) {
+                window.location.href = 'kosik';
+              } else {
+                swal.close()
+              }
+            }
+          )
+        }
+      })
     }
   },
   beforeMount() {
