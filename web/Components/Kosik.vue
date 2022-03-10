@@ -2,7 +2,7 @@
   <div class="main-banner wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s"></div>
     <div id="kosik" class="services">
       <div class="section container">
-        <div v-if="Object.keys(data).legth > 0">
+        <div v-if="Object.keys(data).length > 0">
           <table class="table">
             <tbody>
               <tr v-for="item in data" :key="item.id">
