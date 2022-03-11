@@ -45,7 +45,8 @@
     "products" => "produkty",
     "users" => "uzivatelia",
     "complaints" => "reklamacie",
-    "carts" => "kosiky"
+    "carts" => "kosiky",
+    "dia_navbar" => "nastavenia-navigacia"
   ];
 
 ?>
