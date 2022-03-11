@@ -7,17 +7,19 @@ use Core\Controllers\UserController;
   $data = json_decode(json_encode($db->request_data()), true);
   $customer = $data['customer'];
 
-  $_SESSION['customer'] = $customer;
+  if (!empty(\Core\Controllers\UserController::getLoggedCustomer())) {
+    $_SESSION['customer'] = $customer;
 
-  $db->update(
-    "customers",
-    $customer["id"],
-    [
-      "first_name" => $customer["first_name"],
-      "last_name" => $customer["last_name"],
-      "phone_number" => $customer["phone_number"],
-    ]
-  );
+    $db->update(
+      "customers",
+      $customer["id"],
+      [
+        "first_name" => $customer["first_name"],
+        "last_name" => $customer["last_name"],
+        "phone_number" => $customer["phone_number"],
+      ]
+    );
+  }
 
   $idOrder = $db->insert_array([
     'table' => "orders",
