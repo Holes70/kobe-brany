@@ -35,8 +35,7 @@
                     data-target="#modal-registracia" 
                     class="btn"
                   >
-                   <i class="fa fa-sign-in-alt"></i> 
-                    Zaregistrovať
+                    Zákaznícky účet
                   </button>
                 </div>
                 <div v-else>

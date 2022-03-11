@@ -17,7 +17,7 @@
                   @click="changeType('login')"
                   :class="typeClass('login')"
                 >
-                  Prihlásenie
+                  Už mám účet
                 </button>
               </div>
               <div class="col-6">
@@ -25,7 +25,7 @@
                   @click="changeType('registration')"
                   :class="typeClass('registration')"
                 >
-                  Registrácia
+                  Vytvoriť nový účet
                 </button>
               </div>
             </div>
