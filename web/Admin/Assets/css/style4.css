@@ -770,3 +770,12 @@ var {
 .radio-box-warning {
   background-color: #fcde67 !important;
 }
+.nav-active {
+  background-color: #e66d3d;
+}
+.nav-active a {
+  color: #fff !important;
+}
+.nav-active i {
+  color: #fff !important;
+}

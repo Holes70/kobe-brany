@@ -3,6 +3,8 @@
 
   $memory = new Component\Memory;
 
+  $currentPage = \Core\Controllers\WebController::getCurrentPage();
+
   $elasticSearch = new Component\Elasticsearch("test_index_1");
   $elasticSearch->searchFields(['title', 'content']);
 
@@ -56,7 +58,7 @@
         ";
       } 
       $navigationHTML .= "
-        <li class='active'>
+        <li>
           <a href='#menu_{$menuItem['link']}' data-toggle='collapse' aria-expanded='false' class='dropdown-toggle'>
             <i class='fas fa-{$menuItem['icon']}'></i>
             <span>{$menuItem['name']}</span>
@@ -68,7 +70,7 @@
       ";
     } else {
       $navigationHTML .= "
-        <li>
+        <li class='".($currentPage == $menuItem['link'] ? "nav-active" : "")."'>
           <a 
             href='{$menuItem['link']}'
             ".($menuItem['is_enabled'] == 0 ? 'class=\'disabled-nav\'' : '')."
