@@ -1,0 +1,66 @@
+{
+  "id": {
+    "type": "number",
+    "show_in_table": false,
+    "show_in_form": false
+  },
+  "image": {
+    "type": "image",
+    "name_in_table": "Obrázok",
+    "show_in_table": true,
+    "show_in_form": true,
+    "upload_action": "upload_product_image",
+    "readonly": true
+  },
+  "name": {
+    "show_in_table": true,
+    "name_in_table": "Produkt",
+    "show_in_form": true,
+    "readonly": true
+  },
+  "price": {
+    "type": "number",
+    "show_in_table": true,
+    "name_in_table": "Cena",
+    "show_in_form": true,
+    "readonly": true,
+    "unit": "€",
+    "onchange": "{%price_without_vat%}|=|{%price%}|/|1.{%vat%}"
+  },
+  "vat": {
+    "type": "number",
+    "show_in_table": false,
+    "name_in_table": "DPH",
+    "show_in_form": true,
+    "readonly": true,
+    "step": 1,
+    "unit": "%",
+    "onchange": "{%price_without_vat%}|=|{%price%}|/|1.{%vat%}"
+  },
+  "price_without_vat": {
+    "type": "number",
+    "show_in_table": false,
+    "name_in_table": "Cena bez DPH",
+    "show_in_form": true,
+    "unit": "€",
+    "readonly_in_new": true,
+    "readonly": true
+  },
+  "description": {
+    "type": "text",
+    "show_in_table": false,
+    "name_in_table": "Popis",
+    "show_in_form": true,
+    "readonly": true
+  },
+  "discount": {
+    "type": "number",
+    "show_in_table": false,
+    "name_in_table": "Zľava",
+    "show_in_form": true,
+    "required": false,
+    "step": 1,
+    "unit": "%",
+    "readonly": true
+  }
+}
