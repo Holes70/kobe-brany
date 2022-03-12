@@ -1035,7 +1035,6 @@ Services Style
 
 .services:after {
   content: '';
-  background-image: url(../images/services-left-dec.png);
   background-repeat: no-repeat;
   position: absolute;
   left: 0;
@@ -1223,7 +1222,6 @@ About Us
 }
 
 .about-us:after {
-  background-image: url(../images/about-bg.jpg);
   width: 777px;
   height: 1132px;
   content: '';

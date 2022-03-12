@@ -6,7 +6,6 @@
           <div class="section-heading">
             <h4>Prezrite si naše <em>najlepšie a najpredávanejšie</em> produkty</h4>
             <img src="assets/images/heading-line-dec.png" alt="">
-            <p>Hodnotenie najlepších produktov stanovujú vaše recenzie.</p>
           </div>
         </div>
         <div class="col-lg-12">
