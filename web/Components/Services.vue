@@ -7,9 +7,7 @@
             <h4>Moderné <em>hliníkové brány</em> pre vás</h4>
             <img src="assets/images/heading-line-dec.png" alt="">
             <p>
-              Firma Stavebné profily s.r.o. vznikla v roku 2005 ako obchodná spoločnosť, ktorá postupne rozšírila svoju činnosť o výrobnú sféru so zameraním na výrobu materiálov pre zatepľovacie systémy, sadrokartónové konštrukcie, hliníkové profily pre obklady a dlažby. Vzhľadom k tomu, že firma má široké skúsenosti so spracovaním hliníka a hliníkových výrobkov, sme sa rozhodli rozšíriť náš sortiment aj o hliníkové ploty a brány. 
-              V našej ponuke nájdete okrem iného hliníkové balkónové a terasové zábradlia, poštové panely s integrovaným intercom systémom a automatizáciou pre vstupné brány. 
-              Hliníkové ploty sú charakteristické dokonalým spracovaním a jedinečnou pozornosťou k detailu, ale aj najvyššou kvalitou použitých materiálov a vysokou kvalitou povrchovej úpravy.
+              Moderné hliníkové ploty k rodinnému domu dodávame v niekoľkých dizajnových radách v priehľadnom i nepriehľadnom prevedení. Moderné brány a bránky dodávame vo všetkých bežných prevedeniach, ktoré nielen zákazníci, ale aj projekty vyžadujú.
             </p>
           </div>
         </div>
@@ -20,8 +18,8 @@
         <div class="col-lg-3">
           <div class="service-item first-service">
             <div class="icon"></div>
-            <h4>App Maintenance</h4>
-            <p>You are not allowed to redistribute this template ZIP file on any other website.</p>
+            <h4>Produkty na mieru</h4>
+            <p>Ponúkame mnoho produktov na mieru. Každý produkt si môžte nakonfigurovať podľa vašich predstáv.</p>
             <div class="text-button">
               <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
             </div>
@@ -30,8 +28,8 @@
         <div class="col-lg-3">
           <div class="service-item second-service">
             <div class="icon"></div>
-            <h4>Rocket Speed of App</h4>
-            <p>You are allowed to use the Chain App Dev HTML template. Feel free to modify or edit this layout.</p>
+            <h4>Rýchlosť výroby</h4>
+            <p>Vďaka našim novým technológiam a pracesu sú produkty distribuované zákazníkom v najbližsích týždňoch a mesiacoch po objednávke.</p>
             <div class="text-button">
               <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
             </div>
@@ -40,8 +38,8 @@
         <div class="col-lg-3">
           <div class="service-item third-service">
             <div class="icon"></div>
-            <h4>Multi Workflow Idea</h4>
-            <p>If this template is beneficial for your work, please support us <a rel="nofollow" href="https://paypal.me/templatemo" target="_blank">a little via PayPal</a>. Thank you.</p>
+            <h4>Buďte v obraze vždy</h4>
+            <p>Na našej stránke si môžte kedykoľvek prezerať v akom stave je vaša objednávka. Po dohode si môžete k nám prísť pozrieť vašu objednávku.</p>
             <div class="text-button">
               <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
             </div>
@@ -50,8 +48,8 @@
         <div class="col-lg-3">
           <div class="service-item fourth-service">
             <div class="icon"></div>
-            <h4>24/7 Help &amp; Support</h4>
-            <p>Lorem ipsum dolor consectetur adipiscing elit sedder williamsburg photo booth quinoa and fashion axe.</p>
+            <h4>Pomôžeme Vám</h4>
+            <p>Neváhajte nás kontaktovať. Našu odpoveď dostanete zvyčajne ihneď alebo nabjližšom čase.</p>
             <div class="text-button">
               <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
             </div>
