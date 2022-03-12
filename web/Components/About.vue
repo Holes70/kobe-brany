@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-lg-6 align-self-center">
           <div class="section-heading">
-            <h4>About <em>What We Do</em> &amp; Who We Are</h4>
+            <h4>O nás <em>Čo robíme</em> &amp; Kto sme</h4>
             <img src="assets/images/heading-line-dec.png" alt="">
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eismod tempor incididunt ut labore et dolore magna.</p>
           </div>

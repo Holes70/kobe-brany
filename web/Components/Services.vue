@@ -6,7 +6,11 @@
           <div class="section-heading  wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
             <h4>Moderné <em>hliníkové brány</em> pre vás</h4>
             <img src="assets/images/heading-line-dec.png" alt="">
-            <p>If you need the greatest collection of HTML templates for your business, please visit <a rel="nofollow" href="https://www.toocss.com/" target="_blank">TooCSS</a> Blog. If you need to have a contact form PHP script, go to <a href="https://templatemo.com/contact" target="_parent">our contact page</a> for more information.</p>
+            <p>
+              Firma Stavebné profily s.r.o. vznikla v roku 2005 ako obchodná spoločnosť, ktorá postupne rozšírila svoju činnosť o výrobnú sféru so zameraním na výrobu materiálov pre zatepľovacie systémy, sadrokartónové konštrukcie, hliníkové profily pre obklady a dlažby. Vzhľadom k tomu, že firma má široké skúsenosti so spracovaním hliníka a hliníkových výrobkov, sme sa rozhodli rozšíriť náš sortiment aj o hliníkové ploty a brány. 
+              V našej ponuke nájdete okrem iného hliníkové balkónové a terasové zábradlia, poštové panely s integrovaným intercom systémom a automatizáciou pre vstupné brány. 
+              Hliníkové ploty sú charakteristické dokonalým spracovaním a jedinečnou pozornosťou k detailu, ale aj najvyššou kvalitou použitých materiálov a vysokou kvalitou povrchovej úpravy.
+            </p>
           </div>
         </div>
       </div>
