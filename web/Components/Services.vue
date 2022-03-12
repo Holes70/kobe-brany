@@ -20,19 +20,13 @@
             <div class="icon"></div>
             <h4>Produkty na mieru</h4>
             <p>Ponúkame mnoho produktov na mieru. Každý produkt si môžte nakonfigurovať podľa vašich predstáv.</p>
-            <div class="text-button">
-              <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
-            </div>
           </div>
         </div>
         <div class="col-lg-3">
           <div class="service-item second-service">
             <div class="icon"></div>
             <h4>Rýchlosť výroby</h4>
-            <p>Vďaka našim novým technológiam a pracesu sú produkty distribuované zákazníkom v najbližsích týždňoch a mesiacoch po objednávke.</p>
-            <div class="text-button">
-              <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
-            </div>
+            <p>Vďaka našim novým technológiam a procesu sú produkty distribuované zákazníkom v najbližsích týždňoch a mesiacoch po objednávke.</p>
           </div>
         </div>
         <div class="col-lg-3">
@@ -40,9 +34,6 @@
             <div class="icon"></div>
             <h4>Buďte v obraze vždy</h4>
             <p>Na našej stránke si môžte kedykoľvek prezerať v akom stave je vaša objednávka. Po dohode si môžete k nám prísť pozrieť vašu objednávku.</p>
-            <div class="text-button">
-              <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
-            </div>
           </div>
         </div>
         <div class="col-lg-3">
@@ -50,9 +41,6 @@
             <div class="icon"></div>
             <h4>Pomôžeme Vám</h4>
             <p>Neváhajte nás kontaktovať. Našu odpoveď dostanete zvyčajne ihneď alebo nabjližšom čase.</p>
-            <div class="text-button">
-              <a href="#">Read More <i class="fa fa-arrow-right"></i></a>
-            </div>
           </div>
         </div>
       </div>

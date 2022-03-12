@@ -4,9 +4,9 @@
       <div class="row">
         <div class="col-lg-8 offset-lg-2">
           <div class="section-heading">
-            <h4>Check What <em>The Clients Say</em> About Our App Dev</h4>
+            <h4>Prezrite si naše <em>najlepšie a najpredávanejšie</em> produkty</h4>
             <img src="assets/images/heading-line-dec.png" alt="">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eismod tempor incididunt ut labore et dolore magna.</p>
+            <p>Hodnotenie najlepších produktov stanovujú vaše recenzie.</p>
           </div>
         </div>
         <div class="col-lg-12">
@@ -19,11 +19,10 @@
                       <div class="thumb">
                         <div class="row">
                           <div class="col-lg-4 col-sm-4 col-12">
-                            <h4>David Martino Co</h4>
-                            <span class="date">30 November 2021</span>
+                            <h4>Produkt-98</h4>
                           </div>
                           <div class="col-lg-4 col-sm-4 d-none d-sm-block">
-                            <span class="category">Financial Apps</span>
+                            <span class="category">Produkt na mieru</span>
                           </div>
                           <div class="col-lg-4 col-sm-4 col-12">
                               <i class="fa fa-star"></i>
@@ -40,11 +39,10 @@
                       <div class="thumb">
                         <div class="row">
                           <div class="col-lg-4 col-sm-4 col-12">
-                            <h4>Jake Harris Nyo</h4>
-                            <span class="date">29 November 2021</span>
+                            <h4>Produkt-85</h4>
                           </div>
                           <div class="col-lg-4 col-sm-4 d-none d-sm-block">
-                            <span class="category">Digital Business</span>
+                            <span class="category">Produkt na mieru</span>
                           </div>
                           <div class="col-lg-4 col-sm-4 col-12">
                               <i class="fa fa-star"></i>
@@ -61,11 +59,10 @@
                       <div class="thumb">
                         <div class="row">
                           <div class="col-lg-4 col-sm-4 col-12">
-                            <h4>May Catherina</h4>
-                            <span class="date">27 November 2021</span>
+                            <h4>Produkt-54</h4>
                           </div>
                           <div class="col-lg-4 col-sm-4 d-none d-sm-block">
-                            <span class="category">Business &amp; Economics</span>
+                            <span class="category">Produkt na mieru</span>
                           </div>
                           <div class="col-lg-4 col-sm-4 col-12">
                               <i class="fa fa-star"></i>
@@ -82,11 +79,10 @@
                       <div class="thumb">
                         <div class="row">
                           <div class="col-lg-4 col-sm-4 col-12">
-                            <h4>Random User</h4>
-                            <span class="date">24 November 2021</span>
+                            <h4>Produkt-15</h4>
                           </div>
                           <div class="col-lg-4 col-sm-4 d-none d-sm-block">
-                            <span class="category">New App Ecosystem</span>
+                            <span class="category">Produkt na mieru</span>
                           </div>
                           <div class="col-lg-4 col-sm-4 col-12">
                               <i class="fa fa-star"></i>
@@ -103,11 +99,10 @@
                       <div class="thumb">
                         <div class="row">
                           <div class="col-lg-4 col-sm-4 col-12">
-                            <h4>Mark Amber Do</h4>
-                            <span class="date">21 November 2021</span>
+                            <h4>Produkt-5</h4>
                           </div>
                           <div class="col-lg-4 col-sm-4 d-none d-sm-block">
-                            <span class="category">Web Development</span>
+                            <span class="category">Produkt na mieru</span>
                           </div>
                           <div class="col-lg-4 col-sm-4 col-12">
                               <i class="fa fa-star"></i>
@@ -129,16 +124,21 @@
                         <div class="thumb">
                           <div class="row">
                             <div class="col-lg-12">
-                              <div class="client-content">
-                                <img src="assets/images/quote.png" alt="">
-                                <p>“Lorem ipsum dolor sit amet, consectetur adpiscing elit, sed do eismod tempor idunte ut labore et dolore magna aliqua darwin kengan
-                                  lorem ipsum dolor sit amet, consectetur picing elit massive big blasta.”</p>
-                              </div>
-                              <div class="down-content">
-                                <img src="assets/images/client-image.jpg" alt="">
-                                <div class="right-content">
-                                  <h4>David Martino</h4>
-                                  <span>CEO of David Company</span>
+                              <div class="card">
+                                <div class="card-body">
+                                  <img :src="'http://localhost/holes/kobe-brany/files/products/product_1.jpg'"/>
+                                  <div class="row mt-3">
+                                    <div class="col-6">
+                                      <h4>Produkt-98</h4>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                      <div class="gradient-button-gold">
+                                        <router-link class="p-2" :to="{ name: 'Detail', params: { itemId: 98 } }">Prezerať produkt</router-link>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h4 class="mt-3">11.00 €</h4>
+                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
                                 </div>
                               </div>
                             </div>
@@ -151,16 +151,21 @@
                         <div class="thumb">
                           <div class="row">
                             <div class="col-lg-12">
-                              <div class="client-content">
-                                <img src="assets/images/quote.png" alt="">
-                                <p>“CTO, Lorem ipsum dolor sit amet, consectetur adpiscing elit, sed do eismod tempor idunte ut labore et dolore magna aliqua darwin kengan
-                                  lorem ipsum dolor sit amet, consectetur picing elit massive big blasta.”</p>
-                              </div>
-                              <div class="down-content">
-                                <img src="assets/images/client-image.jpg" alt="">
-                                <div class="right-content">
-                                  <h4>Jake H. Nyo</h4>
-                                  <span>CTO of Digital Company</span>
+                             <div class="card">
+                                <div class="card-body">
+                                  <img :src="'http://localhost/holes/kobe-brany/files/products/product_3.jpg'"/>
+                                  <div class="row mt-3">
+                                    <div class="col-6">
+                                      <h4>Produkt-85</h4>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                      <div class="gradient-button-gold">
+                                        <router-link class="p-2" :to="{ name: 'Detail', params: { itemId: 85 } }">Prezerať produkt</router-link>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h4 class="mt-3">763.00 €</h4>
+                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
                                 </div>
                               </div>
                             </div>
@@ -173,16 +178,21 @@
                         <div class="thumb">
                           <div class="row">
                             <div class="col-lg-12">
-                              <div class="client-content">
-                                <img src="assets/images/quote.png" alt="">
-                                <p>“May, Lorem ipsum dolor sit amet, consectetur adpiscing elit, sed do eismod tempor idunte ut labore et dolore magna aliqua darwin kengan
-                                  lorem ipsum dolor sit amet, consectetur picing elit massive big blasta.”</p>
-                              </div>
-                              <div class="down-content">
-                                <img src="assets/images/client-image.jpg" alt="">
-                                <div class="right-content">
-                                  <h4>May C.</h4>
-                                  <span>Founder of Catherina Co.</span>
+                              <div class="card">
+                                <div class="card-body">
+                                  <img :src="'http://localhost/holes/kobe-brany/files/products/product_3.jpg'"/>
+                                  <div class="row mt-3">
+                                    <div class="col-6">
+                                      <h4>Produkt-54</h4>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                      <div class="gradient-button-gold">
+                                        <router-link class="p-2" :to="{ name: 'Detail', params: { itemId: 54 } }">Prezerať produkt</router-link>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h4 class="mt-3">235.00 €</h4>
+                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
                                 </div>
                               </div>
                             </div>
@@ -195,16 +205,21 @@
                         <div class="thumb">
                           <div class="row">
                             <div class="col-lg-12">
-                              <div class="client-content">
-                                <img src="assets/images/quote.png" alt="">
-                                <p>“Lorem ipsum dolor sit amet, consectetur adpiscing elit, sed do eismod tempor idunte ut labore et dolore magna aliqua darwin kengan
-                                  lorem ipsum dolor sit amet, consectetur picing elit massive big blasta.”</p>
-                              </div>
-                              <div class="down-content">
-                                <img src="assets/images/client-image.jpg" alt="">
-                                <div class="right-content">
-                                  <h4>Random Staff</h4>
-                                  <span>Manager, Digital Company</span>
+                             <div class="card">
+                                <div class="card-body">
+                                  <img :src="'http://localhost/holes/kobe-brany/files/products/product_3.jpg'"/>
+                                  <div class="row mt-3">
+                                    <div class="col-6">
+                                      <h4>Produkt-15</h4>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                      <div class="gradient-button-gold">
+                                        <router-link class="p-2" :to="{ name: 'Detail', params: { itemId: 15 } }">Prezerať produkt</router-link>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h4 class="mt-3">527.00 €</h4>
+                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
                                 </div>
                               </div>
                             </div>
@@ -217,16 +232,21 @@
                         <div class="thumb">
                           <div class="row">
                             <div class="col-lg-12">
-                              <div class="client-content">
-                                <img src="assets/images/quote.png" alt="">
-                                <p>“Mark, Lorem ipsum dolor sit amet, consectetur adpiscing elit, sed do eismod tempor idunte ut labore et dolore magna aliqua darwin kengan
-                                  lorem ipsum dolor sit amet, consectetur picing elit massive big blasta.”</p>
-                              </div>
-                              <div class="down-content">
-                                <img src="assets/images/client-image.jpg" alt="">
-                                <div class="right-content">
-                                  <h4>Mark Am</h4>
-                                  <span>CTO, Amber Do Company</span>
+                             <div class="card">
+                                <div class="card-body">
+                                  <img :src="'http://localhost/holes/kobe-brany/files/products/product_2.jpg'"/>
+                                  <div class="row mt-3">
+                                    <div class="col-6">
+                                      <h4>Produkt-5</h4>
+                                    </div>
+                                    <div class="col-6 text-right">
+                                      <div class="gradient-button-gold">
+                                        <router-link class="p-2" :to="{ name: 'Detail', params: { itemId: 5 } }">Prezerať produkt</router-link>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <h4 class="mt-3">405.00 €</h4>
+                                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
                                 </div>
                               </div>
                             </div>
