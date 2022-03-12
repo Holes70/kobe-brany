@@ -6,9 +6,11 @@
         <div class="col-12">
           <nav class="main-nav">
             <!-- ***** Logo Start ***** -->
-            <a href="index.html" class="logo">
-              <img src="assets/images/logo.png" alt="Chain App Dev">
-            </a>
+            <div style="width:100px;">
+              <a href="index.html" class="logo">
+                <img src="assets/images/logo.png" alt="Chain App Dev">
+              </a>
+            </div>
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
