@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-lg-8 offset-lg-2">
           <div class="section-heading">
-            <h4>Prezrite si naše <em>najlepšie a najpredávanejšie</em> produkty</h4>
+            <h4>Prezrite si naše <em>najlepšie</em> produkty</h4>
             <img src="assets/images/heading-line-dec.png" alt="">
           </div>
         </div>
