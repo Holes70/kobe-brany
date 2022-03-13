@@ -1,4 +1,18 @@
 <template>
+  <div class="modal fade bd-example-modal-lg" id="modal-kontakt" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+     <div class="modal-dialog modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="model-img modal-body text-center">
+            Kontakt
+          </div>
+        </div>
+      </div>
+  </div>
   <div id="cennik" class="pricing-tables">
     <div class="container">
       <div class="row">
