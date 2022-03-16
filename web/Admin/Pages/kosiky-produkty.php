@@ -3,6 +3,12 @@
 $idCart = \Core\Controllers\WebController::getParam('id');
 
 $kosiky = new \Component\TableLarge("carts_products");
+$kosiky->conditions([
+  "where" => [
+    "id_cart" => $idCart
+  ]
+]);
+
 $kosiky ->tableButtons([
   [
     "name" => "Pridať produkt do košíka", 
