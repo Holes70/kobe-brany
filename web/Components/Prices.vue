@@ -51,7 +51,7 @@
         <div class="col-lg-4">
           <div class="pricing-item-pro">
             <span class="price">50€</span>
-            <h4>Gold</h4>
+            <h4>Zlatá</h4>
             <div class="icon">
               <img src="assets/images/pricing-table-01.png" alt="">
             </div>
@@ -77,7 +77,7 @@
         <div class="col-lg-4">
           <div class="pricing-item-regular">
             <span class="price">100€</span>
-            <h4>Premium</h4>
+            <h4>Prémium</h4>
             <div class="icon">
               <img src="assets/images/pricing-table-01.png" alt="">
             </div>
