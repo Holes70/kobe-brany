@@ -17,10 +17,9 @@ $kosiky ->tableButtons([
     "itemData" => ["id" => $idCart]
   ]
 ]);
-$pridaj = new \Component\Row("carts_products");
+//$pridaj = new \Component\Row("carts_products");
 
 $dia->template("
-  {$pridaj->show()}
   ".$dia->cardBook(
       $dia->card(
         $kosiky->show()

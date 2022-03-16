@@ -7,9 +7,9 @@
           <nav class="main-nav">
             <!-- ***** Logo Start ***** -->
             <div style="width:100px;">
-              <a href="index.html" class="logo">
+              <router-link :to="{name: 'Domov'}" class="logo">
                 <img src="assets/images/logo.png" alt="Chain App Dev">
-              </a>
+              </router-link>
             </div>
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
