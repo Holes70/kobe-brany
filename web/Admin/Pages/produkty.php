@@ -55,6 +55,36 @@ foreach ($produktyQuery as $value) {
   array_push($produktyCount, $value['count']);
 }
 
+$objednavkyQuery = $db->dbSelect(
+  "carts_products",
+  [
+    "select" => "products.name as name, COUNT(products.id) as pocet",
+    "join" => [
+      "products" => [
+        "id_product",
+        "id"
+      ],
+      "carts" => [
+        "id_cart",
+        "id"
+      ]
+    ],
+    "whereArray" => [
+      ["products.type", "=", 1],
+      ["carts.is_order", "=", 1]
+    ],
+    "group_by" => "products.id",
+    "order_by" => "pocet"
+  ]
+);
+
+$objednaneProdukty = [];
+$objednaneProduktyPocet = [];
+foreach ($objednavkyQuery as $objednavka) {
+  array_push($objednaneProdukty, $objednavka["name"]);
+  array_push($objednaneProduktyPocet, $objednavka["pocet"]);
+}
+
 $zobrazNedostupne = new Button("products");
 $zobrazNedostupne->title("Zobraziť");
 $zobrazNedostupne->button("danger");
@@ -130,9 +160,9 @@ $dia->template("
           icon: \"fas fa-money-bill-wave\",
           modalComponentToRender: \"chart\",
           modalComponentToRenderParams: {
-            type: \"line\",
-            labels: ".json_encode($produktyLabels).",
-            data: ".json_encode($produktyCount).",
+            type: \"pie\",
+            labels: ".json_encode($objednaneProdukty).",
+            data: ".json_encode($objednaneProduktyPocet).",
             id: \"produkty-predaj\",
             label: \"Produkty predaj\"
           }
