@@ -63,7 +63,9 @@ $zobrazNedostupne->modalComponentToRender("dia-table-large");
 $zobrazNedostupne->modalComponentToRenderParams([
   "tableName" => 'products',
   "data" => $pocetProduktovDostupnychAleNieSkladomData,
-  "conditions" => []
+  "conditions" => [],
+  "tableButtons" => [],
+  "showSaveButton" => "true"
 ]);
 
 $dia->template("
