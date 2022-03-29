@@ -122,6 +122,7 @@
                   }
                 }
               ?>
+              
               </div><!-- end id content in header -->
             </div>
           </body>
@@ -183,14 +184,9 @@
     </script>
 
   <?php
+    echo $dia->getPageFooter();
 
-    // ZAPATICKA
-    $dia->daj_zapaticku();
-
-    echo "</div></template></div>";
-    
-    // PATICKA
-    $dia->getPageFooter();
+    echo "</div>";
 
     // HLADA AKCIE
     $dia->action_find();
