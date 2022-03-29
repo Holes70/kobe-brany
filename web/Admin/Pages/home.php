@@ -1,8 +1,48 @@
 <?php
 
-$chart = new Component\Chart("pie");
-$chart->labels(['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange']);
-$chart->data([12, 19, 3, 5, 2, 3]);
+$objednavkyQuery = $db->dbSelect(
+  "carts_products",
+  [
+    "select" => "products.type as type, products.name as name, SUM(products.price) as suma",
+    "join" => [
+      "products" => [
+        "id_product",
+        "id"
+      ],
+      "carts" => [
+        "id_cart",
+        "id"
+      ]
+    ],
+    "whereArray" => [
+      ["carts.is_order", "=", 1]
+    ],
+    "group_by" => "type, name",
+    "order_by" => "suma"
+  ]
+);
+
+$objednaneProdukty = [];
+$objednaneProduktyCenaSpolu = [];
+$objednanePrislusenstvo = [];
+$objednanePrislusenstvoCenaSpolu = [];
+foreach ($objednavkyQuery as $objednavka) {
+  if ($objednavka["type"] == 1) {
+    array_push($objednaneProdukty, $objednavka["name"]);
+    array_push($objednaneProduktyCenaSpolu, $objednavka["suma"]);
+  } else {
+    array_push($objednanePrislusenstvo, $objednavka["name"]);
+    array_push($objednanePrislusenstvoCenaSpolu, $objednavka["suma"]);
+  }
+}
+
+$produktyGraf = new Component\Chart("pie");
+$produktyGraf->labels($objednaneProdukty);
+$produktyGraf->data($objednaneProduktyCenaSpolu);
+
+$prislusenstvoGraf = new Component\Chart("pie");
+$prislusenstvoGraf->labels($objednanePrislusenstvo);
+$prislusenstvoGraf->data($objednanePrislusenstvoCenaSpolu);
 
 $table_products = new Component\Table("products");
 $table_products->columns(['id' => 'ID', 'name' => 'Meno', 'price|$' => 'Cena'])->buttons(['edit', 'delete']);
@@ -15,44 +55,17 @@ $dia->template("
   <div class='row'>
     <div class='col-6'>
       <div class='card'>
-        <h4 class='card-header text-center'>Tržby</h4>
+        <h4 class='card-header text-center'>Tržba z produktov</h4>
         <div class='card-body'>
-          {$chart->show()}
+          {$produktyGraf->show()}
         </div>
       </div>
     </div>
     <div class='col-6'>
-      <div class='d-flex flex-column'>
-        <div class='p-2'>
-          <div class='alert alert-primary' role='alert'>
-            This is a primary alert—check it out!
-          </div>
-          <div class='alert alert-secondary' role='alert'>
-            This is a secondary alert—check it out!
-          </div>
-          <div class='alert alert-success' role='alert'>
-            This is a success alert—check it out!
-          </div>
-          <div class='alert alert-danger' role='alert'>
-            This is a danger alert—check it out!
-          </div>
-          <div class='alert alert-warning' role='alert'>
-            This is a warning alert—check it out!
-          </div>
-          <div class='alert alert-info' role='alert'>
-            This is a info alert—check it out!
-          </div>
-          <div class='alert alert-light' role='alert'>
-            This is a light alert—check it out!
-          </div>
-          <div class='alert alert-dark' role='alert'>
-            This is a dark alert—check it out!
-          </div>
-        </div>
-        <div class='p-2'>
-          <div class='card' style='height:250px;overflow:hidden'>
-            {$timer->show()}
-          </div>
+      <div class='card'>
+        <h4 class='card-header text-center'>Tržba z príslušenstva</h4>
+        <div class='card-body'>
+          {$prislusenstvoGraf->show()}
         </div>
       </div>
     </div>
