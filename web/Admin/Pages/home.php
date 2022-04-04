@@ -45,7 +45,7 @@ $prislusenstvoGraf->labels($objednanePrislusenstvo);
 $prislusenstvoGraf->data($objednanePrislusenstvoCenaSpolu);
 
 $table_products = new Component\Table("products");
-$table_products->columns(['id' => 'ID', 'name' => 'Meno', 'price|$' => 'Cena']);
+$table_products->columns(['id' => 'ID', 'name' => 'Meno', 'price|€' => 'Cena']);
 
 $timer = new Component\Timer();
 
