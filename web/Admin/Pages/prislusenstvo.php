@@ -31,6 +31,9 @@ $prislusenstvo->buttons([
   ]
 ]);
 
+$prislusenstvo->showDeleteButton(false);
+$prislusenstvo->showSaveButton(false);
+
 $prislusenstvo->tableButtons([
   [
     "name" => "Pridať produkt do príslušenstva", 
