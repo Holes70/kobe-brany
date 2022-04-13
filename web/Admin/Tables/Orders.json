@@ -83,7 +83,7 @@
 		"lookup_table_col": "id_invoice",
 		"lookup_table_empty": "Nie je vystavená",
 		"lookup_url": "faktury",
-		"lookup_table_empty_action": "dia_insert",
+		"lookup_table_empty_action": "vystavit_fakturu",
 		"lookup_table_empty_action_params": {"id_order": "{%id%}","price": 100,"number": "{%id%}"},
 		"lookup_table_empty_text": "Vystaviť faktúru",
 		"lookup_empty_action": true,
