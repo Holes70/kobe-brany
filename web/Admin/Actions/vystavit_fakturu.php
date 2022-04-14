@@ -48,7 +48,7 @@ $totalPrice = reset($totalPrice);
 $insertedId = $db->insert_array([
     "table" => "invoices",
     "table_data" => [
-      "number" => 1,
+      "number" => (int)$data->params->data->number,
       "price" => (float)$totalPrice['totalPrice'],
       "state" => 1
     ]
