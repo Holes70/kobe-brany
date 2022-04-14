@@ -45,13 +45,21 @@ $totalPrice = $db->dbSelect(
 $totalPrice = reset($totalPrice);
 
 
-$db->insert_array([
+$insertedId = $db->insert_array([
     "table" => "invoices",
     "table_data" => [
       "number" => 1,
       "price" => (float)$totalPrice['totalPrice'],
       "state" => 1
     ]
+  ]
+);
+
+$db->update(
+  "orders",
+  $idOrder,
+  [
+    "id_invoice" => $insertedId
   ]
 );
 
