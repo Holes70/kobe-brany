@@ -7,6 +7,9 @@
   session_start();
   ob_start();
 
+  header('Access-Control-Allow-Origin: *');
+  header("Access-Control-Allow-Headers: *");
+
   require_once __DIR__ . '/../../Core/boot.php';
   require_once $dia->config['dir']['root'] ."/vendor/autoload.php";
   
