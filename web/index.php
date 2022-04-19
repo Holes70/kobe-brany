@@ -48,7 +48,7 @@
       <script src='../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'></script>
       <script src='../node_modules/vue3-sfc-loader/dist/vue3-sfc-loader.js'></script>
       <script src='../node_modules/mitt/dist/mitt.umd.js'></script>
-      <script src='../Core/Assets/js/CustomFunctions.js'></script>
+      <script src='../config.js'></script>
       <script src='../Core/Assets/js/Functions.js'></script>
       <script src='../Core/Assets/js/dia.js'></script>
       <script src='../Core/Assets/js/diaTables.js'></script>
