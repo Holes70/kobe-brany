@@ -15,16 +15,13 @@
         <div class="col-lg-4">
           <form id="search" action="#" method="GET">
             <fieldset>
-              <input type="address" name="address" class="email" placeholder="Váš kontaktný e-mail" autocomplete="on" required>
+              <input type="text" name="email" class="email" placeholder="Váš kontaktný e-mail" autocomplete="on" required>
             </fieldset>
-              <fieldset>
-              <input type="address" name="address" class="email" placeholder="Predmet" autocomplete="on" required>
-            </fieldset>
-              <fieldset>
-              <input type="address" name="address" class="email" placeholder="Správa" autocomplete="on" required>
+            <fieldset>
+              <textarea name="body" class="form-control mt-1" placeholder="Vaša správa"></textarea>
             </fieldset>
             <fieldset class="mt-4">
-              <button type="submit" class="main-button">Subscribe Now <i class="fa fa-angle-right"></i></button>
+              <button type="submit" class="main-button">Odoslať správu <i class="fa fa-angle-right"></i></button>
             </fieldset>
           </form>
         </div>
