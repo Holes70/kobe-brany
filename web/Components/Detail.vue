@@ -1,6 +1,6 @@
 <template>
   <div class="main-banner wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s"></div>
-    <div id="detail" class="services section">
+    <div id="detail" class="services section d-flex justify-content-center">
       <div class="container m-5 p-3">
         <div :id="'katalog-item-' + data.id">
           <div class="service-item first-service">

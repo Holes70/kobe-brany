@@ -19,7 +19,7 @@
                 :key="menuItem.id"
                 class="scroll-to-section"
               >
-                <a :href="'#' + menuItem.link">{{ menuItem.title }}</a>
+                <a :href="'/holes/kobe-brany/web/#' + menuItem.link">{{ menuItem.title }}</a>
                 <!--<router-link :to="'/holes/dia/web/#' + menuItem.link">
                   {{ menuItem.title }}
                 </router-link>-->
