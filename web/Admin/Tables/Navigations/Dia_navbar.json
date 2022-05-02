@@ -1,0 +1,12 @@
+{
+  "menuData": [
+    {
+      "categoryName": "xxx",
+      "menuItems": [2]
+    },
+    {
+      "categoryName": "dxda",
+      "menuItems": [3, 4]
+    }
+  ]
+}
