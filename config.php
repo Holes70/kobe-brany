@@ -48,5 +48,7 @@
     "carts" => "kosiky",
     "dia_navbar" => "nastavenia-navigacia"
   ];
+  
+  $config['core']             = $_SERVER['DOCUMENT_ROOT'] . "/holes/Core";
 
 ?>
