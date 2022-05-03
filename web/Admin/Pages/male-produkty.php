@@ -13,8 +13,8 @@ $produkty->conditions([
 ]);
 
 $produktyQuery = $db->dbSelect(
-  tableName: "products",
-  conditions: [
+  "products",
+  [
     "where" => [
       "type" => 2
     ]

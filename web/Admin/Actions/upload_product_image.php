@@ -8,7 +8,7 @@ $colNameFile = array_key_first($_FILES);
 require ("{$this->rootDir}/Core/Actions/dia_upload_image.php");
 
 $db->update(
-  tableName: "products",
+  "products",
   rowId: (int)\Core\Controllers\WebController::getPostParam("id"),
   data: ['image' => $_FILES[$colNameFile]['name']]
 );

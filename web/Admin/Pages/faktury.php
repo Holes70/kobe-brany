@@ -3,8 +3,8 @@
 global $db;
 
 $idFaktura = reset($db->dbSelect(
-  tableName: "invoices",
-  conditions: [
+  "invoices",
+  [
     "whereArray" => [
       ["id", "=", $_GET['id_form']]
     ]

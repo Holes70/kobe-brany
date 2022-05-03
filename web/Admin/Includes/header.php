@@ -13,8 +13,8 @@
 
   // Nacitaj Navbar
   $navbarList = $db->dbSelect(
-    tableName: 'dia_navbar',
-    conditions: [
+    'dia_navbar',
+    [
       "order_by" => "order_index ASC"
     ]
   );

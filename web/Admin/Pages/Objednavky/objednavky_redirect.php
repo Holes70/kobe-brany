@@ -3,8 +3,8 @@
 global $db;
 
 $idObjednavka = reset($db->dbSelect(
-  tableName: "orders",
-  conditions: [
+  "orders",
+  [
     "whereArray" => [
       ["id", "=", $_GET['id_form']]
     ]

@@ -8,7 +8,7 @@ $zakaznici = new TableLarge("customers");
 $pridat = new Row("customers");
 
 $zakazniciQuery = $db->dbSelect(
-  tableName: "customers",
+  "customers",
 );
 
 $pocetZakaznikov = count($zakazniciQuery);

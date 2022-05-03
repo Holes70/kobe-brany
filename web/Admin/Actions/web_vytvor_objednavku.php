@@ -38,7 +38,7 @@ use Core\Controllers\UserController;
   $idCart = \Core\Controllers\UserController::getCustomerIdCart();
 
   $db->update(
-    tableName: "carts",
+    "carts",
     rowId: (int)$idCart,
     data: ["is_order" => 1]
   );

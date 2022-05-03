@@ -22,8 +22,8 @@ $pridat = new Row("products");
 $pridat->title("Produkty");
 
 $produktyQuery = $db->dbSelect(
-  tableName: "products",
-  conditions: [
+  "products",
+  [
     "where" => [
       "type" => 1
     ]

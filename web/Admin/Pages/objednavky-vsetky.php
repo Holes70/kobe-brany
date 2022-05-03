@@ -2,8 +2,8 @@
 
 // Vyber mena produktu a pocet
 $orders = $db->dbSelect(
-  tableName: 'orders',
-  conditions: [
+  'orders',
+  [
     "select" => "products.name, COUNT(products.id) as pocet",
     "join" => [
       "products" => [
@@ -41,8 +41,8 @@ $objednavkyHeader = $dia->vue('objednavkyHeader');
 
 // Vyber typ a pocet 
 $orders_types = $db->dbSelect(
-  tableName: "orders",
-  conditions: [
+  "orders",
+  [
     "select" => "
       order_type.id as id,
       order_type.name,
