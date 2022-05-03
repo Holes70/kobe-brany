@@ -50,5 +50,8 @@
   ];
   
   $config['core']             = $_SERVER['DOCUMENT_ROOT'] . "/holes/Core";
+  $config['coreUrl']          = $_SERVER['HTTP_HOST'] . '/holes/Core';
+  $config['nodeModules']      = $_SERVER['DOCUMENT_ROOT'] . "/holes/node_modules";
+  $config['nodeModulesUrl']   = $_SERVER['HTTP_HOST'] . '/holes/node_modules';
 
 ?>
