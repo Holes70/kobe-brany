@@ -51,6 +51,10 @@
       const diaTables = new DiaTables();
       const f = new Functions();
 
+      <?php
+        echo "const config = ".json_encode($dia->config).";";
+      ?>
+
       //console.log(emitter);
       // GET vue data z aktualnej stranky
       // ak je prazdne tak do var object kvoli chybe
@@ -82,35 +86,35 @@
 
       const app_loader = Vue.createApp({
         components: {
-          'dia-alert': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/Alert.vue', options)),
-          'dia-form': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/Form.vue', options)),
-          'dia-table': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/Table.vue', options)),
-          'dia-jumbotron': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/Jumbotron.vue', options)),
-          'dia-elasticsearch': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/Elasticsearch.vue', options)),
-          'dia-custom': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/Custom.vue', options)),
-          'dia-timer': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/Timer.vue', options)),
-          'dia-dropzone': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/Dropzone.vue', options)),
-          'dia-table-list': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/TableList.vue', options)),
-          'chart': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/Chart.vue', options)),
-          'dia-listgroup': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/ListGroup.vue', options)),
-          'dia-collapse': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/Collapse.vue', options)),
-          'dia-tiket': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/Tiket.vue', options)),
-          'dia-table-card': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/TableCard.vue', options)),
-          'dia-profile-card': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/ProfileCard.vue', options)),
-          'dia-profile-view': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/ProfileView.vue', options)),
-          'dia-social': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/Social.vue', options)),
-          'dia-login': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/Login.vue', options)),
-          'dia-memory': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/Memory.vue', options)),
-          'dia-table-large': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/TableLarge.vue', options)),
-          'json-editor': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/JsonEditor.vue', options)),
-          'dia-calendar': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/Calendar.vue', options)),
-          'dia-gallery': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/Gallery.vue', options)),
-          'dia-file-uploader': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/FileUploader4.vue', options)),
-          'dia-form-new': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/Form2.vue', options)),
-          'dia-row': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/Row.vue', options)),
-          'dia-messages': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/Messages.vue', options)),
-          'dia-button': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/Button.vue', options)),
-          'dia-export-csv': Vue.defineAsyncComponent( () => loadModule('./../../Core/Components/Vue/ExportCSV.vue', options)),
+          'dia-alert': Vue.defineAsyncComponent( () => loadModule('./../../../Core/Components/Vue/Alert.vue', options)),
+          'dia-form': Vue.defineAsyncComponent( () => loadModule('./../../../Core/Components/Vue/Form.vue', options)),
+          'dia-table': Vue.defineAsyncComponent( () => loadModule('./../../../Core/Components/Vue/Table.vue', options)),
+          'dia-jumbotron': Vue.defineAsyncComponent( () => loadModule('./../../../Core/Components/Vue/Jumbotron.vue', options)),
+          'dia-elasticsearch': Vue.defineAsyncComponent( () => loadModule('./../../../Core/Components/Vue/Elasticsearch.vue', options)),
+          'dia-custom': Vue.defineAsyncComponent( () => loadModule('./../../../Core/Components/Vue/Custom.vue', options)),
+          'dia-timer': Vue.defineAsyncComponent( () => loadModule('./../../../Core/Components/Vue/Timer.vue', options)),
+          'dia-dropzone': Vue.defineAsyncComponent( () => loadModule('./../../../Core/Components/Vue/Dropzone.vue', options)),
+          'dia-table-list': Vue.defineAsyncComponent( () => loadModule('./../../../Core/Components/Vue/TableList.vue', options)),
+          'chart': Vue.defineAsyncComponent( () => loadModule('./../../../Core/Components/Vue/Chart.vue', options)),
+          'dia-listgroup': Vue.defineAsyncComponent( () => loadModule('./../../../Core/Components/Vue/ListGroup.vue', options)),
+          'dia-collapse': Vue.defineAsyncComponent( () => loadModule('./../../../Core/Components/Vue/Collapse.vue', options)),
+          'dia-tiket': Vue.defineAsyncComponent( () => loadModule('./../../../Core/Components/Vue/Tiket.vue', options)),
+          'dia-table-card': Vue.defineAsyncComponent( () => loadModule('./../../../Core/Components/Vue/TableCard.vue', options)),
+          'dia-profile-card': Vue.defineAsyncComponent( () => loadModule('./../../../Core/Components/Vue/ProfileCard.vue', options)),
+          'dia-profile-view': Vue.defineAsyncComponent( () => loadModule('./../../../Core/Components/Vue/ProfileView.vue', options)),
+          'dia-social': Vue.defineAsyncComponent( () => loadModule('./../../../Core/Components/Vue/Social.vue', options)),
+          'dia-login': Vue.defineAsyncComponent( () => loadModule('./../../../Core/Components/Vue/Login.vue', options)),
+          'dia-memory': Vue.defineAsyncComponent( () => loadModule('./../../../Core/Components/Vue/Memory.vue', options)),
+          'dia-table-large': Vue.defineAsyncComponent( () => loadModule('./../../../Core/Components/Vue/TableLarge.vue', options)),
+          'json-editor': Vue.defineAsyncComponent( () => loadModule('./../../../Core/Components/Vue/JsonEditor.vue', options)),
+          'dia-calendar': Vue.defineAsyncComponent( () => loadModule('./../../../Core/Components/Vue/Calendar.vue', options)),
+          'dia-gallery': Vue.defineAsyncComponent( () => loadModule('./../../../Core/Components/Vue/Gallery.vue', options)),
+          'dia-file-uploader': Vue.defineAsyncComponent( () => loadModule('./../../../Core/Components/Vue/FileUploader4.vue', options)),
+          'dia-form-new': Vue.defineAsyncComponent( () => loadModule('./../../../Core/Components/Vue/Form2.vue', options)),
+          'dia-row': Vue.defineAsyncComponent( () => loadModule('./../../../Core/Components/Vue/Row.vue', options)),
+          'dia-messages': Vue.defineAsyncComponent( () => loadModule('./../../../Core/Components/Vue/Messages.vue', options)),
+          'dia-button': Vue.defineAsyncComponent( () => loadModule('./../../../Core/Components/Vue/Button.vue', options)),
+          'dia-export-csv': Vue.defineAsyncComponent( () => loadModule('./../../../Core/Components/Vue/ExportCSV.vue', options)),
           <?php
             foreach (\Core\Dia::$loadedWebComponents as $com) {
               echo "'$com': Vue.defineAsyncComponent( () => loadModule('./../Components/Admin/$com.vue', options)),";

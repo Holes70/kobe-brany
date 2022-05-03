@@ -36,27 +36,27 @@
       <link rel='preconnect' href='https://fonts.googleapis.com'>
       <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
       <link href='https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap' rel='stylesheet'>
-      <link rel='stylesheet' type='text/css' href='../Core/Assets/css/sweetalert.css'>
+      <link rel='stylesheet' type='text/css' href='//{$dia->config['coreUrl']}/Assets/css/sweetalert.css'>
   
       <title>Chain App Dev - App Landing Page HTML5 Template</title>
   
       <!-- Bootstrap core CSS -->
       <link href='vendor/bootstrap/css/bootstrap.min.css' rel='stylesheet'>
-      <script src='../node_modules/vue/dist/vue.global.prod.js'></script>
-      <script src='../node_modules/axios/dist/axios.min.js'></script>
-      <script src='../node_modules/chart.js/dist/chart.min.js'></script>
-      <script src='../node_modules/jquery/dist/jquery.min.js'></script>
-      <script src='../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'></script>
-      <script src='../node_modules/vue3-sfc-loader/dist/vue3-sfc-loader.js'></script>
-      <script src='../node_modules/mitt/dist/mitt.umd.js'></script>
+      <script src='//{$dia->config['nodeModulesUrl']}/vue/dist/vue.global.prod.js'></script>
+      <script src='//{$dia->config['nodeModulesUrl']}/axios/dist/axios.min.js'></script>
+      <script src='//{$dia->config['nodeModulesUrl']}/chart.js/dist/chart.min.js'></script>
+      <script src='//{$dia->config['nodeModulesUrl']}/jquery/dist/jquery.min.js'></script>
+      <script src='//{$dia->config['nodeModulesUrl']}/bootstrap/dist/js/bootstrap.bundle.min.js'></script>
+      <script src='//{$dia->config['nodeModulesUrl']}/vue3-sfc-loader/dist/vue3-sfc-loader.js'></script>
+      <script src='//{$dia->config['nodeModulesUrl']}/mitt/dist/mitt.umd.js'></script>
       <script src='../config.js'></script>
-      <script src='../Core/Assets/js/Functions.js'></script>
-      <script src='../Core/Assets/js/dia.js'></script>
-      <script src='../Core/Assets/js/diaTables.js'></script>
-      <script src='../Core/Assets/js/fontawesome.js'></script>
+      <script src='//{$dia->config['coreUrl']}/Assets/js/Functions.js'></script>
+      <script src='//{$dia->config['coreUrl']}/Assets/js/dia.js'></script>
+      <script src='//{$dia->config['coreUrl']}/Assets/js/diaTables.js'></script>
+      <script src='//{$dia->config['coreUrl']}/Assets/js/fontawesome.js'></script>
       <script src='https://unpkg.com/vue-router@4'></script>
       <script src='./assets/js/diaWeb.js'></script>
-      <script src='../Core/Assets/js/sweetalert.js'></script>
+      <script src='//{$dia->config['coreUrl']}/Assets/js/sweetalert.js'></script>
   
       <!-- Additional CSS Files -->
       <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.1/css/all.css' integrity='sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf' crossorigin='anonymous'>
@@ -64,7 +64,7 @@
       <link rel='stylesheet' href='assets/css/animated.css'>
       <link rel='stylesheet' href='assets/css/owl.css'>
       <link rel='stylesheet' href='assets/css/web.css'>
-      <link rel='stylesheet' href='../node_modules/bootstrap/dist/css/bootstrap.css'/>
+      <link rel='stylesheet' href='//{$dia->config['nodeModulesUrl']}/bootstrap/dist/css/bootstrap.css'/>
     </head>
   ";
 
