@@ -45,6 +45,6 @@ $prislusenstvo->tableButtons([
 
 $dia->template(
   $dia->cardBook(
-    html: $prislusenstvo->show()
+    $prislusenstvo->show()
   )
 )->render();
