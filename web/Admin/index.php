@@ -13,7 +13,7 @@
 
   require_once(__DIR__ . '/../../config.php');
   require_once("{$config['core']}/boot.php");
-  require_once $dia->config['dir']['root'] ."/vendor/autoload.php";
+  //require_once $dia->config['dir']['root'] ."/vendor/autoload.php";
   
   $dia->autoload();
 
