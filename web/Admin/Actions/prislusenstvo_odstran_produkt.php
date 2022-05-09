@@ -14,7 +14,7 @@ $accessory = $db->dbSelect(
 
 $id = reset($accessory)['id'];
 
-require ("{$this->rootDir}/Core/Actions/dia_delete_get.php");
+require ("{$this->config['core']}/Actions/dia_delete_get.php");
 
 \Core\Controllers\WebController::redirect("prislusenstvo?id=" . \Core\Controllers\WebController::getParam("id_product"). "&previous_page=produkty&previous_page_id_form=" . \Core\Controllers\WebController::getParam("id_product"));
 
