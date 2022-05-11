@@ -5,7 +5,7 @@ global $db, $webController;
 $uploadToDir = "products";
 $colNameFile = array_key_first($_FILES);
 
-require ("{$this->rootDir}/Core/Actions/dia_upload_image.php");
+require ("{$this->config['core']}/Actions/dia_upload_image.php");
 
 $idGallery = $db->insert_array([
   'table' => 'gallery',
