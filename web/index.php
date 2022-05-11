@@ -28,10 +28,10 @@
       <link href='https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap' rel='stylesheet'>
       <link rel='stylesheet' type='text/css' href='//{$dia->config['coreUrl']}/Assets/css/sweetalert.css'>
   
-      <title>Chain App Dev - App Landing Page HTML5 Template</title>
+      <title>Kobe brány</title>
   
       <!-- Bootstrap core CSS -->
-      <link href='vendor/bootstrap/css/bootstrap.min.css' rel='stylesheet'>
+      <link href='./assets/css/bootstrap.css' rel='stylesheet'>
       <script src='//{$dia->config['nodeModulesUrl']}/vue/dist/vue.global.prod.js'></script>
       <script src='//{$dia->config['nodeModulesUrl']}/axios/dist/axios.min.js'></script>
       <script src='//{$dia->config['nodeModulesUrl']}/chart.js/dist/chart.min.js'></script>
