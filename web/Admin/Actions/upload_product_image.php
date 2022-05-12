@@ -9,8 +9,8 @@ require ("{$this->config['core']}/Actions/dia_upload_image.php");
 
 $db->update(
   "products",
-  rowId: (int)\Core\Controllers\WebController::getPostParam("id"),
-  data: ['image' => $_FILES[$colNameFile]['name']]
+  (int)\Core\Controllers\WebController::getPostParam("id"),
+  ['image' => $_FILES[$colNameFile]['name']]
 );
 
 $redirect = \Core\Controllers\WebController::getPostParam("redirect");

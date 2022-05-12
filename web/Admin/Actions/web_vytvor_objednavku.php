@@ -39,8 +39,8 @@ use Core\Controllers\UserController;
 
   $db->update(
     "carts",
-    rowId: (int)$idCart,
-    data: ["is_order" => 1]
+    (int)$idCart,
+    ["is_order" => 1]
   );
 
 
