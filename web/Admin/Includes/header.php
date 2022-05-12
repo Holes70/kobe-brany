@@ -4,6 +4,7 @@
   $memory = new Component\Memory;
 
   $currentPage = \Core\Controllers\WebController::getCurrentPage();
+  $userData = \Core\Controllers\UserController::getLogged();
 
   $elasticSearch = new Component\Elasticsearch("test_index_1");
   $elasticSearch->searchFields(['title', 'content']);
@@ -22,25 +23,30 @@
   // Vytvorim si logiku v usporiadani navbaru
   // Vytvorim si viacrozmerne pole
   foreach ($navbarList as $flatItem) {
-    if ($flatItem['id_parent'] == 0) {
-      $children = [];
-      foreach ($navbarList as $flatItemSub) {
-        if ($flatItemSub['id_parent'] == $flatItem['id']) {
-          $children[] = [
-            "name" => $flatItemSub['name'],
-            "link" => $flatItemSub['link'],
-            "icon" => $flatItemSub['icon'],
+    $availableForUsers = json_decode($flatItem["available_for_user"], TRUE);
+    if (!empty($availableForUsers)) {
+      if (in_array((int)$userData["type"], $availableForUsers)) {
+        if ($flatItem['id_parent'] == 0) {
+          $children = [];
+          foreach ($navbarList as $flatItemSub) {
+            if ($flatItemSub['id_parent'] == $flatItem['id']) {
+              $children[] = [
+                "name" => $flatItemSub['name'],
+                "link" => $flatItemSub['link'],
+                "icon" => $flatItemSub['icon'],
+              ];
+            }
+          }
+    
+          $menuItems[] = [
+            "name" => $flatItem['name'],
+            "link" => $flatItem['link'],
+            "icon" => $flatItem['icon'],
+            "is_enabled" => $flatItem['is_enabled'],
+            "childrens" => $children,
           ];
         }
       }
-
-      $menuItems[] = [
-        "name" => $flatItem['name'],
-        "link" => $flatItem['link'],
-        "icon" => $flatItem['icon'],
-        "is_enabled" => $flatItem['is_enabled'],
-        "childrens" => $children,
-      ];
     }
   }
 
@@ -93,17 +99,23 @@
       <ul class='list-unstyled components'>
         {$navigationHTML}
       </ul>
-      <ul class='list-unstyled CTAs'>
-        <li>
-          <a href='eshop' class='system-eshop'>E-shop</a>
-        </li>
-        <li>
-          <a href='uzivatelia' class='system-users'>Užívatelia</a>
-        </li>
-        <li>
-          <a href='systemove-nastavenia' class='system-settings'>Systémové nastavenia</a>
-        </li>
-      </ul>
+      ".(
+        $userData['type'] == 1 ?
+          "
+            <ul class='list-unstyled CTAs'>
+            <li>
+              <a href='eshop' class='system-eshop'>E-shop</a>
+            </li>
+            <li>
+              <a href='uzivatelia' class='system-users'>Užívatelia</a>
+            </li>
+            <li>
+              <a href='systemove-nastavenia' class='system-settings'>Systémové nastavenia</a>
+            </li>
+          </ul>
+          "
+        : ""
+      )."
     </nav>
     <div id='content'>
       <nav class='navbar navbar-expand-lg navbar-light bg-white'>
