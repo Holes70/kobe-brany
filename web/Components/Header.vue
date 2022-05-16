@@ -41,7 +41,16 @@
                   </button>
                 </div>
                 <div v-else>
-                  {{ customer.email }}
+                  <li class="text-center">
+                    {{ customer.email }}
+                    <br>
+                    <a
+                      href="http://localhost/holes/kobe-brany/web/Admin/index.php?action=odhlasit"
+                      class="text-primary"
+                    >
+                      Odhlásiť sa 
+                    </a>
+                  </li>
                 </div>
               </li> 
               <li>
