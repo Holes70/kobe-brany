@@ -35,7 +35,7 @@
                     type="button" 
                     data-toggle="modal" 
                     data-target="#modal-registracia" 
-                    class="btn"
+                    class="btn btn-primary mt-1"
                   >
                     Zákaznícky účet
                   </button>

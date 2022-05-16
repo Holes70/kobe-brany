@@ -3,12 +3,9 @@
      <div class="modal-dialog modal-dialog modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
-          </div>
-          <div v-if="emailExists">
-            Tento účet už existuje
           </div>
           <div class="model-img modal-body text-center">
             <div class="row">
@@ -37,29 +34,29 @@
                 <p>Heslo je nesprávne</p>
               </div>
               <form @submit="prihlasit">
-                <div class="form-group">
-                  <label for="email">E-mailová adresa</label>
+                <div class="form-group mt-4">
+                  <label for="login-email">E-mailová adresa</label>
                   <input 
                     v-model="email"
                     type="email" 
                     :class="errorLoginClass('email')" 
-                    id="email" 
+                    id="login-email" 
                     placeholder="Zadajte e-mail"
                   >
                 </div>
-                <div class="form-group">
-                  <label for="password">Heslo</label>
+                <div class="form-group mt-4">
+                  <label for="login-password">Heslo</label>
                   <input
                     v-model="password"
                     type="password" 
                     :class="errorLoginClass('password')"
-                    id="password" 
+                    id="login-password" 
                     placeholder="Heslo"
                   >
                 </div>
                 <input
                   type="submit" 
-                  class="btn btn-primary"
+                  class="btn btn-primary mt-2"
                   value="Prihlásiť"
                 />
               </form>
@@ -67,46 +64,48 @@
             <div v-else>
               <div v-if="!registrationSuccess">
                 <form @submit="vytvoritUcet">
-                  <div class="form-group">
-                    <label for="email">E-mailová adresa</label>
+                  <div class="form-group mt-4">
+                    <label for="register-email">E-mailová adresa</label>
                     <input 
                       v-model="email"
                       type="email" 
                       :class="errorClass()" 
-                      id="email" 
+                      id="register-email" 
                       placeholder="Zadajte e-mail"
                     >
                   </div>
-                  <div class="form-group">
-                    <label for="password">Heslo</label>
+                  <div class="form-group mt-4">
+                    <label for="register-password">Heslo</label>
                     <input
                       v-model="password"
                       type="password" 
                       class="form-control" 
-                      id="password" 
+                      id="register-password" 
                       placeholder="Heslo"
                     >
                   </div>
-                  <div class="form-group">
-                    <label for="password">Zopakujte heslo</label>
+                  <div class="form-group mt-4">
+                    <label for="register-password2">Zopakujte heslo</label>
                     <input 
                       v-model="password2"
                       type="password" 
                       class="form-control" 
-                      id="password2" 
+                      id="register-password2" 
                       placeholder="Zopakujte heslo"
                     >
                   </div>
                   <input
                     type="submit" 
-                    class="btn btn-primary"
+                    class="btn btn-primary mt-2"
                     value="Vytvoriť zákaznícky účet"
                   />
                 </form>
               </div>
               <div v-else>
-                <h2>Ďakujeme za registráciu. Bol Vám zaslaný verifikačný e-mail.</h2>
-                <h3>Pre dokončenie registrácie otvorte e-mail ktorý sme Vám zaslali.</h3>
+                <div class="p-4">
+                  <h5>Ďakujeme za registráciu. Bol Vám zaslaný verifikačný e-mail.</h2>
+                  <h5 class="mt-2">Pre dokončenie registrácie otvorte e-mail ktorý sme Vám zaslali.</h3>
+                </div>
               </div>
             </div>
           </div>
@@ -134,35 +133,68 @@ export default {
       this.registrationSuccess = false;
       this.emailExists = false;
 
-      axios.post('Admin/index.php?action=dia_insert_post', {
-        email: this.email,
-        password: this.password,
-        state: 1,
-        tableName: 'customers'
-      }).then((res) => {
-        if (res.data.status != 'fail') {
-          this.registrationSuccess = true;
-        } else {
-          this.emailExists = true;
-        }
-      })
+      var error = false;
+
+      if ($("#register-password2").val() == "") {
+        error = true;
+        $("#register-password2").focus();
+      }
+
+      if ($("#register-password").val() == "") {
+        error = true;
+        $("#register-password").focus();
+      }
+
+      if ($("#register-email").val() == "") {
+        error = true;
+        $("#register-email").focus();
+      }
+
+      if (error == false) {
+        axios.post('Admin/index.php?action=dia_insert_post', {
+          email: this.email,
+          password: this.password,
+          state: 1,
+          tableName: 'customers'
+        }).then((res) => {
+          if (res.data.status != 'fail') {
+            this.registrationSuccess = true;
+          } else {
+            this.emailExists = true;
+          }
+        })
+      }
     },
     prihlasit(e) {
       e.preventDefault();
 
+      var error = false;
+
+      if ($("#login-password").val() == "") {
+        error = true;
+        $("#login-password").focus();
+      }
+
+      if ($("#login-email").val() == "") {
+        error = true;
+        $("#login-email").focus();
+      }
+
       this.loginError = '';
 
-      axios.post('Admin/index.php?action=prihlasit', {
-        email: this.email,
-        password: this.password
-      }).then((res) => {
-        console.log(res);
-        if (res.data.status != 'fail') {
-          
-        } else {
-          this.loginError = res.data.message;
-        }
-      })
+      if (error == false) {
+        axios.post('Admin/index.php?action=prihlasit', {
+          email: this.email,
+          password: this.password
+        }).then((res) => {
+          console.log(res);
+          if (res.data.status != 'fail') {
+            location.reload();
+          } else {
+            this.loginError = res.data.message;
+          }
+        })
+      }
     },
     errorClass() {
       if (this.emailExists) {
