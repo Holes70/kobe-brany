@@ -1782,14 +1782,6 @@ PopUp
   top: 60px;
   background: #FFF;
 }
-
-.btn {
-  padding: 10px 20px;
-  background: #4b8ef1;
-  color: #fff;
-  transition: all .3s;
-}
-
 .btn_red {
   background: #4b8ef1;
   color: #FFF;
