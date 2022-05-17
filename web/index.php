@@ -31,7 +31,7 @@
       <title>Kobe brány</title>
   
       <!-- Bootstrap core CSS -->
-      <link href='./assets/css/bootstrap.css' rel='stylesheet'>
+      <link href='./Assets/css/bootstrap.css' rel='stylesheet'>
       <script src='//{$dia->config['nodeModulesUrl']}/vue/dist/vue.global.prod.js'></script>
       <script src='//{$dia->config['nodeModulesUrl']}/axios/dist/axios.min.js'></script>
       <script src='//{$dia->config['nodeModulesUrl']}/chart.js/dist/chart.min.js'></script>
@@ -54,7 +54,6 @@
       <link rel='stylesheet' href='assets/css/animated.css'>
       <link rel='stylesheet' href='assets/css/owl.css'>
       <link rel='stylesheet' href='assets/css/web.css'>
-      <link rel='stylesheet' href='//{$dia->config['nodeModulesUrl']}/bootstrap/dist/css/bootstrap.css'/>
     </head>
   ";
 
@@ -151,8 +150,6 @@
     echo "</div></body>";
 
     echo "
-      <script src='vendor/jquery/jquery.min.js'></script>
-      <script src='vendor/bootstrap/js/bootstrap.bundle.min.js'></script>
       <script src='assets/js/owl-carousel.js'></script>
       <script src='assets/js/animation.js'></script>
       <script src='assets/js/imagesloaded.js'></script>
