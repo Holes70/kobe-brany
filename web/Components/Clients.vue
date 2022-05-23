@@ -5,7 +5,7 @@
         <div class="col-lg-8 offset-lg-2">
           <div class="section-heading">
             <h4>Prezrite si naše <em>najlepšie</em> produkty</h4>
-            <img src="assets/images/heading-line-dec.png" alt="">
+            <img src="Assets/images/heading-line-dec.png" alt="">
           </div>
         </div>
         <div class="col-lg-12">

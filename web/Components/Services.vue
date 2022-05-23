@@ -5,7 +5,7 @@
         <div class="col-lg-8 offset-lg-2">
           <div class="section-heading  wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.5s">
             <h4>Moderné <em>hliníkové brány</em> pre vás</h4>
-            <img src="assets/images/heading-line-dec.png" alt="">
+            <img src="Assets/images/heading-line-dec.png" alt="">
             <p>
               Moderné hliníkové ploty k rodinnému domu dodávame v niekoľkých dizajnových radách v priehľadnom i nepriehľadnom prevedení. Moderné brány a bránky dodávame vo všetkých bežných prevedeniach, ktoré nielen zákazníci, ale aj projekty vyžadujú.
             </p>

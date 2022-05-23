@@ -36,7 +36,7 @@
         <div class="col-lg-4">
           <div class="footer-widget">
             <div class="logo">
-              <img src="assets/images/white-logo.png" alt="">
+              <img src="Assets/images/white-logo.png" alt="">
             </div>
             <p>Moderné hliníkové ploty k rodinnému domu dodávame v niekoľkých dizajnových radách v priehľadnom i nepriehľadnom prevedení. Moderné brány a bránky dodávame vo všetkých bežných prevedeniach, ktoré nielen zákazníci, ale aj projekty vyžadujú.</p>
           </div>

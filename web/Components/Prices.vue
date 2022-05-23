@@ -19,7 +19,7 @@
         <div class="col-lg-8 offset-lg-2">
           <div class="section-heading">
             <h4>Máme pre Vás tie <em>najlepšie</em> ceny</h4>
-            <img src="assets/images/heading-line-dec.png" alt="">
+            <img src="Assets/images/heading-line-dec.png" alt="">
           </div>
         </div>
         <div class="col-lg-4">
@@ -27,7 +27,7 @@
             <span class="price">20€</span>
             <h4>Štandart</h4>
             <div class="icon">
-              <img src="assets/images/pricing-table-01.png" alt="">
+              <img src="Assets/images/pricing-table-01.png" alt="">
             </div>
             <ul>
               <li>Opravy</li>
@@ -53,7 +53,7 @@
             <span class="price">50€</span>
             <h4>Zlatá</h4>
             <div class="icon">
-              <img src="assets/images/pricing-table-01.png" alt="">
+              <img src="Assets/images/pricing-table-01.png" alt="">
             </div>
             <ul>
               <li>Opravy</li>
@@ -79,7 +79,7 @@
             <span class="price">100€</span>
             <h4>Prémium</h4>
             <div class="icon">
-              <img src="assets/images/pricing-table-01.png" alt="">
+              <img src="Assets/images/pricing-table-01.png" alt="">
             </div>
             <ul>
              <li>Opravy</li>

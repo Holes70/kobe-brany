@@ -45,15 +45,15 @@
       <script src='//{$dia->config['coreUrl']}/Assets/js/diaTables.js'></script>
       <script src='//{$dia->config['coreUrl']}/Assets/js/fontawesome.js'></script>
       <script src='https://unpkg.com/vue-router@4'></script>
-      <script src='./assets/js/diaWeb.js'></script>
+      <script src='./Assets/js/diaWeb.js'></script>
       <script src='//{$dia->config['coreUrl']}/Assets/js/sweetalert.js'></script>
   
       <!-- Additional CSS Files -->
       <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.1/css/all.css' integrity='sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf' crossorigin='anonymous'>
-      <link rel='stylesheet' href='assets/css/templatemo-chain-app-dev.css'>
-      <link rel='stylesheet' href='assets/css/animated.css'>
-      <link rel='stylesheet' href='assets/css/owl.css'>
-      <link rel='stylesheet' href='assets/css/web.css'>
+      <link rel='stylesheet' href='Assets/css/templatemo-chain-app-dev.css'>
+      <link rel='stylesheet' href='Assets/css/animated.css'>
+      <link rel='stylesheet' href='Assets/css/owl.css'>
+      <link rel='stylesheet' href='Assets/css/web.css'>
     </head>
   ";
 
@@ -150,11 +150,11 @@
     echo "</div></body>";
 
     echo "
-      <script src='assets/js/owl-carousel.js'></script>
-      <script src='assets/js/animation.js'></script>
-      <script src='assets/js/imagesloaded.js'></script>
-      <script src='assets/js/popup.js'></script>
-      <script src='assets/js/custom.js'></script>
+      <script src='Assets/js/owl-carousel.js'></script>
+      <script src='Assets/js/animation.js'></script>
+      <script src='Assets/js/imagesloaded.js'></script>
+      <script src='Assets/js/popup.js'></script>
+      <script src='Assets/js/custom.js'></script>
       </body>
       </html>
     ";

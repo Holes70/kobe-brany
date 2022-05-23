@@ -8,7 +8,7 @@
             <!-- ***** Logo Start ***** -->
             <div style="width:100px;">
               <router-link :to="{name: 'Domov'}" class="logo">
-                <img src="assets/images/logo.png" alt="Chain App Dev">
+                <img src="Assets/images/logo.png" alt="Chain App Dev">
               </router-link>
             </div>
             <!-- ***** Logo End ***** -->
