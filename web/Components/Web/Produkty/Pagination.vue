@@ -42,7 +42,7 @@ export default {
   methods: {
     loadPage(page) {
       this.$parent.conditions['currentPage'] = page;
-      diaPagination.addToUrl('page', page);
+      f.addToUrl('page', page);
 
       // hideEdit obsahuje funckiu na novo nacitane data
       this.$parent.loadData();
@@ -52,7 +52,7 @@ export default {
       }, 500);
     },
     loadPreviousPage() {
-      var currentPage = diaPagination.getUrlParam('page');
+      var currentPage = f.getUrlParam('page');
 
       if (currentPage != 1) {
         this.loadPage(currentPage - 1)
@@ -60,7 +60,7 @@ export default {
       
     },
     loadNextPage() {
-      var currentPage = diaPagination.getUrlParam('page');
+      var currentPage = f.getUrlParam('page');
 
       if (currentPage != this.pages) {
         this.loadPage(parseInt(currentPage) + 1)
@@ -69,7 +69,7 @@ export default {
     pagination(page) {
       return {
         'page-link': true,
-        'btn btn-secondary': diaPagination.getUrlParam('page') == page
+        'btn btn-secondary': f.getUrlParam('page') == page
       }
     },
   },
@@ -85,8 +85,8 @@ export default {
     }, 300);
 
     // Init page 1
-    if (typeof diaPagination.getUrlParam('page') == "undefined") {
-      diaPagination.addToUrl('page', 1);
+    if (typeof f.getUrlParam('page') == "undefined") {
+      f.addToUrl('page', 1);
       this.$parent.conditions['currentPage'] = 1;
     }
    

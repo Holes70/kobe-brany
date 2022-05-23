@@ -38,10 +38,9 @@
                 <h2>{{ data.name }}</h2>
                 <h3 class="mt-3">{{ data.price }} €</h3>
                 <p>{{ data.description }}</p>
-                {{ this.$route.params.itemId }}
                 <button 
                   @click="addToCart(data.id)"
-                  class="btn btn-priamry"
+                  class="btn btn-primary"
                 >Pridať do košíka</button>
               </div>
             </div>
@@ -94,10 +93,11 @@ export default {
 
     var idDetail = f.getUrlParam('id');
 
-    if (idDetail != "undefined") {
+    if (typeof idDetail == "undefined") {
       idDetail = this.$route.params.itemId;
-      f.addToUrl('id', idDetail);
     }
+
+    f.addToUrl('id', idDetail);
 
     axios.get('Admin/index.php?action=web_get_detail', {
       params: {
