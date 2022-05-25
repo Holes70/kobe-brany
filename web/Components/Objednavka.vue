@@ -55,10 +55,10 @@
                       {{ item.price }}€
                     </div>
                   </div>
-                  <h4>Spolu bez DPH: {{ spoluBezDph }}€</h4>
-                  <h4>Spolu: {{ spolu }}€</h4>
+                  <h4 class="mt-2">Spolu bez DPH: {{ spoluBezDph }}€</h4>
+                  <h4 class="mt-2">Spolu: {{ spolu }}€</h4>
                   <div class="gradient-button">
-                    <input type="submit" class="btn" value="Záväzne objednať"/>
+                    <input type="submit" class="btn btn-primary mt-2" value="Záväzne objednať"/>
                   </div>
                 </div>
               </div>
