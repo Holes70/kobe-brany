@@ -62,6 +62,7 @@
               </form>
             </div>
             <div v-else>
+              <p style="color:red">{{ registerError }}</p>
               <div v-if="!registrationSuccess">
                 <form @submit="vytvoritUcet">
                   <div class="form-group mt-4">
@@ -124,7 +125,8 @@ export default {
       emailExists: false,
       registrationSuccess: false,
       type: 'login',
-      loginError: ''
+      loginError: '',
+      registerError: ''
     }
   },
   methods: {
@@ -134,6 +136,7 @@ export default {
       this.emailExists = false;
 
       var error = false;
+      this.registerError = '';
 
       if ($("#register-password2").val() == "") {
         error = true;
@@ -148,6 +151,13 @@ export default {
       if ($("#register-email").val() == "") {
         error = true;
         $("#register-email").focus();
+      }
+
+      if ($("#register-password").val() != $("#register-password2").val()) {
+        error = true;
+        $("#register-password").focus();
+
+        this.registerError = "Zadané hesla sa nezhodujú";
       }
 
       if (error == false) {

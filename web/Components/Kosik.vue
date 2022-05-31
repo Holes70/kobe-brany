@@ -48,14 +48,23 @@
       </div>
     </div>
   </div>
+  <register-com></register-com>
+  <footer-com></footer-com>
 </template>
 
 <script>
+import footer from './Footer.vue';
+import register from './Register.vue';
+
 export default {
   data() {
     return {
       data: {}
     }
+  },
+  components: {
+    'register-com': register,
+    'footer-com': footer
   },
   methods: {
     deleteItem(idCartProduct) {
