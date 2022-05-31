@@ -169,6 +169,11 @@ export default {
         }).then((res) => {
           if (res.data.status != 'fail') {
             this.registrationSuccess = true;
+            axios.post('Admin/index.php?action=poslat-mail', {
+              email: this.email,
+            }).then((res) => {
+              console.log(res);
+            })
           } else {
             this.emailExists = true;
           }
