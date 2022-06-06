@@ -38,7 +38,6 @@
       <script src='//{$dia->config['nodeModulesUrl']}/jquery/dist/jquery.min.js'></script>
       <script src='//{$dia->config['nodeModulesUrl']}/bootstrap/dist/js/bootstrap.bundle.min.js'></script>
       <script src='//{$dia->config['nodeModulesUrl']}/vue3-sfc-loader/dist/vue3-sfc-loader.js'></script>
-      <script src='//{$dia->config['nodeModulesUrl']}/mitt/dist/mitt.umd.js'></script>
       <script src='../config.js'></script>
       <script src='//{$dia->config['coreUrl']}/Assets/js/Functions.js'></script>
       <script src='//{$dia->config['coreUrl']}/Assets/js/dia.js'></script>
