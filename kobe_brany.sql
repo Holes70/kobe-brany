@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hostiteľ: 127.0.0.1
--- Čas generovania: Št 12.Máj 2022, 11:06
+-- Čas generovania: Po 06.Jún 2022, 15:58
 -- Verzia serveru: 10.4.22-MariaDB
 -- Verzia PHP: 8.0.14
 
@@ -47,7 +47,12 @@ INSERT INTO `carts` (`id`, `id_customer_uid`, `is_order`) VALUES
 (7, 1, 1),
 (8, 2, 1),
 (9, 1, 1),
-(10, 3, 0);
+(10, 3, 0),
+(11, 4, 0),
+(12, 5, 0),
+(13, 6, 0),
+(14, 7, 0),
+(15, 8, 0);
 
 -- --------------------------------------------------------
 
@@ -159,7 +164,12 @@ CREATE TABLE `customers_uids` (
 INSERT INTO `customers_uids` (`id`, `uid`, `id_customer`) VALUES
 (1, '957149121', NULL),
 (2, '757313347', NULL),
-(3, '1364924746', NULL);
+(3, '1364924746', NULL),
+(4, '488080737', NULL),
+(5, '1166903624', NULL),
+(6, '12462880', NULL),
+(7, '1944891941', NULL),
+(8, '859615355', NULL);
 
 -- --------------------------------------------------------
 
@@ -175,7 +185,7 @@ CREATE TABLE `dia_messages` (
   `body` text NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `viewed` tinyint(1) NOT NULL DEFAULT 0,
-  `id_answer` int(11) NOT NULL
+  `id_answer` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -183,7 +193,7 @@ CREATE TABLE `dia_messages` (
 --
 
 INSERT INTO `dia_messages` (`id`, `recipient`, `sender`, `subject`, `body`, `timestamp`, `viewed`, `id_answer`) VALUES
-(1, 'admin@dia.sk', 'Jozef17@email.sk', 'Produkt-17 k dispozícii?', 'Dobrý deň,\r\nKedy bude produkt-17 k dispozícii?\r\nĎakujem, \r\nJozef L.', '2022-03-11 11:43:45', 1, 0);
+(1, 'admin@dia.sk', 'Jozef17@email.sk', 'Produkt-17 k dispozícii?', 'Dobrý deň,\r\nKedy bude produkt-17 k dispozícii?\r\nĎakujem, \r\nJozef L.', '2022-06-06 13:57:53', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -246,7 +256,7 @@ CREATE TABLE `dia_notifications` (
 
 INSERT INTO `dia_notifications` (`id`, `message`, `id_user`, `timestamp`, `viewed`, `url`) VALUES
 (2, 'XXX', 1, '2022-02-15 13:17:21', 1, 'produkty?id_form=1'),
-(3, 'XXX', 1, '2022-02-15 13:21:13', 1, NULL);
+(3, 'XXX', 1, '2022-06-06 13:51:15', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -532,91 +542,91 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `image`, `name`, `price`, `vat`, `price_without_vat`, `available`, `count`, `description`, `type`, `state`, `discount`) VALUES
 (1, 'product_1.jpg', 'Produkt-1', 822.00, 20, 685, 1, 0, 'Popis', 1, 2, 0),
-(2, 'prislusenstvo_2.jpg', 'Príslušenstvo-2', 169.00, 20, 140.83, 0, 8, 'Popis', 2, 1, 0),
+(2, 'prislusenstvo_2.jpg', 'Prislusenstvo-2', 169.00, 20, 140.83, 0, 8, 'Popis', 2, 1, 0),
 (3, 'product_1.jpg', 'Produkt-3', 980.00, 20, 816.67, 1, 13, 'Popis', 1, 2, 20),
-(4, 'prislusenstvo_1.jpg', 'Príslušenstvo-4', 515.00, 20, 429.17, 0, 12, 'Popis', 2, 1, 0),
+(4, 'prislusenstvo_1.jpg', 'Prislusenstvo-4', 515.00, 20, 429.17, 0, 12, 'Popis', 2, 1, 0),
 (5, 'product_2.jpg', 'Produkt-5', 405.00, 20, 337.5, 1, 3, 'Popis', 1, 2, 0),
-(6, 'prislusenstvo_2.jpg', 'Príslušenstvo-6', 896.00, 20, 746.67, 0, 13, 'Popis', 2, 3, 0),
+(6, 'prislusenstvo_2.jpg', 'Prislusenstvo-6', 896.00, 20, 746.67, 0, 13, 'Popis', 2, 3, 0),
 (7, 'product_3.jpg', 'Produkt-7', 363.00, 20, 302.5, 0, 5, 'Popis', 1, 3, 0),
-(8, 'prislusenstvo_2.jpg', 'Príslušenstvo-8', 227.00, 20, 189.17, 0, 13, 'Popis', 2, 1, 0),
+(8, 'prislusenstvo_2.jpg', 'Prislusenstvo-8', 227.00, 20, 189.17, 0, 13, 'Popis', 2, 1, 0),
 (9, 'product_2.jpg', 'Produkt-9', 764.00, 20, 636.67, 1, 6, 'Popis', 1, 2, 0),
-(10, 'prislusenstvo_3.jpg', 'Príslušenstvo-10', 721.00, 20, 600.83, 0, 15, 'Popis', 2, 2, 20),
+(10, 'prislusenstvo_3.jpg', 'Prislusenstvo-10', 721.00, 20, 600.83, 0, 15, 'Popis', 2, 2, 20),
 (11, 'product_1.jpg', 'Produkt-11', 906.00, 20, 755, 1, 3, 'Popis', 1, 1, 0),
 (12, 'product_2.jpg', 'Produkt-12', 408.00, 20, 340, 1, 1, 'Popis', 1, 3, 0),
 (13, 'product_1.jpg', 'Produkt-13', 397.00, 20, 330.83, 1, 0, 'Popis', 1, 2, 0),
-(14, 'prislusenstvo_3.jpg', 'Príslušenstvo-14', 102.00, 20, 85, 1, 1, 'Popis', 2, 2, 20),
+(14, 'prislusenstvo_3.jpg', 'Prislusenstvo-14', 102.00, 20, 85, 1, 1, 'Popis', 2, 2, 20),
 (15, 'product_3.jpg', 'Produkt-15', 527.00, 20, 439.17, 1, 8, 'Popis', 1, 1, 0),
 (16, 'product_3.jpg', 'Produkt-16', 795.00, 20, 662.5, 1, 3, 'Popis', 1, 2, 20),
-(17, 'prislusenstvo_3.jpg', 'Príslušenstvo-17', 658.00, 20, 548.33, 0, 2, 'Popis', 2, 2, 0),
-(18, 'prislusenstvo_3.jpg', 'Príslušenstvo-18', 689.00, 20, 574.17, 0, 7, 'Popis', 2, 2, 0),
+(17, 'prislusenstvo_3.jpg', 'Prislusenstvo-17', 658.00, 20, 548.33, 0, 2, 'Popis', 2, 2, 0),
+(18, 'prislusenstvo_3.jpg', 'Prislusenstvo-18', 689.00, 20, 574.17, 0, 7, 'Popis', 2, 2, 0),
 (19, 'product_1.jpg', 'Produkt-19', 140.00, 20, 116.67, 0, 5, 'Popis', 1, 2, 0),
-(20, 'prislusenstvo_3.jpg', 'Príslušenstvo-20', 706.00, 20, 588.33, 1, 13, 'Popis', 2, 2, 20),
-(21, 'prislusenstvo_3.jpg', 'Príslušenstvo-21', 213.00, 20, 177.5, 0, 10, 'Popis', 2, 3, 0),
+(20, 'prislusenstvo_3.jpg', 'Prislusenstvo-20', 706.00, 20, 588.33, 1, 13, 'Popis', 2, 2, 20),
+(21, 'prislusenstvo_3.jpg', 'Prislusenstvo-21', 213.00, 20, 177.5, 0, 10, 'Popis', 2, 3, 0),
 (22, 'product_1.jpg', 'Produkt-22', 823.00, 20, 685.83, 0, 1, 'Popis', 1, 2, 0),
-(23, 'prislusenstvo_3.jpg', 'Príslušenstvo-23', 975.00, 20, 812.5, 0, 4, 'Popis', 2, 3, 20),
-(24, 'prislusenstvo_2.jpg', 'Príslušenstvo-24', 72.00, 20, 60, 1, 7, 'Popis', 2, 2, 0),
+(23, 'prislusenstvo_3.jpg', 'Prislusenstvo-23', 975.00, 20, 812.5, 0, 4, 'Popis', 2, 3, 20),
+(24, 'prislusenstvo_2.jpg', 'Prislusenstvo-24', 72.00, 20, 60, 1, 7, 'Popis', 2, 2, 0),
 (25, 'product_2.jpg', 'Produkt-25', 0.00, 20, 0, 0, 9, 'Popis', 1, 1, 0),
 (26, 'product_1.jpg', 'Produkt-26', 461.00, 20, 384.17, 1, 9, 'Popis', 1, 3, 20),
 (27, 'product_3.jpg', 'Produkt-27', 268.00, 20, 223.33, 0, 4, 'Popis', 1, 3, 0),
-(28, 'prislusenstvo_2.jpg', 'Príslušenstvo-28', 809.00, 20, 674.17, 1, 6, 'Popis', 2, 1, 20),
-(29, 'prislusenstvo_1.jpg', 'Príslušenstvo-29', 753.00, 20, 627.5, 1, 8, 'Popis', 2, 2, 0),
-(30, 'prislusenstvo_2.jpg', 'Príslušenstvo-30', 537.00, 20, 447.5, 1, 9, 'Popis', 2, 1, 0),
-(31, 'prislusenstvo_2.jpg', 'Príslušenstvo-31', 600.00, 20, 500, 1, 8, 'Popis', 2, 2, 20),
+(28, 'prislusenstvo_2.jpg', 'Prislusenstvo-28', 809.00, 20, 674.17, 1, 6, 'Popis', 2, 1, 20),
+(29, 'prislusenstvo_1.jpg', 'Prislusenstvo-29', 753.00, 20, 627.5, 1, 8, 'Popis', 2, 2, 0),
+(30, 'prislusenstvo_2.jpg', 'Prislusenstvo-30', 537.00, 20, 447.5, 1, 9, 'Popis', 2, 1, 0),
+(31, 'prislusenstvo_2.jpg', 'Prislusenstvo-31', 600.00, 20, 500, 1, 8, 'Popis', 2, 2, 20),
 (32, 'product_2.jpg', 'Produkt-32', 952.00, 20, 793.33, 0, 0, 'Popis', 1, 3, 0),
-(33, 'prislusenstvo_3.jpg', 'Príslušenstvo-33', 651.00, 20, 542.5, 1, 1, 'Popis', 2, 3, 0),
+(33, 'prislusenstvo_3.jpg', 'Prislusenstvo-33', 651.00, 20, 542.5, 1, 1, 'Popis', 2, 3, 0),
 (34, 'product_3.jpg', 'Produkt-34', 30.00, 20, 25, 0, 10, 'Popis', 1, 1, 0),
-(35, 'prislusenstvo_3.jpg', 'Príslušenstvo-35', 537.00, 20, 447.5, 0, 7, 'Popis', 2, 3, 0),
+(35, 'prislusenstvo_3.jpg', 'Prislusenstvo-35', 537.00, 20, 447.5, 0, 7, 'Popis', 2, 3, 0),
 (36, 'product_1.jpg', 'Produkt-36', 311.00, 20, 259.17, 1, 3, 'Popis', 1, 2, 0),
-(37, 'prislusenstvo_2.jpg', 'Príslušenstvo-37', 140.00, 20, 116.67, 1, 11, 'Popis', 2, 3, 20),
-(38, 'prislusenstvo_3.jpg', 'Príslušenstvo-38', 702.00, 20, 585, 1, 3, 'Popis', 2, 2, 0),
-(39, 'prislusenstvo_1.jpg', 'Príslušenstvo-39', 122.00, 20, 101.67, 1, 6, 'Popis', 2, 1, 20),
+(37, 'prislusenstvo_2.jpg', 'Prislusenstvo-37', 140.00, 20, 116.67, 1, 11, 'Popis', 2, 3, 20),
+(38, 'prislusenstvo_3.jpg', 'Prislusenstvo-38', 702.00, 20, 585, 1, 3, 'Popis', 2, 2, 0),
+(39, 'prislusenstvo_1.jpg', 'Prislusenstvo-39', 122.00, 20, 101.67, 1, 6, 'Popis', 2, 1, 20),
 (40, 'product_1.jpg', 'Produkt-40', 833.00, 20, 694.17, 0, 10, 'Popis', 1, 2, 0),
 (41, 'product_3.jpg', 'Produkt-41', 955.00, 20, 795.83, 1, 2, 'Popis', 1, 3, 0),
 (42, 'product_3.jpg', 'Produkt-42', 367.00, 20, 305.83, 1, 5, 'Popis', 1, 3, 20),
-(43, 'prislusenstvo_1.jpg', 'Príslušenstvo-43', 605.00, 20, 504.17, 0, 8, 'Popis', 2, 2, 0),
+(43, 'prislusenstvo_1.jpg', 'Prislusenstvo-43', 605.00, 20, 504.17, 0, 8, 'Popis', 2, 2, 0),
 (44, 'product_2.jpg', 'Produkt-44', 889.00, 20, 740.83, 1, 10, 'Popis', 1, 2, 20),
 (45, 'product_2.jpg', 'Produkt-45', 314.00, 20, 261.67, 1, 9, 'Popis', 1, 1, 0),
-(46, 'prislusenstvo_1.jpg', 'Príslušenstvo-46', 815.00, 20, 679.17, 0, 9, 'Popis', 2, 3, 0),
-(47, 'prislusenstvo_1.jpg', 'Príslušenstvo-47', 914.00, 20, 761.67, 1, 10, 'Popis', 2, 1, 0),
-(48, 'prislusenstvo_1.jpg', 'Príslušenstvo-48', 525.00, 20, 437.5, 1, 12, 'Popis', 2, 3, 0),
+(46, 'prislusenstvo_1.jpg', 'Prislusenstvo-46', 815.00, 20, 679.17, 0, 9, 'Popis', 2, 3, 0),
+(47, 'prislusenstvo_1.jpg', 'Prislusenstvo-47', 914.00, 20, 761.67, 1, 10, 'Popis', 2, 1, 0),
+(48, 'prislusenstvo_1.jpg', 'Prislusenstvo-48', 525.00, 20, 437.5, 1, 12, 'Popis', 2, 3, 0),
 (49, 'product_3.jpg', 'Produkt-49', 705.00, 20, 587.5, 0, 0, 'Popis', 1, 3, 0),
 (50, 'product_1.jpg', 'Produkt-50', 245.00, 20, 204.17, 1, 2, 'Popis', 1, 3, 0),
 (51, 'product_2.jpg', 'Produkt-51', 62.00, 20, 51.67, 1, 3, 'Popis', 1, 1, 20),
-(52, 'prislusenstvo_1.jpg', 'Príslušenstvo-52', 185.00, 20, 154.17, 0, 4, 'Popis', 2, 3, 0),
-(53, 'prislusenstvo_1.jpg', 'Príslušenstvo-53', 86.00, 20, 71.67, 0, 5, 'Popis', 2, 1, 20),
+(52, 'prislusenstvo_1.jpg', 'Prislusenstvo-52', 185.00, 20, 154.17, 0, 4, 'Popis', 2, 3, 0),
+(53, 'prislusenstvo_1.jpg', 'Prislusenstvo-53', 86.00, 20, 71.67, 0, 5, 'Popis', 2, 1, 20),
 (54, 'product_3.jpg', 'Produkt-54', 235.00, 20, 195.83, 1, 11, 'Popis', 1, 2, 0),
-(55, 'prislusenstvo_2.jpg', 'Príslušenstvo-55', 357.00, 20, 297.5, 1, 10, 'Popis', 2, 3, 0),
+(55, 'prislusenstvo_2.jpg', 'Prislusenstvo-55', 357.00, 20, 297.5, 1, 10, 'Popis', 2, 3, 0),
 (56, 'product_1.jpg', 'Produkt-56', 719.00, 20, 599.17, 1, 2, 'Popis', 1, 2, 0),
 (57, 'product_2.jpg', 'Produkt-57', 75.00, 20, 62.5, 1, 11, 'Popis', 1, 1, 0),
 (58, 'product_2.jpg', 'Produkt-58', 709.00, 20, 590.83, 1, 2, 'Popis', 1, 3, 0),
 (59, 'product_1.jpg', 'Produkt-59', 948.00, 20, 790, 0, 12, 'Popis', 1, 3, 20),
-(60, 'prislusenstvo_2.jpg', 'Príslušenstvo-60', 779.00, 20, 649.17, 1, 8, 'Popis', 2, 3, 0),
+(60, 'prislusenstvo_2.jpg', 'Prislusenstvo-60', 779.00, 20, 649.17, 1, 8, 'Popis', 2, 3, 0),
 (61, 'product_3.jpg', 'Produkt-61', 49.00, 20, 40.83, 0, 0, 'Popis', 1, 3, 20),
 (62, 'product_2.jpg', 'Produkt-62', 264.00, 20, 220, 1, 12, 'Popis', 1, 1, 0),
-(63, 'prislusenstvo_2.jpg', 'Príslušenstvo-63', 383.00, 20, 319.17, 1, 3, 'Popis', 2, 2, 0),
-(64, 'prislusenstvo_2.jpg', 'Príslušenstvo-64', 375.00, 20, 312.5, 1, 15, 'Popis', 2, 1, 0),
-(65, 'prislusenstvo_1.jpg', 'Príslušenstvo-65', 768.00, 20, 640, 1, 12, 'Popis', 2, 2, 0),
-(66, 'prislusenstvo_1.jpg', 'Príslušenstvo-66', 561.00, 20, 467.5, 1, 5, 'Popis', 2, 3, 0),
-(67, 'prislusenstvo_2.jpg', 'Príslušenstvo-67', 972.00, 20, 810, 0, 11, 'Popis', 2, 3, 0),
-(68, 'prislusenstvo_3.jpg', 'Príslušenstvo-68', 485.00, 20, 404.17, 0, 11, 'Popis', 2, 2, 0),
+(63, 'prislusenstvo_2.jpg', 'Prislusenstvo-63', 383.00, 20, 319.17, 1, 3, 'Popis', 2, 2, 0),
+(64, 'prislusenstvo_2.jpg', 'Prislusenstvo-64', 375.00, 20, 312.5, 1, 15, 'Popis', 2, 1, 0),
+(65, 'prislusenstvo_1.jpg', 'Prislusenstvo-65', 768.00, 20, 640, 1, 12, 'Popis', 2, 2, 0),
+(66, 'prislusenstvo_1.jpg', 'Prislusenstvo-66', 561.00, 20, 467.5, 1, 5, 'Popis', 2, 3, 0),
+(67, 'prislusenstvo_2.jpg', 'Prislusenstvo-67', 972.00, 20, 810, 0, 11, 'Popis', 2, 3, 0),
+(68, 'prislusenstvo_3.jpg', 'Prislusenstvo-68', 485.00, 20, 404.17, 0, 11, 'Popis', 2, 2, 0),
 (69, 'product_1.jpg', 'Produkt-69', 377.00, 20, 314.17, 0, 3, 'Popis', 1, 1, 0),
 (70, 'product_2.jpg', 'Produkt-70', 590.00, 20, 491.67, 0, 8, 'Popis', 1, 2, 0),
-(71, 'prislusenstvo_2.jpg', 'Príslušenstvo-71', 122.00, 20, 101.67, 0, 2, 'Popis', 2, 2, 0),
-(72, 'prislusenstvo_3.jpg', 'Príslušenstvo-72', 638.00, 20, 531.67, 1, 7, 'Popis', 2, 1, 0),
-(73, 'prislusenstvo_2.jpg', 'Príslušenstvo-73', 579.00, 20, 482.5, 1, 13, 'Popis', 2, 2, 0),
-(74, 'prislusenstvo_1.jpg', 'Príslušenstvo-74', 383.00, 20, 319.17, 1, 8, 'Popis', 2, 2, 0),
-(75, 'prislusenstvo_1.jpg', 'Príslušenstvo-75', 859.00, 20, 715.83, 1, 0, 'Popis', 2, 3, 20),
+(71, 'prislusenstvo_2.jpg', 'Prislusenstvo-71', 122.00, 20, 101.67, 0, 2, 'Popis', 2, 2, 0),
+(72, 'prislusenstvo_3.jpg', 'Prislusenstvo-72', 638.00, 20, 531.67, 1, 7, 'Popis', 2, 1, 0),
+(73, 'prislusenstvo_2.jpg', 'Prislusenstvo-73', 579.00, 20, 482.5, 1, 13, 'Popis', 2, 2, 0),
+(74, 'prislusenstvo_1.jpg', 'Prislusenstvo-74', 383.00, 20, 319.17, 1, 8, 'Popis', 2, 2, 0),
+(75, 'prislusenstvo_1.jpg', 'Prislusenstvo-75', 859.00, 20, 715.83, 1, 0, 'Popis', 2, 3, 20),
 (76, 'product_1.jpg', 'Produkt-76', 329.00, 20, 274.17, 0, 4, 'Popis', 1, 1, 0),
-(77, 'prislusenstvo_3.jpg', 'Príslušenstvo-77', 219.00, 20, 182.5, 1, 2, 'Popis', 2, 2, 0),
-(78, 'prislusenstvo_1.jpg', 'Príslušenstvo-78', 152.00, 20, 126.67, 0, 13, 'Popis', 2, 2, 0),
+(77, 'prislusenstvo_3.jpg', 'Prislusenstvo-77', 219.00, 20, 182.5, 1, 2, 'Popis', 2, 2, 0),
+(78, 'prislusenstvo_1.jpg', 'Prislusenstvo-78', 152.00, 20, 126.67, 0, 13, 'Popis', 2, 2, 0),
 (79, 'product_2.jpg', 'Produkt-79', 184.00, 20, 153.33, 1, 7, 'Popis', 1, 3, 0),
-(80, 'prislusenstvo_1.jpg', 'Príslušenstvo-80', 241.00, 20, 200.83, 1, 8, 'Popis', 2, 2, 0),
-(81, 'prislusenstvo_2.jpg', 'Príslušenstvo-81', 212.00, 20, 176.67, 1, 9, 'Popis', 2, 1, 0),
+(80, 'prislusenstvo_1.jpg', 'Prislusenstvo-80', 241.00, 20, 200.83, 1, 8, 'Popis', 2, 2, 0),
+(81, 'prislusenstvo_2.jpg', 'Prislusenstvo-81', 212.00, 20, 176.67, 1, 9, 'Popis', 2, 1, 0),
 (82, 'product_1.jpg', 'Produkt-82', 449.00, 20, 374.17, 0, 0, 'Popis', 1, 3, 0),
-(83, 'prislusenstvo_3.jpg', 'Príslušenstvo-83', 834.00, 20, 695, 0, 11, 'Popis', 2, 3, 0),
-(84, 'prislusenstvo_2.jpg', 'Príslušenstvo-84', 369.00, 20, 307.5, 1, 4, 'Popis', 2, 1, 0),
+(83, 'prislusenstvo_3.jpg', 'Prislusenstvo-83', 834.00, 20, 695, 0, 11, 'Popis', 2, 3, 0),
+(84, 'prislusenstvo_2.jpg', 'Prislusenstvo-84', 369.00, 20, 307.5, 1, 4, 'Popis', 2, 1, 0),
 (85, 'product_3.jpg', 'Produkt-85', 763.00, 20, 635.83, 1, 4, 'Popis', 1, 1, 20),
-(86, 'prislusenstvo_2.jpg', 'Príslušenstvo-86', 843.00, 20, 702.5, 1, 4, 'Popis', 2, 3, 0),
+(86, 'prislusenstvo_2.jpg', 'Prislusenstvo-86', 843.00, 20, 702.5, 1, 4, 'Popis', 2, 3, 0),
 (87, 'product_3.jpg', 'Produkt-87', 976.00, 20, 813.33, 0, 5, 'Popis', 1, 1, 0),
 (88, 'product_2.jpg', 'Produkt-88', 351.00, 20, 292.5, 1, 13, 'Popis', 1, 3, 0),
 (89, 'product_3.jpg', 'Produkt-89', 602.00, 20, 501.67, 1, 10, 'Popis', 1, 3, 20),
@@ -625,12 +635,12 @@ INSERT INTO `products` (`id`, `image`, `name`, `price`, `vat`, `price_without_va
 (92, 'product_3.jpg', 'Produkt-92', 615.00, 20, 512.5, 1, 13, 'Popis', 1, 2, 0),
 (93, 'product_1.jpg', 'Produkt-93', 637.00, 20, 530.83, 0, 14, 'Popis', 1, 3, 0),
 (94, 'product_3.jpg', 'Produkt-94', 80.00, 20, 66.67, 1, 10, 'Popis', 1, 1, 0),
-(95, 'prislusenstvo_2.jpg', 'Príslušenstvo-95', 863.00, 20, 719.17, 1, 4, 'Popis', 2, 3, 0),
-(96, 'prislusenstvo_1.jpg', 'Príslušenstvo-96', 224.00, 20, 186.67, 0, 1, 'Popis', 2, 2, 0),
+(95, 'prislusenstvo_2.jpg', 'Prislusenstvo-95', 863.00, 20, 719.17, 1, 4, 'Popis', 2, 3, 0),
+(96, 'prislusenstvo_1.jpg', 'Prislusenstvo-96', 224.00, 20, 186.67, 0, 1, 'Popis', 2, 2, 0),
 (97, 'product_3.jpg', 'Produkt-97', 496.00, 20, 413.33, 0, 3, 'Popis', 1, 2, 0),
-(98, 'product_1.jpg', 'Produkt-98', 11.00, 20, 9, 0, 6, 'Materia:dsadsadsa\ndsadasdsa dsa;ds\n\ndsadsadsadsa', 1, 1, 0),
+(98, 'product_1.jpg', 'Produkt-98', 11.00, 20, 9, 0, 6, 'Brana na mieru, hlinikova.', 1, 1, 0),
 (99, 'product_1.jpg', 'Produkt-99', 84.00, 20, 70, 1, 10, 'Popis', 1, 3, 0),
-(100, 'prislusenstvo_2.jpg', 'Príslušenstvo-100', 132.00, 20, 110, 1, 7, 'Popis', 2, 1, 0);
+(100, 'prislusenstvo_2.jpg', 'Prislusenstvo-100', 132.00, 20, 110, 1, 7, 'Popis', 2, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -847,7 +857,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pre tabuľku `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT pre tabuľku `carts_products`
@@ -877,7 +887,7 @@ ALTER TABLE `customers`
 -- AUTO_INCREMENT pre tabuľku `customers_uids`
 --
 ALTER TABLE `customers_uids`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pre tabuľku `dia_messages`
