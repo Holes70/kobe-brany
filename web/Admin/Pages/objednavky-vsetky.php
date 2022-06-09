@@ -1,5 +1,41 @@
 <?php
 
+$objednavkyQuery = $db->dbSelect(
+  "carts_products",
+  [
+    "select" => "products.type as type, products.name as name, COUNT(products.id) as pocet",
+    "join" => [
+      "products" => [
+        "id_product",
+        "id"
+      ],
+      "carts" => [
+        "id_cart",
+        "id"
+      ]
+    ],
+    "whereArray" => [
+      ["carts.is_order", "=", 1]
+    ],
+    "group_by" => "type, name",
+    "order_by" => "products.id"
+  ]
+);
+
+$objednaneProdukty = [];
+$objednaneProduktyCenaSpolu = [];
+$objednanePrislusenstvo = [];
+$objednanePrislusenstvoCenaSpolu = [];
+foreach ($objednavkyQuery as $objednavka) {
+  if ($objednavka["type"] == 1) {
+    array_push($objednaneProdukty, $objednavka["name"]);
+    array_push($objednaneProduktyCenaSpolu, $objednavka["pocet"]);
+  } else {
+    array_push($objednanePrislusenstvo, $objednavka["name"]);
+    array_push($objednanePrislusenstvoCenaSpolu, $objednavka["pocet"]);
+  }
+}
+
 // Vyber mena produktu a pocet
 $orders = $db->dbSelect(
   'orders',
@@ -25,8 +61,8 @@ foreach ($orders as $value) {
 }
 
 $chart = new Component\Chart("bar");
-$chart->labels($orders_names);
-$chart->data($orders_count);
+$chart->labels($objednaneProdukty);
+$chart->data($objednaneProduktyCenaSpolu);
 
 $table_orders = new Component\Table("orders");
 $table_orders->columns([
@@ -73,10 +109,8 @@ $typ_objednavky_listgroup->url("typ_url");
 $includeListgroup = $dia->createVue(include("Objednavky/Vsetky/listgroup.php"));
 
 $grafTrzby = new Component\Chart("pie");
-$grafTrzby->labels([1,2,3]);
-$grafTrzby->data([1,2,3]);
-$grafTrzby->width(100);
-$grafTrzby->height(100);
+$grafTrzby->labels($objednanePrislusenstvo);
+$grafTrzby->data($objednanePrislusenstvoCenaSpolu);
 
 $dia->template("
   <div class='row'>
@@ -108,7 +142,7 @@ $dia->template("
         <div class='p-1'>
           <div class='card'>
             <h4 class='card-header text-center'>
-              Objednané produkty
+              Objednané príslušenstvo
             </h4>
             <div class='card-body'>
               {$grafTrzby->show()}
