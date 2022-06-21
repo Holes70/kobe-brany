@@ -4,6 +4,7 @@ use \Component\TableLarge;
 use \Component\Row;
 
 $zakaznici = new TableLarge("customers");
+$zakaznici->conditions(["select" => "*"]);
 
 $pridat = new Row("customers");
 
