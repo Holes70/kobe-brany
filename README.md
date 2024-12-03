@@ -2,7 +2,7 @@
 
 Simple framework for fast web component building
 
-##Example
+## Example
 
 
 ```php
